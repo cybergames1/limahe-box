@@ -8,6 +8,8 @@
 
 #import "MainViewController.h"
 #import "MainMenuView.h"
+#import "MessageViewController.h"
+#import "LRSuperViewController.h"
 
 @interface MainViewController ()
 
@@ -21,6 +23,7 @@
     
     [self setNavigationItemLeftImage:[UIImage imageNamed:@"bg-addbutton"]];
     [self setNavigationItemRightImage:[UIImage imageNamed:@"icon-plus-highlighted"]];
+    [self setNavigationTitle:@"首页"];
     
     MainMenuView *menuView = [[[MainMenuView alloc] initWithFrame:self.view.bounds] autorelease];
     [self.view addSubview:menuView];
@@ -42,11 +45,17 @@
 */
 
 - (void)leftBarAction {
-    NSLog(@"leftAction");
+    LRSuperViewController *controller = [[LRSuperViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+    [self.navigationController presentViewController:nav animated:YES completion:nil];
+    [controller release];
+    [nav release];
 }
 
 - (void)rightBarAction {
-    NSLog(@"rightAction");
+    MessageViewController *controller = [[MessageViewController alloc] init];
+    [self.navigationController pushViewController:controller animated:YES];
+    [controller release];
 }
 
 @end

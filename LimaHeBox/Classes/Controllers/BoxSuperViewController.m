@@ -34,6 +34,7 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.barTintColor = _navigationBarTintColor;
+    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,6 +63,18 @@
     
     UIBarButtonItem *item = [[[UIBarButtonItem alloc] initWithCustomView:button] autorelease];
     [self.navigationItem setRightBarButtonItem:item animated:YES];
+}
+
+- (void)setNavigationTitle:(NSString *)title {
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+    label.backgroundColor = [UIColor clearColor];
+    label.font = [UIFont boldSystemFontOfSize:18.0];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.textColor = [UIColor whiteColor];
+    self.navigationItem.titleView = label;
+    label.text = title;
+    [label sizeToFit];
+    [label release];
 }
 
 - (void)leftBarAction {

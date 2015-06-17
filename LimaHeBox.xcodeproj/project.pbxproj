@@ -74,6 +74,10 @@
 		DC3F17F21B30358200F02C10 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3F17F11B30358200F02C10 /* MainViewController.m */; };
 		DC3F17F51B30376000F02C10 /* MainMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3F17F41B30376000F02C10 /* MainMenuView.m */; };
 		DC3F17F81B31194D00F02C10 /* BoxSuperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3F17F71B31194D00F02C10 /* BoxSuperViewController.m */; };
+		DC3F17FB1B314D2D00F02C10 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3F17FA1B314D2D00F02C10 /* MessageViewController.m */; };
+		DC3F17FF1B31505500F02C10 /* LRSuperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3F17FE1B31505500F02C10 /* LRSuperViewController.m */; };
+		DC3F18021B31523600F02C10 /* Category.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3F18011B31523600F02C10 /* Category.framework */; };
+		DC3F18041B315B0C00F02C10 /* common_icon_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC3F18031B315B0C00F02C10 /* common_icon_back@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -210,6 +214,12 @@
 		DC3F17F41B30376000F02C10 /* MainMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuView.m; sourceTree = "<group>"; };
 		DC3F17F61B31194D00F02C10 /* BoxSuperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxSuperViewController.h; sourceTree = "<group>"; };
 		DC3F17F71B31194D00F02C10 /* BoxSuperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoxSuperViewController.m; sourceTree = "<group>"; };
+		DC3F17F91B314D2D00F02C10 /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
+		DC3F17FA1B314D2D00F02C10 /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
+		DC3F17FD1B31505500F02C10 /* LRSuperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRSuperViewController.h; sourceTree = "<group>"; };
+		DC3F17FE1B31505500F02C10 /* LRSuperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSuperViewController.m; sourceTree = "<group>"; };
+		DC3F18011B31523600F02C10 /* Category.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Category.framework; sourceTree = "<group>"; };
+		DC3F18031B315B0C00F02C10 /* common_icon_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "common_icon_back@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +229,7 @@
 			files = (
 				DC3F17C41B2FDFE400F02C10 /* libz.1.2.5.dylib in Frameworks */,
 				DC3F17C21B2FDFD900F02C10 /* CoreGraphics.framework in Frameworks */,
+				DC3F18021B31523600F02C10 /* Category.framework in Frameworks */,
 				DC3F17C01B2FDFD300F02C10 /* SystemConfiguration.framework in Frameworks */,
 				DC3F17BE1B2FDFC900F02C10 /* QuartzCore.framework in Frameworks */,
 				DC3F17BC1B2FDFC200F02C10 /* CoreFoundation.framework in Frameworks */,
@@ -450,6 +461,7 @@
 		DC3F17941B2FDF8900F02C10 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				DC3F18001B31523600F02C10 /* Category */,
 				DC3F17E71B302CBF00F02C10 /* QuadCurveMenu */,
 				DC3F17C31B2FDFE400F02C10 /* libz.1.2.5.dylib */,
 				DC3F17C11B2FDFD900F02C10 /* CoreGraphics.framework */,
@@ -514,6 +526,7 @@
 		DC3F17CA1B302CAC00F02C10 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DC3F18031B315B0C00F02C10 /* common_icon_back@2x.png */,
 				DC3F17CB1B302CAC00F02C10 /* bg-addbutton-highlighted.png */,
 				DC3F17CC1B302CAC00F02C10 /* bg-addbutton-highlighted@2x.png */,
 				DC3F17CD1B302CAC00F02C10 /* bg-addbutton.png */,
@@ -546,10 +559,13 @@
 		DC3F17EE1B302D0100F02C10 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DC3F17FC1B314FC700F02C10 /* Login&Register */,
 				DC3F17F61B31194D00F02C10 /* BoxSuperViewController.h */,
 				DC3F17F71B31194D00F02C10 /* BoxSuperViewController.m */,
 				DC3F17F01B30358200F02C10 /* MainViewController.h */,
 				DC3F17F11B30358200F02C10 /* MainViewController.m */,
+				DC3F17F91B314D2D00F02C10 /* MessageViewController.h */,
+				DC3F17FA1B314D2D00F02C10 /* MessageViewController.m */,
 			);
 			name = Controllers;
 			path = Classes/Controllers;
@@ -563,6 +579,23 @@
 			);
 			name = Views;
 			path = Classes/Views;
+			sourceTree = "<group>";
+		};
+		DC3F17FC1B314FC700F02C10 /* Login&Register */ = {
+			isa = PBXGroup;
+			children = (
+				DC3F17FD1B31505500F02C10 /* LRSuperViewController.h */,
+				DC3F17FE1B31505500F02C10 /* LRSuperViewController.m */,
+			);
+			path = "Login&Register";
+			sourceTree = "<group>";
+		};
+		DC3F18001B31523600F02C10 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				DC3F18011B31523600F02C10 /* Category.framework */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -652,6 +685,7 @@
 				DC3F17E41B302CAC00F02C10 /* icon-plus@2x.png in Resources */,
 				DC3F17DE1B302CAC00F02C10 /* bg-menuitem-highlighted@2x.png in Resources */,
 				DC3F17DC1B302CAC00F02C10 /* bg-addbutton@2x.png in Resources */,
+				DC3F18041B315B0C00F02C10 /* common_icon_back@2x.png in Resources */,
 				DC3F17D91B302CAC00F02C10 /* bg-addbutton-highlighted.png in Resources */,
 				DC3F17E21B302CAC00F02C10 /* icon-plus-highlighted@2x.png in Resources */,
 				DC3F17DB1B302CAC00F02C10 /* bg-addbutton.png in Resources */,
@@ -685,10 +719,12 @@
 				DC3F178E1B2FDF3000F02C10 /* SDWebImageManager.m in Sources */,
 				DC3F17F21B30358200F02C10 /* MainViewController.m in Sources */,
 				DC3F17B01B2FDF8A00F02C10 /* ASIFormDataRequest.m in Sources */,
+				DC3F17FB1B314D2D00F02C10 /* MessageViewController.m in Sources */,
 				DC3F17901B2FDF3000F02C10 /* UIImageView+WebCache.m in Sources */,
 				DC3F17B11B2FDF8A00F02C10 /* ASIHTTPRequest.m in Sources */,
 				DC3F17811B2FDF3000F02C10 /* PrviateTradesDS.m in Sources */,
 				DC3F17AD1B2FDF8A00F02C10 /* ASIDataCompressor.m in Sources */,
+				DC3F17FF1B31505500F02C10 /* LRSuperViewController.m in Sources */,
 				DC3F17AC1B2FDF8A00F02C10 /* ASIAuthenticationDialog.m in Sources */,
 				DC3F17AF1B2FDF8A00F02C10 /* ASIDownloadCache.m in Sources */,
 				DC3F17891B2FDF3000F02C10 /* PPQHTTPRequest.m in Sources */,
@@ -847,6 +883,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/LimaHeBox/Classes/Framework/Category",
+				);
 				INFOPLIST_FILE = LimaHeBox/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -860,6 +900,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/LimaHeBox/Classes/Framework/Category",
+				);
 				INFOPLIST_FILE = LimaHeBox/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

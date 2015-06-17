@@ -8,6 +8,9 @@
 
 #import "BoxSuperViewController.h"
 
+/**
+ * 主界面
+ */
 @interface MainViewController : BoxSuperViewController
 
 @end

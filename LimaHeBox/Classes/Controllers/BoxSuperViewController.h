@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ * 所有ViewController的super
+ * 完成一些基本的架构，如navigationbar的控制等
+ */
+
 @interface BoxSuperViewController : UIViewController
 
 /* 导航条的颜色 */
@@ -15,5 +20,6 @@
 
 - (void)setNavigationItemLeftImage:(UIImage *)image;
 - (void)setNavigationItemRightImage:(UIImage *)image;
+- (void)setNavigationTitle:(NSString *)title;
 
 @end
