@@ -10,4 +10,10 @@
 
 @interface BoxSuperViewController : UIViewController
 
+/* 导航条的颜色 */
+@property (nonatomic, retain) UIColor * navigationBarTintColor;
+
+- (void)setNavigationItemLeftImage:(UIImage *)image;
+- (void)setNavigationItemRightImage:(UIImage *)image;
+
 @end
