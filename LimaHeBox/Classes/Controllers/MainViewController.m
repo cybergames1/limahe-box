@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "MainMenuView.h"
 
 @interface MainViewController ()
 
@@ -17,6 +18,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self setNavigationItemLeftImage:[UIImage imageNamed:@"bg-addbutton"]];
+    [self setNavigationItemRightImage:[UIImage imageNamed:@"icon-plus-highlighted"]];
+    
+    MainMenuView *menuView = [[[MainMenuView alloc] initWithFrame:self.view.bounds] autorelease];
+    [self.view addSubview:menuView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,5 +40,13 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)leftBarAction {
+    NSLog(@"leftAction");
+}
+
+- (void)rightBarAction {
+    NSLog(@"rightAction");
+}
 
 @end

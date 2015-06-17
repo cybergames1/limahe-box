@@ -55,7 +55,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 		self.timeOffset = kQuadCurveMenuDefaultTimeOffset;
 		self.rotateAngle = kQuadCurveMenuDefaultRotateAngle;
 		self.menuWholeAngle = kQuadCurveMenuDefaultMenuWholeAngle;
-		self.startPoint = CGPointMake(kQuadCurveMenuDefaultStartPointX, kQuadCurveMenuDefaultStartPointY);
+		self.startPoint = CGPointMake(self.bounds.size.width/2, self.bounds.size.height - 80);
         
         // layout menus
         self.menusArray = aMenusArray;
@@ -66,7 +66,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
                                            ContentImage:[UIImage imageNamed:@"icon-plus.png"] 
                                 highlightedContentImage:[UIImage imageNamed:@"icon-plus-highlighted.png"]];
         _addButton.delegate = self;
-        _addButton.center = CGPointMake(kQuadCurveMenuDefaultStartPointX, kQuadCurveMenuDefaultStartPointY);
+        _addButton.center = self.startPoint;
         [self addSubview:_addButton];
     }
     return self;

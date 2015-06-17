@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ * 主菜单界面 
+ */
 @interface MainMenuView : UIView
 
 @end

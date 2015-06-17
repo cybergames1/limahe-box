@@ -15,7 +15,7 @@
 #include <net/if_dl.h>
 #include <arpa/inet.h>
 #include <ifaddrs.h>
-#import "MBProgressHUD.h"
+//#import "MBProgressHUD.h"
 #import <CommonCrypto/CommonCryptor.h>
 #include <CommonCrypto/CommonHMAC.h>
 
@@ -832,10 +832,10 @@ static NSString* rootPath = nil;
 + (NSString *) formatNumber:(NSInteger) number
 {
     if (number < 10) {
-        return [NSString stringWithFormat:@"0%d",number];
+        return [NSString stringWithFormat:@"0%ld",(long)number];
     }
     
-    return [NSString stringWithFormat:@"%d",number];
+    return [NSString stringWithFormat:@"%ld",(long)number];
 }
 
 #define kBillion     1000000000 // 10亿
@@ -864,22 +864,22 @@ static NSString* rootPath = nil;
     
     if (count < kMyriad) {
         // <1万，显示 ***个
-        return [NSString stringWithFormat:@"%d",count];
+        return [NSString stringWithFormat:@"%ld",(long)count];
     }
     else if (count < kTenMyriad){
         //1万~10万
-        return [NSString stringWithFormat:@"%d.%d万",count/kMyriad,(count % kMyriad)/kThousand];
+        return [NSString stringWithFormat:@"%ld.%ld万",count/kMyriad,(count % kMyriad)/kThousand];
     }
     else if (count < kHudMillion){
         //10万~1亿
-        return [NSString stringWithFormat:@"%d万",count/kMyriad];
+        return [NSString stringWithFormat:@"%ld万",count/kMyriad];
     }
     else if (count < kBillion){
         //1亿~10亿
-        return [NSString stringWithFormat:@"%d.%d亿",count/kHudMillion,(count % kHudMillion)/kTenMillion];
+        return [NSString stringWithFormat:@"%ld.%ld亿",count/kHudMillion,(count % kHudMillion)/kTenMillion];
     }
     else {
-        return [NSString stringWithFormat:@"%d亿",count/kHudMillion];
+        return [NSString stringWithFormat:@"%ld亿",count/kHudMillion];
     }
     return stringValue;
 }
@@ -896,7 +896,7 @@ static NSString* rootPath = nil;
         count = [countValue integerValue];
     }
     if (count <= 99) {
-        return [NSString stringWithFormat:@"%d",count];
+        return [NSString stringWithFormat:@"%ld",(long)count];
     }
     return @"99+";
 }
@@ -935,22 +935,22 @@ static NSString* rootPath = nil;
     else{
         return nil;
     }
-    CGFloat timeInterval = abs([somedayDate timeIntervalSinceNow]);
+    CGFloat timeInterval = fabs([somedayDate timeIntervalSinceNow]);
     if (timeInterval <= 10) {
         // 1-10秒内,刚刚
         return @"刚刚";
     }
     else if (timeInterval < Q_MINUTE){
         // 11-60秒,n秒前
-        return [NSString stringWithFormat:@"%d秒前",(NSInteger)timeInterval];
+        return [NSString stringWithFormat:@"%ld秒前",(long)timeInterval];
     }
     else if (timeInterval < Q_HOUR){
         // 1-60分钟 n分钟前
-        return [NSString stringWithFormat:@"%d分钟前",(NSInteger)(timeInterval/Q_MINUTE)];
+        return [NSString stringWithFormat:@"%ld分钟前",(long)(timeInterval/Q_MINUTE)];
     }
     else if (timeInterval < Q_DAY){
         //1⼩时前、n小时前
-        return [NSString stringWithFormat:@"%d小时前",(NSInteger)(timeInterval/Q_HOUR)];
+        return [NSString stringWithFormat:@"%ld小时前",(long)(timeInterval/Q_HOUR)];
     }
     else if (timeInterval < Q_DAY*2){
         //昨天、
@@ -962,7 +962,7 @@ static NSString* rootPath = nil;
     }
     else if (timeInterval < Q_DAY*6){
         //3-6天 n天前
-        return [NSString stringWithFormat:@"%d天前",(NSInteger)(timeInterval/Q_DAY)];
+        return [NSString stringWithFormat:@"%ld天前",(long)(timeInterval/Q_DAY)];
     }
     else if (timeInterval < Q_DAY*13){
         //7-13天: 1周前
@@ -978,7 +978,7 @@ static NSString* rootPath = nil;
     }
     else if (timeInterval < Q_MONTH*6){
         //1-5个月: n个月前
-        return [NSString stringWithFormat:@"%d个月前",(NSInteger)(timeInterval/Q_MONTH)];
+        return [NSString stringWithFormat:@"%ld个月前",(long)(timeInterval/Q_MONTH)];
     }
     else if (timeInterval < Q_YEAR){
         //≥6个月: 半年前
@@ -986,7 +986,7 @@ static NSString* rootPath = nil;
     }
     else{
         // 跨年: 1年前;2年前...
-        return [NSString stringWithFormat:@"%d年前",(NSInteger)(timeInterval/Q_YEAR)];
+        return [NSString stringWithFormat:@"%ld年前",(long)(timeInterval/Q_YEAR)];
     }
     return nil;
 }
@@ -1052,15 +1052,15 @@ static NSString* rootPath = nil;
 
 
 #pragma mark Show HUBView / Alert
-+ (void) showHunViewWithTitle:(NSString*) title
-{
-    [MBProgressHUD hideAllHUDsForView:[CommonTools visibleWindow] animated:NO];
-    MBProgressHUD* hub = [MBProgressHUD showHUDAddedTo:[CommonTools visibleWindow] animated:YES];
-    hub.removeFromSuperViewOnHide = YES;
-    hub.mode = MBProgressHUDModeText;
-    hub.labelText = title;
-    [hub hide:YES afterDelay:2.0];
-}
+//+ (void) showHunViewWithTitle:(NSString*) title
+//{
+//    [MBProgressHUD hideAllHUDsForView:[CommonTools visibleWindow] animated:NO];
+//    MBProgressHUD* hub = [MBProgressHUD showHUDAddedTo:[CommonTools visibleWindow] animated:YES];
+//    hub.removeFromSuperViewOnHide = YES;
+//    hub.mode = MBProgressHUDModeText;
+//    hub.labelText = title;
+//    [hub hide:YES afterDelay:2.0];
+//}
 
 + (void) showAlertWithTitle:(NSString*)title
 {

@@ -106,7 +106,7 @@
         //当服务器有某些错误的情况下，返回的data=nil
         self.data = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments | NSJSONReadingMutableContainers error:nil];
     }
-    NSLog(@"\n  datasource: %@ \n  URL：%@ \n  statusCode:%d \n  data:%s \n\n",NSStringFromClass([self class]),self.request.url,statusCode,[[self.data description] UTF8String]);
+    NSLog(@"\n  datasource: %@ \n  URL：%@ \n  statusCode:%ld \n  data:%s \n\n",NSStringFromClass([self class]),self.request.url,(long)statusCode,[[self.data description] UTF8String]);
  //   NSString *code = [(NSDictionary *)self.data objectForKey:KErrorCode];
     
     //服务器内部错误

@@ -6,8 +6,8 @@
 //  Copyright (c) 2015年 jianting. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BoxSuperViewController.h"
 
-@interface MainViewController : UIViewController
+@interface MainViewController : BoxSuperViewController
 
 @end

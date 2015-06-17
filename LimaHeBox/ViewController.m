@@ -7,8 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "WeatherProvince.h"
 
-@interface ViewController ()
+@interface ViewController () <PPQDataSourceDelegate>
 
 @end
 
@@ -17,11 +18,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    WeatherProvince *province = [[WeatherProvince alloc] initWithDelegate:self];
+    [province getProvinceList];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dataSourceFinishLoad:(PPQDataSource *)source
+{
+    NSLog(@"finished");
+}
+
+- (void)dataSource:(PPQDataSource *)source hasError:(NSError *)error
+{
+    NSLog(@"failed");
 }
 
 @end

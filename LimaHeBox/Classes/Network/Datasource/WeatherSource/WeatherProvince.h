@@ -6,8 +6,13 @@
 //  Copyright (c) 2015年 jianting. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "PPQDataSource.h"
 
-@interface WeatherProvince : NSObject
+/**
+ * 获取省列表
+ */
+@interface WeatherProvince : PPQDataSource
+
+- (void)getProvinceList;
 
 @end

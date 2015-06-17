@@ -7,15 +7,72 @@
 //
 
 #import "MainMenuView.h"
+#import "QuadCurveMenu.h"
+
+@interface MainMenuView () <QuadCurveMenuDelegate>
+
+@end
 
 @implementation MainMenuView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        UIImage *storyMenuItemImage = [UIImage imageNamed:@"bg-menuitem.png"];
+        UIImage *storyMenuItemImagePressed = [UIImage imageNamed:@"bg-menuitem-highlighted.png"];
+        
+        UIImage *starImage = [UIImage imageNamed:@"icon-star.png"];
+        
+        QuadCurveMenuItem *starMenuItem1 = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
+                                                                   highlightedImage:storyMenuItemImagePressed
+                                                                       ContentImage:starImage
+                                                            highlightedContentImage:nil];
+        QuadCurveMenuItem *starMenuItem2 = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
+                                                                   highlightedImage:storyMenuItemImagePressed
+                                                                       ContentImage:starImage
+                                                            highlightedContentImage:nil];
+        QuadCurveMenuItem *starMenuItem3 = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
+                                                                   highlightedImage:storyMenuItemImagePressed
+                                                                       ContentImage:starImage
+                                                            highlightedContentImage:nil];
+        QuadCurveMenuItem *starMenuItem4 = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
+                                                                   highlightedImage:storyMenuItemImagePressed
+                                                                       ContentImage:starImage
+                                                            highlightedContentImage:nil];
+        QuadCurveMenuItem *starMenuItem5 = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
+                                                                   highlightedImage:storyMenuItemImagePressed
+                                                                       ContentImage:starImage
+                                                            highlightedContentImage:nil];
+        
+        NSArray *menus = [NSArray arrayWithObjects:starMenuItem1, starMenuItem2, starMenuItem3, starMenuItem4, starMenuItem5, nil];
+        [starMenuItem1 release];
+        [starMenuItem2 release];
+        [starMenuItem3 release];
+        [starMenuItem4 release];
+        [starMenuItem5 release];
+        
+        QuadCurveMenu *menu = [[QuadCurveMenu alloc] initWithFrame:self.bounds menus:menus];
+        
+        // customize menu
+        
+        menu.rotateAngle = -2*M_PI/5;
+        menu.menuWholeAngle = M_PI;
+        //menu.timeOffset = 0.2f;
+        //menu.farRadius = 180.0f;
+        menu.endRadius = 100.0f;
+        //menu.nearRadius = 50.0f;
+        
+        menu.delegate = self;
+        [self addSubview:menu];
+        [menu release];
+    }
+    return self;
 }
-*/
+
+- (void)quadCurveMenu:(QuadCurveMenu *)menu didSelectIndex:(NSInteger)idx
+{
+    NSLog(@"Select the index : %ld",(long)idx);
+}
 
 @end
