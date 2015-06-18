@@ -7,6 +7,7 @@
 //
 
 #import "WeatherProvince.h"
+#import "WeatherAPI.h"
 
 @implementation WeatherProvince
 
@@ -16,11 +17,14 @@
     [self.request clearAndCancel];
     self.request = nil;
     
+    WeatherAPI *api = [[WeatherAPI alloc] init];
     
-    PPQHTTPRequest *request = [[PPQHTTPRequest alloc] initWithDelegate:self theURl:[NSURL URLWithString:@"http://www.weather.com.cn/adat/cityinfo/101010100.html"]];
+    PPQHTTPRequest *request = [[PPQHTTPRequest alloc] initWithDelegate:self theURl:[NSURL URLWithString:[api apiURLString]]];
     self.request = request;
     self.request.isRunOnBackground = YES;
     [request release];
+    
+    [api release];
     
     //body & header
     [self startRequest];
