@@ -10,9 +10,9 @@
 #import "MainMenuView.h"
 #import "MessageViewController.h"
 #import "LRSuperViewController.h"
-#import "WeatherProvince.h"
+#import "WeatherAPI.h"
 
-@interface MainViewController () <PPQDataSourceDelegate>
+@interface MainViewController ()
 
 @end
 
@@ -29,8 +29,15 @@
     MainMenuView *menuView = [[[MainMenuView alloc] initWithFrame:self.view.bounds] autorelease];
     [self.view addSubview:menuView];
     
-    WeatherProvince *pp = [[WeatherProvince alloc] initWithDelegate:self];
-    [pp getProvinceList];
+    WeatherAPI *api = [[WeatherAPI alloc] init];
+    [api getWeatherInfo:^(BOOL finished) {
+        if (finished) {
+            NSLog(@"info:%@",[api weatherInfo]);
+        }
+        else {
+            
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,18 +67,6 @@
     MessageViewController *controller = [[MessageViewController alloc] init];
     [self.navigationController pushViewController:controller animated:YES];
     [controller release];
-}
-
-
-///////
-
-- (void)dataSourceFinishLoad:(PPQDataSource *)source {
-    NSLog(@"source finish");
-    NSLog(@"data:%@",source.data);
-}
-
-- (void)dataSource:(PPQDataSource *)source hasError:(NSError *)error {
-    
 }
 
 @end

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		DC0237E71B32D7AF00245501 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0237E11B32D7AF00245501 /* GTMBase64.m */; };
 		DC0237E81B32D7AF00245501 /* NSString+base64.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0237E41B32D7AF00245501 /* NSString+base64.m */; };
-		DC0237E91B32D7AF00245501 /* WeatherAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0237E61B32D7AF00245501 /* WeatherAPI.m */; };
+		DC0237ED1B33EA6F00245501 /* WeatherAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0237EC1B33EA6F00245501 /* WeatherAPI.m */; };
 		DC3F17161B2FDEEE00F02C10 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3F17151B2FDEEE00F02C10 /* main.m */; };
 		DC3F17191B2FDEEE00F02C10 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3F17181B2FDEEE00F02C10 /* AppDelegate.m */; };
 		DC3F171C1B2FDEEE00F02C10 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3F171B1B2FDEEE00F02C10 /* ViewController.m */; };
@@ -57,7 +57,7 @@
 		DC3F17C01B2FDFD300F02C10 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3F17BF1B2FDFD300F02C10 /* SystemConfiguration.framework */; };
 		DC3F17C21B2FDFD900F02C10 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3F17C11B2FDFD900F02C10 /* CoreGraphics.framework */; };
 		DC3F17C41B2FDFE400F02C10 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3F17C31B2FDFE400F02C10 /* libz.1.2.5.dylib */; };
-		DC3F17C81B2FEDBB00F02C10 /* WeatherProvince.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3F17C71B2FEDBB00F02C10 /* WeatherProvince.m */; };
+		DC3F17C81B2FEDBB00F02C10 /* WeatherSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3F17C71B2FEDBB00F02C10 /* WeatherSource.m */; };
 		DC3F17D91B302CAC00F02C10 /* bg-addbutton-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = DC3F17CB1B302CAC00F02C10 /* bg-addbutton-highlighted.png */; };
 		DC3F17DA1B302CAC00F02C10 /* bg-addbutton-highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC3F17CC1B302CAC00F02C10 /* bg-addbutton-highlighted@2x.png */; };
 		DC3F17DB1B302CAC00F02C10 /* bg-addbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = DC3F17CD1B302CAC00F02C10 /* bg-addbutton.png */; };
@@ -100,7 +100,8 @@
 		DC0237E31B32D7AF00245501 /* NSString+base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+base64.h"; sourceTree = "<group>"; };
 		DC0237E41B32D7AF00245501 /* NSString+base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+base64.m"; sourceTree = "<group>"; };
 		DC0237E51B32D7AF00245501 /* WeatherAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherAPI.h; sourceTree = "<group>"; };
-		DC0237E61B32D7AF00245501 /* WeatherAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherAPI.m; sourceTree = "<group>"; };
+		DC0237EB1B33C5BA00245501 /* WeatherDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherDefines.h; sourceTree = "<group>"; };
+		DC0237EC1B33EA6F00245501 /* WeatherAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherAPI.m; sourceTree = "<group>"; };
 		DC3F17101B2FDEEE00F02C10 /* LimaHeBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LimaHeBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC3F17141B2FDEEE00F02C10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC3F17151B2FDEEE00F02C10 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -198,8 +199,8 @@
 		DC3F17BF1B2FDFD300F02C10 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DC3F17C11B2FDFD900F02C10 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		DC3F17C31B2FDFE400F02C10 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
-		DC3F17C61B2FEDBB00F02C10 /* WeatherProvince.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherProvince.h; sourceTree = "<group>"; };
-		DC3F17C71B2FEDBB00F02C10 /* WeatherProvince.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherProvince.m; sourceTree = "<group>"; };
+		DC3F17C61B2FEDBB00F02C10 /* WeatherSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherSource.h; sourceTree = "<group>"; };
+		DC3F17C71B2FEDBB00F02C10 /* WeatherSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherSource.m; sourceTree = "<group>"; };
 		DC3F17CB1B302CAC00F02C10 /* bg-addbutton-highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-addbutton-highlighted.png"; sourceTree = "<group>"; };
 		DC3F17CC1B302CAC00F02C10 /* bg-addbutton-highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-addbutton-highlighted@2x.png"; sourceTree = "<group>"; };
 		DC3F17CD1B302CAC00F02C10 /* bg-addbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-addbutton.png"; sourceTree = "<group>"; };
@@ -268,7 +269,8 @@
 				DC0237E31B32D7AF00245501 /* NSString+base64.h */,
 				DC0237E41B32D7AF00245501 /* NSString+base64.m */,
 				DC0237E51B32D7AF00245501 /* WeatherAPI.h */,
-				DC0237E61B32D7AF00245501 /* WeatherAPI.m */,
+				DC0237EC1B33EA6F00245501 /* WeatherAPI.m */,
+				DC0237EB1B33C5BA00245501 /* WeatherDefines.h */,
 			);
 			path = WeatherAPI;
 			sourceTree = "<group>";
@@ -534,8 +536,8 @@
 		DC3F17C51B2FEACA00F02C10 /* WeatherSource */ = {
 			isa = PBXGroup;
 			children = (
-				DC3F17C61B2FEDBB00F02C10 /* WeatherProvince.h */,
-				DC3F17C71B2FEDBB00F02C10 /* WeatherProvince.m */,
+				DC3F17C61B2FEDBB00F02C10 /* WeatherSource.h */,
+				DC3F17C71B2FEDBB00F02C10 /* WeatherSource.m */,
 			);
 			path = WeatherSource;
 			sourceTree = "<group>";
@@ -769,7 +771,7 @@
 				DC3F17B31B2FDF8A00F02C10 /* ASINetworkQueue.m in Sources */,
 				DC3F17F81B31194D00F02C10 /* BoxSuperViewController.m in Sources */,
 				DC3F17191B2FDEEE00F02C10 /* AppDelegate.m in Sources */,
-				DC3F17C81B2FEDBB00F02C10 /* WeatherProvince.m in Sources */,
+				DC3F17C81B2FEDBB00F02C10 /* WeatherSource.m in Sources */,
 				DC3F17ED1B302CBF00F02C10 /* QuadCurveMenuItem.m in Sources */,
 				DC3F17F51B30376000F02C10 /* MainMenuView.m in Sources */,
 				DC0237E81B32D7AF00245501 /* NSString+base64.m in Sources */,
@@ -783,7 +785,7 @@
 				DC3F17851B2FDF3000F02C10 /* PPQDataSource.m in Sources */,
 				DC3F17B41B2FDF8A00F02C10 /* Reachability.m in Sources */,
 				DC3F17AE1B2FDF8A00F02C10 /* ASIDataDecompressor.m in Sources */,
-				DC0237E91B32D7AF00245501 /* WeatherAPI.m in Sources */,
+				DC0237ED1B33EA6F00245501 /* WeatherAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

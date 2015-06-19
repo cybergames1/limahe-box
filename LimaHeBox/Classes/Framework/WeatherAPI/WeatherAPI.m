@@ -10,16 +10,31 @@
 #import <CommonCrypto/CommonDigest.h>
 #import <CommonCrypto/CommonHMAC.h>
 #import "NSString+base64.h"
+#import "WeatherSource.h"
 
 #define Weather_APPID       @"8d22e6e51fef0147"
 #define Weather_PrivateKey  @"0331bc_SmartWeatherAPI_cecbe12"
 
-@interface WeatherAPI ()
+NSString *const WeahterPropertyDayWeather = @"DayWeather";
+NSString *const WeatherPropertyNightWeather = @"NightWeather";
+NSString *const WeatherPropertyDayTemperature = @"DayTemperature";
+NSString *const WeatherPropertyNightTemperature = @"NightTemperature";
+NSString *const WeatherPropertyDayWindDirection = @"DayWindDirection";
+NSString *const WeatherPropertyNightWindDirection = @"NightWindDirection";
+NSString *const WeatherPropertyDayWindForce = @"DayWindForce";
+NSString *const WeatherPropertyNightWindForce = @"NightWindForce";
+
+typedef void(^Complation)(BOOL finished);
+
+@interface WeatherAPI () <PPQDataSourceDelegate>
 {
     NSString * _areaid;
     NSString * _type;
     NSString * _dateString;
     NSString * _api;
+    
+    WeatherSource * _source;
+    Complation _complation;
 }
 
 @end
@@ -31,6 +46,10 @@
     [_type release];_type = nil;
     [_dateString release];_dateString = nil;
     [_api release];_api = nil;
+    _source.delegate = nil;
+    [_source release];_source = nil;
+    [_weatherInfo release];_weatherInfo = nil;
+    [_complation release];_complation = nil;
     
     [super dealloc];
 }
@@ -38,6 +57,8 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
+        _weatherInfo = [[NSMutableDictionary alloc] initWithCapacity:0];
+        
         _areaid = [[NSString alloc] initWithString:@"101010100"];
         
         /**
@@ -125,6 +146,33 @@
 - (NSString *)stringByEncodingURLFormat:(NSString*)_key {
     NSString *encodedString = (__bridge NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,(CFStringRef)_key,nil, (CFStringRef) @"!$&'()*+,-./:;=?@_~%#[]",kCFStringEncodingUTF8);
     return [encodedString autorelease];
+}
+
+- (void)getWeatherInfo:(void (^)(BOOL))completion {
+    _complation = [completion copy];
+    
+    WeatherSource *source = [[WeatherSource alloc] initWithDelegate:self];
+    [source getWeatherInfo:_api];
+}
+
+- (void)dataSourceFinishLoad:(PPQDataSource *)source {
+    NSArray *f1 = [[source.data valueForKey:@"f"] valueForKey:@"f1"];
+    NSDictionary *d1 = f1[0];
+    
+    [_weatherInfo setValue:[d1 valueForKey:@"fa"] forKey:WeahterPropertyDayWeather];
+    [_weatherInfo setValue:[d1 valueForKey:@"fb"] forKey:WeatherPropertyNightWeather];
+    [_weatherInfo setValue:[d1 valueForKey:@"fc"] forKey:WeatherPropertyDayTemperature];
+    [_weatherInfo setValue:[d1 valueForKey:@"fd"] forKey:WeatherPropertyNightTemperature];
+    [_weatherInfo setValue:[d1 valueForKey:@"fe"] forKey:WeatherPropertyDayWindDirection];
+    [_weatherInfo setValue:[d1 valueForKey:@"ff"] forKey:WeatherPropertyNightWindDirection];
+    [_weatherInfo setValue:[d1 valueForKey:@"fg"] forKey:WeatherPropertyDayWindForce];
+    [_weatherInfo setValue:[d1 valueForKey:@"fh"] forKey:WeatherPropertyNightWindForce];
+    
+    if (_complation) _complation(YES);
+}
+
+- (void)dataSource:(PPQDataSource *)source hasError:(NSError *)error {
+    if (_complation) _complation(NO);
 }
 
 @end

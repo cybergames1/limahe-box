@@ -1,5 +1,5 @@
 //
-//  WeatherProvince.h
+//  WeatherSource.h
 //  LimaHeBox
 //
 //  Created by jianting on 15/6/16.
@@ -11,8 +11,8 @@
 /**
  * 获取省列表
  */
-@interface WeatherProvince : PPQDataSource
+@interface WeatherSource : PPQDataSource
 
-- (void)getProvinceList;
+- (void)getWeatherInfo:(NSString *)api;
 
 @end
