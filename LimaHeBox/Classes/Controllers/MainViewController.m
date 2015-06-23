@@ -14,8 +14,9 @@
 #import "WeatherView.h"
 #import "CommonTools.h"
 #import <Category/Category.h>
+#import "ExpressViewController.h"
 
-@interface MainViewController ()
+@interface MainViewController () <MainMenuViewDelegate>
 
 @end
 
@@ -34,6 +35,7 @@
     [self.view addSubview:imageView];
     
     MainMenuView *menuView = [[[MainMenuView alloc] initWithFrame:self.view.bounds] autorelease];
+    menuView.delegate = self;
     [self.view addSubview:menuView];
     
     WeatherView *weatherView = [[[WeatherView alloc] initWithFrame:CGRectMake(0, [CommonTools viewTopWithNav], self.view.frame.size.width, 60)] autorelease];
@@ -70,6 +72,26 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark -
+#pragma mark MenuView Delegate
+- (void)menuView:(MainMenuView *)menuView didSelectAtIndex:(NSInteger)index {
+    switch (index) {
+        case 0:
+            //快递
+        {
+            ExpressViewController *controller = [[ExpressViewController alloc] init];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+            [self.navigationController presentViewController:nav animated:YES completion:nil];
+            [controller release];
+            [nav release];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
 
 - (void)leftBarAction {
     LRSuperViewController *controller = [[LRSuperViewController alloc] init];

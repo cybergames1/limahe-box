@@ -22,7 +22,8 @@ static inline CGRect ScaleRect(CGRect rect, float n) {return CGRectMake((rect.si
 - (id)initWithImage:(UIImage *)img 
    highlightedImage:(UIImage *)himg
        ContentImage:(UIImage *)cimg
-highlightedContentImage:(UIImage *)hcimg;
+highlightedContentImage:(UIImage *)hcimg
+        ContentText:(NSString *)text;
 {
     if (self = [super init]) 
     {
@@ -31,7 +32,15 @@ highlightedContentImage:(UIImage *)hcimg;
         self.userInteractionEnabled = YES;
         _contentImageView = [[UIImageView alloc] initWithImage:cimg];
         _contentImageView.highlightedImage = hcimg;
+        
+        _contentLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        _contentLabel.backgroundColor = [UIColor clearColor];
+        _contentLabel.textColor = [UIColor whiteColor];
+        _contentLabel.text = text;
+        _contentLabel.font = [UIFont systemFontOfSize:13];
+        _contentLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:_contentImageView];
+        [self addSubview:_contentLabel];
     }
     return self;
 }
@@ -39,6 +48,7 @@ highlightedContentImage:(UIImage *)hcimg;
 - (void)dealloc
 {
     [_contentImageView release];
+    [_contentLabel release];
     [super dealloc];
 }
 #pragma mark - UIView's methods
@@ -46,11 +56,14 @@ highlightedContentImage:(UIImage *)hcimg;
 {
     [super layoutSubviews];
     
-    self.bounds = CGRectMake(0, 0, self.image.size.width, self.image.size.height);
+    CGFloat w = (self.image.size.width > 0) ? self.image.size.width : _contentImageView.image.size.width;
+    CGFloat h = (self.image.size.height > 0) ? self.image.size.height : _contentImageView.image.size.height+40;
+    self.bounds = CGRectMake(0, 0, w, h);
     
     float width = _contentImageView.image.size.width;
     float height = _contentImageView.image.size.height;
     _contentImageView.frame = CGRectMake(self.bounds.size.width/2 - width/2, self.bounds.size.height/2 - height/2, width, height);
+    _contentLabel.frame = CGRectMake(0, self.bounds.size.height-20, self.bounds.size.width, 20);
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

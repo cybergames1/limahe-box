@@ -11,6 +11,16 @@
 /**
  * 主菜单界面 
  */
+
+@class MainMenuView;
+@protocol MainMenuViewDelegate <NSObject>
+
+- (void)menuView:(MainMenuView *)menuView didSelectAtIndex:(NSInteger)index;
+
+@end
+
 @interface MainMenuView : UIView
+
+@property (nonatomic, assign) id<MainMenuViewDelegate> delegate;
 
 @end

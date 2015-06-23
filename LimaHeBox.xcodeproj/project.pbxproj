@@ -137,6 +137,8 @@
 		DCFAC4951B38F76C0062D479 /* w_9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC45F1B38F76C0062D479 /* w_9@2x.png */; };
 		DCFAC4961B38F76C0062D479 /* main_xingcheng@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC4601B38F76C0062D479 /* main_xingcheng@2x.png */; };
 		DCFAC4991B392E2E0062D479 /* WeatherView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFAC4981B392E2E0062D479 /* WeatherView.m */; };
+		DCFAC49D1B395C000062D479 /* ExpressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFAC49C1B395C000062D479 /* ExpressViewController.m */; };
+		DCFAC4A01B395C2E0062D479 /* ExpressQueryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFAC49F1B395C2E0062D479 /* ExpressQueryViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -344,6 +346,10 @@
 		DCFAC4601B38F76C0062D479 /* main_xingcheng@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_xingcheng@2x.png"; sourceTree = "<group>"; };
 		DCFAC4971B392E2E0062D479 /* WeatherView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherView.h; sourceTree = "<group>"; };
 		DCFAC4981B392E2E0062D479 /* WeatherView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherView.m; sourceTree = "<group>"; };
+		DCFAC49B1B395C000062D479 /* ExpressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressViewController.h; sourceTree = "<group>"; };
+		DCFAC49C1B395C000062D479 /* ExpressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressViewController.m; sourceTree = "<group>"; };
+		DCFAC49E1B395C2E0062D479 /* ExpressQueryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressQueryViewController.h; sourceTree = "<group>"; };
+		DCFAC49F1B395C2E0062D479 /* ExpressQueryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressQueryViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -701,6 +707,7 @@
 		DC3F17EE1B302D0100F02C10 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DCFAC49A1B395BE00062D479 /* Express */,
 				DC3F17FC1B314FC700F02C10 /* Login&Register */,
 				DC3F17F61B31194D00F02C10 /* BoxSuperViewController.h */,
 				DC3F17F71B31194D00F02C10 /* BoxSuperViewController.m */,
@@ -809,6 +816,17 @@
 				DCFAC45F1B38F76C0062D479 /* w_9@2x.png */,
 			);
 			path = w;
+			sourceTree = "<group>";
+		};
+		DCFAC49A1B395BE00062D479 /* Express */ = {
+			isa = PBXGroup;
+			children = (
+				DCFAC49B1B395C000062D479 /* ExpressViewController.h */,
+				DCFAC49C1B395C000062D479 /* ExpressViewController.m */,
+				DCFAC49E1B395C2E0062D479 /* ExpressQueryViewController.h */,
+				DCFAC49F1B395C2E0062D479 /* ExpressQueryViewController.m */,
+			);
+			path = Express;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -992,6 +1010,7 @@
 				DC3F17901B2FDF3000F02C10 /* UIImageView+WebCache.m in Sources */,
 				DC3F17B11B2FDF8A00F02C10 /* ASIHTTPRequest.m in Sources */,
 				DC3F17811B2FDF3000F02C10 /* PrviateTradesDS.m in Sources */,
+				DCFAC49D1B395C000062D479 /* ExpressViewController.m in Sources */,
 				DC3F17AD1B2FDF8A00F02C10 /* ASIDataCompressor.m in Sources */,
 				DC3F17FF1B31505500F02C10 /* LRSuperViewController.m in Sources */,
 				DC3F17AC1B2FDF8A00F02C10 /* ASIAuthenticationDialog.m in Sources */,
@@ -1027,6 +1046,7 @@
 				DC3F17851B2FDF3000F02C10 /* PPQDataSource.m in Sources */,
 				DC3F17B41B2FDF8A00F02C10 /* Reachability.m in Sources */,
 				DC3F17AE1B2FDF8A00F02C10 /* ASIDataDecompressor.m in Sources */,
+				DCFAC4A01B395C2E0062D479 /* ExpressQueryViewController.m in Sources */,
 				DC0237ED1B33EA6F00245501 /* WeatherAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

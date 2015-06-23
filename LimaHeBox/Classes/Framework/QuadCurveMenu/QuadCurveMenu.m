@@ -12,8 +12,8 @@
 static CGFloat const kQuadCurveMenuDefaultNearRadius = 110.0f;
 static CGFloat const kQuadCurveMenuDefaultEndRadius = 120.0f;
 static CGFloat const kQuadCurveMenuDefaultFarRadius = 140.0f;
-static CGFloat const kQuadCurveMenuDefaultStartPointX = 160.0;
-static CGFloat const kQuadCurveMenuDefaultStartPointY = 240.0;
+//static CGFloat const kQuadCurveMenuDefaultStartPointX = 160.0;
+//static CGFloat const kQuadCurveMenuDefaultStartPointY = 240.0;
 static CGFloat const kQuadCurveMenuDefaultTimeOffset = 0.036f;
 static CGFloat const kQuadCurveMenuDefaultRotateAngle = 0.0;
 static CGFloat const kQuadCurveMenuDefaultMenuWholeAngle = M_PI * 2;
@@ -61,10 +61,11 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         self.menusArray = aMenusArray;
         
         // add the "Add" Button.
-        _addButton = [[QuadCurveMenuItem alloc] initWithImage:[UIImage imageNamed:@"main_menu"]
-                                       highlightedImage:[UIImage imageNamed:@"main_menu"]
-                                           ContentImage:nil
-                                highlightedContentImage:nil];
+        _addButton = [[QuadCurveMenuItem alloc] initWithImage:nil
+                                       highlightedImage:nil
+                                           ContentImage:[UIImage imageNamed:@"main_menu"]
+                                highlightedContentImage:[UIImage imageNamed:@"main_menu"]
+                                            ContentText:nil];
         _addButton.delegate = self;
         _addButton.center = self.startPoint;
         [self addSubview:_addButton];

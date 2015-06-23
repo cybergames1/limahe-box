@@ -13,6 +13,7 @@
 @interface QuadCurveMenuItem : UIImageView
 {
     UIImageView *_contentImageView;
+    UILabel * _contentLabel;
     CGPoint _startPoint;
     CGPoint _endPoint;
     CGPoint _nearPoint; // near
@@ -33,8 +34,8 @@
 - (id)initWithImage:(UIImage *)img 
    highlightedImage:(UIImage *)himg
        ContentImage:(UIImage *)cimg
-highlightedContentImage:(UIImage *)hcimg;
-
+highlightedContentImage:(UIImage *)hcimg
+        ContentText:(NSString *)text;
 
 @end
 

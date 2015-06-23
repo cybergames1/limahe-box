@@ -19,31 +19,32 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        UIImage *storyMenuItemImage = [UIImage imageNamed:@"bg-menuitem.png"];
-        UIImage *storyMenuItemImagePressed = [UIImage imageNamed:@"bg-menuitem-highlighted.png"];
         
-        UIImage *starImage = [UIImage imageNamed:@"icon-star.png"];
-        
-        QuadCurveMenuItem *starMenuItem1 = [[QuadCurveMenuItem alloc] initWithImage:[UIImage imageNamed:@"main_kuaidi"]
-                                                                   highlightedImage:[UIImage imageNamed:@"main_kuaidi"]
-                                                                       ContentImage:nil
-                                                            highlightedContentImage:nil];
-        QuadCurveMenuItem *starMenuItem2 = [[QuadCurveMenuItem alloc] initWithImage:[UIImage imageNamed:@"main_xingcheng"]
-                                                                   highlightedImage:[UIImage imageNamed:@"main_xingcheng"]
-                                                                       ContentImage:nil
-                                                            highlightedContentImage:nil];
-        QuadCurveMenuItem *starMenuItem3 = [[QuadCurveMenuItem alloc] initWithImage:[UIImage imageNamed:@"main_lanya"]
-                                                                   highlightedImage:[UIImage imageNamed:@"main_lanya"]
-                                                                       ContentImage:nil
-                                                            highlightedContentImage:nil];
-        QuadCurveMenuItem *starMenuItem4 = [[QuadCurveMenuItem alloc] initWithImage:[UIImage imageNamed:@"main_fenxiang"]
-                                                                   highlightedImage:[UIImage imageNamed:@"main_fenxiang"]
-                                                                       ContentImage:nil
-                                                            highlightedContentImage:nil];
-        QuadCurveMenuItem *starMenuItem5 = [[QuadCurveMenuItem alloc] initWithImage:[UIImage imageNamed:@"main_faxian"]
-                                                                   highlightedImage:[UIImage imageNamed:@"main_faxian"]
-                                                                       ContentImage:nil
-                                                            highlightedContentImage:nil];
+        QuadCurveMenuItem *starMenuItem1 = [[QuadCurveMenuItem alloc] initWithImage:nil
+                                                                   highlightedImage:nil
+                                                                       ContentImage:[UIImage imageNamed:@"main_kuaidi"]
+                                                            highlightedContentImage:[UIImage imageNamed:@"main_kuaidi"]
+                                                                        ContentText:@"快递"];
+        QuadCurveMenuItem *starMenuItem2 = [[QuadCurveMenuItem alloc] initWithImage:nil
+                                                                   highlightedImage:nil
+                                                                       ContentImage:[UIImage imageNamed:@"main_xingcheng"]
+                                                            highlightedContentImage:[UIImage imageNamed:@"main_xingcheng"]
+                                                                        ContentText:@"行程"];
+        QuadCurveMenuItem *starMenuItem3 = [[QuadCurveMenuItem alloc] initWithImage:nil
+                                                                   highlightedImage:nil
+                                                                       ContentImage:[UIImage imageNamed:@"main_lanya"]
+                                                            highlightedContentImage:[UIImage imageNamed:@"main_lanya"]
+                                                                        ContentText:@"蓝牙"];
+        QuadCurveMenuItem *starMenuItem4 = [[QuadCurveMenuItem alloc] initWithImage:nil
+                                                                   highlightedImage:nil
+                                                                       ContentImage:[UIImage imageNamed:@"main_fenxiang"]
+                                                            highlightedContentImage:[UIImage imageNamed:@"main_fenxiang"]
+                                                                        ContentText:@"分享"];
+        QuadCurveMenuItem *starMenuItem5 = [[QuadCurveMenuItem alloc] initWithImage:nil
+                                                                   highlightedImage:nil
+                                                                       ContentImage:[UIImage imageNamed:@"main_faxian"]
+                                                            highlightedContentImage:[UIImage imageNamed:@"main_faxian"]
+                                                                        ContentText:@"发现"];
         
         NSArray *menus = [NSArray arrayWithObjects:starMenuItem1, starMenuItem2, starMenuItem3, starMenuItem4, starMenuItem5, nil];
         [starMenuItem1 release];
@@ -72,7 +73,9 @@
 
 - (void)quadCurveMenu:(QuadCurveMenu *)menu didSelectIndex:(NSInteger)idx
 {
-    NSLog(@"Select the index : %ld",(long)idx);
+    if (_delegate && [_delegate respondsToSelector:@selector(menuView:didSelectAtIndex:)]) {
+        [_delegate menuView:self didSelectAtIndex:idx];
+    }
 }
 
 @end
