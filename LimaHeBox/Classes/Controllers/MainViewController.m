@@ -26,13 +26,19 @@
     [self setNavigationItemRightImage:[UIImage imageNamed:@"icon-plus-highlighted"]];
     [self setNavigationTitle:@"首页"];
     
+    UIImageView *imageView = [[[UIImageView alloc] initWithFrame:self.view.bounds] autorelease];
+    imageView.image = [UIImage imageNamed:@"bg"];
+    [self.view addSubview:imageView];
+    
     MainMenuView *menuView = [[[MainMenuView alloc] initWithFrame:self.view.bounds] autorelease];
     [self.view addSubview:menuView];
     
     WeatherAPI *api = [[WeatherAPI alloc] init];
     [api getWeatherInfo:^(BOOL finished) {
         if (finished) {
-            NSLog(@"info:%@",[api weatherInfo]);
+            NSDictionary *info = [api weatherInfo];
+            NSLog(@"info:%@",info);
+            NSLog(@"dayWeather:%d",[[info objectForKey:WeahterPropertyDayWeather] intValue]);
         }
         else {
             

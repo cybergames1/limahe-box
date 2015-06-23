@@ -24,25 +24,25 @@
         
         UIImage *starImage = [UIImage imageNamed:@"icon-star.png"];
         
-        QuadCurveMenuItem *starMenuItem1 = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
-                                                                   highlightedImage:storyMenuItemImagePressed
-                                                                       ContentImage:starImage
+        QuadCurveMenuItem *starMenuItem1 = [[QuadCurveMenuItem alloc] initWithImage:[UIImage imageNamed:@"main_kuaidi"]
+                                                                   highlightedImage:[UIImage imageNamed:@"main_kuaidi"]
+                                                                       ContentImage:nil
                                                             highlightedContentImage:nil];
-        QuadCurveMenuItem *starMenuItem2 = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
-                                                                   highlightedImage:storyMenuItemImagePressed
-                                                                       ContentImage:starImage
+        QuadCurveMenuItem *starMenuItem2 = [[QuadCurveMenuItem alloc] initWithImage:[UIImage imageNamed:@"main_xingcheng"]
+                                                                   highlightedImage:[UIImage imageNamed:@"main_xingcheng"]
+                                                                       ContentImage:nil
                                                             highlightedContentImage:nil];
-        QuadCurveMenuItem *starMenuItem3 = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
-                                                                   highlightedImage:storyMenuItemImagePressed
-                                                                       ContentImage:starImage
+        QuadCurveMenuItem *starMenuItem3 = [[QuadCurveMenuItem alloc] initWithImage:[UIImage imageNamed:@"main_lanya"]
+                                                                   highlightedImage:[UIImage imageNamed:@"main_lanya"]
+                                                                       ContentImage:nil
                                                             highlightedContentImage:nil];
-        QuadCurveMenuItem *starMenuItem4 = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
-                                                                   highlightedImage:storyMenuItemImagePressed
-                                                                       ContentImage:starImage
+        QuadCurveMenuItem *starMenuItem4 = [[QuadCurveMenuItem alloc] initWithImage:[UIImage imageNamed:@"main_fenxiang"]
+                                                                   highlightedImage:[UIImage imageNamed:@"main_fenxiang"]
+                                                                       ContentImage:nil
                                                             highlightedContentImage:nil];
-        QuadCurveMenuItem *starMenuItem5 = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
-                                                                   highlightedImage:storyMenuItemImagePressed
-                                                                       ContentImage:starImage
+        QuadCurveMenuItem *starMenuItem5 = [[QuadCurveMenuItem alloc] initWithImage:[UIImage imageNamed:@"main_faxian"]
+                                                                   highlightedImage:[UIImage imageNamed:@"main_faxian"]
+                                                                       ContentImage:nil
                                                             highlightedContentImage:nil];
         
         NSArray *menus = [NSArray arrayWithObjects:starMenuItem1, starMenuItem2, starMenuItem3, starMenuItem4, starMenuItem5, nil];

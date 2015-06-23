@@ -159,14 +159,14 @@ typedef void(^Complation)(BOOL finished);
     NSArray *f1 = [[source.data valueForKey:@"f"] valueForKey:@"f1"];
     NSDictionary *d1 = f1[0];
     
-    [_weatherInfo setValue:[d1 valueForKey:@"fa"] forKey:WeahterPropertyDayWeather];
-    [_weatherInfo setValue:[d1 valueForKey:@"fb"] forKey:WeatherPropertyNightWeather];
-    [_weatherInfo setValue:[d1 valueForKey:@"fc"] forKey:WeatherPropertyDayTemperature];
-    [_weatherInfo setValue:[d1 valueForKey:@"fd"] forKey:WeatherPropertyNightTemperature];
-    [_weatherInfo setValue:[d1 valueForKey:@"fe"] forKey:WeatherPropertyDayWindDirection];
-    [_weatherInfo setValue:[d1 valueForKey:@"ff"] forKey:WeatherPropertyNightWindDirection];
-    [_weatherInfo setValue:[d1 valueForKey:@"fg"] forKey:WeatherPropertyDayWindForce];
-    [_weatherInfo setValue:[d1 valueForKey:@"fh"] forKey:WeatherPropertyNightWindForce];
+    [_weatherInfo setValue:[d1 objectForKey:@"fa"] forKey:WeahterPropertyDayWeather];
+    [_weatherInfo setValue:[d1 objectForKey:@"fb"] forKey:WeatherPropertyNightWeather];
+    [_weatherInfo setValue:[d1 objectForKey:@"fc"] forKey:WeatherPropertyDayTemperature];
+    [_weatherInfo setValue:[d1 objectForKey:@"fd"] forKey:WeatherPropertyNightTemperature];
+    [_weatherInfo setValue:[d1 objectForKey:@"fe"] forKey:WeatherPropertyDayWindDirection];
+    [_weatherInfo setValue:[d1 objectForKey:@"ff"] forKey:WeatherPropertyNightWindDirection];
+    [_weatherInfo setValue:[d1 objectForKey:@"fg"] forKey:WeatherPropertyDayWindForce];
+    [_weatherInfo setValue:[d1 objectForKey:@"fh"] forKey:WeatherPropertyNightWindForce];
     
     if (_complation) _complation(YES);
 }
