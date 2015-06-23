@@ -11,6 +11,9 @@
 #import "MessageViewController.h"
 #import "LRSuperViewController.h"
 #import "WeatherAPI.h"
+#import "WeatherView.h"
+#import "CommonTools.h"
+#import <Category/Category.h>
 
 @interface MainViewController ()
 
@@ -33,12 +36,19 @@
     MainMenuView *menuView = [[[MainMenuView alloc] initWithFrame:self.view.bounds] autorelease];
     [self.view addSubview:menuView];
     
+    WeatherView *weatherView = [[[WeatherView alloc] initWithFrame:CGRectMake(0, [CommonTools viewTopWithNav], self.view.frame.size.width, 60)] autorelease];
+    [self.view addSubview:weatherView];
+    
     WeatherAPI *api = [[WeatherAPI alloc] init];
     [api getWeatherInfo:^(BOOL finished) {
         if (finished) {
             NSDictionary *info = [api weatherInfo];
             NSLog(@"info:%@",info);
             NSLog(@"dayWeather:%d",[[info objectForKey:WeahterPropertyDayWeather] intValue]);
+            [weatherView setWeatherCode:[[info objectForKey:WeahterPropertyDayWeather] integerValue]];
+            [weatherView setMinTemperature:[[info objectForKey:WeatherPropertyNightTemperature] integerValue]];
+            [weatherView setMaxTemperature:[[info objectForKey:WeatherPropertyDayTemperature] integerValue]];
+            [weatherView setNeedsLayout];
         }
         else {
             
