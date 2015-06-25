@@ -20,6 +20,11 @@
 
 - (void)setNavigationItemLeftImage:(UIImage *)image;
 - (void)setNavigationItemRightImage:(UIImage *)image;
+
 - (void)setNavigationTitle:(NSString *)title;
+- (void)setNavigationImage:(UIImage *)image;
+
+/* 设置返回按钮的标题 */
+- (void)setNavigationBackTitle:(NSString *)title;
 
 @end

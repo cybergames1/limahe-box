@@ -26,18 +26,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self setNavigationItemLeftImage:[UIImage imageNamed:@"bg-addbutton"]];
-    [self setNavigationItemRightImage:[UIImage imageNamed:@"icon-plus-highlighted"]];
-    [self setNavigationTitle:@"首页"];
+    [self setNavigationItemLeftImage:[UIImage imageNamed:@"main_nav_left"]];
+    [self setNavigationImage:[UIImage imageNamed:@"main_logo"]];
     
+    //背景图
     UIImageView *imageView = [[[UIImageView alloc] initWithFrame:self.view.bounds] autorelease];
     imageView.image = [UIImage imageNamed:@"bg"];
     [self.view addSubview:imageView];
     
+    //菜单
     MainMenuView *menuView = [[[MainMenuView alloc] initWithFrame:self.view.bounds] autorelease];
     menuView.delegate = self;
     [self.view addSubview:menuView];
     
+    //天气
     WeatherView *weatherView = [[[WeatherView alloc] initWithFrame:CGRectMake(0, [CommonTools viewTopWithNav], self.view.frame.size.width, 60)] autorelease];
     [self.view addSubview:weatherView];
     

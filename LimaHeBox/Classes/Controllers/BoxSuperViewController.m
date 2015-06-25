@@ -35,6 +35,8 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.barTintColor = _navigationBarTintColor;
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+    
+    [self setNavigationItemRightImage:[UIImage imageNamed:@"main_nav_right"]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,6 +77,23 @@
     label.text = title;
     [label sizeToFit];
     [label release];
+    
+    [self setNavigationBackTitle:title];
+}
+
+- (void)setNavigationImage:(UIImage *)image {
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
+    self.navigationItem.titleView = imageView;
+    [imageView release];
+    
+    [self setNavigationBackTitle:@""];
+}
+
+- (void)setNavigationBackTitle:(NSString *)title {
+    UIBarButtonItem *backItem = [[[UIBarButtonItem alloc] init] autorelease];
+    backItem.title = title;
+    self.navigationItem.backBarButtonItem = backItem;
 }
 
 - (void)leftBarAction {

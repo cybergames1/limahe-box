@@ -139,6 +139,37 @@
 		DCFAC4991B392E2E0062D479 /* WeatherView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFAC4981B392E2E0062D479 /* WeatherView.m */; };
 		DCFAC49D1B395C000062D479 /* ExpressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFAC49C1B395C000062D479 /* ExpressViewController.m */; };
 		DCFAC4A01B395C2E0062D479 /* ExpressQueryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFAC49F1B395C2E0062D479 /* ExpressQueryViewController.m */; };
+		DCFAC4A41B3A8B350062D479 /* main_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC4A11B3A8B350062D479 /* main_logo@2x.png */; };
+		DCFAC4A51B3A8B350062D479 /* main_nav_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC4A21B3A8B350062D479 /* main_nav_left@2x.png */; };
+		DCFAC4A61B3A8B350062D479 /* main_nav_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC4A31B3A8B350062D479 /* main_nav_right@2x.png */; };
+		DCFAC4C01B3A9D4A0062D479 /* k_dhl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC4A81B3A9D4A0062D479 /* k_dhl@2x.png */; };
+		DCFAC4C11B3A9D4A0062D479 /* k_ems@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC4A91B3A9D4A0062D479 /* k_ems@2x.png */; };
+		DCFAC4C21B3A9D4A0062D479 /* k_emsguoji@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC4AA1B3A9D4A0062D479 /* k_emsguoji@2x.png */; };
+		DCFAC4C31B3A9D4A0062D479 /* k_huitongkuaidi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC4AB1B3A9D4A0062D479 /* k_huitongkuaidi@2x.png */; };
+		DCFAC4C41B3A9D4A0062D479 /* k_kuaijiesudi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC4AC1B3A9D4A0062D479 /* k_kuaijiesudi@2x.png */; };
+		DCFAC4C51B3A9D4A0062D479 /* k_lianbangkuaidi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC4AD1B3A9D4A0062D479 /* k_lianbangkuaidi@2x.png */; };
+		DCFAC4C61B3A9D4A0062D479 /* k_lianhaowuliu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC4AE1B3A9D4A0062D479 /* k_lianhaowuliu@2x.png */; };
+		DCFAC4C71B3A9D4A0062D479 /* k_longbanwuliu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC4AF1B3A9D4A0062D479 /* k_longbanwuliu@2x.png */; };
+		DCFAC4C81B3A9D4A0062D479 /* k_onTrac@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC4B01B3A9D4A0062D479 /* k_onTrac@2x.png */; };
+		DCFAC4C91B3A9D4A0062D479 /* k_quanfengkuaidi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC4B11B3A9D4A0062D479 /* k_quanfengkuaidi@2x.png */; };
+		DCFAC4CA1B3A9D4A0062D479 /* k_shentong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC4B21B3A9D4A0062D479 /* k_shentong@2x.png */; };
+		DCFAC4CB1B3A9D4A0062D479 /* k_shunfeng@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC4B31B3A9D4A0062D479 /* k_shunfeng@2x.png */; };
+		DCFAC4CC1B3A9D4A0062D479 /* k_suer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC4B41B3A9D4A0062D479 /* k_suer@2x.png */; };
+		DCFAC4CD1B3A9D4A0062D479 /* k_tiantian@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC4B51B3A9D4A0062D479 /* k_tiantian@2x.png */; };
+		DCFAC4CE1B3A9D4A0062D479 /* k_tnt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC4B61B3A9D4A0062D479 /* k_tnt@2x.png */; };
+		DCFAC4CF1B3A9D4A0062D479 /* k_ups@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC4B71B3A9D4A0062D479 /* k_ups@2x.png */; };
+		DCFAC4D01B3A9D4A0062D479 /* k_youshuwuliu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC4B81B3A9D4A0062D479 /* k_youshuwuliu@2x.png */; };
+		DCFAC4D11B3A9D4A0062D479 /* k_youzhengguoji@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC4B91B3A9D4A0062D479 /* k_youzhengguoji@2x.png */; };
+		DCFAC4D21B3A9D4A0062D479 /* k_youzhengguonei@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC4BA1B3A9D4A0062D479 /* k_youzhengguonei@2x.png */; };
+		DCFAC4D31B3A9D4A0062D479 /* k_yuantong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC4BB1B3A9D4A0062D479 /* k_yuantong@2x.png */; };
+		DCFAC4D41B3A9D4A0062D479 /* k_yunda@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC4BC1B3A9D4A0062D479 /* k_yunda@2x.png */; };
+		DCFAC4D51B3A9D4A0062D479 /* k_zhaijisong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC4BD1B3A9D4A0062D479 /* k_zhaijisong@2x.png */; };
+		DCFAC4D61B3A9D4A0062D479 /* k_zhongtong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC4BE1B3A9D4A0062D479 /* k_zhongtong@2x.png */; };
+		DCFAC4D71B3A9D4A0062D479 /* k_zhongyouwuliu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC4BF1B3A9D4A0062D479 /* k_zhongyouwuliu@2x.png */; };
+		DCFAC4D91B3A9E310062D479 /* kuaidi.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC4D81B3A9E310062D479 /* kuaidi.plist */; };
+		DCFAC4DC1B3AA5630062D479 /* ExpressListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFAC4DB1B3AA5630062D479 /* ExpressListViewController.m */; };
+		DCFAC4E01B3ABDC30062D479 /* ExpressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFAC4DF1B3ABDC30062D479 /* ExpressModel.m */; };
+		DCFAC4E31B3BA9E80062D479 /* ExpressResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFAC4E21B3BA9E80062D479 /* ExpressResultViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -350,6 +381,40 @@
 		DCFAC49C1B395C000062D479 /* ExpressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressViewController.m; sourceTree = "<group>"; };
 		DCFAC49E1B395C2E0062D479 /* ExpressQueryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressQueryViewController.h; sourceTree = "<group>"; };
 		DCFAC49F1B395C2E0062D479 /* ExpressQueryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressQueryViewController.m; sourceTree = "<group>"; };
+		DCFAC4A11B3A8B350062D479 /* main_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_logo@2x.png"; sourceTree = "<group>"; };
+		DCFAC4A21B3A8B350062D479 /* main_nav_left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_nav_left@2x.png"; sourceTree = "<group>"; };
+		DCFAC4A31B3A8B350062D479 /* main_nav_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_nav_right@2x.png"; sourceTree = "<group>"; };
+		DCFAC4A81B3A9D4A0062D479 /* k_dhl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "k_dhl@2x.png"; sourceTree = "<group>"; };
+		DCFAC4A91B3A9D4A0062D479 /* k_ems@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "k_ems@2x.png"; sourceTree = "<group>"; };
+		DCFAC4AA1B3A9D4A0062D479 /* k_emsguoji@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "k_emsguoji@2x.png"; sourceTree = "<group>"; };
+		DCFAC4AB1B3A9D4A0062D479 /* k_huitongkuaidi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "k_huitongkuaidi@2x.png"; sourceTree = "<group>"; };
+		DCFAC4AC1B3A9D4A0062D479 /* k_kuaijiesudi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "k_kuaijiesudi@2x.png"; sourceTree = "<group>"; };
+		DCFAC4AD1B3A9D4A0062D479 /* k_lianbangkuaidi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "k_lianbangkuaidi@2x.png"; sourceTree = "<group>"; };
+		DCFAC4AE1B3A9D4A0062D479 /* k_lianhaowuliu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "k_lianhaowuliu@2x.png"; sourceTree = "<group>"; };
+		DCFAC4AF1B3A9D4A0062D479 /* k_longbanwuliu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "k_longbanwuliu@2x.png"; sourceTree = "<group>"; };
+		DCFAC4B01B3A9D4A0062D479 /* k_onTrac@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "k_onTrac@2x.png"; sourceTree = "<group>"; };
+		DCFAC4B11B3A9D4A0062D479 /* k_quanfengkuaidi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "k_quanfengkuaidi@2x.png"; sourceTree = "<group>"; };
+		DCFAC4B21B3A9D4A0062D479 /* k_shentong@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "k_shentong@2x.png"; sourceTree = "<group>"; };
+		DCFAC4B31B3A9D4A0062D479 /* k_shunfeng@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "k_shunfeng@2x.png"; sourceTree = "<group>"; };
+		DCFAC4B41B3A9D4A0062D479 /* k_suer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "k_suer@2x.png"; sourceTree = "<group>"; };
+		DCFAC4B51B3A9D4A0062D479 /* k_tiantian@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "k_tiantian@2x.png"; sourceTree = "<group>"; };
+		DCFAC4B61B3A9D4A0062D479 /* k_tnt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "k_tnt@2x.png"; sourceTree = "<group>"; };
+		DCFAC4B71B3A9D4A0062D479 /* k_ups@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "k_ups@2x.png"; sourceTree = "<group>"; };
+		DCFAC4B81B3A9D4A0062D479 /* k_youshuwuliu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "k_youshuwuliu@2x.png"; sourceTree = "<group>"; };
+		DCFAC4B91B3A9D4A0062D479 /* k_youzhengguoji@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "k_youzhengguoji@2x.png"; sourceTree = "<group>"; };
+		DCFAC4BA1B3A9D4A0062D479 /* k_youzhengguonei@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "k_youzhengguonei@2x.png"; sourceTree = "<group>"; };
+		DCFAC4BB1B3A9D4A0062D479 /* k_yuantong@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "k_yuantong@2x.png"; sourceTree = "<group>"; };
+		DCFAC4BC1B3A9D4A0062D479 /* k_yunda@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "k_yunda@2x.png"; sourceTree = "<group>"; };
+		DCFAC4BD1B3A9D4A0062D479 /* k_zhaijisong@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "k_zhaijisong@2x.png"; sourceTree = "<group>"; };
+		DCFAC4BE1B3A9D4A0062D479 /* k_zhongtong@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "k_zhongtong@2x.png"; sourceTree = "<group>"; };
+		DCFAC4BF1B3A9D4A0062D479 /* k_zhongyouwuliu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "k_zhongyouwuliu@2x.png"; sourceTree = "<group>"; };
+		DCFAC4D81B3A9E310062D479 /* kuaidi.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = kuaidi.plist; sourceTree = "<group>"; };
+		DCFAC4DA1B3AA5630062D479 /* ExpressListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressListViewController.h; sourceTree = "<group>"; };
+		DCFAC4DB1B3AA5630062D479 /* ExpressListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressListViewController.m; sourceTree = "<group>"; };
+		DCFAC4DE1B3ABDC30062D479 /* ExpressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressModel.h; sourceTree = "<group>"; };
+		DCFAC4DF1B3ABDC30062D479 /* ExpressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressModel.m; sourceTree = "<group>"; };
+		DCFAC4E11B3BA9E80062D479 /* ExpressResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressResultViewController.h; sourceTree = "<group>"; };
+		DCFAC4E21B3BA9E80062D479 /* ExpressResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressResultViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -417,6 +482,7 @@
 			children = (
 				DC3F17EE1B302D0100F02C10 /* Controllers */,
 				DC3F17EF1B302D0100F02C10 /* Views */,
+				DCFAC4DD1B3ABDB00062D479 /* Models */,
 				DC3F17391B2FDF3000F02C10 /* Constant */,
 				DC3F173B1B2FDF3000F02C10 /* Network */,
 				DC3F17751B2FDF3000F02C10 /* Tools */,
@@ -665,6 +731,7 @@
 			isa = PBXGroup;
 			children = (
 				DC3F17CA1B302CAC00F02C10 /* Images */,
+				DCFAC4D81B3A9E310062D479 /* kuaidi.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -672,6 +739,7 @@
 		DC3F17CA1B302CAC00F02C10 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DCFAC4A71B3A9D4A0062D479 /* Kuaidi */,
 				DCFAC4291B38F76C0062D479 /* Main */,
 				DC0237EE1B3408BA00245501 /* bg@3x.png */,
 				DC3F18031B315B0C00F02C10 /* common_icon_back@2x.png */,
@@ -752,6 +820,9 @@
 		DCFAC4291B38F76C0062D479 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				DCFAC4A11B3A8B350062D479 /* main_logo@2x.png */,
+				DCFAC4A21B3A8B350062D479 /* main_nav_left@2x.png */,
+				DCFAC4A31B3A8B350062D479 /* main_nav_right@2x.png */,
 				DCFAC42A1B38F76C0062D479 /* left.png */,
 				DCFAC42B1B38F76C0062D479 /* loading.png */,
 				DCFAC42C1B38F76C0062D479 /* main_bg@2x.png */,
@@ -825,8 +896,53 @@
 				DCFAC49C1B395C000062D479 /* ExpressViewController.m */,
 				DCFAC49E1B395C2E0062D479 /* ExpressQueryViewController.h */,
 				DCFAC49F1B395C2E0062D479 /* ExpressQueryViewController.m */,
+				DCFAC4DA1B3AA5630062D479 /* ExpressListViewController.h */,
+				DCFAC4DB1B3AA5630062D479 /* ExpressListViewController.m */,
+				DCFAC4E11B3BA9E80062D479 /* ExpressResultViewController.h */,
+				DCFAC4E21B3BA9E80062D479 /* ExpressResultViewController.m */,
 			);
 			path = Express;
+			sourceTree = "<group>";
+		};
+		DCFAC4A71B3A9D4A0062D479 /* Kuaidi */ = {
+			isa = PBXGroup;
+			children = (
+				DCFAC4A81B3A9D4A0062D479 /* k_dhl@2x.png */,
+				DCFAC4A91B3A9D4A0062D479 /* k_ems@2x.png */,
+				DCFAC4AA1B3A9D4A0062D479 /* k_emsguoji@2x.png */,
+				DCFAC4AB1B3A9D4A0062D479 /* k_huitongkuaidi@2x.png */,
+				DCFAC4AC1B3A9D4A0062D479 /* k_kuaijiesudi@2x.png */,
+				DCFAC4AD1B3A9D4A0062D479 /* k_lianbangkuaidi@2x.png */,
+				DCFAC4AE1B3A9D4A0062D479 /* k_lianhaowuliu@2x.png */,
+				DCFAC4AF1B3A9D4A0062D479 /* k_longbanwuliu@2x.png */,
+				DCFAC4B01B3A9D4A0062D479 /* k_onTrac@2x.png */,
+				DCFAC4B11B3A9D4A0062D479 /* k_quanfengkuaidi@2x.png */,
+				DCFAC4B21B3A9D4A0062D479 /* k_shentong@2x.png */,
+				DCFAC4B31B3A9D4A0062D479 /* k_shunfeng@2x.png */,
+				DCFAC4B41B3A9D4A0062D479 /* k_suer@2x.png */,
+				DCFAC4B51B3A9D4A0062D479 /* k_tiantian@2x.png */,
+				DCFAC4B61B3A9D4A0062D479 /* k_tnt@2x.png */,
+				DCFAC4B71B3A9D4A0062D479 /* k_ups@2x.png */,
+				DCFAC4B81B3A9D4A0062D479 /* k_youshuwuliu@2x.png */,
+				DCFAC4B91B3A9D4A0062D479 /* k_youzhengguoji@2x.png */,
+				DCFAC4BA1B3A9D4A0062D479 /* k_youzhengguonei@2x.png */,
+				DCFAC4BB1B3A9D4A0062D479 /* k_yuantong@2x.png */,
+				DCFAC4BC1B3A9D4A0062D479 /* k_yunda@2x.png */,
+				DCFAC4BD1B3A9D4A0062D479 /* k_zhaijisong@2x.png */,
+				DCFAC4BE1B3A9D4A0062D479 /* k_zhongtong@2x.png */,
+				DCFAC4BF1B3A9D4A0062D479 /* k_zhongyouwuliu@2x.png */,
+			);
+			path = Kuaidi;
+			sourceTree = "<group>";
+		};
+		DCFAC4DD1B3ABDB00062D479 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DCFAC4DE1B3ABDC30062D479 /* ExpressModel.h */,
+				DCFAC4DF1B3ABDC30062D479 /* ExpressModel.m */,
+			);
+			name = Models;
+			path = Classes/Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -914,14 +1030,22 @@
 				DC3F17E51B302CAC00F02C10 /* icon-star.png in Resources */,
 				DC3F17E31B302CAC00F02C10 /* icon-plus.png in Resources */,
 				DC3F17DF1B302CAC00F02C10 /* bg-menuitem.png in Resources */,
+				DCFAC4C41B3A9D4A0062D479 /* k_kuaijiesudi@2x.png in Resources */,
 				DCFAC46B1B38F76C0062D479 /* top.png in Resources */,
 				DCFAC4951B38F76C0062D479 /* w_9@2x.png in Resources */,
+				DCFAC4A51B3A8B350062D479 /* main_nav_left@2x.png in Resources */,
 				DC3F17DA1B302CAC00F02C10 /* bg-addbutton-highlighted@2x.png in Resources */,
 				DC3F17E41B302CAC00F02C10 /* icon-plus@2x.png in Resources */,
+				DCFAC4CE1B3A9D4A0062D479 /* k_tnt@2x.png in Resources */,
 				DCFAC4961B38F76C0062D479 /* main_xingcheng@2x.png in Resources */,
 				DCFAC4651B38F76C0062D479 /* main_fenxiang@2x.png in Resources */,
 				DC3F17DE1B302CAC00F02C10 /* bg-menuitem-highlighted@2x.png in Resources */,
+				DCFAC4CF1B3A9D4A0062D479 /* k_ups@2x.png in Resources */,
 				DCFAC4631B38F76C0062D479 /* main_bg@2x.png in Resources */,
+				DCFAC4C71B3A9D4A0062D479 /* k_longbanwuliu@2x.png in Resources */,
+				DCFAC4D11B3A9D4A0062D479 /* k_youzhengguoji@2x.png in Resources */,
+				DCFAC4C21B3A9D4A0062D479 /* k_emsguoji@2x.png in Resources */,
+				DCFAC4C81B3A9D4A0062D479 /* k_onTrac@2x.png in Resources */,
 				DCFAC4731B38F76C0062D479 /* w_17@2x.png in Resources */,
 				DCFAC4621B38F76C0062D479 /* loading.png in Resources */,
 				DCFAC47A1B38F76C0062D479 /* w_23@2x.png in Resources */,
@@ -929,24 +1053,32 @@
 				DC3F17DC1B302CAC00F02C10 /* bg-addbutton@2x.png in Resources */,
 				DCFAC4691B38F76C0062D479 /* main_userheader@2x.png in Resources */,
 				DCFAC4701B38F76C0062D479 /* w_14@2x.png in Resources */,
+				DCFAC4D61B3A9D4A0062D479 /* k_zhongtong@2x.png in Resources */,
 				DCFAC48A1B38F76C0062D479 /* w_38@2x.png in Resources */,
 				DCFAC4941B38F76C0062D479 /* w_8@2x.png in Resources */,
 				DC3F18041B315B0C00F02C10 /* common_icon_back@2x.png in Resources */,
+				DCFAC4C91B3A9D4A0062D479 /* k_quanfengkuaidi@2x.png in Resources */,
 				DCFAC4871B38F76C0062D479 /* w_35@2x.png in Resources */,
 				DCFAC4821B38F76C0062D479 /* w_30@2x.png in Resources */,
 				DCFAC4681B38F76C0062D479 /* main_menu@2x.png in Resources */,
 				DCFAC46A1B38F76C0062D479 /* menu2.png in Resources */,
 				DCFAC4721B38F76C0062D479 /* w_16@2x.png in Resources */,
 				DC3F17D91B302CAC00F02C10 /* bg-addbutton-highlighted.png in Resources */,
+				DCFAC4C11B3A9D4A0062D479 /* k_ems@2x.png in Resources */,
 				DCFAC4891B38F76C0062D479 /* w_37@2x.png in Resources */,
 				DCFAC4661B38F76C0062D479 /* main_kuaidi@2x.png in Resources */,
+				DCFAC4C31B3A9D4A0062D479 /* k_huitongkuaidi@2x.png in Resources */,
 				DCFAC4711B38F76C0062D479 /* w_15@2x.png in Resources */,
 				DC3F17E21B302CAC00F02C10 /* icon-plus-highlighted@2x.png in Resources */,
 				DCFAC4751B38F76C0062D479 /* w_19@2x.png in Resources */,
+				DCFAC4D31B3A9D4A0062D479 /* k_yuantong@2x.png in Resources */,
 				DCFAC4901B38F76C0062D479 /* w_4@2x.png in Resources */,
 				DC3F17DB1B302CAC00F02C10 /* bg-addbutton.png in Resources */,
+				DCFAC4D41B3A9D4A0062D479 /* k_yunda@2x.png in Resources */,
+				DCFAC4D71B3A9D4A0062D479 /* k_zhongyouwuliu@2x.png in Resources */,
 				DCFAC4811B38F76C0062D479 /* w_2@2x.png in Resources */,
 				DCFAC4791B38F76C0062D479 /* w_22@2x.png in Resources */,
+				DCFAC4CB1B3A9D4A0062D479 /* k_shunfeng@2x.png in Resources */,
 				DCFAC47E1B38F76C0062D479 /* w_27@2x.png in Resources */,
 				DCFAC48D1B38F76C0062D479 /* w_40@2x.png in Resources */,
 				DC0237EF1B3408BA00245501 /* bg@3x.png in Resources */,
@@ -957,28 +1089,40 @@
 				DCFAC46E1B38F76C0062D479 /* w_12@2x.png in Resources */,
 				DCFAC48B1B38F76C0062D479 /* w_39@2x.png in Resources */,
 				DCFAC48E1B38F76C0062D479 /* w_41@2x.png in Resources */,
+				DCFAC4D21B3A9D4A0062D479 /* k_youzhengguonei@2x.png in Resources */,
 				DCFAC4771B38F76C0062D479 /* w_20@2x.png in Resources */,
+				DCFAC4CD1B3A9D4A0062D479 /* k_tiantian@2x.png in Resources */,
+				DCFAC4CA1B3A9D4A0062D479 /* k_shentong@2x.png in Resources */,
 				DCFAC4641B38F76C0062D479 /* main_faxian@2x.png in Resources */,
 				DCFAC4841B38F76C0062D479 /* w_32@2x.png in Resources */,
 				DCFAC48F1B38F76C0062D479 /* w_42@2x.png in Resources */,
 				DCFAC4781B38F76C0062D479 /* w_21@2x.png in Resources */,
 				DC3F17E11B302CAC00F02C10 /* icon-plus-highlighted.png in Resources */,
+				DCFAC4D01B3A9D4A0062D479 /* k_youshuwuliu@2x.png in Resources */,
+				DCFAC4C51B3A9D4A0062D479 /* k_lianbangkuaidi@2x.png in Resources */,
 				DC3F17241B2FDEEE00F02C10 /* LaunchScreen.xib in Resources */,
 				DCFAC4881B38F76C0062D479 /* w_36@2x.png in Resources */,
 				DCFAC4831B38F76C0062D479 /* w_31@2x.png in Resources */,
 				DCFAC48C1B38F76C0062D479 /* w_3@2x.png in Resources */,
 				DCFAC4851B38F76C0062D479 /* w_33@2x.png in Resources */,
+				DCFAC4A61B3A8B350062D479 /* main_nav_right@2x.png in Resources */,
 				DCFAC4861B38F76C0062D479 /* w_34@2x.png in Resources */,
 				DCFAC47D1B38F76C0062D479 /* w_26@2x.png in Resources */,
+				DCFAC4CC1B3A9D4A0062D479 /* k_suer@2x.png in Resources */,
 				DCFAC46F1B38F76C0062D479 /* w_13@2x.png in Resources */,
 				DC3F17DD1B302CAC00F02C10 /* bg-menuitem-highlighted.png in Resources */,
+				DCFAC4C61B3A9D4A0062D479 /* k_lianhaowuliu@2x.png in Resources */,
 				DCFAC47C1B38F76C0062D479 /* w_25@2x.png in Resources */,
+				DCFAC4A41B3A8B350062D479 /* main_logo@2x.png in Resources */,
 				DCFAC4671B38F76C0062D479 /* main_lanya@2x.png in Resources */,
 				DCFAC4741B38F76C0062D479 /* w_18@2x.png in Resources */,
 				DCFAC4911B38F76C0062D479 /* w_5@2x.png in Resources */,
 				DCFAC4931B38F76C0062D479 /* w_7@2x.png in Resources */,
+				DCFAC4C01B3A9D4A0062D479 /* k_dhl@2x.png in Resources */,
 				DC3F17E61B302CAC00F02C10 /* icon-star@2x.png in Resources */,
 				DCFAC47F1B38F76C0062D479 /* w_28@2x.png in Resources */,
+				DCFAC4D91B3A9E310062D479 /* kuaidi.plist in Resources */,
+				DCFAC4D51B3A9D4A0062D479 /* k_zhaijisong@2x.png in Resources */,
 				DCFAC4761B38F76C0062D479 /* w_1@2x.png in Resources */,
 				DC3F17211B2FDEEE00F02C10 /* Images.xcassets in Resources */,
 				DCFAC46C1B38F76C0062D479 /* w_10@2x.png in Resources */,
@@ -1014,10 +1158,12 @@
 				DC3F17AD1B2FDF8A00F02C10 /* ASIDataCompressor.m in Sources */,
 				DC3F17FF1B31505500F02C10 /* LRSuperViewController.m in Sources */,
 				DC3F17AC1B2FDF8A00F02C10 /* ASIAuthenticationDialog.m in Sources */,
+				DCFAC4E01B3ABDC30062D479 /* ExpressModel.m in Sources */,
 				DC3F17AF1B2FDF8A00F02C10 /* ASIDownloadCache.m in Sources */,
 				DC3F17891B2FDF3000F02C10 /* PPQHTTPRequest.m in Sources */,
 				DC3F177E1B2FDF3000F02C10 /* PrivateOrderListDS.m in Sources */,
 				DC3F17841B2FDF3000F02C10 /* TickerTradeDS.m in Sources */,
+				DCFAC4E31B3BA9E80062D479 /* ExpressResultViewController.m in Sources */,
 				DC3F171C1B2FDEEE00F02C10 /* ViewController.m in Sources */,
 				DC3F17821B2FDF3000F02C10 /* SingleTickerDS.m in Sources */,
 				DC3F17801B2FDF3000F02C10 /* PrivatePlaceOrderDS.m in Sources */,
@@ -1026,6 +1172,7 @@
 				DC3F17861B2FDF3000F02C10 /* PPQListDataSource.m in Sources */,
 				DC3F177F1B2FDF3000F02C10 /* PrivateOrderStatusDS.m in Sources */,
 				DC3F17911B2FDF3000F02C10 /* CommonTools.m in Sources */,
+				DCFAC4DC1B3AA5630062D479 /* ExpressListViewController.m in Sources */,
 				DC3F178C1B2FDF3000F02C10 /* SDWebImageDecoder.m in Sources */,
 				DC3F178F1B2FDF3000F02C10 /* SDWebImagePrefetcher.m in Sources */,
 				DC3F17EC1B302CBF00F02C10 /* QuadCurveMenu.m in Sources */,
