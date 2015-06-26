@@ -15,6 +15,7 @@
 #import "CommonTools.h"
 #import <Category/Category.h>
 #import "ExpressViewController.h"
+#import "FoundViewController.h"
 
 @interface MainViewController () <MainMenuViewDelegate>
 
@@ -89,6 +90,15 @@
             [nav release];
         }
             break;
+        case 4:
+            //发现
+        {
+            FoundViewController *controller = [[FoundViewController alloc] init];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+            [self.navigationController presentViewController:nav animated:YES completion:nil];
+            [controller release];
+            [nav release];
+        }
             
         default:
             break;

@@ -31,10 +31,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.barTintColor = _navigationBarTintColor;
-    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     [self setNavigationItemRightImage:[UIImage imageNamed:@"main_nav_right"]];
 }

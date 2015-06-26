@@ -170,6 +170,10 @@
 		DCFAC4DC1B3AA5630062D479 /* ExpressListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFAC4DB1B3AA5630062D479 /* ExpressListViewController.m */; };
 		DCFAC4E01B3ABDC30062D479 /* ExpressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFAC4DF1B3ABDC30062D479 /* ExpressModel.m */; };
 		DCFAC4E31B3BA9E80062D479 /* ExpressResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFAC4E21B3BA9E80062D479 /* ExpressResultViewController.m */; };
+		DCFAC4E91B3CFC9C0062D479 /* AlarmClockManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFAC4E81B3CFC9C0062D479 /* AlarmClockManager.m */; };
+		DCFAC4EC1B3D19930062D479 /* AlarmClock.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFAC4EB1B3D19930062D479 /* AlarmClock.m */; };
+		DCFAC4EF1B3D24470062D479 /* AlarmClockEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFAC4EE1B3D24470062D479 /* AlarmClockEditViewController.m */; };
+		DCFAC4F21B3D2B080062D479 /* FoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFAC4F11B3D2B080062D479 /* FoundViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -415,6 +419,14 @@
 		DCFAC4DF1B3ABDC30062D479 /* ExpressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressModel.m; sourceTree = "<group>"; };
 		DCFAC4E11B3BA9E80062D479 /* ExpressResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressResultViewController.h; sourceTree = "<group>"; };
 		DCFAC4E21B3BA9E80062D479 /* ExpressResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressResultViewController.m; sourceTree = "<group>"; };
+		DCFAC4E71B3CFC9C0062D479 /* AlarmClockManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmClockManager.h; sourceTree = "<group>"; };
+		DCFAC4E81B3CFC9C0062D479 /* AlarmClockManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmClockManager.m; sourceTree = "<group>"; };
+		DCFAC4EA1B3D19930062D479 /* AlarmClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmClock.h; sourceTree = "<group>"; };
+		DCFAC4EB1B3D19930062D479 /* AlarmClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmClock.m; sourceTree = "<group>"; };
+		DCFAC4ED1B3D24470062D479 /* AlarmClockEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmClockEditViewController.h; sourceTree = "<group>"; };
+		DCFAC4EE1B3D24470062D479 /* AlarmClockEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmClockEditViewController.m; sourceTree = "<group>"; };
+		DCFAC4F01B3D2B080062D479 /* FoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoundViewController.h; sourceTree = "<group>"; };
+		DCFAC4F11B3D2B080062D479 /* FoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoundViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -672,6 +684,7 @@
 		DC3F17941B2FDF8900F02C10 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				DCFAC4E61B3CFC200062D479 /* AlarmClock */,
 				DC0237DF1B32D7AF00245501 /* WeatherAPI */,
 				DC3F18001B31523600F02C10 /* Category */,
 				DC3F17E71B302CBF00F02C10 /* QuadCurveMenu */,
@@ -775,6 +788,7 @@
 		DC3F17EE1B302D0100F02C10 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DCFAC4E41B3CF9A50062D479 /* Found */,
 				DCFAC49A1B395BE00062D479 /* Express */,
 				DC3F17FC1B314FC700F02C10 /* Login&Register */,
 				DC3F17F61B31194D00F02C10 /* BoxSuperViewController.h */,
@@ -943,6 +957,36 @@
 			);
 			name = Models;
 			path = Classes/Models;
+			sourceTree = "<group>";
+		};
+		DCFAC4E41B3CF9A50062D479 /* Found */ = {
+			isa = PBXGroup;
+			children = (
+				DCFAC4E51B3CF9A50062D479 /* AlarmClock */,
+				DCFAC4F01B3D2B080062D479 /* FoundViewController.h */,
+				DCFAC4F11B3D2B080062D479 /* FoundViewController.m */,
+			);
+			path = Found;
+			sourceTree = "<group>";
+		};
+		DCFAC4E51B3CF9A50062D479 /* AlarmClock */ = {
+			isa = PBXGroup;
+			children = (
+				DCFAC4ED1B3D24470062D479 /* AlarmClockEditViewController.h */,
+				DCFAC4EE1B3D24470062D479 /* AlarmClockEditViewController.m */,
+			);
+			path = AlarmClock;
+			sourceTree = "<group>";
+		};
+		DCFAC4E61B3CFC200062D479 /* AlarmClock */ = {
+			isa = PBXGroup;
+			children = (
+				DCFAC4E71B3CFC9C0062D479 /* AlarmClockManager.h */,
+				DCFAC4E81B3CFC9C0062D479 /* AlarmClockManager.m */,
+				DCFAC4EA1B3D19930062D479 /* AlarmClock.h */,
+				DCFAC4EB1B3D19930062D479 /* AlarmClock.m */,
+			);
+			path = AlarmClock;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1146,6 +1190,7 @@
 				DC3F17921B2FDF3000F02C10 /* SocialTools.m in Sources */,
 				DC3F177D1B2FDF3000F02C10 /* PrivateFundsDS.m in Sources */,
 				DC3F17B21B2FDF8A00F02C10 /* ASIInputStream.m in Sources */,
+				DCFAC4EF1B3D24470062D479 /* AlarmClockEditViewController.m in Sources */,
 				DC3F178E1B2FDF3000F02C10 /* SDWebImageManager.m in Sources */,
 				DCFAC4991B392E2E0062D479 /* WeatherView.m in Sources */,
 				DC3F17F21B30358200F02C10 /* MainViewController.m in Sources */,
@@ -1153,6 +1198,7 @@
 				DC3F17FB1B314D2D00F02C10 /* MessageViewController.m in Sources */,
 				DC3F17901B2FDF3000F02C10 /* UIImageView+WebCache.m in Sources */,
 				DC3F17B11B2FDF8A00F02C10 /* ASIHTTPRequest.m in Sources */,
+				DCFAC4F21B3D2B080062D479 /* FoundViewController.m in Sources */,
 				DC3F17811B2FDF3000F02C10 /* PrviateTradesDS.m in Sources */,
 				DCFAC49D1B395C000062D479 /* ExpressViewController.m in Sources */,
 				DC3F17AD1B2FDF8A00F02C10 /* ASIDataCompressor.m in Sources */,
@@ -1161,6 +1207,7 @@
 				DCFAC4E01B3ABDC30062D479 /* ExpressModel.m in Sources */,
 				DC3F17AF1B2FDF8A00F02C10 /* ASIDownloadCache.m in Sources */,
 				DC3F17891B2FDF3000F02C10 /* PPQHTTPRequest.m in Sources */,
+				DCFAC4E91B3CFC9C0062D479 /* AlarmClockManager.m in Sources */,
 				DC3F177E1B2FDF3000F02C10 /* PrivateOrderListDS.m in Sources */,
 				DC3F17841B2FDF3000F02C10 /* TickerTradeDS.m in Sources */,
 				DCFAC4E31B3BA9E80062D479 /* ExpressResultViewController.m in Sources */,
@@ -1194,6 +1241,7 @@
 				DC3F17B41B2FDF8A00F02C10 /* Reachability.m in Sources */,
 				DC3F17AE1B2FDF8A00F02C10 /* ASIDataDecompressor.m in Sources */,
 				DCFAC4A01B395C2E0062D479 /* ExpressQueryViewController.m in Sources */,
+				DCFAC4EC1B3D19930062D479 /* AlarmClock.m in Sources */,
 				DC0237ED1B33EA6F00245501 /* WeatherAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

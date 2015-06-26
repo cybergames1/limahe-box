@@ -32,6 +32,8 @@
     [queryButton setFrame:CGRectMake(0, 0, moduleView.bounds.size.width, 60)];
     [queryButton setTitle:@"快递查询" forState:UIControlStateNormal];
     [queryButton addTarget:self action:@selector(expressQuery) forControlEvents:UIControlEventTouchUpInside];
+    [queryButton.layer setCornerRadius:queryButton.bounds.size.height/2];
+    [queryButton.layer setMasksToBounds:YES];
     
     //寄送按钮
     UIButton *deliveryButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -39,6 +41,8 @@
     [deliveryButton setFrame:CGRectMake(0, moduleView.bounds.size.height-60, moduleView.bounds.size.width, 60)];
     [deliveryButton setTitle:@"寄快递" forState:UIControlStateNormal];
     [deliveryButton addTarget:self action:@selector(expressDelivery) forControlEvents:UIControlEventTouchUpInside];
+    [deliveryButton.layer setCornerRadius:deliveryButton.bounds.size.height/2];
+    [deliveryButton.layer setMasksToBounds:YES];
     
     [moduleView addSubview:queryButton];
     [moduleView addSubview:deliveryButton];
