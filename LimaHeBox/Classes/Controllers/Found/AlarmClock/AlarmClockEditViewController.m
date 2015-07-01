@@ -8,13 +8,17 @@
 
 #import "AlarmClockEditViewController.h"
 #import "AlarmClockManager.h"
+#import "TimePickerView.h"
+#import "ACDateViewController.h"
 
 NSInteger UITableViewCellAccessorySwitch = 5;
 
-@interface AlarmClockEditViewController () <UITableViewDataSource,UITableViewDelegate>
+@interface AlarmClockEditViewController () <UITableViewDataSource,UITableViewDelegate,TimePickerViewDelegate>
 {
     NSMutableArray * _dataList;
     AlarmClock * _clock;
+    
+    UITableView * _tableView;
 }
 
 @end
@@ -23,6 +27,7 @@ NSInteger UITableViewCellAccessorySwitch = 5;
 
 - (void)dealloc {
     [_dataList release];_dataList = nil;
+    [_clock release];_clock = nil;
     [super dealloc];
 }
 
@@ -81,11 +86,12 @@ NSInteger UITableViewCellAccessorySwitch = 5;
     // Do any additional setup after loading the view.
     [self setNavigationTitle:@"闹钟"];
     
-    UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+    UITableView *tableView = [[[UITableView alloc] initWithFrame:self.view.bounds] autorelease];
     tableView.backgroundColor = self.view.backgroundColor;
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
+    _tableView = tableView;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -123,6 +129,31 @@ NSInteger UITableViewCellAccessorySwitch = 5;
 
 - (void)switchAction:(UISwitch *)s {
     _clock.shake = s.on;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.row == 0) {
+        //时间
+        TimePickerView *pickerView = [[TimePickerView alloc] init];
+        pickerView.delegate = self;
+        [pickerView showInView:self.view];
+        [pickerView release];
+    }
+    else if (indexPath.row == 1) {
+        //重复日期
+        ACDateViewController *controller = [[ACDateViewController alloc] init];
+        [self.navigationController pushViewController:controller animated:YES];
+        [controller release];
+    }
+}
+
+#pragma mark -
+#pragma mark TimePickerViewDelegate
+- (void)pickerView:(TimePickerView *)pickerView hour:(NSInteger)hour minute:(NSInteger)minute {
+    [_clock setHour:hour min:minute];
+    [_tableView reloadData];
 }
 
 @end
