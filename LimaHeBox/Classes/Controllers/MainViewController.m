@@ -16,6 +16,7 @@
 #import <Category/Category.h>
 #import "ExpressViewController.h"
 #import "FoundViewController.h"
+#import "TravelViewController.h"
 
 @interface MainViewController () <MainMenuViewDelegate>
 
@@ -90,6 +91,16 @@
             [nav release];
         }
             break;
+        case 1:
+            //行程
+        {
+            TravelViewController *controller = [[TravelViewController alloc] init];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+            [self.navigationController presentViewController:nav animated:YES completion:nil];
+            [controller release];
+            [nav release];
+        }
+            break;
         case 4:
             //发现
         {
@@ -99,7 +110,7 @@
             [controller release];
             [nav release];
         }
-            
+            break;
         default:
             break;
     }

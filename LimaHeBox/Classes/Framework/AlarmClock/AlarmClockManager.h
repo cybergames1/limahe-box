@@ -13,4 +13,7 @@
 
 + (instancetype)sharedManager;
 
++ (void)createLocalNotificationWithAlarmClock:(AlarmClock *)alarmClock;
++ (void)removeLocalNotification;
+
 @end

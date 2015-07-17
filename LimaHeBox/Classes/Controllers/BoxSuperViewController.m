@@ -104,5 +104,10 @@
     //子类实现
 }
 
+- (BOOL)navigationShouldPopOnBackButton {
+    //navigationBar自带返回按钮的点击事件
+    return YES;
+}
+
 
 @end

@@ -144,6 +144,10 @@ NSInteger UITableViewCellAccessorySwitch = 5;
     else if (indexPath.row == 1) {
         //重复日期
         ACDateViewController *controller = [[ACDateViewController alloc] init];
+        controller.handleBlock = ^(NSArray *dataIndexList) {
+            [_clock setDaysList:dataIndexList];
+            [_tableView reloadData];
+        };
         [self.navigationController pushViewController:controller animated:YES];
         [controller release];
     }
