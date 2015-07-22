@@ -99,6 +99,21 @@
     return self;
 }
 
+- (void)updatePedoMeter:(CGFloat)meter date:(NSDate *)date {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    
+    [formatter setDateFormat:@"hh"];
+    NSString *currentHourString = [NSString stringWithFormat:@"%@",[formatter stringFromDate:date]];
+    
+    [formatter setDateFormat:@"a"];
+    NSString *currentAMPMString = [NSString stringWithFormat:@"%@",[formatter stringFromDate:date]];
+    
+    NSInteger index = [currentHourString integerValue];
+    index = [currentAMPMString isEqualToString:@"下午"] ? index+12 : index;
+    
+    [self updatePedoMeter:meter atIndex:index];
+}
+
 - (void)updatePedoMeter:(CGFloat)meter atIndex:(NSInteger)index {
     if (meter > _maxMeter) {
         _maxMeter = meter;

@@ -11,6 +11,6 @@
 @interface PedoMeterView : UIView
 
 //更新一个时间点对应的步数
-- (void)updatePemoMeter:(CGFloat)meter date:(NSDate *)date;
+- (void)updatePedoMeter:(CGFloat)meter date:(NSDate *)date;
 
 @end

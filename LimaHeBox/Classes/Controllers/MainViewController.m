@@ -17,6 +17,7 @@
 #import "ExpressViewController.h"
 #import "FoundViewController.h"
 #import "TravelViewController.h"
+#import "BlueToothViewController.h"
 
 @interface MainViewController () <MainMenuViewDelegate>
 
@@ -99,6 +100,22 @@
             [self.navigationController presentViewController:nav animated:YES completion:nil];
             [controller release];
             [nav release];
+        }
+            break;
+        case 2:
+            //蓝牙
+        {
+            BlueToothViewController *controller = [[BlueToothViewController alloc] init];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+            [self.navigationController presentViewController:nav animated:YES completion:nil];
+            [controller release];
+            [nav release];
+        }
+            break;
+        case 3:
+            //分享
+        {
+            
         }
             break;
         case 4:
