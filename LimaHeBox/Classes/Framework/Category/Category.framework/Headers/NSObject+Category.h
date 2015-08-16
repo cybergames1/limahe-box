@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 Sean. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "CategoryDefine.h"
 
 #pragma mark- NSObject (UserInfo)
 @interface NSObject (ObjectUserInfo)
@@ -20,14 +20,15 @@
 
 @interface NSObject (NSObjectDelloc)
 /**
- @details 该方法会在当前 object 的 dealloc 方法触发之前自动调用。
-          开发者可以在这里释放 category 中定义的变量等无法自动释放的东西。
+ @details 该方法会在当前的 dealloc 方法触发之前自动调用。
+          开发者可以在这里释放 category 中定义的无法自动释放的东西。
           此方法不需要调用[super objectWillDealloc].
  @attention 开发者不要在外部主动调用该 API
  */
 - (void) objectWillDealloc;
 
 @end
+
 #pragma mark super class
 @interface NSObject (NSObjectPerformSeletors)
 /**

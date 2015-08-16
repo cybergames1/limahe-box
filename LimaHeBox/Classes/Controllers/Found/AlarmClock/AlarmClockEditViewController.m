@@ -94,6 +94,16 @@ NSInteger UITableViewCellAccessorySwitch = 5;
     _tableView = tableView;
 }
 
+- (void)updateClockTime {
+    NSMutableDictionary *dic = _dataList[0];
+    [dic setObject:[_clock timeString] forKey:@"text"];
+}
+
+- (void)updateClockRepeate {
+    NSMutableDictionary *dic = _dataList[1];
+    [dic setObject:[_clock daysString] forKey:@"text"];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -146,6 +156,8 @@ NSInteger UITableViewCellAccessorySwitch = 5;
         ACDateViewController *controller = [[ACDateViewController alloc] init];
         controller.handleBlock = ^(NSArray *dataIndexList) {
             [_clock setDaysList:dataIndexList];
+            
+            [self updateClockRepeate];
             [_tableView reloadData];
         };
         [self.navigationController pushViewController:controller animated:YES];
@@ -157,6 +169,8 @@ NSInteger UITableViewCellAccessorySwitch = 5;
 #pragma mark TimePickerViewDelegate
 - (void)pickerView:(TimePickerView *)pickerView hour:(NSInteger)hour minute:(NSInteger)minute {
     [_clock setHour:hour min:minute];
+    
+    [self updateClockTime];
     [_tableView reloadData];
 }
 

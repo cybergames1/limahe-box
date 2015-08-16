@@ -89,6 +89,12 @@
 		DC3F18041B315B0C00F02C10 /* common_icon_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC3F18031B315B0C00F02C10 /* common_icon_back@2x.png */; };
 		DCBEF8D71B41140E00FA72D7 /* TimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCBEF8D61B41140E00FA72D7 /* TimePickerView.m */; };
 		DCBEF8DA1B438B8A00FA72D7 /* ACDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCBEF8D91B438B8A00FA72D7 /* ACDateViewController.m */; };
+		DCCE82201B7F94D5000EF913 /* LRDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCE821F1B7F94D5000EF913 /* LRDataSource.m */; };
+		DCCE82241B7F960A000EF913 /* NewsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCE82231B7F960A000EF913 /* NewsDataSource.m */; };
+		DCCE82281B7F9842000EF913 /* RegisterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCE82271B7F9842000EF913 /* RegisterButton.m */; };
+		DCCE822B1B7F9A68000EF913 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCE822A1B7F9A68000EF913 /* LoginViewController.m */; };
+		DCCE82321B807F54000EF913 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCE82311B807F54000EF913 /* RegisterViewController.m */; };
+		DCCE82351B808071000EF913 /* RLCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCE82341B808071000EF913 /* RLCell.m */; };
 		DCFAC4611B38F76C0062D479 /* left.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC42A1B38F76C0062D479 /* left.png */; };
 		DCFAC4621B38F76C0062D479 /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC42B1B38F76C0062D479 /* loading.png */; };
 		DCFAC4631B38F76C0062D479 /* main_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC42C1B38F76C0062D479 /* main_bg@2x.png */; };
@@ -346,6 +352,18 @@
 		DCBEF8D61B41140E00FA72D7 /* TimePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimePickerView.m; sourceTree = "<group>"; };
 		DCBEF8D81B438B8A00FA72D7 /* ACDateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACDateViewController.h; sourceTree = "<group>"; };
 		DCBEF8D91B438B8A00FA72D7 /* ACDateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACDateViewController.m; sourceTree = "<group>"; };
+		DCCE821E1B7F94D5000EF913 /* LRDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRDataSource.h; sourceTree = "<group>"; };
+		DCCE821F1B7F94D5000EF913 /* LRDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRDataSource.m; sourceTree = "<group>"; };
+		DCCE82221B7F960A000EF913 /* NewsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsDataSource.h; sourceTree = "<group>"; };
+		DCCE82231B7F960A000EF913 /* NewsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsDataSource.m; sourceTree = "<group>"; };
+		DCCE82261B7F9842000EF913 /* RegisterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterButton.h; sourceTree = "<group>"; };
+		DCCE82271B7F9842000EF913 /* RegisterButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterButton.m; sourceTree = "<group>"; };
+		DCCE82291B7F9A68000EF913 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		DCCE822A1B7F9A68000EF913 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		DCCE82301B807F54000EF913 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		DCCE82311B807F54000EF913 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		DCCE82331B808071000EF913 /* RLCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLCell.h; sourceTree = "<group>"; };
+		DCCE82341B808071000EF913 /* RLCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLCell.m; sourceTree = "<group>"; };
 		DCFAC42A1B38F76C0062D479 /* left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left.png; sourceTree = "<group>"; };
 		DCFAC42B1B38F76C0062D479 /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading.png; sourceTree = "<group>"; };
 		DCFAC42C1B38F76C0062D479 /* main_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_bg@2x.png"; sourceTree = "<group>"; };
@@ -611,6 +629,8 @@
 		DC3F173C1B2FDF3000F02C10 /* Datasource */ = {
 			isa = PBXGroup;
 			children = (
+				DCCE82211B7F95F9000EF913 /* NewsDataSource */,
+				DCCE821D1B7F928F000EF913 /* Login&RegisterSource */,
 				DC3F17C51B2FEACA00F02C10 /* WeatherSource */,
 				DC3F173D1B2FDF3000F02C10 /* BterAPIDataSource */,
 				DC3F17511B2FDF3000F02C10 /* SuperDataSource */,
@@ -875,6 +895,11 @@
 			children = (
 				DC3F17FD1B31505500F02C10 /* LRSuperViewController.h */,
 				DC3F17FE1B31505500F02C10 /* LRSuperViewController.m */,
+				DCCE82251B7F9805000EF913 /* views */,
+				DCCE82291B7F9A68000EF913 /* LoginViewController.h */,
+				DCCE822A1B7F9A68000EF913 /* LoginViewController.m */,
+				DCCE82301B807F54000EF913 /* RegisterViewController.h */,
+				DCCE82311B807F54000EF913 /* RegisterViewController.m */,
 			);
 			path = "Login&Register";
 			sourceTree = "<group>";
@@ -885,6 +910,35 @@
 				DC3F18011B31523600F02C10 /* Category.framework */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		DCCE821D1B7F928F000EF913 /* Login&RegisterSource */ = {
+			isa = PBXGroup;
+			children = (
+				DCCE821E1B7F94D5000EF913 /* LRDataSource.h */,
+				DCCE821F1B7F94D5000EF913 /* LRDataSource.m */,
+			);
+			path = "Login&RegisterSource";
+			sourceTree = "<group>";
+		};
+		DCCE82211B7F95F9000EF913 /* NewsDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				DCCE82221B7F960A000EF913 /* NewsDataSource.h */,
+				DCCE82231B7F960A000EF913 /* NewsDataSource.m */,
+			);
+			path = NewsDataSource;
+			sourceTree = "<group>";
+		};
+		DCCE82251B7F9805000EF913 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				DCCE82331B808071000EF913 /* RLCell.h */,
+				DCCE82341B808071000EF913 /* RLCell.m */,
+				DCCE82261B7F9842000EF913 /* RegisterButton.h */,
+				DCCE82271B7F9842000EF913 /* RegisterButton.m */,
+			);
+			path = views;
 			sourceTree = "<group>";
 		};
 		DCFAC4291B38F76C0062D479 /* Main */ = {
@@ -1246,6 +1300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCCE822B1B7F9A68000EF913 /* LoginViewController.m in Sources */,
 				DC062B011B4A583C001D969A /* UIViewController+BackButtonHandler.m in Sources */,
 				DC3F17921B2FDF3000F02C10 /* SocialTools.m in Sources */,
 				DC3F177D1B2FDF3000F02C10 /* PrivateFundsDS.m in Sources */,
@@ -1265,6 +1320,7 @@
 				DC3F17AD1B2FDF8A00F02C10 /* ASIDataCompressor.m in Sources */,
 				DC0A3C571B58D30B0048774B /* PedoMeterViewController.m in Sources */,
 				DC3F17FF1B31505500F02C10 /* LRSuperViewController.m in Sources */,
+				DCCE82351B808071000EF913 /* RLCell.m in Sources */,
 				DC3F17AC1B2FDF8A00F02C10 /* ASIAuthenticationDialog.m in Sources */,
 				DCFAC4E01B3ABDC30062D479 /* ExpressModel.m in Sources */,
 				DCBEF8D71B41140E00FA72D7 /* TimePickerView.m in Sources */,
@@ -1280,6 +1336,7 @@
 				DC3F177C1B2FDF3000F02C10 /* ExchangeListDS.m in Sources */,
 				DC3F17871B2FDF3000F02C10 /* UIImageLoaderView.m in Sources */,
 				DC1DFE6B1B5CC8C100B86732 /* BlueToothViewController.m in Sources */,
+				DCCE82321B807F54000EF913 /* RegisterViewController.m in Sources */,
 				DC3F17861B2FDF3000F02C10 /* PPQListDataSource.m in Sources */,
 				DC3F177F1B2FDF3000F02C10 /* PrivateOrderStatusDS.m in Sources */,
 				DCBEF8DA1B438B8A00FA72D7 /* ACDateViewController.m in Sources */,
@@ -1296,10 +1353,13 @@
 				DC3F17F51B30376000F02C10 /* MainMenuView.m in Sources */,
 				DC0237E81B32D7AF00245501 /* NSString+base64.m in Sources */,
 				DC3F178A1B2FDF3000F02C10 /* PPQPostDataRequest.m in Sources */,
+				DCCE82201B7F94D5000EF913 /* LRDataSource.m in Sources */,
 				DC0237E71B32D7AF00245501 /* GTMBase64.m in Sources */,
 				DC3F178B1B2FDF3000F02C10 /* SDImageCache.m in Sources */,
 				DC3F17881B2FDF3000F02C10 /* PPQNetWorkURLs.m in Sources */,
+				DCCE82281B7F9842000EF913 /* RegisterButton.m in Sources */,
 				DC3F17831B2FDF3000F02C10 /* TickerDepthDS.m in Sources */,
+				DCCE82241B7F960A000EF913 /* NewsDataSource.m in Sources */,
 				DC3F17161B2FDEEE00F02C10 /* main.m in Sources */,
 				DC0A3C5A1B58D32B0048774B /* PedoMeterView.m in Sources */,
 				DC3F178D1B2FDF3000F02C10 /* SDWebImageDownloader.m in Sources */,

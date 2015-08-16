@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 Sean. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "CategoryDefine.h"
 
 #pragma mark NSString (EmptyString) 空字符串
 @interface NSString (EmptyString)
@@ -186,6 +186,12 @@ extern NSString* const NSPredicateValidRemoteURLMatches; // url
  @return YES如果为有效的用户名，否则NO
  */
 + (BOOL) isValidRemoteURL:(NSString*) urlString;
+
+/**
+ 判断字符串是否包含 Emoji 表情符号
+ */
++ (BOOL)stringContainsEmoji:(NSString*) string;
+
 @end
 
 

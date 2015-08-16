@@ -8,50 +8,117 @@
 
 #import "LRSuperViewController.h"
 
-#define FieldEdge_Rate 30.0/320.0
+#define FieldEdge_Rate (30.0/320.0)
+#define Height_Rate (40.0/260.0)
 
 @interface LRSuperViewController ()
 {
-    UITextField * _textField1;
-    UITextField * _textField2;
-    UIButton * _actionButton;
+    RLCell * _textCell1;
+    RLCell * _textCell2;
 }
 
 @end
 
 @implementation LRSuperViewController
 
+- (void)dealloc {
+    [_dataSource setDelegate:nil];
+    [_dataSource release];_dataSource = nil;
+    [super dealloc];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor redColor];
     
-    [self setNavigationItemLeftImage:[UIImage imageNamed:@"common_icon_back"]];
-    [self setNavigationTitle:@"登陆账号"];
+    CGFloat width = (1-2*FieldEdge_Rate)*self.view.width;
+    _textCell1 = [[[RLCell alloc] initWithFrame:CGRectMake(FieldEdge_Rate*self.view.width, 120, width, width*Height_Rate)] autorelease];
+    _textCell1.textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    _textCell1.textField.keyboardType = UIKeyboardTypeEmailAddress;
+    _textCell1.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     
-    _textField1 = [[[UITextField alloc] initWithFrame:CGRectMake(FieldEdge_Rate*self.view.bounds.size.width, 120, (1-2*FieldEdge_Rate)*self.view.bounds.size.width, 30.0)] autorelease];
-    _textField1.clearButtonMode = UITextFieldViewModeWhileEditing;
-    _textField1.keyboardType = UIKeyboardTypeEmailAddress;
-    _textField1.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    _textField1.borderStyle = UITextBorderStyleRoundedRect;
-    _textField1.placeholder = @"请输入用户名";
+    _textCell2 = [[[RLCell alloc] initWithFrame:CGRectMake(_textCell1.left, _textCell1.bottom+20, _textCell1.width, _textCell1.height)] autorelease];
+    _textCell2.textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    _textCell2.textField.clearsOnBeginEditing = YES;
+    _textCell2.textField.secureTextEntry = YES;
     
-    _textField2 = [[[UITextField alloc] initWithFrame:CGRectMake(_textField1.frame.origin.x, _textField1.frame.origin.y+_textField1.bounds.size.height+20, _textField1.bounds.size.width, _textField1.bounds.size.height)] autorelease];
-    _textField2.clearButtonMode = UITextFieldViewModeWhileEditing;
-    _textField2.clearsOnBeginEditing = YES;
-    _textField2.secureTextEntry = YES;
-    _textField2.borderStyle = UITextBorderStyleRoundedRect;
-    _textField2.placeholder = @"请输入密码";
+    [RegisterButton showGreenInView:self.view top:_textCell2.bottom+50 title:@"" target:self action:@selector(doneAction)];
     
-    _actionButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_actionButton setFrame:CGRectMake(_textField1.frame.origin.x, _textField2.frame.origin.y+_textField2.frame.size.height+50, _textField2.bounds.size.width, _textField2.bounds.size.height)];
-    [_actionButton addTarget:self action:@selector(doneAction) forControlEvents:UIControlEventTouchUpInside];
-    [_actionButton setTitle:@"登陆" forState:UIControlStateNormal];
-    [_actionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.view addSubview:_textCell1];
+    [self.view addSubview:_textCell2];
     
-    [self.view addSubview:_textField1];
-    [self.view addSubview:_textField2];
-    [self.view addSubview:_actionButton];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
+    [self.view addGestureRecognizer:tap];
+    [tap release];
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldDidChange:) name:UITextFieldTextDidChangeNotification object:nil];
+}
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:nil];
+}
+
+- (RLCell *)topCell {
+    return _textCell1;
+}
+
+- (RLCell *)bottomCell {
+    return _textCell2;
+}
+
+- (RegisterButton *)registerButton {
+    for (UIView *view in self.view.subviews) {
+        if ([view isKindOfClass:[RegisterButton class]]) {
+            return (RegisterButton *)view;
+        }
+    }
+    return nil;
+}
+
+- (void)tapAction {
+    [self allTextFieldResignFirstResponder];
+}
+
+- (NSArray *)allTextField {
+    NSMutableArray *textFields = [NSMutableArray arrayWithCapacity:0];
+    for (UIView *view in self.view.subviews) {
+        if ([view isKindOfClass:[UITextField class]]) {
+            [textFields addObject:view];
+        }else if ([view isKindOfClass:[RLCell class]]) {
+            [textFields addObject:[(RLCell *)view textField]];
+        }else {
+            //
+        }
+    }
+    return textFields;
+}
+
+- (void)allTextFieldResignFirstResponder {
+    for (UITextField *textField in [self allTextField]) {
+        [textField resignFirstResponder];
+    }
+}
+
+#pragma mark -
+#pragma mark UITextField Notification
+
+- (void)textFieldDidChange:(NSNotification *)notification {
+    /*
+     * 有一个textField没有内容，则RegisterButton为Disable
+     * 所有的textField都有内容，则RegisterButton为enable
+     */
+    BOOL allTextFieldHasText = NO;
+    for (UITextField *textField in [self allTextField]) {
+        allTextFieldHasText = (textField.text.length <= 0) ? NO : YES;
+    }
+    
+    [[self registerButton] setEnabled:allTextFieldHasText];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,11 +128,12 @@
 
 - (void)doneAction {
     //子类实现
+    [self allTextFieldResignFirstResponder];
     NSLog(@"done");
 }
 
 - (void)leftBarAction {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 - (void)rightBarAction {

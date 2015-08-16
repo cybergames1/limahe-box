@@ -6,45 +6,31 @@
 //  Copyright (c) 2014年 Sean. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "CategoryDefine.h"
 
 #pragma mark UIView （Addition）view位置属性快捷访问
 @interface UIView (UIViewAddition)
-/**
- 设定Origin的Y值，不改变Size
- */
+/** 设定Origin的Y值，不改变Size */
 @property (nonatomic) CGFloat top;
-/**
- 设置底部，相应会改变Origin的Y值，不改变Size
- */
+/** 设置底部，相应会改变Origin的Y值，不改变Size */
 @property (nonatomic) CGFloat bottom;
-/**
- 设定Origin的X值，不改变Size
- */
+/** 设定Origin的X值，不改变Size */
 @property (nonatomic) CGFloat left;
-/**
- 设定右边，相应会设定Origin的X值，不改变Size
- */
+/** 设定右边，相应会设定Origin的X值，不改变Size */
 @property (nonatomic) CGFloat right;
-/**
- 改变Size，不改变Origin
- */
+/** 改变Size，不改变Origin */
 @property (nonatomic) CGFloat width;
-/**
- 改变Size，不改变Origin
- */
+/** 改变Size，不改变Origin */
 @property (nonatomic) CGFloat height;
 
-/**
- 改变Size，不改变Origin
- */
+/** 改变Size，不改变Origin */
 @property (nonatomic) CGSize size;
-
-/**
- 设定Origin的值，不改变Size
- */
+/** 设定Origin的值，不改变Size  */
 @property (nonatomic) CGPoint origin;
-
+/** 中心位置-x 坐标 */
+@property (nonatomic) CGFloat centerX;
+/** 中心位置-y 坐标 */
+@property (nonatomic) CGFloat centerY;
 @end
 
 #pragma mark UIViewSnapshot 视图快照
@@ -137,6 +123,7 @@
  获取view所在的终极viewController
  @details 比如controller上的mainView添加view1，view1添加view2，
  那么mainView、view1、view2的viewController都是controller
+ @note 如果当前view为UIWindow，返回nil
  */
 - (UIViewController *)viewController;
 
@@ -410,7 +397,31 @@ typedef NS_ENUM(NSInteger, UIViewBorderMask) {
                  radius:(CGFloat) radius;
 
 /**
- 给UIView设置边框
+ 只在 view 的底部加一条分割线，比如 cell 的分割线
+ @param lineWidth 分割线宽度
+ @param lineColor 分割线颜色
+ */
+- (void) applyBottonLine:(CGFloat) lineWidth
+               lineColor:(UIColor*) lineColor;
+
+/**
+ 只在 view 的顶部加一条分割线
+ @param lineWidth 分割线宽度
+ @param lineColor 分割线颜色
+ */
+- (void) applyTopLine:(CGFloat) lineWidth
+            lineColor:(UIColor*) lineColor;
+
+/**
+ 在 view 的顶部和底部各加一条分割线
+ @param lineWidth 分割线宽度
+ @param lineColor 分割线颜色
+ */
+- (void) applyTopBottomLine:(CGFloat) lineWidth
+                  lineColor:(UIColor*) lineColor;
+
+/**
+ 给UIView设置边框，边框样式、宽度、颜色等由外部指定
  @param corners 边框样式.
  @param borderWidth 边框宽度，如果传0，边框不会被绘制
  @param borderColor 边框颜色，如果传 nil，边框不会被绘制
@@ -429,12 +440,29 @@ typedef NS_ENUM(NSInteger, UIViewBorderMask) {
                  radius:(CGFloat) radius;
 
 /**
- 给UIView设置圆形边框,边框颜色为白色borderColor，边框宽度borderWidth=1px,lineDash=0
+ 给UIView设置圆角边框，宽度和颜色由外部指定
+ @param borderWidth 边框宽度，如果传0，边框不会被绘制
+ @param borderColor 边框颜色，如果传 nil，边框不会被绘制
+ @param radius 圆角半径，需要非负数
+ */
+- (void) applyRoundRectMask:(CGFloat) borderWidth
+                borderColor:(UIColor*) borderColor
+                     radius:(CGFloat) radius;
+/**
+ 给UIView设置圆形边框,边框颜色为白色，边框宽度borderWidth=1px,lineDash=0
  */
 - (void)applyCircleMasks;
 
 /**
  给UIView设置圆形边框
+ @param borderWidth 边框宽度
+ @param borderColor 边框颜色
+ */
+- (void)applyCircleMasks:(CGFloat) borderWidth
+             borderColor:(UIColor*) borderColor;
+
+/**
+ 给UIView设置圆形边框,边框宽度、颜色由外部指定
  @param borderWidth 边框宽度
  @param borderColor 边框颜色
  @param lineDash 边框线间断间隔(比如：- - -)。0代表是实线，没有间隔.
@@ -443,6 +471,12 @@ typedef NS_ENUM(NSInteger, UIViewBorderMask) {
 - (void)applyCircleMasks:(CGFloat) borderWidth
              borderColor:(UIColor*) borderColor
            lineDashWidth:(CGFloat) lineDash;
+
+/**
+ 去掉之前设置的 boardMask
+ */
+- (void) removeAllBoardMasks;
+
 @end
 
 

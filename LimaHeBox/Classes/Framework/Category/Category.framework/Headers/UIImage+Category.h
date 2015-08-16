@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 Sean. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "CategoryDefine.h"
 
 #pragma mark UIImage (UIImageDecode) 图片解析
 @interface UIImage (UIImageDecode)
@@ -96,7 +96,7 @@
 #pragma mark UIImage (UIImageCacheManager) 图片缓存及管理
 @interface UIImage (UIImageCacheManager)
 /**
- @brief 设置默认的缓存地址。如果不设置，默认~Library/CachedImages
+ @brief 设置默认的缓存地址。如果不设置，默认~Library/Cacheds/ImageCaches
  @param defaultPath 默认缓存地址
  */
 + (void) ImageCacheSetDefaultCacheDirectoryPath:(NSString*) defaultPath;
@@ -332,6 +332,34 @@
 - (UIImage *)applyBlurWithLevel:(CGFloat)level;
 
 @end
+
+@interface UIImage (EmptyImage)
+/**
+ 判断给定的 imageObject 是否为空图片
+ @return 如果 imageObject 为空或者非 UIImage 类型，则返回 YES。
+ */
++ (BOOL) isEmptyImage:(id) imageObject;
+
+/**
+ 获取一个空白图片
+ */
++ (UIImage*) emptyImage;
+@end
+
+@interface UIImage (ImageIcon)
+/**
+ 按照指定的颜色生成一个类似系统返回按钮("<"形状)的图片。
+ @param color 要生成的图片的颜色，不能为 nil
+ @return 如果所传 color=nil，则返回 nil
+ */
++ (UIImage*) backBarItemIcon:(UIColor*) color;
+
+@end
+
+
+
+
+
 
 
 

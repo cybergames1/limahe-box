@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 Sean. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "CategoryDefine.h"
 
 
 #pragma mark UITableViewCell （UITableViewCellShortCut）

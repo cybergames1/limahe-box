@@ -6,8 +6,8 @@
 //  Copyright (c) 2014年 Sean. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "UIImage+Category.h"
+#import "CategoryDefine.h"
+//#import "UIImage+Category.h"
 
 #pragma mark UIImageView (UIImageViewAction) 响应点击事件
 @interface UIImageView (UIImageViewAction)
@@ -33,7 +33,6 @@
  */
 #pragma mark UIImageView (ImageShowAnimation) 展示动画集成
 
-#import "CategoryDefine.h"
 @interface UIImageView (ImageTransition)
 /**
  @brief 当给UIImageView赋image时的动画效果，默认TransitionTypeNone没有任何动画
@@ -175,7 +174,7 @@ typedef void(^UIGifPlayBlock)(CGSize gifSize, NSError* error);
 - (void) stopGifAnimating;
 
 /**
- 
+ 取消 Gif 的下载和播放
  */
 - (void) cancleLoadAndPlay;
 @end

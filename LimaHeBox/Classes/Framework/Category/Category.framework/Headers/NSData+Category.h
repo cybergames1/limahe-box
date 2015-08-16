@@ -7,7 +7,7 @@
 //
 
 
-#import <Foundation/Foundation.h>
+#import "CategoryDefine.h"
 
 #pragma mark NSData (MD5)
 @interface NSData (NSDataMD5)
@@ -192,8 +192,7 @@ typedef NS_ENUM(NSInteger, NSDataCachePolicy) {
  @param completion 下载完成后block
  @param timeoutInterval 超时时间，超过该时间按超时失败处理。该方法可能非主线程，需要更新UI请在主线程中处理。
  @param cachePolicy 缓存策略
- @attention <li>该方法调用后不能被cancle，故请使用在保证不会被中间打断的条件下。
-            <li>如果需要认证信息才能下载数据，请求所需的认证信息必须指定作为URL的一部分。
+ @attention <li>如果需要认证信息才能下载数据，请求所需的认证信息必须指定作为URL的一部分。
             <li>如果认证信息失效，或者证书丢失，连接将尝试以没有认证信息的方式进行。
  @note 适用于iOS 5.0及之后版本，取消使用[NSData canclePreviousDownload:yourURL] 或者
        [NSData cancleAllDownload]。
@@ -205,6 +204,25 @@ typedef NS_ENUM(NSInteger, NSDataCachePolicy) {
             progressBlock:(RemoteDataDownloadProgressBlock) progress
           completionBlock:(RemoteDataDownloadFinishBlock)completion;
 
+/**
+ 从网络异步下载NSData
+ @param url 图片得url地址，不能为nil
+ @param completion 下载完成后block
+ @param timeoutInterval 超时时间，超过该时间按超时失败处理。该方法可能非主线程，需要更新UI请在主线程中处理。
+ @param cachePolicy 缓存策略
+ @param directoryPath 文件缓存所在的文件夹地址
+ @attention <li>如果需要认证信息才能下载数据，请求所需的认证信息必须指定作为URL的一部分。
+            <li>如果认证信息失效，或者证书丢失，连接将尝试以没有认证信息的方式进行。
+ @note 适用于iOS 5.0及之后版本，取消使用[NSData canclePreviousDownload:yourURL] 或者
+       [NSData cancleAllDownload]。
+ */
+
++ (void)dataWithRemoteURL:(NSURL *) url
+          timeoutInterval:(NSTimeInterval) timeoutInterval
+              cachePolicy:(NSDataCachePolicy) cachePolicy
+       cacheDirectoryPath:(NSString*) directoryPath
+            progressBlock:(RemoteDataDownloadProgressBlock) progress
+          completionBlock:(RemoteDataDownloadFinishBlock) completion;
 
 /**
  取消指定的下载任务

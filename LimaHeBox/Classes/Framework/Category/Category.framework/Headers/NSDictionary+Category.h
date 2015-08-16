@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 Sean. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "CategoryDefine.h"
 
 #pragma mark NSDictionary (DictionaryEmpty)
 @interface NSDictionary (DictionaryEmpty)

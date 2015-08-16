@@ -13,6 +13,26 @@
 
 @end
 
+@implementation PPQNetWorkURLs (LoginRegister)
+
++ (NSString *)login {
+    return [NSString stringWithFormat:@"%@%@",APIHOST,LOGIN];
+}
+
++ (NSString *)registerBox {
+    return [NSString stringWithFormat:@"%@%@",APIHOST,REGISTER];
+}
+
++ (NSString *)getNewsListWithPage:(NSInteger)page pageSize:(NSInteger)pageSize {
+    return [NSString stringWithFormat:@"%@%@?pagenumber=%ld&pagesize=%ld",APIHOST,NEWSLIST,page,pageSize];
+}
+
++ (NSString *)getNewsInfoWithId:(NSString *)newsId {
+    return [NSString stringWithFormat:@"%@%@?id=%@",APIHOST,NEWSINFO,newsId];
+}
+
+@end
+
 
 
 

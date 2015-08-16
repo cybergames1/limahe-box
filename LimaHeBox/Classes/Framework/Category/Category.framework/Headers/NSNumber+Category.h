@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 Sean. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "CategoryDefine.h"
 
 #pragma mark NSNumber (RandomNumber) 随机数
 @interface NSNumber (RandomNumber)

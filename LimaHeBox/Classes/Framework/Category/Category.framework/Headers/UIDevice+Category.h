@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 Sean. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "CategoryDefine.h"
 
 #pragma mark UIDevice （Platform）设备系统信息
 @interface UIDevice (UIDevicePlatform)
@@ -24,7 +24,8 @@
  @param systemVersion指定的值，比如"4.0"
  */
 + (BOOL)isCurrentSystemVersionLowerThan:(NSString*)systemVersion;
-+ (BOOL)IOS8System; //系统为ios8.0.0 ~ 8.9.9
++ (BOOL)IOS9System; //系统为ios9.0.0 ~
++ (BOOL)IOS8System; //系统为ios8.0.0 ~ 8.3
 + (BOOL)IOS7System; //系统为ios7.0.0~7.9.9
 + (BOOL)IOS6System; //系统为ios6.0.0~6.9.9
 
@@ -41,8 +42,18 @@
 + (BOOL)Iphone4StyleDevice;
 /** 手机屏幕尺寸是 iphone5、iphone5s 类型的手机 */
 + (BOOL)Iphone5StyleDevice;
-/** 手机屏幕尺寸是 iphone6、iphone6+ 类型的手机 */
+/** 手机屏幕尺寸是 iphone6 类型的手机 */
 + (BOOL)Iphone6StyleDevice;
+/** 手机屏幕尺寸是 iphone6 Plus 类型的手机 */
++ (BOOL)Iphone6PlusStyleDevice;
+
+@end
+
+#pragma mark - 
+@interface UIDevice (UIDevideDescription)
+/**  */
+- (NSString*) orientationDescription;
+
 @end
 
 #pragma mark UIDevice （DiskSpace）磁盘大小

@@ -6,28 +6,62 @@
 //  Copyright (c) 2014年 Sean. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "CategoryDefine.h"
 
 #pragma mark UIApplation (DirectoryPath) app主目录访问及文件创建
 @interface UIApplication (ApplicationDirectoryPath)
 
 /** 
  获取app在沙盒的Library文件夹地址 
+ @details 结构为：/var/mobile/Applications/...../Library
  */
 + (NSString*) pathForLibraryDirectory;
 /** 
+ 获取app在系统沙盒默认缓存Caches文件夹的地址
+ @details 结构为：/var/mobile/Applications/...../Library/Caches
+ */
++ (NSString*) pathForCachesDirectory;
+
+/**
+ 获取app在系统沙盒图片缓存ImageCaches文件夹的地址
+ @details 结构为：/var/mobile/Applications/...../Library/Caches/ImageCaches
+ */
++ (NSString*) pathForImageCacheDirectory;
+
+/**
+ 获取app在系统沙盒Data缓存DataCaches文件夹的地址
+ @details 结构为：/var/mobile/Applications/...../Library/Caches/DataCaches
+ */
++ (NSString*) pathForDataCacheDirectory;
+
+/**
+ 获取app在系统沙盒默认缓存Crash log文件夹的地址
+ @details 结构为：/var/mobile/Applications/...../Library/CrashLogs
+ */
++ (NSString*) pathForCrashLogsDirectory;
+
+/** 
+ 获取app在系统沙盒默认缓存Preferences文件夹的地址
+ @details 结构为：/var/mobile/Applications/...../Library/Preferences
+ */
++ (NSString*) pathForPreferenceDirectory;
+
+/** 
  获取app在沙盒的Document文件夹地址 
  @note 默认会设置Document中存储的文件不支持iCloud和Itunes同步。
+ @details 结构为：/var/mobile/Applications/...../Document 
  */
 + (NSString*) pathForDocumentDirectory;
 
 /**
- 获取app在沙盒的Temp文件夹地址，一般为/var/mobile/Applications/...../tmp/
+ 获取app在沙盒的Temp文件夹地址，
+ @details 结构为：/var/mobile/Applications/...../tmp
  */
 + (NSString*) pathForTempDirectory;
 
 /**
- 获取根目录的路径，一般为/var/mobile/Applications/.....
+ 获取根目录的路径
+ @details 结构为：/var/mobile/Applications/.....
  */
 + (NSString*) pathForHomeDirectory;
 
@@ -61,15 +95,25 @@ typedef void(^DirectoryProgressBlock) (CGFloat progress);
  
  @detail 如果该文件夹中还包括多个文件夹，每个文件夹只算做一个文件
  */
-+ (NSInteger) directoryFilesCountAtPath:(NSString *)path;
++ (NSInteger) directoryFilesCount:(NSString *)path;
 
 /**
  @details 计算指定文件/文件夹的大小
  @param path 文件夹的路径
  @param finishBlock 完成的block
+ @note 由于操作不能中断，如果block付值，在完成之前请不要销毁block
  */
 + (void) directorySpaceSize:(NSString *)directoryPath
                 finishBlock:(DirectoryFinishBlock) finishBlock;
+
+/**
+ @details 计算指定多个文件/文件夹的大小
+ @param path 多个文件夹的数组
+ @param finishBlock 完成的block
+ @note 由于操作不能中断，如果block付值，在完成之前请不要销毁block
+ */
++ (void) directorySpaceSizeForPathes:(NSArray *)directoryPathes
+                         finishBlock:(DirectoryFinishBlock) finishBlock;
 
 /**
  @details 计算指定文件的大小
@@ -78,7 +122,9 @@ typedef void(^DirectoryProgressBlock) (CGFloat progress);
  @note filePath不能为文件夹的路径，否则将返回错误的大小，如果要计算文件夹的大小，请使用
  [UIApplication filesSpaceAtPath:finishBlock:]
  */
-+ (long long) fileSizeAtPath:(NSString*) filePath;
++ (NSUInteger) fileSizeAtPath:(NSString *) filePath
+                    fileCount:(NSUInteger *) fileCount
+                        error:(NSError **) error;
 
 /**
  @details 删除指定路径文件夹下所有的文件
@@ -89,9 +135,9 @@ typedef void(^DirectoryProgressBlock) (CGFloat progress);
  @warning finish   删除是否完成，如果YES=finish，标识文件全部删除
  @warning error    错误信息.如果error不为nil，表示有错误发生，删除结束
  */
-+ (void) deleteFilesAtDirectoryPath:(NSString*) directoryPath
-                      progressBlock:(DirectoryProgressBlock) progressBlock
-                        finishBlock:(DirectoryFinishBlock) finishBlock;
++ (void) deleteFilesForPath:(NSString*) directoryPath
+              progressBlock:(DirectoryProgressBlock) progressBlock
+                finishBlock:(DirectoryFinishBlock) finishBlock;
 
 /**
  @details 删除指定路径文件夹下所有的文件
@@ -101,28 +147,42 @@ typedef void(^DirectoryProgressBlock) (CGFloat progress);
  @warning progress 删除进度，每删除一个文件，都会更新进度值
  @warning finish   删除是否完成，如果YES=finish，标识文件全部删除
  @warning error    错误信息.如果error不为nil，表示有错误发生，删除结束
- 
+ @note 由于操作不能中断，如果block付值，在完成之前请不要销毁block
  @code
-     [UIApplication deleteFilesAtDirectoryPath:_yourDirPath lastModifiDate:[NSDate dateWithTimeIntervalSinceNow:0] progressBlock:^(CGFloat progress) 
-     {
-         // print progress
-     } 
-     finishBlock:^(NSUInteger fileCount, NSUInteger fileSize, NSError *error) 
-     {
-         if (error) {
-         
+     [UIApplication deleteFiles:_yourDirPath lastModifiDate:[NSDate dateWithTimeIntervalSinceNow:0] progressBlock:^(CGFloat progress)
+         {
+             // print progress
          }
-         else{
-         // fileCount=file count be deleted
-         // fileSize= all deleted files's size
+     finishBlock:^(NSUInteger fileCount, NSUInteger fileSize, NSError *error)
+         {
+             if (error) {
+             
+             }
+             else{
+                 // fileCount=file count be deleted
+                 // fileSize= all deleted files's size
          }
      }];
  @endcode
  */
-+ (void) deleteFilesAtDirectoryPath:(NSString*) directoryPath
-                     lastModifiDate:(NSDate*) lastModifiDate
-                      progressBlock:(DirectoryProgressBlock) progressBlock
-                        finishBlock:(DirectoryFinishBlock) finishBlock;
++ (void) deleteFilesForPath:(NSString*) directoryPath
+             lastModifiDate:(NSDate*) lastModifiDate
+              progressBlock:(DirectoryProgressBlock) progressBlock
+                finishBlock:(DirectoryFinishBlock) finishBlock;
+/**
+ @details 删除指定路径文件夹下所有的文件
+ @param pathes 多个文件夹的路径
+ @param progressBlock 进度block
+ @param lastModifiDate 文件最后访问时间。访问时间在该日期之前的都会被清除
+ @warning progress 删除进度，每删除一个文件，都会更新进度值
+ @warning finish   删除是否完成，如果YES=finish，标识文件全部删除
+ @warning error    错误信息.如果error不为nil，表示有错误发生，删除结束
+ @note 由于操作不能中断，如果block付值，在完成之前请不要销毁block
+ */
++ (void) deleteFilesAtPathes:(NSArray*) pathes
+              lastModifiDate:(NSDate*) lastModifiDate
+               progressBlock:(DirectoryProgressBlock) progressBlock
+                 finishBlock:(DirectoryFinishBlock) finishBlock;
 
 // Notifination
 extern NSString* const kDirectoryDeleteProgressNotifination; //清理文件进度的通知
@@ -172,6 +232,16 @@ extern NSString* const kDirectoryProgressKey;      //进度
 + (NSString*) applationMinimumOSVersion;
 
 @end
+
+#pragma mark - visibleViewController
+@interface UIApplication (visibleViewController)
+
+/** 当前正在显示的，处于最上面的 viewController */
++ (UIViewController*) visibleViewController;
+
+@end
+
+
 
 
 

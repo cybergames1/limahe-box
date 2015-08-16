@@ -17,8 +17,29 @@
 @end
 
 
+#pragma mark - 登录注册
+@interface PPQNetWorkURLs (LoginRegister)
 
+//API的host
+#define APIHOST  @"http://118.192.8.126:8080"
 
+//登录
+#define LOGIN @"/user/login"
++ (NSString *)login;
+
+//注册
+#define REGISTER @"/user/reg"
++ (NSString *)registerBox;
+
+//获取新闻列表
+#define NEWSLIST @"/news/getlist"
++ (NSString *)getNewsListWithPage:(NSInteger)page pageSize:(NSInteger)pageSize;
+
+//新闻内容
+#define NEWSINFO @"/news/getnewsinfo"
++ (NSString *)getNewsInfoWithId:(NSString *)newsId;
+
+@end
 
 
 

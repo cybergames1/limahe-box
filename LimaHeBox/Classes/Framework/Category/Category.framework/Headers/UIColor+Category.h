@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 Sean. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "CategoryDefine.h"
 
 #pragma mark UIColor (HexColor) 16进制颜色
 @interface UIColor (HexColor)
@@ -19,8 +19,8 @@
  */
 + (UIColor *)colorWithHex:(UInt32)hex alpha:(CGFloat)alpha;
 /**
- @details 初始化16进制字符串类型的Color
- @param hexString 字符串格式的16进制的颜色值
+ @details 初始化16进制字符串类型的Color。
+ @param hexString 字符串格式的16进制的颜色值，支持@“#123456”、 @“0x123456”、 @“123456”三种格式
  @return 返回UIColor
  */
 + (UIColor *)colorWithHexString:(id)hexString;
@@ -59,6 +59,12 @@
 
 /** 颜色的alpha值,取值范围0.0~1.0  */
 @property (nonatomic, readonly) CGFloat alpha;
+
+/** 颜色RGBA参数值 */
+- (NSString*) colorRGBAInfo;
+
+/** 根据指定的颜色和 alpha 生成新的颜色 */
++ (UIColor*) colorWithColor:(UIColor*) color alpha:(CGFloat) alpha;
 
 @end
 

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 Sean. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "CategoryDefine.h"
 
 #pragma mark NSDate (Utilities) 日期快速生成与判断
 @interface NSDate (NSDateUtilities)

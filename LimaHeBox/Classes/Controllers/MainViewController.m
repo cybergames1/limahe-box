@@ -9,7 +9,7 @@
 #import "MainViewController.h"
 #import "MainMenuView.h"
 #import "MessageViewController.h"
-#import "LRSuperViewController.h"
+#import "LoginViewController.h"
 #import "WeatherAPI.h"
 #import "WeatherView.h"
 #import "CommonTools.h"
@@ -134,7 +134,7 @@
 }
 
 - (void)leftBarAction {
-    LRSuperViewController *controller = [[LRSuperViewController alloc] init];
+    LoginViewController *controller = [[LoginViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
     [self.navigationController presentViewController:nav animated:YES completion:nil];
     [controller release];
