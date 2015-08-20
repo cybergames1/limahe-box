@@ -83,7 +83,6 @@
 		DC3F17F21B30358200F02C10 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3F17F11B30358200F02C10 /* MainViewController.m */; };
 		DC3F17F51B30376000F02C10 /* MainMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3F17F41B30376000F02C10 /* MainMenuView.m */; };
 		DC3F17F81B31194D00F02C10 /* BoxSuperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3F17F71B31194D00F02C10 /* BoxSuperViewController.m */; };
-		DC3F17FB1B314D2D00F02C10 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3F17FA1B314D2D00F02C10 /* MessageViewController.m */; };
 		DC3F17FF1B31505500F02C10 /* LRSuperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3F17FE1B31505500F02C10 /* LRSuperViewController.m */; };
 		DC3F18021B31523600F02C10 /* Category.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3F18011B31523600F02C10 /* Category.framework */; };
 		DC3F18041B315B0C00F02C10 /* common_icon_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC3F18031B315B0C00F02C10 /* common_icon_back@2x.png */; };
@@ -95,6 +94,15 @@
 		DCCE822B1B7F9A68000EF913 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCE822A1B7F9A68000EF913 /* LoginViewController.m */; };
 		DCCE82321B807F54000EF913 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCE82311B807F54000EF913 /* RegisterViewController.m */; };
 		DCCE82351B808071000EF913 /* RLCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCE82341B808071000EF913 /* RLCell.m */; };
+		DCCE82431B85D81D000EF913 /* AccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCE82421B85D81D000EF913 /* AccountManager.m */; };
+		DCCE82481B85DD31000EF913 /* LRTools.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCE82471B85DD31000EF913 /* LRTools.m */; };
+		DCCE824C1B85E0A9000EF913 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCE824B1B85E0A9000EF913 /* UserViewController.m */; };
+		DCCE824F1B85E675000EF913 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCE824E1B85E675000EF913 /* UserInfoViewController.m */; };
+		DCCE82521B85EA4B000EF913 /* BlueToothSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCE82511B85EA4B000EF913 /* BlueToothSettingViewController.m */; };
+		DCEA69751B86186B008FF3E2 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA69741B86186B008FF3E2 /* ShareViewController.m */; };
+		DCEA69791B8618A0008FF3E2 /* VideoShareInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA69781B8618A0008FF3E2 /* VideoShareInputView.m */; };
+		DCEA697C1B8618D7008FF3E2 /* FTUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCEA697B1B8618D7008FF3E2 /* FTUIKit.framework */; };
+		DCEA69801B862000008FF3E2 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA697F1B862000008FF3E2 /* MessageViewController.m */; };
 		DCFAC4611B38F76C0062D479 /* left.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC42A1B38F76C0062D479 /* left.png */; };
 		DCFAC4621B38F76C0062D479 /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC42B1B38F76C0062D479 /* loading.png */; };
 		DCFAC4631B38F76C0062D479 /* main_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC42C1B38F76C0062D479 /* main_bg@2x.png */; };
@@ -342,8 +350,6 @@
 		DC3F17F41B30376000F02C10 /* MainMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuView.m; sourceTree = "<group>"; };
 		DC3F17F61B31194D00F02C10 /* BoxSuperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxSuperViewController.h; sourceTree = "<group>"; };
 		DC3F17F71B31194D00F02C10 /* BoxSuperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoxSuperViewController.m; sourceTree = "<group>"; };
-		DC3F17F91B314D2D00F02C10 /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
-		DC3F17FA1B314D2D00F02C10 /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
 		DC3F17FD1B31505500F02C10 /* LRSuperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRSuperViewController.h; sourceTree = "<group>"; };
 		DC3F17FE1B31505500F02C10 /* LRSuperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSuperViewController.m; sourceTree = "<group>"; };
 		DC3F18011B31523600F02C10 /* Category.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Category.framework; sourceTree = "<group>"; };
@@ -364,6 +370,24 @@
 		DCCE82311B807F54000EF913 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		DCCE82331B808071000EF913 /* RLCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLCell.h; sourceTree = "<group>"; };
 		DCCE82341B808071000EF913 /* RLCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLCell.m; sourceTree = "<group>"; };
+		DCCE82411B85D81D000EF913 /* AccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountManager.h; sourceTree = "<group>"; };
+		DCCE82421B85D81D000EF913 /* AccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountManager.m; sourceTree = "<group>"; };
+		DCCE82441B85DC27000EF913 /* UserDefaultConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDefaultConstant.h; sourceTree = "<group>"; };
+		DCCE82461B85DD31000EF913 /* LRTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRTools.h; sourceTree = "<group>"; };
+		DCCE82471B85DD31000EF913 /* LRTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRTools.m; sourceTree = "<group>"; };
+		DCCE824A1B85E0A9000EF913 /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
+		DCCE824B1B85E0A9000EF913 /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
+		DCCE824D1B85E675000EF913 /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
+		DCCE824E1B85E675000EF913 /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
+		DCCE82501B85EA4B000EF913 /* BlueToothSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueToothSettingViewController.h; sourceTree = "<group>"; };
+		DCCE82511B85EA4B000EF913 /* BlueToothSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueToothSettingViewController.m; sourceTree = "<group>"; };
+		DCEA69731B86186B008FF3E2 /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
+		DCEA69741B86186B008FF3E2 /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
+		DCEA69771B8618A0008FF3E2 /* VideoShareInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoShareInputView.h; sourceTree = "<group>"; };
+		DCEA69781B8618A0008FF3E2 /* VideoShareInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoShareInputView.m; sourceTree = "<group>"; };
+		DCEA697B1B8618D7008FF3E2 /* FTUIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FTUIKit.framework; sourceTree = "<group>"; };
+		DCEA697E1B862000008FF3E2 /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
+		DCEA697F1B862000008FF3E2 /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
 		DCFAC42A1B38F76C0062D479 /* left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left.png; sourceTree = "<group>"; };
 		DCFAC42B1B38F76C0062D479 /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading.png; sourceTree = "<group>"; };
 		DCFAC42C1B38F76C0062D479 /* main_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_bg@2x.png"; sourceTree = "<group>"; };
@@ -474,6 +498,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC3F17C41B2FDFE400F02C10 /* libz.1.2.5.dylib in Frameworks */,
+				DCEA697C1B8618D7008FF3E2 /* FTUIKit.framework in Frameworks */,
 				DC3F17C21B2FDFD900F02C10 /* CoreGraphics.framework in Frameworks */,
 				DC3F18021B31523600F02C10 /* Category.framework in Frameworks */,
 				DC3F17C01B2FDFD300F02C10 /* SystemConfiguration.framework in Frameworks */,
@@ -558,6 +583,7 @@
 		DC3F17121B2FDEEE00F02C10 /* LimaHeBox */ = {
 			isa = PBXGroup;
 			children = (
+				DCCE82401B85D808000EF913 /* DataManager */,
 				DC3F17EE1B302D0100F02C10 /* Controllers */,
 				DC3F17EF1B302D0100F02C10 /* Views */,
 				DCFAC4DD1B3ABDB00062D479 /* Models */,
@@ -607,6 +633,7 @@
 		DC3F17391B2FDF3000F02C10 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
+				DCCE82441B85DC27000EF913 /* UserDefaultConstant.h */,
 				DC3F173A1B2FDF3000F02C10 /* NetworkConstant.h */,
 			);
 			name = Constant;
@@ -752,6 +779,7 @@
 		DC3F17941B2FDF8900F02C10 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				DCEA697A1B8618D7008FF3E2 /* FTUIKit */,
 				DCFAC4E61B3CFC200062D479 /* AlarmClock */,
 				DC0237DF1B32D7AF00245501 /* WeatherAPI */,
 				DC3F18001B31523600F02C10 /* Category */,
@@ -856,6 +884,9 @@
 		DC3F17EE1B302D0100F02C10 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DCEA697D1B861FDD008FF3E2 /* Message */,
+				DCEA69721B861858008FF3E2 /* Share */,
+				DCCE82491B85DFFC000EF913 /* Profile */,
 				DC1DFE681B5CC8AA00B86732 /* BlueTooth */,
 				DC0A3C501B57BC970048774B /* Travel */,
 				DCFAC4E41B3CF9A50062D479 /* Found */,
@@ -865,8 +896,6 @@
 				DC3F17F71B31194D00F02C10 /* BoxSuperViewController.m */,
 				DC3F17F01B30358200F02C10 /* MainViewController.h */,
 				DC3F17F11B30358200F02C10 /* MainViewController.m */,
-				DC3F17F91B314D2D00F02C10 /* MessageViewController.h */,
-				DC3F17FA1B314D2D00F02C10 /* MessageViewController.m */,
 				DC062AFF1B4A583C001D969A /* UIViewController+BackButtonHandler.h */,
 				DC062B001B4A583C001D969A /* UIViewController+BackButtonHandler.m */,
 			);
@@ -895,6 +924,7 @@
 			children = (
 				DC3F17FD1B31505500F02C10 /* LRSuperViewController.h */,
 				DC3F17FE1B31505500F02C10 /* LRSuperViewController.m */,
+				DCCE82451B85DCF2000EF913 /* manager */,
 				DCCE82251B7F9805000EF913 /* views */,
 				DCCE82291B7F9A68000EF913 /* LoginViewController.h */,
 				DCCE822A1B7F9A68000EF913 /* LoginViewController.m */,
@@ -939,6 +969,74 @@
 				DCCE82271B7F9842000EF913 /* RegisterButton.m */,
 			);
 			path = views;
+			sourceTree = "<group>";
+		};
+		DCCE82401B85D808000EF913 /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				DCCE82411B85D81D000EF913 /* AccountManager.h */,
+				DCCE82421B85D81D000EF913 /* AccountManager.m */,
+			);
+			name = DataManager;
+			path = Classes/DataManager;
+			sourceTree = "<group>";
+		};
+		DCCE82451B85DCF2000EF913 /* manager */ = {
+			isa = PBXGroup;
+			children = (
+				DCCE82461B85DD31000EF913 /* LRTools.h */,
+				DCCE82471B85DD31000EF913 /* LRTools.m */,
+			);
+			path = manager;
+			sourceTree = "<group>";
+		};
+		DCCE82491B85DFFC000EF913 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				DCCE824A1B85E0A9000EF913 /* UserViewController.h */,
+				DCCE824B1B85E0A9000EF913 /* UserViewController.m */,
+				DCCE824D1B85E675000EF913 /* UserInfoViewController.h */,
+				DCCE824E1B85E675000EF913 /* UserInfoViewController.m */,
+				DCCE82501B85EA4B000EF913 /* BlueToothSettingViewController.h */,
+				DCCE82511B85EA4B000EF913 /* BlueToothSettingViewController.m */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		DCEA69721B861858008FF3E2 /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				DCEA69731B86186B008FF3E2 /* ShareViewController.h */,
+				DCEA69741B86186B008FF3E2 /* ShareViewController.m */,
+				DCEA69761B86187B008FF3E2 /* view */,
+			);
+			path = Share;
+			sourceTree = "<group>";
+		};
+		DCEA69761B86187B008FF3E2 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				DCEA69771B8618A0008FF3E2 /* VideoShareInputView.h */,
+				DCEA69781B8618A0008FF3E2 /* VideoShareInputView.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		DCEA697A1B8618D7008FF3E2 /* FTUIKit */ = {
+			isa = PBXGroup;
+			children = (
+				DCEA697B1B8618D7008FF3E2 /* FTUIKit.framework */,
+			);
+			path = FTUIKit;
+			sourceTree = "<group>";
+		};
+		DCEA697D1B861FDD008FF3E2 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				DCEA697E1B862000008FF3E2 /* MessageViewController.h */,
+				DCEA697F1B862000008FF3E2 /* MessageViewController.m */,
+			);
+			path = Message;
 			sourceTree = "<group>";
 		};
 		DCFAC4291B38F76C0062D479 /* Main */ = {
@@ -1309,8 +1407,9 @@
 				DC3F178E1B2FDF3000F02C10 /* SDWebImageManager.m in Sources */,
 				DCFAC4991B392E2E0062D479 /* WeatherView.m in Sources */,
 				DC3F17F21B30358200F02C10 /* MainViewController.m in Sources */,
+				DCEA69791B8618A0008FF3E2 /* VideoShareInputView.m in Sources */,
+				DCEA69801B862000008FF3E2 /* MessageViewController.m in Sources */,
 				DC3F17B01B2FDF8A00F02C10 /* ASIFormDataRequest.m in Sources */,
-				DC3F17FB1B314D2D00F02C10 /* MessageViewController.m in Sources */,
 				DC3F17901B2FDF3000F02C10 /* UIImageView+WebCache.m in Sources */,
 				DC3F17B11B2FDF8A00F02C10 /* ASIHTTPRequest.m in Sources */,
 				DCFAC4F21B3D2B080062D479 /* FoundViewController.m in Sources */,
@@ -1331,7 +1430,9 @@
 				DC3F17841B2FDF3000F02C10 /* TickerTradeDS.m in Sources */,
 				DCFAC4E31B3BA9E80062D479 /* ExpressResultViewController.m in Sources */,
 				DC3F171C1B2FDEEE00F02C10 /* ViewController.m in Sources */,
+				DCCE82431B85D81D000EF913 /* AccountManager.m in Sources */,
 				DC3F17821B2FDF3000F02C10 /* SingleTickerDS.m in Sources */,
+				DCCE82481B85DD31000EF913 /* LRTools.m in Sources */,
 				DC3F17801B2FDF3000F02C10 /* PrivatePlaceOrderDS.m in Sources */,
 				DC3F177C1B2FDF3000F02C10 /* ExchangeListDS.m in Sources */,
 				DC3F17871B2FDF3000F02C10 /* UIImageLoaderView.m in Sources */,
@@ -1341,8 +1442,10 @@
 				DC3F177F1B2FDF3000F02C10 /* PrivateOrderStatusDS.m in Sources */,
 				DCBEF8DA1B438B8A00FA72D7 /* ACDateViewController.m in Sources */,
 				DC3F17911B2FDF3000F02C10 /* CommonTools.m in Sources */,
+				DCEA69751B86186B008FF3E2 /* ShareViewController.m in Sources */,
 				DCFAC4DC1B3AA5630062D479 /* ExpressListViewController.m in Sources */,
 				DC3F178C1B2FDF3000F02C10 /* SDWebImageDecoder.m in Sources */,
+				DCCE824C1B85E0A9000EF913 /* UserViewController.m in Sources */,
 				DC3F178F1B2FDF3000F02C10 /* SDWebImagePrefetcher.m in Sources */,
 				DC3F17EC1B302CBF00F02C10 /* QuadCurveMenu.m in Sources */,
 				DC3F17B31B2FDF8A00F02C10 /* ASINetworkQueue.m in Sources */,
@@ -1363,6 +1466,8 @@
 				DC3F17161B2FDEEE00F02C10 /* main.m in Sources */,
 				DC0A3C5A1B58D32B0048774B /* PedoMeterView.m in Sources */,
 				DC3F178D1B2FDF3000F02C10 /* SDWebImageDownloader.m in Sources */,
+				DCCE82521B85EA4B000EF913 /* BlueToothSettingViewController.m in Sources */,
+				DCCE824F1B85E675000EF913 /* UserInfoViewController.m in Sources */,
 				DC3F17851B2FDF3000F02C10 /* PPQDataSource.m in Sources */,
 				DC3F17B41B2FDF8A00F02C10 /* Reachability.m in Sources */,
 				DC3F17AE1B2FDF8A00F02C10 /* ASIDataDecompressor.m in Sources */,
@@ -1495,15 +1600,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LimaHeBox/Classes/Framework/Category",
+					"$(PROJECT_DIR)/LimaHeBox/Classes/Framework/FTUIKit",
 				);
 				INFOPLIST_FILE = LimaHeBox/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "c4c99acf-4f67-46fd-a288-32520590d94b";
 			};
 			name = Debug;
 		};
@@ -1516,11 +1624,13 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LimaHeBox/Classes/Framework/Category",
+					"$(PROJECT_DIR)/LimaHeBox/Classes/Framework/FTUIKit",
 				);
 				INFOPLIST_FILE = LimaHeBox/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "c4c99acf-4f67-46fd-a288-32520590d94b";
 			};
 			name = Release;
 		};

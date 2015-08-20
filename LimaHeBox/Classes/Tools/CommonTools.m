@@ -766,6 +766,13 @@ static NSString* rootPath = nil;
     return root;
 }
 
+//-------------------------------------------------
++ (NSString *)pathForStorageUser {
+    NSString *root = [CommonTools pathForApplicationRoot];
+    root = [root stringByAppendingPathComponent:@"StorageUser"];
+    return root;
+}
+
 + (void)postNotificationName:(NSString *)name
                       object:(id)object
                     userInfo:(NSDictionary *)dic

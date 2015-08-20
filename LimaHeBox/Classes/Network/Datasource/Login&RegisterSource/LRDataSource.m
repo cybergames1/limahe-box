@@ -36,7 +36,6 @@
     
     [request addPostValue:userName forKey:@"username"];
     [request addPostValue:password forKey:@"password"];
-    [request addPostValue:phone forKey:@"mobile"];
     
     self.request = request;
     self.request.isRunOnBackground = YES;

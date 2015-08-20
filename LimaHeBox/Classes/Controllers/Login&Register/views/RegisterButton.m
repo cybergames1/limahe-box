@@ -53,7 +53,7 @@
     }
 }
 
-+ (void)showInView:(UIView *)view
++ (RegisterButton *)showInView:(UIView *)view
                frame:(CGRect)frame
              title:(NSString *)title
         titleColor:(UIColor *)titleColor
@@ -72,82 +72,81 @@
     [button.layer setCornerRadius:frame.size.height/2.0];
     [button.layer setMasksToBounds:YES];
     [view addSubview:button];
-    [button release];
     
     //有边框的加边框
     if (boardColor) {
         [button.layer setBorderColor:boardColor.CGColor];
         [button.layer setBorderWidth:1.0];
     }
-    
+    return [button autorelease];
 }
 
-+ (void)showGreenInView:(UIView *)view
-               top:(CGFloat)top
-             title:(NSString *)title
-            target:(id)target
-            action:(SEL)action
++ (RegisterButton *)showGreenInView:(UIView *)view
+                                top:(CGFloat)top
+                              title:(NSString *)title
+                             target:(id)target
+                             action:(SEL)action
 {
     CGFloat width = CGRectGetWidth(view.frame)-2*Width_Rate*CGRectGetWidth(view.frame);
     CGRect rect = CGRectMake(CGRectGetWidth(view.frame)*Width_Rate, top, width, width*Height_Rate);
-    [RegisterButton showInView:view
-                         frame:rect
-                         title:title
-                    titleColor:[UIColor whiteColor]
-               backgroundColor:GreenColor
-                    boardColor:nil
-                        target:target
-                        action:action];
+    return [RegisterButton showInView:view
+                                frame:rect
+                                title:title
+                           titleColor:[UIColor whiteColor]
+                      backgroundColor:GreenColor
+                           boardColor:nil
+                               target:target
+                               action:action];
 }
 
-+ (void)showGreenInView:(UIView *)view
-                  frame:(CGRect)frame
-                  title:(NSString *)title
-                 target:(id)target
-                 action:(SEL)action
++ (RegisterButton *)showGreenInView:(UIView *)view
+                              frame:(CGRect)frame
+                              title:(NSString *)title
+                             target:(id)target
+                             action:(SEL)action
 {
-    [self showInView:view
-               frame:frame
-               title:title
-          titleColor:[UIColor whiteColor]
-     backgroundColor:GreenColor
-          boardColor:GreenColor
-              target:target
-              action:action];
+    return [self showInView:view
+                      frame:frame
+                      title:title
+                 titleColor:[UIColor whiteColor]
+            backgroundColor:GreenColor
+                 boardColor:GreenColor
+                     target:target
+                     action:action];
 }
 
-+ (void)showWhiteInView:(UIView *)view
-                    top:(CGFloat)top
-                  title:(NSString *)title
-                 target:(id)target
-                 action:(SEL)action
++ (RegisterButton *)showWhiteInView:(UIView *)view
+                                top:(CGFloat)top
+                              title:(NSString *)title
+                             target:(id)target
+                             action:(SEL)action
 {
     CGFloat width = CGRectGetWidth(view.frame)-2*Width_Rate*CGRectGetWidth(view.frame);
     CGRect rect = CGRectMake(CGRectGetWidth(view.frame)*Width_Rate, top, width, width*Height_Rate);
-    [RegisterButton showInView:view
-                         frame:rect
-                         title:title
-                    titleColor:[UIColor blackColor]
-               backgroundColor:[UIColor whiteColor]
-                    boardColor:nil
-                        target:target
-                        action:action];
+    return [RegisterButton showInView:view
+                                frame:rect
+                                title:title
+                           titleColor:[UIColor blackColor]
+                      backgroundColor:[UIColor whiteColor]
+                           boardColor:nil
+                               target:target
+                               action:action];
 }
 
-+ (void)showWhiteInView:(UIView *)view
-                  frame:(CGRect)frame
-                  title:(NSString *)title
-                 target:(id)target
-                 action:(SEL)action
++ (RegisterButton *)showWhiteInView:(UIView *)view
+                              frame:(CGRect)frame
+                              title:(NSString *)title
+                             target:(id)target
+                             action:(SEL)action
 {
-    [self showInView:view
-               frame:frame
-               title:title
-          titleColor:[UIColor whiteColor]
-     backgroundColor:[UIColor clearColor]
-          boardColor:[UIColor whiteColor]
-              target:target
-              action:action];
+    return [self showInView:view
+                      frame:frame
+                      title:title
+                 titleColor:[UIColor whiteColor]
+            backgroundColor:[UIColor clearColor]
+                 boardColor:[UIColor whiteColor]
+                     target:target
+                     action:action];
 }
 
 @end

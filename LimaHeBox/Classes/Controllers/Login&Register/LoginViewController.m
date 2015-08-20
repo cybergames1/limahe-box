@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "LRDataSource.h"
 #import "RegisterViewController.h"
+#import "AccountManager.h"
 
 @interface LoginViewController ()
 {

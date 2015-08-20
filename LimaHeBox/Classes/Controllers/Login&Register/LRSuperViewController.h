@@ -11,6 +11,7 @@
 #import "RegisterButton.h"
 #import "RLCell.h"
 #import <Category/Category.h>
+#import "LRTools.h"
 
 /**
  * 登陆注册的superViewController

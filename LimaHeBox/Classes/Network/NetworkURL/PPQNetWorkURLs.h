@@ -21,7 +21,7 @@
 @interface PPQNetWorkURLs (LoginRegister)
 
 //API的host
-#define APIHOST  @"http://118.192.8.126:8080"
+#define APIHOST  @"http://118.192.8.126:8080/apps_mn/index.php"
 
 //登录
 #define LOGIN @"/user/login"

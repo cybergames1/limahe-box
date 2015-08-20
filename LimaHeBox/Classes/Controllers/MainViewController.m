@@ -18,6 +18,8 @@
 #import "FoundViewController.h"
 #import "TravelViewController.h"
 #import "BlueToothViewController.h"
+#import "AccountManager.h"
+#import "UserViewController.h"
 
 @interface MainViewController () <MainMenuViewDelegate>
 
@@ -134,7 +136,7 @@
 }
 
 - (void)leftBarAction {
-    LoginViewController *controller = [[LoginViewController alloc] init];
+    UserViewController *controller = [[UserViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
     [self.navigationController presentViewController:nav animated:YES completion:nil];
     [controller release];

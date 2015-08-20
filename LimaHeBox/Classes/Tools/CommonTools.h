@@ -278,6 +278,9 @@ typedef NS_ENUM(NSInteger, PPQStatusBarType)
 /** 压缩后的视频主路径 */
 + (NSString *)pathForTempMovie;
 
+//------------------------------------
++ (NSString *)pathForStorageUser;
+
 #pragma mark 通知
 
 + (void)postNotificationName:(NSString *)name
