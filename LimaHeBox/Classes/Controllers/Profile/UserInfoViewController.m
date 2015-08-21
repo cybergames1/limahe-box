@@ -7,7 +7,6 @@
 //
 
 #import "UserInfoViewController.h"
-#import <Category/Category.h>
 #import "AccountManager.h"
 #import "CommonTools.h"
 #import "RegisterButton.h"

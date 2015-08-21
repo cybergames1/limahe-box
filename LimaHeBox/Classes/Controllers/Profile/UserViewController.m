@@ -7,9 +7,7 @@
 //
 
 #import "UserViewController.h"
-#import <Category/Category.h>
 #import "AccountManager.h"
-#import "CommonTools.h"
 #import "UserInfoViewController.h"
 #import "BlueToothSettingViewController.h"
 

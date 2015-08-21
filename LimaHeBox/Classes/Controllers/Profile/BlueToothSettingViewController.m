@@ -7,9 +7,7 @@
 //
 
 #import "BlueToothSettingViewController.h"
-#import <Category/Category.h>
 #import "AccountManager.h"
-#import "CommonTools.h"
 
 @interface BlueToothSettingViewController () <UITableViewDataSource,UITableViewDelegate>
 

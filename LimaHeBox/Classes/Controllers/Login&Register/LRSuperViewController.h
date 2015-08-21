@@ -10,7 +10,6 @@
 #import "PPQDataSource.h"
 #import "RegisterButton.h"
 #import "RLCell.h"
-#import <Category/Category.h>
 #import "LRTools.h"
 
 /**

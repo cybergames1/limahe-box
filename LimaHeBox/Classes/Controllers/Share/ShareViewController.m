@@ -8,7 +8,6 @@
 
 #import "ShareViewController.h"
 #import "VideoShareInputView.h"
-#import <Category/Category.h>
 #import "RegisterButton.h"
 
 @interface ShareViewController ()

@@ -7,7 +7,6 @@
 //
 
 #import "BoxSuperViewController.h"
-#import "CommonTools.h"
 
 @interface BoxSuperViewController ()
 

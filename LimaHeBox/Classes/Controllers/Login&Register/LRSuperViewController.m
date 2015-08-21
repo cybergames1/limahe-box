@@ -32,6 +32,10 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor redColor];
     
+    UIImageView *backgroundImageView = [[[UIImageView alloc] initWithFrame:self.view.bounds] autorelease];
+    backgroundImageView.image = [UIImage imageNamed:@"lr_bg"];
+    [self.view addSubview:backgroundImageView];
+    
     CGFloat width = (1-2*FieldEdge_Rate)*self.view.width;
     _textCell1 = [[[RLCell alloc] initWithFrame:CGRectMake(FieldEdge_Rate*self.view.width, 120, width, width*Height_Rate)] autorelease];
     _textCell1.textField.clearButtonMode = UITextFieldViewModeWhileEditing;

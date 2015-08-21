@@ -8,7 +8,7 @@
 
 #import "ComSuperViewController.h"
 
-@interface CompanyNewsListViewController : ComSuperViewController
+@interface CompanyNewsListViewController : ComSuperViewController <UITableViewDataSource,UITableViewDelegate>
 
 @end
 

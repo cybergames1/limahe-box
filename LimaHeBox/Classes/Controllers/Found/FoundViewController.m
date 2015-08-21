@@ -10,6 +10,8 @@
 #import "AlarmClockEditViewController.h"
 #import "PedoMeterViewController.h"
 #import "CompanyViewController.h"
+#import "TempViewController.h"
+#import "TeleControlViewController.h"
 
 @interface FoundViewController () <UITableViewDataSource,UITableViewDelegate>
 {
@@ -83,12 +85,22 @@
             break;
         case 2:
             //遥控旅行箱
+        {
+            TeleControlViewController *controller = [[TeleControlViewController alloc] init];
+            [self.navigationController pushViewController:controller animated:YES];
+            [controller release];
+        }
             break;
         case 3:
             //箱子GPS定位
             break;
         case 4:
             //温度/湿度监控
+        {
+            TempViewController *controller = [[TempViewController alloc] init];
+            [self.navigationController pushViewController:controller animated:YES];
+            [controller release];
+        }
             break;
         case 5:
             //闹钟

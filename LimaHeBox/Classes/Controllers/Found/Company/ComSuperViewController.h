@@ -8,7 +8,6 @@
 
 #import "BoxSuperViewController.h"
 #import "PPQDataSource.h"
-#import <Category/Category.h>
 
 @interface ComSuperViewController : BoxSuperViewController <PPQDataSourceDelegate>
 

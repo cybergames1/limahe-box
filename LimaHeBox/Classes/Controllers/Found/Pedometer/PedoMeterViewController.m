@@ -8,7 +8,6 @@
 
 #import "PedoMeterViewController.h"
 #import "PedoMeterView.h"
-#import <Category/Category.h>
 
 @interface PedoMeterViewController ()
 {

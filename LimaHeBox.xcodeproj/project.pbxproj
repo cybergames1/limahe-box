@@ -107,6 +107,25 @@
 		DCEA69871B8638EC008FF3E2 /* ComSuperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA69861B8638EC008FF3E2 /* ComSuperViewController.m */; };
 		DCEA698A1B863E79008FF3E2 /* CompanyNewsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA69891B863E79008FF3E2 /* CompanyNewsListViewController.m */; };
 		DCEA698D1B86C494008FF3E2 /* CompanyNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA698C1B86C494008FF3E2 /* CompanyNewsViewController.m */; };
+		DCEA69911B86D12A008FF3E2 /* lr_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA698F1B86D12A008FF3E2 /* lr_bg@2x.png */; };
+		DCEA69921B86D12A008FF3E2 /* lr_bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA69901B86D12A008FF3E2 /* lr_bg@3x.png */; };
+		DCEA69961B86D64F008FF3E2 /* TempViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA69951B86D64F008FF3E2 /* TempViewController.m */; };
+		DCEA69991B86D66B008FF3E2 /* TemperatureView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA69981B86D66B008FF3E2 /* TemperatureView.m */; };
+		DCEA69A31B86FBA7008FF3E2 /* f_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA699B1B86FBA7008FF3E2 /* f_back@2x.png */; };
+		DCEA69A41B86FBA7008FF3E2 /* f_dity@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA699C1B86FBA7008FF3E2 /* f_dity@2x.png */; };
+		DCEA69A51B86FBA7008FF3E2 /* f_flag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA699D1B86FBA7008FF3E2 /* f_flag@2x.png */; };
+		DCEA69A61B86FBA7008FF3E2 /* f_ok@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA699E1B86FBA7008FF3E2 /* f_ok@2x.png */; };
+		DCEA69A71B86FBA7008FF3E2 /* f_pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA699F1B86FBA7008FF3E2 /* f_pause@2x.png */; };
+		DCEA69A81B86FBA7008FF3E2 /* f_sound@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA69A01B86FBA7008FF3E2 /* f_sound@2x.png */; };
+		DCEA69A91B86FBA7008FF3E2 /* f_temp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA69A11B86FBA7008FF3E2 /* f_temp@2x.png */; };
+		DCEA69AE1B870A95008FF3E2 /* f_device@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA69AB1B870A95008FF3E2 /* f_device@2x.png */; };
+		DCEA69B01B870A95008FF3E2 /* f_service@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA69AD1B870A95008FF3E2 /* f_service@2x.png */; };
+		DCEA69B51B873505008FF3E2 /* f_bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA69B11B873505008FF3E2 /* f_bottom@2x.png */; };
+		DCEA69B61B873505008FF3E2 /* f_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA69B21B873505008FF3E2 /* f_left@2x.png */; };
+		DCEA69B71B873505008FF3E2 /* f_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA69B31B873505008FF3E2 /* f_right@2x.png */; };
+		DCEA69B81B873505008FF3E2 /* f_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA69B41B873505008FF3E2 /* f_top@2x.png */; };
+		DCEA69BC1B873571008FF3E2 /* TeleControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA69BB1B873571008FF3E2 /* TeleControlViewController.m */; };
+		DCEA69BF1B87358D008FF3E2 /* TeleControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA69BE1B87358D008FF3E2 /* TeleControlView.m */; };
 		DCFAC4611B38F76C0062D479 /* left.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC42A1B38F76C0062D479 /* left.png */; };
 		DCFAC4621B38F76C0062D479 /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC42B1B38F76C0062D479 /* loading.png */; };
 		DCFAC4631B38F76C0062D479 /* main_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC42C1B38F76C0062D479 /* main_bg@2x.png */; };
@@ -400,6 +419,29 @@
 		DCEA69891B863E79008FF3E2 /* CompanyNewsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyNewsListViewController.m; sourceTree = "<group>"; };
 		DCEA698B1B86C494008FF3E2 /* CompanyNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyNewsViewController.h; sourceTree = "<group>"; };
 		DCEA698C1B86C494008FF3E2 /* CompanyNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyNewsViewController.m; sourceTree = "<group>"; };
+		DCEA698F1B86D12A008FF3E2 /* lr_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lr_bg@2x.png"; sourceTree = "<group>"; };
+		DCEA69901B86D12A008FF3E2 /* lr_bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lr_bg@3x.png"; sourceTree = "<group>"; };
+		DCEA69941B86D64F008FF3E2 /* TempViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempViewController.h; sourceTree = "<group>"; };
+		DCEA69951B86D64F008FF3E2 /* TempViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempViewController.m; sourceTree = "<group>"; };
+		DCEA69971B86D66B008FF3E2 /* TemperatureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemperatureView.h; sourceTree = "<group>"; };
+		DCEA69981B86D66B008FF3E2 /* TemperatureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemperatureView.m; sourceTree = "<group>"; };
+		DCEA699B1B86FBA7008FF3E2 /* f_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "f_back@2x.png"; sourceTree = "<group>"; };
+		DCEA699C1B86FBA7008FF3E2 /* f_dity@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "f_dity@2x.png"; sourceTree = "<group>"; };
+		DCEA699D1B86FBA7008FF3E2 /* f_flag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "f_flag@2x.png"; sourceTree = "<group>"; };
+		DCEA699E1B86FBA7008FF3E2 /* f_ok@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "f_ok@2x.png"; sourceTree = "<group>"; };
+		DCEA699F1B86FBA7008FF3E2 /* f_pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "f_pause@2x.png"; sourceTree = "<group>"; };
+		DCEA69A01B86FBA7008FF3E2 /* f_sound@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "f_sound@2x.png"; sourceTree = "<group>"; };
+		DCEA69A11B86FBA7008FF3E2 /* f_temp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "f_temp@2x.png"; sourceTree = "<group>"; };
+		DCEA69AB1B870A95008FF3E2 /* f_device@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "f_device@2x.png"; sourceTree = "<group>"; };
+		DCEA69AD1B870A95008FF3E2 /* f_service@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "f_service@2x.png"; sourceTree = "<group>"; };
+		DCEA69B11B873505008FF3E2 /* f_bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "f_bottom@2x.png"; sourceTree = "<group>"; };
+		DCEA69B21B873505008FF3E2 /* f_left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "f_left@2x.png"; sourceTree = "<group>"; };
+		DCEA69B31B873505008FF3E2 /* f_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "f_right@2x.png"; sourceTree = "<group>"; };
+		DCEA69B41B873505008FF3E2 /* f_top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "f_top@2x.png"; sourceTree = "<group>"; };
+		DCEA69BA1B873571008FF3E2 /* TeleControlViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeleControlViewController.h; sourceTree = "<group>"; };
+		DCEA69BB1B873571008FF3E2 /* TeleControlViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeleControlViewController.m; sourceTree = "<group>"; };
+		DCEA69BD1B87358D008FF3E2 /* TeleControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeleControlView.h; sourceTree = "<group>"; };
+		DCEA69BE1B87358D008FF3E2 /* TeleControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeleControlView.m; sourceTree = "<group>"; };
 		DCFAC42A1B38F76C0062D479 /* left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left.png; sourceTree = "<group>"; };
 		DCFAC42B1B38F76C0062D479 /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading.png; sourceTree = "<group>"; };
 		DCFAC42C1B38F76C0062D479 /* main_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_bg@2x.png"; sourceTree = "<group>"; };
@@ -860,6 +902,8 @@
 		DC3F17CA1B302CAC00F02C10 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DCEA699A1B86FAD6008FF3E2 /* Found */,
+				DCEA698E1B86D12A008FF3E2 /* login&register */,
 				DCFAC4A71B3A9D4A0062D479 /* Kuaidi */,
 				DCFAC4291B38F76C0062D479 /* Main */,
 				DC0237EE1B3408BA00245501 /* bg@3x.png */,
@@ -926,6 +970,10 @@
 				DCBEF8D61B41140E00FA72D7 /* TimePickerView.m */,
 				DC0A3C581B58D32B0048774B /* PedoMeterView.h */,
 				DC0A3C591B58D32B0048774B /* PedoMeterView.m */,
+				DCEA69971B86D66B008FF3E2 /* TemperatureView.h */,
+				DCEA69981B86D66B008FF3E2 /* TemperatureView.m */,
+				DCEA69BD1B87358D008FF3E2 /* TeleControlView.h */,
+				DCEA69BE1B87358D008FF3E2 /* TeleControlView.m */,
 			);
 			name = Views;
 			path = Classes/Views;
@@ -1066,6 +1114,53 @@
 			path = Company;
 			sourceTree = "<group>";
 		};
+		DCEA698E1B86D12A008FF3E2 /* login&register */ = {
+			isa = PBXGroup;
+			children = (
+				DCEA698F1B86D12A008FF3E2 /* lr_bg@2x.png */,
+				DCEA69901B86D12A008FF3E2 /* lr_bg@3x.png */,
+			);
+			path = "login&register";
+			sourceTree = "<group>";
+		};
+		DCEA69931B86D634008FF3E2 /* Temperature */ = {
+			isa = PBXGroup;
+			children = (
+				DCEA69941B86D64F008FF3E2 /* TempViewController.h */,
+				DCEA69951B86D64F008FF3E2 /* TempViewController.m */,
+			);
+			path = Temperature;
+			sourceTree = "<group>";
+		};
+		DCEA699A1B86FAD6008FF3E2 /* Found */ = {
+			isa = PBXGroup;
+			children = (
+				DCEA69B11B873505008FF3E2 /* f_bottom@2x.png */,
+				DCEA69B21B873505008FF3E2 /* f_left@2x.png */,
+				DCEA69B31B873505008FF3E2 /* f_right@2x.png */,
+				DCEA69B41B873505008FF3E2 /* f_top@2x.png */,
+				DCEA69AB1B870A95008FF3E2 /* f_device@2x.png */,
+				DCEA69AD1B870A95008FF3E2 /* f_service@2x.png */,
+				DCEA699B1B86FBA7008FF3E2 /* f_back@2x.png */,
+				DCEA699C1B86FBA7008FF3E2 /* f_dity@2x.png */,
+				DCEA699D1B86FBA7008FF3E2 /* f_flag@2x.png */,
+				DCEA699E1B86FBA7008FF3E2 /* f_ok@2x.png */,
+				DCEA699F1B86FBA7008FF3E2 /* f_pause@2x.png */,
+				DCEA69A01B86FBA7008FF3E2 /* f_sound@2x.png */,
+				DCEA69A11B86FBA7008FF3E2 /* f_temp@2x.png */,
+			);
+			path = Found;
+			sourceTree = "<group>";
+		};
+		DCEA69B91B873552008FF3E2 /* TeleControl */ = {
+			isa = PBXGroup;
+			children = (
+				DCEA69BA1B873571008FF3E2 /* TeleControlViewController.h */,
+				DCEA69BB1B873571008FF3E2 /* TeleControlViewController.m */,
+			);
+			path = TeleControl;
+			sourceTree = "<group>";
+		};
 		DCFAC4291B38F76C0062D479 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -1197,6 +1292,8 @@
 		DCFAC4E41B3CF9A50062D479 /* Found */ = {
 			isa = PBXGroup;
 			children = (
+				DCEA69B91B873552008FF3E2 /* TeleControl */,
+				DCEA69931B86D634008FF3E2 /* Temperature */,
 				DCEA69811B8637C4008FF3E2 /* Company */,
 				DC0A3C541B58D2F50048774B /* Pedometer */,
 				DCFAC4E51B3CF9A50062D479 /* AlarmClock */,
@@ -1309,9 +1406,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCFAC4921B38F76C0062D479 /* w_6@2x.png in Resources */,
+				DCEA69911B86D12A008FF3E2 /* lr_bg@2x.png in Resources */,
+				DCEA69A81B86FBA7008FF3E2 /* f_sound@2x.png in Resources */,
 				DCFAC46D1B38F76C0062D479 /* w_11@2x.png in Resources */,
 				DC3F17E51B302CAC00F02C10 /* icon-star.png in Resources */,
 				DC3F17E31B302CAC00F02C10 /* icon-plus.png in Resources */,
+				DCEA69A51B86FBA7008FF3E2 /* f_flag@2x.png in Resources */,
 				DC3F17DF1B302CAC00F02C10 /* bg-menuitem.png in Resources */,
 				DCFAC4C41B3A9D4A0062D479 /* k_kuaijiesudi@2x.png in Resources */,
 				DCFAC46B1B38F76C0062D479 /* top.png in Resources */,
@@ -1320,14 +1420,20 @@
 				DC3F17DA1B302CAC00F02C10 /* bg-addbutton-highlighted@2x.png in Resources */,
 				DC3F17E41B302CAC00F02C10 /* icon-plus@2x.png in Resources */,
 				DCFAC4CE1B3A9D4A0062D479 /* k_tnt@2x.png in Resources */,
+				DCEA69A71B86FBA7008FF3E2 /* f_pause@2x.png in Resources */,
 				DCFAC4961B38F76C0062D479 /* main_xingcheng@2x.png in Resources */,
 				DCFAC4651B38F76C0062D479 /* main_fenxiang@2x.png in Resources */,
 				DC3F17DE1B302CAC00F02C10 /* bg-menuitem-highlighted@2x.png in Resources */,
+				DCEA69A31B86FBA7008FF3E2 /* f_back@2x.png in Resources */,
+				DCEA69B61B873505008FF3E2 /* f_left@2x.png in Resources */,
+				DCEA69B81B873505008FF3E2 /* f_top@2x.png in Resources */,
 				DCFAC4CF1B3A9D4A0062D479 /* k_ups@2x.png in Resources */,
 				DCFAC4631B38F76C0062D479 /* main_bg@2x.png in Resources */,
 				DCFAC4C71B3A9D4A0062D479 /* k_longbanwuliu@2x.png in Resources */,
 				DCFAC4D11B3A9D4A0062D479 /* k_youzhengguoji@2x.png in Resources */,
 				DCFAC4C21B3A9D4A0062D479 /* k_emsguoji@2x.png in Resources */,
+				DCEA69B71B873505008FF3E2 /* f_right@2x.png in Resources */,
+				DCEA69A91B86FBA7008FF3E2 /* f_temp@2x.png in Resources */,
 				DCFAC4C81B3A9D4A0062D479 /* k_onTrac@2x.png in Resources */,
 				DCFAC4731B38F76C0062D479 /* w_17@2x.png in Resources */,
 				DCFAC4621B38F76C0062D479 /* loading.png in Resources */,
@@ -1335,6 +1441,7 @@
 				DCFAC4611B38F76C0062D479 /* left.png in Resources */,
 				DC3F17DC1B302CAC00F02C10 /* bg-addbutton@2x.png in Resources */,
 				DCFAC4691B38F76C0062D479 /* main_userheader@2x.png in Resources */,
+				DCEA69A41B86FBA7008FF3E2 /* f_dity@2x.png in Resources */,
 				DCFAC4701B38F76C0062D479 /* w_14@2x.png in Resources */,
 				DCFAC4D61B3A9D4A0062D479 /* k_zhongtong@2x.png in Resources */,
 				DCFAC48A1B38F76C0062D479 /* w_38@2x.png in Resources */,
@@ -1367,6 +1474,7 @@
 				DC0237EF1B3408BA00245501 /* bg@3x.png in Resources */,
 				DC3F17E01B302CAC00F02C10 /* bg-menuitem@2x.png in Resources */,
 				DCFAC47B1B38F76C0062D479 /* w_24@2x.png in Resources */,
+				DCEA69921B86D12A008FF3E2 /* lr_bg@3x.png in Resources */,
 				DCFAC4801B38F76C0062D479 /* w_29@2x.png in Resources */,
 				DC3F171F1B2FDEEE00F02C10 /* Main.storyboard in Resources */,
 				DCFAC46E1B38F76C0062D479 /* w_12@2x.png in Resources */,
@@ -1381,9 +1489,11 @@
 				DCFAC48F1B38F76C0062D479 /* w_42@2x.png in Resources */,
 				DCFAC4781B38F76C0062D479 /* w_21@2x.png in Resources */,
 				DC3F17E11B302CAC00F02C10 /* icon-plus-highlighted.png in Resources */,
+				DCEA69AE1B870A95008FF3E2 /* f_device@2x.png in Resources */,
 				DCFAC4D01B3A9D4A0062D479 /* k_youshuwuliu@2x.png in Resources */,
 				DCFAC4C51B3A9D4A0062D479 /* k_lianbangkuaidi@2x.png in Resources */,
 				DC3F17241B2FDEEE00F02C10 /* LaunchScreen.xib in Resources */,
+				DCEA69B01B870A95008FF3E2 /* f_service@2x.png in Resources */,
 				DCFAC4881B38F76C0062D479 /* w_36@2x.png in Resources */,
 				DCFAC4831B38F76C0062D479 /* w_31@2x.png in Resources */,
 				DCFAC48C1B38F76C0062D479 /* w_3@2x.png in Resources */,
@@ -1404,7 +1514,9 @@
 				DCFAC4C01B3A9D4A0062D479 /* k_dhl@2x.png in Resources */,
 				DC3F17E61B302CAC00F02C10 /* icon-star@2x.png in Resources */,
 				DCFAC47F1B38F76C0062D479 /* w_28@2x.png in Resources */,
+				DCEA69B51B873505008FF3E2 /* f_bottom@2x.png in Resources */,
 				DCFAC4D91B3A9E310062D479 /* kuaidi.plist in Resources */,
+				DCEA69A61B86FBA7008FF3E2 /* f_ok@2x.png in Resources */,
 				DCFAC4D51B3A9D4A0062D479 /* k_zhaijisong@2x.png in Resources */,
 				DCFAC4761B38F76C0062D479 /* w_1@2x.png in Resources */,
 				DC3F17211B2FDEEE00F02C10 /* Images.xcassets in Resources */,
@@ -1437,6 +1549,7 @@
 				DC3F17F21B30358200F02C10 /* MainViewController.m in Sources */,
 				DCEA69791B8618A0008FF3E2 /* VideoShareInputView.m in Sources */,
 				DCEA69801B862000008FF3E2 /* MessageViewController.m in Sources */,
+				DCEA69961B86D64F008FF3E2 /* TempViewController.m in Sources */,
 				DC3F17B01B2FDF8A00F02C10 /* ASIFormDataRequest.m in Sources */,
 				DC3F17901B2FDF3000F02C10 /* UIImageView+WebCache.m in Sources */,
 				DC3F17B11B2FDF8A00F02C10 /* ASIHTTPRequest.m in Sources */,
@@ -1483,11 +1596,13 @@
 				DCEA69871B8638EC008FF3E2 /* ComSuperViewController.m in Sources */,
 				DC3F17F81B31194D00F02C10 /* BoxSuperViewController.m in Sources */,
 				DC3F17191B2FDEEE00F02C10 /* AppDelegate.m in Sources */,
+				DCEA69BF1B87358D008FF3E2 /* TeleControlView.m in Sources */,
 				DC3F17C81B2FEDBB00F02C10 /* WeatherSource.m in Sources */,
 				DC3F17ED1B302CBF00F02C10 /* QuadCurveMenuItem.m in Sources */,
 				DC3F17F51B30376000F02C10 /* MainMenuView.m in Sources */,
 				DC0237E81B32D7AF00245501 /* NSString+base64.m in Sources */,
 				DC3F178A1B2FDF3000F02C10 /* PPQPostDataRequest.m in Sources */,
+				DCEA69991B86D66B008FF3E2 /* TemperatureView.m in Sources */,
 				DCCE82201B7F94D5000EF913 /* LRDataSource.m in Sources */,
 				DC0237E71B32D7AF00245501 /* GTMBase64.m in Sources */,
 				DC3F178B1B2FDF3000F02C10 /* SDImageCache.m in Sources */,
@@ -1506,6 +1621,7 @@
 				DCFAC4A01B395C2E0062D479 /* ExpressQueryViewController.m in Sources */,
 				DCFAC4EC1B3D19930062D479 /* AlarmClock.m in Sources */,
 				DC0237ED1B33EA6F00245501 /* WeatherAPI.m in Sources */,
+				DCEA69BC1B873571008FF3E2 /* TeleControlViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

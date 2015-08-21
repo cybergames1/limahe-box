@@ -10,7 +10,7 @@
 #import "NewsDataSource.h"
 #import "CompanyNewsViewController.h"
 
-@interface CompanyNewsListViewController () <UITableViewDataSource,UITableViewDelegate>
+@interface CompanyNewsListViewController ()
 {
     UITableView * _tableView;
 }

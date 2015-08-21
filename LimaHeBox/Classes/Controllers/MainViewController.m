@@ -12,8 +12,6 @@
 #import "LoginViewController.h"
 #import "WeatherAPI.h"
 #import "WeatherView.h"
-#import "CommonTools.h"
-#import <Category/Category.h>
 #import "ExpressViewController.h"
 #import "FoundViewController.h"
 #import "TravelViewController.h"
@@ -136,7 +134,7 @@
 }
 
 - (void)leftBarAction {
-    UserViewController *controller = [[UserViewController alloc] init];
+    LoginViewController *controller = [[LoginViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
     [self.navigationController presentViewController:nav animated:YES completion:nil];
     [controller release];

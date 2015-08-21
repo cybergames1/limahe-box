@@ -6,11 +6,11 @@
 //  Copyright (c) 2015年 jianting. All rights reserved.
 //
 
-#import "BoxSuperViewController.h"
+#import "CompanyNewsListViewController.h"
 
 /**
  * 消息页
  */
-@interface MessageViewController : BoxSuperViewController
+@interface MessageViewController : CompanyNewsListViewController
 
 @end

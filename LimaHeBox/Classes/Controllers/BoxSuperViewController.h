@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "UIViewController+BackButtonHandler.h"
+#import <Category/Category.h>
+#import "CommonTools.h"
 
 /**
  * 所有ViewController的super
