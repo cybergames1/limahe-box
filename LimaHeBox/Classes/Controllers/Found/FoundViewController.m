@@ -9,6 +9,7 @@
 #import "FoundViewController.h"
 #import "AlarmClockEditViewController.h"
 #import "PedoMeterViewController.h"
+#import "CompanyViewController.h"
 
 @interface FoundViewController () <UITableViewDataSource,UITableViewDelegate>
 {
@@ -99,6 +100,11 @@
             break;
         case 6:
             //公司介绍
+        {
+            CompanyViewController *controller = [[CompanyViewController alloc] init];
+            [self.navigationController pushViewController:controller animated:YES];
+            [controller release];
+        }
             break;
         default:
             break;
