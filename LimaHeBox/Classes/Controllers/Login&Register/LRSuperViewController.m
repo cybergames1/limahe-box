@@ -52,6 +52,11 @@
     [self.view addSubview:_textCell1];
     [self.view addSubview:_textCell2];
     
+    UIImage *image = [UIImage imageNamed:@"lr_change"];
+    UIImageView *imageView = [[[UIImageView alloc] initWithFrame:CGRectMake(self.view.width/2-image.size.width/2, self.view.height-20-image.size.height, image.size.width, image.size.height)] autorelease];
+    imageView.image = image;
+    [self.view addSubview:imageView];
+    
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
     [self.view addGestureRecognizer:tap];
     [tap release];
@@ -142,6 +147,27 @@
 
 - (void)rightBarAction {
     
+}
+
+#pragma mark -
+#pragma mark PPQDataLoader Delegate
+
+/*
+ * 从服务器读取数据成功或失败后需要删除所有HUD
+ * 子类需要继承该方法
+ */
+- (void)dataSourceFinishLoad:(PPQDataSource *)source {
+    [self hideAllHUDView];
+    BOOL msg = [[source.data  objectForKey:@"msg"] boolValue];
+    if (!msg) {
+        [self showHUDFail:[source.data objectForKey:@"data"]];
+        return;
+    }
+}
+
+- (void)dataSource:(PPQDataSource *)source hasError:(NSError *)error {
+    [self hideAllHUDView];
+    [self showHUDWithText:[error.userInfo objectForKey:NSLocalizedDescriptionKey]];
 }
 
 @end

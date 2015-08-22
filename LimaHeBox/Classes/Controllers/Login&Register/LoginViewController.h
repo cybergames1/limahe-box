@@ -13,5 +13,6 @@
  */
 @interface LoginViewController : LRSuperViewController
 
-
++ (void) showLogin:(UIViewController*) rootController
+       finishBlock:(LoginFinish) finish;
 @end

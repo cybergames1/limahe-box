@@ -8,6 +8,9 @@
 
 #import "BoxSuperViewController.h"
 
+/**
+ * 蓝牙设置页
+ **/
 @interface BlueToothSettingViewController : BoxSuperViewController
 
 @end

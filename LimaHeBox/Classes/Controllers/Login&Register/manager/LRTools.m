@@ -20,12 +20,12 @@
     return instance;
 }
 
-+ (void)startPPQifNeeded {
-//    LoginFinish finshBlock = [[LRTools sharedTools] finishBlock];
-//    if (finshBlock) {
-//        finshBlock();
-//        [[LRTools sharedTools] setFinishBlock:nil];
-//    }
++ (void)startAppIfNeeded {
+    LoginFinish finshBlock = [[LRTools sharedTools] finishBlock];
+    if (finshBlock) {
+        finshBlock();
+        [[LRTools sharedTools] setFinishBlock:nil];
+    }
 }
 
 #pragma mark - 验证邮箱、手机号合法性

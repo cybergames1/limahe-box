@@ -12,12 +12,10 @@ typedef void (^LoginFinish)(void);
 
 @interface LRTools : CommonTools
 
-+ (LRTools *)sharedTools;
+@property (nonatomic,copy) LoginFinish finishBlock;
 
-/*
- 登录到PPQ主界面
- */
-+ (void)startPPQifNeeded;
++ (LRTools *)sharedTools;
++ (void)startAppIfNeeded;
 
 #pragma mark - 验证邮箱、手机号合法性
 /*

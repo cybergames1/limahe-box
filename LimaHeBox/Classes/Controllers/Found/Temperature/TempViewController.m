@@ -22,7 +22,7 @@
     label.text = @"\t舒适程度\t\tLOW";
     [self.view addSubview:label];
     
-    TemperatureView *temp1 = [[[TemperatureView alloc] initWithFrame:CGRectMake(40, 60+64, (self.view.width-80)/2, self.view.height/2)] autorelease];
+    TemperatureView *temp1 = [[[TemperatureView alloc] initWithFrame:CGRectMake(40, label.bottom+(self.view.height-label.bottom)/2-self.view.height/4, (self.view.width-80)/2, self.view.height/2)] autorelease];
     temp1.gradutaionDirection = GraduationDirectionRight;
     temp1.maxValue = 50;
     temp1.minValue = -10;

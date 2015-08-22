@@ -134,7 +134,7 @@
 }
 
 - (void)leftBarAction {
-    LoginViewController *controller = [[LoginViewController alloc] init];
+    UserViewController *controller = [[UserViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
     [self.navigationController presentViewController:nav animated:YES completion:nil];
     [controller release];

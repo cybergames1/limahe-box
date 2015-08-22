@@ -8,6 +8,9 @@
 
 #import "BoxSuperViewController.h"
 
+/**
+ * 个人信息页
+ **/
 @interface UserInfoViewController : BoxSuperViewController
 
 @end

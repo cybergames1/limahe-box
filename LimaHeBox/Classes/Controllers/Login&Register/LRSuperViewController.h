@@ -24,4 +24,7 @@
 - (RLCell *)bottomCell;
 - (RegisterButton *)registerButton;
 
+//RegisterButton的点击事件
+- (void)doneAction;
+
 @end

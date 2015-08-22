@@ -7,6 +7,7 @@
 //
 
 #import "BoxSuperViewController.h"
+#import "MBProgressHUD.h"
 
 @interface BoxSuperViewController ()
 
@@ -108,5 +109,47 @@
     return YES;
 }
 
+@end
+
+@implementation BoxSuperViewController (ShowHud)
+
+- (void) showIndicatorHUDView:(NSString *)message
+{
+    [self showIndicatorHUDView:message toView:[CommonTools keyWindow]];
+}
+
+- (void) showIndicatorHUDView:(NSString*) message toView:(UIView*) view
+{
+    [self showIndicatorHUDView:message toView:view offset:CGPointZero];
+}
+
+- (void) showIndicatorHUDView:(NSString*) message toView:(UIView*) view offset:(CGPoint) offset
+{
+    [MBProgressHUD hideAllHUDsForView:view animated:NO];
+    MBProgressHUD* hub = [MBProgressHUD showHUDAddedTo:view animated:YES];
+    hub.xOffset = offset.x;
+    hub.yOffset = offset.y;
+    hub.removeFromSuperViewOnHide = YES;
+    hub.labelText = message;
+}
+
+- (void) hideIndicatorHUDView
+{
+    [MBProgressHUD hideHUDForView:[CommonTools keyWindow] animated:NO];
+}
+- (void) hideIndicatorHUDViewWithDelay:(CGFloat)delay
+{
+    MBProgressHUD* hud = [MBProgressHUD HUDForView:[CommonTools keyWindow]];
+    if (hud) {
+        [hud hide:YES afterDelay:delay];
+    }
+}
+
+- (void) hideAllHUDView
+{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:NO];
+    [MBProgressHUD hideAllHUDsForView:[CommonTools keyWindow] animated:NO];
+    [MBProgressHUD hideAllHUDsForView:[CommonTools visibleWindow] animated:NO];
+}
 
 @end

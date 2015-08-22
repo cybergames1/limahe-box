@@ -126,6 +126,27 @@
 		DCEA69B81B873505008FF3E2 /* f_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA69B41B873505008FF3E2 /* f_top@2x.png */; };
 		DCEA69BC1B873571008FF3E2 /* TeleControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA69BB1B873571008FF3E2 /* TeleControlViewController.m */; };
 		DCEA69BF1B87358D008FF3E2 /* TeleControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA69BE1B87358D008FF3E2 /* TeleControlView.m */; };
+		DCEA69C11B87781C008FF3E2 /* f_switch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA69C01B87781C008FF3E2 /* f_switch@2x.png */; };
+		DCEA69C41B877B85008FF3E2 /* TeleBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA69C31B877B85008FF3E2 /* TeleBar.m */; };
+		DCEA69C81B8786CC008FF3E2 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA69C71B8786CC008FF3E2 /* MBProgressHUD.m */; };
+		DCEA69CB1B87FF66008FF3E2 /* RetrievePwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA69CA1B87FF66008FF3E2 /* RetrievePwdViewController.m */; };
+		DCEA69D61B8801B6008FF3E2 /* pf_logo1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA69CD1B8801B6008FF3E2 /* pf_logo1@2x.png */; };
+		DCEA69D71B8801B6008FF3E2 /* pf_logo2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA69CE1B8801B6008FF3E2 /* pf_logo2@2x.png */; };
+		DCEA69D81B8801B6008FF3E2 /* pf_logo3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA69CF1B8801B6008FF3E2 /* pf_logo3@2x.png */; };
+		DCEA69D91B8801B6008FF3E2 /* pf_logo4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA69D01B8801B6008FF3E2 /* pf_logo4@2x.png */; };
+		DCEA69DA1B8801B6008FF3E2 /* pf_logo5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA69D11B8801B6008FF3E2 /* pf_logo5@2x.png */; };
+		DCEA69DB1B8801B6008FF3E2 /* pf_logo6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA69D21B8801B6008FF3E2 /* pf_logo6@2x.png */; };
+		DCEA69DC1B8801B6008FF3E2 /* pf_logo7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA69D31B8801B6008FF3E2 /* pf_logo7@2x.png */; };
+		DCEA69DD1B8801B6008FF3E2 /* pf_logo8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA69D41B8801B6008FF3E2 /* pf_logo8@2x.png */; };
+		DCEA69DE1B8801B6008FF3E2 /* pf_logo9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA69D51B8801B6008FF3E2 /* pf_logo9@2x.png */; };
+		DCEA69E11B8805C7008FF3E2 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA69E01B8805C7008FF3E2 /* AboutViewController.m */; };
+		DCEA69E31B880628008FF3E2 /* pf_about@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA69E21B880628008FF3E2 /* pf_about@2x.png */; };
+		DCEA69E51B8806AF008FF3E2 /* lr_change@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA69E41B8806AF008FF3E2 /* lr_change@2x.png */; };
+		DCEA69E91B880C05008FF3E2 /* UpdateIconViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA69E81B880C05008FF3E2 /* UpdateIconViewController.m */; };
+		DCEA69EC1B880F0A008FF3E2 /* FlagView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA69EB1B880F0A008FF3E2 /* FlagView.m */; };
+		DCEA69F01B88289E008FF3E2 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA69EF1B88289E008FF3E2 /* HeaderView.m */; };
+		DCEA69F31B885453008FF3E2 /* ResetPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA69F21B885453008FF3E2 /* ResetPwdViewController.m */; };
+		DCEA69F61B8856FF008FF3E2 /* BindPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA69F51B8856FF008FF3E2 /* BindPhoneViewController.m */; };
 		DCFAC4611B38F76C0062D479 /* left.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC42A1B38F76C0062D479 /* left.png */; };
 		DCFAC4621B38F76C0062D479 /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC42B1B38F76C0062D479 /* loading.png */; };
 		DCFAC4631B38F76C0062D479 /* main_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC42C1B38F76C0062D479 /* main_bg@2x.png */; };
@@ -442,6 +463,37 @@
 		DCEA69BB1B873571008FF3E2 /* TeleControlViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeleControlViewController.m; sourceTree = "<group>"; };
 		DCEA69BD1B87358D008FF3E2 /* TeleControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeleControlView.h; sourceTree = "<group>"; };
 		DCEA69BE1B87358D008FF3E2 /* TeleControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeleControlView.m; sourceTree = "<group>"; };
+		DCEA69C01B87781C008FF3E2 /* f_switch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "f_switch@2x.png"; sourceTree = "<group>"; };
+		DCEA69C21B877B85008FF3E2 /* TeleBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeleBar.h; sourceTree = "<group>"; };
+		DCEA69C31B877B85008FF3E2 /* TeleBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeleBar.m; sourceTree = "<group>"; };
+		DCEA69C61B8786CC008FF3E2 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		DCEA69C71B8786CC008FF3E2 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		DCEA69C91B87FF65008FF3E2 /* RetrievePwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RetrievePwdViewController.h; sourceTree = "<group>"; };
+		DCEA69CA1B87FF66008FF3E2 /* RetrievePwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetrievePwdViewController.m; sourceTree = "<group>"; };
+		DCEA69CD1B8801B6008FF3E2 /* pf_logo1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pf_logo1@2x.png"; sourceTree = "<group>"; };
+		DCEA69CE1B8801B6008FF3E2 /* pf_logo2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pf_logo2@2x.png"; sourceTree = "<group>"; };
+		DCEA69CF1B8801B6008FF3E2 /* pf_logo3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pf_logo3@2x.png"; sourceTree = "<group>"; };
+		DCEA69D01B8801B6008FF3E2 /* pf_logo4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pf_logo4@2x.png"; sourceTree = "<group>"; };
+		DCEA69D11B8801B6008FF3E2 /* pf_logo5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pf_logo5@2x.png"; sourceTree = "<group>"; };
+		DCEA69D21B8801B6008FF3E2 /* pf_logo6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pf_logo6@2x.png"; sourceTree = "<group>"; };
+		DCEA69D31B8801B6008FF3E2 /* pf_logo7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pf_logo7@2x.png"; sourceTree = "<group>"; };
+		DCEA69D41B8801B6008FF3E2 /* pf_logo8@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pf_logo8@2x.png"; sourceTree = "<group>"; };
+		DCEA69D51B8801B6008FF3E2 /* pf_logo9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pf_logo9@2x.png"; sourceTree = "<group>"; };
+		DCEA69DF1B8805C7008FF3E2 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		DCEA69E01B8805C7008FF3E2 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		DCEA69E21B880628008FF3E2 /* pf_about@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pf_about@2x.png"; sourceTree = "<group>"; };
+		DCEA69E41B8806AF008FF3E2 /* lr_change@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lr_change@2x.png"; sourceTree = "<group>"; };
+		DCEA69E61B880A10008FF3E2 /* NotificaionConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificaionConstant.h; sourceTree = "<group>"; };
+		DCEA69E71B880C05008FF3E2 /* UpdateIconViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateIconViewController.h; sourceTree = "<group>"; };
+		DCEA69E81B880C05008FF3E2 /* UpdateIconViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateIconViewController.m; sourceTree = "<group>"; };
+		DCEA69EA1B880F0A008FF3E2 /* FlagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlagView.h; sourceTree = "<group>"; };
+		DCEA69EB1B880F0A008FF3E2 /* FlagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlagView.m; sourceTree = "<group>"; };
+		DCEA69EE1B88289E008FF3E2 /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
+		DCEA69EF1B88289E008FF3E2 /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
+		DCEA69F11B885453008FF3E2 /* ResetPwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPwdViewController.h; sourceTree = "<group>"; };
+		DCEA69F21B885453008FF3E2 /* ResetPwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPwdViewController.m; sourceTree = "<group>"; };
+		DCEA69F41B8856FF008FF3E2 /* BindPhoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindPhoneViewController.h; sourceTree = "<group>"; };
+		DCEA69F51B8856FF008FF3E2 /* BindPhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindPhoneViewController.m; sourceTree = "<group>"; };
 		DCFAC42A1B38F76C0062D479 /* left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left.png; sourceTree = "<group>"; };
 		DCFAC42B1B38F76C0062D479 /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading.png; sourceTree = "<group>"; };
 		DCFAC42C1B38F76C0062D479 /* main_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_bg@2x.png"; sourceTree = "<group>"; };
@@ -689,6 +741,7 @@
 			children = (
 				DCCE82441B85DC27000EF913 /* UserDefaultConstant.h */,
 				DC3F173A1B2FDF3000F02C10 /* NetworkConstant.h */,
+				DCEA69E61B880A10008FF3E2 /* NotificaionConstant.h */,
 			);
 			name = Constant;
 			path = Classes/Constant;
@@ -833,6 +886,7 @@
 		DC3F17941B2FDF8900F02C10 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				DCEA69C51B8786CC008FF3E2 /* MBProgressHUD */,
 				DCEA697A1B8618D7008FF3E2 /* FTUIKit */,
 				DCFAC4E61B3CFC200062D479 /* AlarmClock */,
 				DC0237DF1B32D7AF00245501 /* WeatherAPI */,
@@ -902,6 +956,7 @@
 		DC3F17CA1B302CAC00F02C10 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DCEA69CC1B880147008FF3E2 /* Profile */,
 				DCEA699A1B86FAD6008FF3E2 /* Found */,
 				DCEA698E1B86D12A008FF3E2 /* login&register */,
 				DCFAC4A71B3A9D4A0062D479 /* Kuaidi */,
@@ -974,6 +1029,8 @@
 				DCEA69981B86D66B008FF3E2 /* TemperatureView.m */,
 				DCEA69BD1B87358D008FF3E2 /* TeleControlView.h */,
 				DCEA69BE1B87358D008FF3E2 /* TeleControlView.m */,
+				DCEA69EA1B880F0A008FF3E2 /* FlagView.h */,
+				DCEA69EB1B880F0A008FF3E2 /* FlagView.m */,
 			);
 			name = Views;
 			path = Classes/Views;
@@ -990,6 +1047,12 @@
 				DCCE822A1B7F9A68000EF913 /* LoginViewController.m */,
 				DCCE82301B807F54000EF913 /* RegisterViewController.h */,
 				DCCE82311B807F54000EF913 /* RegisterViewController.m */,
+				DCEA69C91B87FF65008FF3E2 /* RetrievePwdViewController.h */,
+				DCEA69CA1B87FF66008FF3E2 /* RetrievePwdViewController.m */,
+				DCEA69F11B885453008FF3E2 /* ResetPwdViewController.h */,
+				DCEA69F21B885453008FF3E2 /* ResetPwdViewController.m */,
+				DCEA69F41B8856FF008FF3E2 /* BindPhoneViewController.h */,
+				DCEA69F51B8856FF008FF3E2 /* BindPhoneViewController.m */,
 			);
 			path = "Login&Register";
 			sourceTree = "<group>";
@@ -1059,6 +1122,11 @@
 				DCCE824E1B85E675000EF913 /* UserInfoViewController.m */,
 				DCCE82501B85EA4B000EF913 /* BlueToothSettingViewController.h */,
 				DCCE82511B85EA4B000EF913 /* BlueToothSettingViewController.m */,
+				DCEA69DF1B8805C7008FF3E2 /* AboutViewController.h */,
+				DCEA69E01B8805C7008FF3E2 /* AboutViewController.m */,
+				DCEA69E71B880C05008FF3E2 /* UpdateIconViewController.h */,
+				DCEA69E81B880C05008FF3E2 /* UpdateIconViewController.m */,
+				DCEA69ED1B882883008FF3E2 /* view */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1117,6 +1185,7 @@
 		DCEA698E1B86D12A008FF3E2 /* login&register */ = {
 			isa = PBXGroup;
 			children = (
+				DCEA69E41B8806AF008FF3E2 /* lr_change@2x.png */,
 				DCEA698F1B86D12A008FF3E2 /* lr_bg@2x.png */,
 				DCEA69901B86D12A008FF3E2 /* lr_bg@3x.png */,
 			);
@@ -1135,6 +1204,7 @@
 		DCEA699A1B86FAD6008FF3E2 /* Found */ = {
 			isa = PBXGroup;
 			children = (
+				DCEA69C01B87781C008FF3E2 /* f_switch@2x.png */,
 				DCEA69B11B873505008FF3E2 /* f_bottom@2x.png */,
 				DCEA69B21B873505008FF3E2 /* f_left@2x.png */,
 				DCEA69B31B873505008FF3E2 /* f_right@2x.png */,
@@ -1157,8 +1227,45 @@
 			children = (
 				DCEA69BA1B873571008FF3E2 /* TeleControlViewController.h */,
 				DCEA69BB1B873571008FF3E2 /* TeleControlViewController.m */,
+				DCEA69C21B877B85008FF3E2 /* TeleBar.h */,
+				DCEA69C31B877B85008FF3E2 /* TeleBar.m */,
 			);
 			path = TeleControl;
+			sourceTree = "<group>";
+		};
+		DCEA69C51B8786CC008FF3E2 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				DCEA69C61B8786CC008FF3E2 /* MBProgressHUD.h */,
+				DCEA69C71B8786CC008FF3E2 /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		DCEA69CC1B880147008FF3E2 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				DCEA69E21B880628008FF3E2 /* pf_about@2x.png */,
+				DCEA69CD1B8801B6008FF3E2 /* pf_logo1@2x.png */,
+				DCEA69CE1B8801B6008FF3E2 /* pf_logo2@2x.png */,
+				DCEA69CF1B8801B6008FF3E2 /* pf_logo3@2x.png */,
+				DCEA69D01B8801B6008FF3E2 /* pf_logo4@2x.png */,
+				DCEA69D11B8801B6008FF3E2 /* pf_logo5@2x.png */,
+				DCEA69D21B8801B6008FF3E2 /* pf_logo6@2x.png */,
+				DCEA69D31B8801B6008FF3E2 /* pf_logo7@2x.png */,
+				DCEA69D41B8801B6008FF3E2 /* pf_logo8@2x.png */,
+				DCEA69D51B8801B6008FF3E2 /* pf_logo9@2x.png */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		DCEA69ED1B882883008FF3E2 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				DCEA69EE1B88289E008FF3E2 /* HeaderView.h */,
+				DCEA69EF1B88289E008FF3E2 /* HeaderView.m */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		DCFAC4291B38F76C0062D479 /* Main */ = {
@@ -1413,6 +1520,7 @@
 				DC3F17E31B302CAC00F02C10 /* icon-plus.png in Resources */,
 				DCEA69A51B86FBA7008FF3E2 /* f_flag@2x.png in Resources */,
 				DC3F17DF1B302CAC00F02C10 /* bg-menuitem.png in Resources */,
+				DCEA69DB1B8801B6008FF3E2 /* pf_logo6@2x.png in Resources */,
 				DCFAC4C41B3A9D4A0062D479 /* k_kuaijiesudi@2x.png in Resources */,
 				DCFAC46B1B38F76C0062D479 /* top.png in Resources */,
 				DCFAC4951B38F76C0062D479 /* w_9@2x.png in Resources */,
@@ -1420,6 +1528,7 @@
 				DC3F17DA1B302CAC00F02C10 /* bg-addbutton-highlighted@2x.png in Resources */,
 				DC3F17E41B302CAC00F02C10 /* icon-plus@2x.png in Resources */,
 				DCFAC4CE1B3A9D4A0062D479 /* k_tnt@2x.png in Resources */,
+				DCEA69E51B8806AF008FF3E2 /* lr_change@2x.png in Resources */,
 				DCEA69A71B86FBA7008FF3E2 /* f_pause@2x.png in Resources */,
 				DCFAC4961B38F76C0062D479 /* main_xingcheng@2x.png in Resources */,
 				DCFAC4651B38F76C0062D479 /* main_fenxiang@2x.png in Resources */,
@@ -1428,11 +1537,14 @@
 				DCEA69B61B873505008FF3E2 /* f_left@2x.png in Resources */,
 				DCEA69B81B873505008FF3E2 /* f_top@2x.png in Resources */,
 				DCFAC4CF1B3A9D4A0062D479 /* k_ups@2x.png in Resources */,
+				DCEA69C11B87781C008FF3E2 /* f_switch@2x.png in Resources */,
+				DCEA69DC1B8801B6008FF3E2 /* pf_logo7@2x.png in Resources */,
 				DCFAC4631B38F76C0062D479 /* main_bg@2x.png in Resources */,
 				DCFAC4C71B3A9D4A0062D479 /* k_longbanwuliu@2x.png in Resources */,
 				DCFAC4D11B3A9D4A0062D479 /* k_youzhengguoji@2x.png in Resources */,
 				DCFAC4C21B3A9D4A0062D479 /* k_emsguoji@2x.png in Resources */,
 				DCEA69B71B873505008FF3E2 /* f_right@2x.png in Resources */,
+				DCEA69D81B8801B6008FF3E2 /* pf_logo3@2x.png in Resources */,
 				DCEA69A91B86FBA7008FF3E2 /* f_temp@2x.png in Resources */,
 				DCFAC4C81B3A9D4A0062D479 /* k_onTrac@2x.png in Resources */,
 				DCFAC4731B38F76C0062D479 /* w_17@2x.png in Resources */,
@@ -1440,6 +1552,7 @@
 				DCFAC47A1B38F76C0062D479 /* w_23@2x.png in Resources */,
 				DCFAC4611B38F76C0062D479 /* left.png in Resources */,
 				DC3F17DC1B302CAC00F02C10 /* bg-addbutton@2x.png in Resources */,
+				DCEA69D71B8801B6008FF3E2 /* pf_logo2@2x.png in Resources */,
 				DCFAC4691B38F76C0062D479 /* main_userheader@2x.png in Resources */,
 				DCEA69A41B86FBA7008FF3E2 /* f_dity@2x.png in Resources */,
 				DCFAC4701B38F76C0062D479 /* w_14@2x.png in Resources */,
@@ -1453,10 +1566,12 @@
 				DCFAC4681B38F76C0062D479 /* main_menu@2x.png in Resources */,
 				DCFAC46A1B38F76C0062D479 /* menu2.png in Resources */,
 				DCFAC4721B38F76C0062D479 /* w_16@2x.png in Resources */,
+				DCEA69E31B880628008FF3E2 /* pf_about@2x.png in Resources */,
 				DC3F17D91B302CAC00F02C10 /* bg-addbutton-highlighted.png in Resources */,
 				DCFAC4C11B3A9D4A0062D479 /* k_ems@2x.png in Resources */,
 				DCFAC4891B38F76C0062D479 /* w_37@2x.png in Resources */,
 				DCFAC4661B38F76C0062D479 /* main_kuaidi@2x.png in Resources */,
+				DCEA69D61B8801B6008FF3E2 /* pf_logo1@2x.png in Resources */,
 				DCFAC4C31B3A9D4A0062D479 /* k_huitongkuaidi@2x.png in Resources */,
 				DCFAC4711B38F76C0062D479 /* w_15@2x.png in Resources */,
 				DC3F17E21B302CAC00F02C10 /* icon-plus-highlighted@2x.png in Resources */,
@@ -1479,6 +1594,7 @@
 				DC3F171F1B2FDEEE00F02C10 /* Main.storyboard in Resources */,
 				DCFAC46E1B38F76C0062D479 /* w_12@2x.png in Resources */,
 				DCFAC48B1B38F76C0062D479 /* w_39@2x.png in Resources */,
+				DCEA69D91B8801B6008FF3E2 /* pf_logo4@2x.png in Resources */,
 				DCFAC48E1B38F76C0062D479 /* w_41@2x.png in Resources */,
 				DCFAC4D21B3A9D4A0062D479 /* k_youzhengguonei@2x.png in Resources */,
 				DCFAC4771B38F76C0062D479 /* w_20@2x.png in Resources */,
@@ -1503,12 +1619,15 @@
 				DCFAC47D1B38F76C0062D479 /* w_26@2x.png in Resources */,
 				DCFAC4CC1B3A9D4A0062D479 /* k_suer@2x.png in Resources */,
 				DCFAC46F1B38F76C0062D479 /* w_13@2x.png in Resources */,
+				DCEA69DA1B8801B6008FF3E2 /* pf_logo5@2x.png in Resources */,
 				DC3F17DD1B302CAC00F02C10 /* bg-menuitem-highlighted.png in Resources */,
 				DCFAC4C61B3A9D4A0062D479 /* k_lianhaowuliu@2x.png in Resources */,
 				DCFAC47C1B38F76C0062D479 /* w_25@2x.png in Resources */,
+				DCEA69DD1B8801B6008FF3E2 /* pf_logo8@2x.png in Resources */,
 				DCFAC4A41B3A8B350062D479 /* main_logo@2x.png in Resources */,
 				DCFAC4671B38F76C0062D479 /* main_lanya@2x.png in Resources */,
 				DCFAC4741B38F76C0062D479 /* w_18@2x.png in Resources */,
+				DCEA69DE1B8801B6008FF3E2 /* pf_logo9@2x.png in Resources */,
 				DCFAC4911B38F76C0062D479 /* w_5@2x.png in Resources */,
 				DCFAC4931B38F76C0062D479 /* w_7@2x.png in Resources */,
 				DCFAC4C01B3A9D4A0062D479 /* k_dhl@2x.png in Resources */,
@@ -1538,6 +1657,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCEA69F01B88289E008FF3E2 /* HeaderView.m in Sources */,
 				DCCE822B1B7F9A68000EF913 /* LoginViewController.m in Sources */,
 				DC062B011B4A583C001D969A /* UIViewController+BackButtonHandler.m in Sources */,
 				DC3F17921B2FDF3000F02C10 /* SocialTools.m in Sources */,
@@ -1546,11 +1666,13 @@
 				DCFAC4EF1B3D24470062D479 /* AlarmClockEditViewController.m in Sources */,
 				DC3F178E1B2FDF3000F02C10 /* SDWebImageManager.m in Sources */,
 				DCFAC4991B392E2E0062D479 /* WeatherView.m in Sources */,
+				DCEA69F61B8856FF008FF3E2 /* BindPhoneViewController.m in Sources */,
 				DC3F17F21B30358200F02C10 /* MainViewController.m in Sources */,
 				DCEA69791B8618A0008FF3E2 /* VideoShareInputView.m in Sources */,
 				DCEA69801B862000008FF3E2 /* MessageViewController.m in Sources */,
 				DCEA69961B86D64F008FF3E2 /* TempViewController.m in Sources */,
 				DC3F17B01B2FDF8A00F02C10 /* ASIFormDataRequest.m in Sources */,
+				DCEA69C41B877B85008FF3E2 /* TeleBar.m in Sources */,
 				DC3F17901B2FDF3000F02C10 /* UIImageView+WebCache.m in Sources */,
 				DC3F17B11B2FDF8A00F02C10 /* ASIHTTPRequest.m in Sources */,
 				DCFAC4F21B3D2B080062D479 /* FoundViewController.m in Sources */,
@@ -1565,6 +1687,7 @@
 				DCFAC4E01B3ABDC30062D479 /* ExpressModel.m in Sources */,
 				DCBEF8D71B41140E00FA72D7 /* TimePickerView.m in Sources */,
 				DC3F17AF1B2FDF8A00F02C10 /* ASIDownloadCache.m in Sources */,
+				DCEA69E91B880C05008FF3E2 /* UpdateIconViewController.m in Sources */,
 				DC3F17891B2FDF3000F02C10 /* PPQHTTPRequest.m in Sources */,
 				DCFAC4E91B3CFC9C0062D479 /* AlarmClockManager.m in Sources */,
 				DC3F177E1B2FDF3000F02C10 /* PrivateOrderListDS.m in Sources */,
@@ -1587,6 +1710,7 @@
 				DC3F17911B2FDF3000F02C10 /* CommonTools.m in Sources */,
 				DCEA69841B8637DD008FF3E2 /* CompanyViewController.m in Sources */,
 				DCEA69751B86186B008FF3E2 /* ShareViewController.m in Sources */,
+				DCEA69F31B885453008FF3E2 /* ResetPwdViewController.m in Sources */,
 				DCFAC4DC1B3AA5630062D479 /* ExpressListViewController.m in Sources */,
 				DC3F178C1B2FDF3000F02C10 /* SDWebImageDecoder.m in Sources */,
 				DCCE824C1B85E0A9000EF913 /* UserViewController.m in Sources */,
@@ -1595,6 +1719,7 @@
 				DC3F17B31B2FDF8A00F02C10 /* ASINetworkQueue.m in Sources */,
 				DCEA69871B8638EC008FF3E2 /* ComSuperViewController.m in Sources */,
 				DC3F17F81B31194D00F02C10 /* BoxSuperViewController.m in Sources */,
+				DCEA69CB1B87FF66008FF3E2 /* RetrievePwdViewController.m in Sources */,
 				DC3F17191B2FDEEE00F02C10 /* AppDelegate.m in Sources */,
 				DCEA69BF1B87358D008FF3E2 /* TeleControlView.m in Sources */,
 				DC3F17C81B2FEDBB00F02C10 /* WeatherSource.m in Sources */,
@@ -1607,9 +1732,12 @@
 				DC0237E71B32D7AF00245501 /* GTMBase64.m in Sources */,
 				DC3F178B1B2FDF3000F02C10 /* SDImageCache.m in Sources */,
 				DC3F17881B2FDF3000F02C10 /* PPQNetWorkURLs.m in Sources */,
+				DCEA69EC1B880F0A008FF3E2 /* FlagView.m in Sources */,
 				DCCE82281B7F9842000EF913 /* RegisterButton.m in Sources */,
 				DC3F17831B2FDF3000F02C10 /* TickerDepthDS.m in Sources */,
 				DCCE82241B7F960A000EF913 /* NewsDataSource.m in Sources */,
+				DCEA69E11B8805C7008FF3E2 /* AboutViewController.m in Sources */,
+				DCEA69C81B8786CC008FF3E2 /* MBProgressHUD.m in Sources */,
 				DC3F17161B2FDEEE00F02C10 /* main.m in Sources */,
 				DC0A3C5A1B58D32B0048774B /* PedoMeterView.m in Sources */,
 				DC3F178D1B2FDF3000F02C10 /* SDWebImageDownloader.m in Sources */,

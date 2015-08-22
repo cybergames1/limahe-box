@@ -11,7 +11,7 @@
 #define Width_Rate (30.0/320.0)
 #define Height_Rate (40.0/260.0)
 
-#define GreenColor [UIColor colorWithRed:(56.0/255.0) green:(201.0/255.0) blue:(64.0/255.0) alpha:1.0]
+#define GreenColor [UIColor colorWithRed:(72.0/255.0) green:(217.0/255.0) blue:(192.0/255.0) alpha:1.0]
 #define DarkGreenColor [UIColor colorWithRed:(38.0/255.0) green:(140.0/255.0) blue:(45.0/255.0) alpha:1.0]
 #define GrayColor [UIColor colorWithRed:(198.0/255.0) green:(198.0/255.0) blue:(198.0/255.0) alpha:1.0]
 

@@ -17,6 +17,29 @@
 
 @end
 
+@interface MUser (UpdateData)
+/**
+ 更新用户资料信息
+ @param value 用户信息
+ @param key 用户 key，必须是下面定义的key
+ */
+- (void) updateUserValue:(id) value forKey:(NSString*) key;
+
+@end
+
+extern NSString* const kUserInfoAuthKey;         // authcookie
+extern NSString* const kUserInfoOPTokenKey;      // openAPIAccessToken
+extern NSString* const kUserInfoNameKey;         // user name
+extern NSString* const kUserInfoIntroductionKey; // user Introduction
+extern NSString* const kUserInfoAddressKey;      // user Address
+extern NSString* const kUserInfoProvinceKey;     // user province
+extern NSString* const kUserInfoCityKey;         // user city
+extern NSString* const kUserInfoAgeKey;          // user Age
+extern NSString* const kUserInfoBirthdayKey;     // user Birthday
+extern NSString* const kUserInfoIconKey;         // user Icon
+extern NSString* const kUserInfoPhoneKey;        // user Phone
+extern NSString* const kUserInfoGenderKey;       // user Gender
+
 @interface AccountManager : NSObject
 
 @property (nonatomic, retain) MUser *loginUser;

@@ -40,18 +40,18 @@
     self = [super initWithFrame:frame];
     if (self) {
         /** 竖条 **/
-        UIView *view1 = [[[UIView alloc] initWithFrame:CGRectMake(0, 10, 3, frame.size.height-20)] autorelease];
+        UIView *view1 = [[[UIView alloc] initWithFrame:CGRectMake(0, 10, 6, frame.size.height-20)] autorelease];
         view1.backgroundColor = [UIColor whiteColor];
         [self addSubview:view1];
         _VLineView = view1;
         
         /** 选择的区域 **/
-        UIView *view2 = [[[UIView alloc] initWithFrame:CGRectMake(0, 10, 3, frame.size.height-20)] autorelease];
+        UIView *view2 = [[[UIView alloc] initWithFrame:CGRectMake(0, 10, 6, frame.size.height-20)] autorelease];
         [self addSubview:view2];
         _VSelectView = view2;
         
         /** 当前值所对应的长线 **/
-        UIView *view3 = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width-view1.width-20, 1)] autorelease];
+        UIView *view3 = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width-view1.width-20, 2)] autorelease];
         [self addSubview:view3];
         _currentView = view3;
         
@@ -61,11 +61,11 @@
         _imageView = imageView;
         
         // 每个刻度之间的间隙
-        CGFloat edge = (view1.height-GradutionCount*1-1)/GradutionCount;
+        CGFloat edge = (view1.height-GradutionCount*2-2)/GradutionCount;
         _gradutionList = [[NSMutableArray alloc] initWithCapacity:0];
         /** 刻度线 **/
         for (int i = 0; i < GradutionCount+1; i++) {
-            UIView *v = [[UIView alloc] initWithFrame:CGRectMake(view1.right, i*(1+edge)+view1.top, 3, 1)];
+            UIView *v = [[UIView alloc] initWithFrame:CGRectMake(view1.right, i*(2+edge)+view1.top, 3, 2)];
             v.backgroundColor = [UIColor whiteColor];
             [self addSubview:v];
             [_gradutionList addObject:v];
@@ -137,7 +137,7 @@
     CGFloat left = (_gradutaionDirection == GraduationDirectionRight) ? _VLineView.right : 0;
     _imageView.width = _tempImage.size.width;
     _imageView.height = _tempImage.size.height;
-    _imageView.center = CGPointMake(left+(self.width-left)/2, _currentView.top-5-_tempImage.size.height/2);
+    _imageView.center = CGPointMake(left+(self.width-_VLineView.width-15)/2, _currentView.top-5-_tempImage.size.height/2);
     _imageView.image = _tempImage;
     
     /** 更新四个Label的位置 **/

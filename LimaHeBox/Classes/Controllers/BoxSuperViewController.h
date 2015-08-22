@@ -31,3 +31,21 @@
 - (void)setNavigationBackTitle:(NSString *)title;
 
 @end
+
+@interface BoxSuperViewController (ShowHud)
+
+/**
+ 显示Indicator(菊花)提示，不是自动消失，show和hide配对出现
+ */
+- (void) showIndicatorHUDView:(NSString *) message;
+/**
+ 隐藏Indicator(菊花)提示
+ */
+- (void) hideIndicatorHUDView;
+
+/**
+ 隐藏所有的 HUD
+ */
+- (void) hideAllHUDView;
+
+@end

@@ -35,7 +35,7 @@
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(_useNameCell.left, [self registerButton].bottom+20, self.view.width-2*_useNameCell.left, 120)];
     label.backgroundColor = [UIColor clearColor];
     label.textColor = [UIColor whiteColor];
-    label.font = [UIFont systemFontOfSize:12];
+    label.font = [UIFont systemFontOfSize:13];
     label.numberOfLines = 6;
     label.lineBreakMode = NSLineBreakByCharWrapping;
     label.text = @"如果您已经购买了利马赫的产品，请查看箱子的使用说明书，请按说明书提供的用户名和密码登录。您将得到更完善的服务，并且享受利马赫产品的全部售后服务。\n\n登录成功成功后可自行修改密码。";
@@ -44,16 +44,19 @@
 
 - (void)doneAction {
     //注册
+    [self showIndicatorHUDView:@"正在注册..."];
     LRDataSource *dataSource = [[[LRDataSource alloc] initWithDelegate:self] autorelease];
     [dataSource registerWithUserName:_useNameCell.textField.text password:_passwordCell.textField.text phone:@"13682010773"];
     self.dataSource = dataSource;
 }
 
 - (void)dataSourceFinishLoad:(PPQDataSource *)source {
-    
+    [super dataSourceFinishLoad:source];
+    [LRTools startAppIfNeeded];
 }
 
 - (void)dataSource:(PPQDataSource *)source hasError:(NSError *)error {
+    [super dataSource:source hasError:error];
     
 }
 

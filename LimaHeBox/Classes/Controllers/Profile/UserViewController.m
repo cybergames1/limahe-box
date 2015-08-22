@@ -10,23 +10,37 @@
 #import "AccountManager.h"
 #import "UserInfoViewController.h"
 #import "BlueToothSettingViewController.h"
+#import "AboutViewController.h"
+#import "NotificaionConstant.h"
+
+#define Logo_Left_Rate (40.0/360.0)
 
 @interface UserViewController () <UITableViewDataSource,UITableViewDelegate>
-
+{
+    UITableView * _tableView;
+}
 @end
 @implementation UserViewController
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavigationTitle:@"个人信息"];
+    [self setNavigationTitle:@"我的"];
     [self setNavigationItemLeftImage:[UIImage imageNamed:@"common_icon_back"]];
+    self.view.backgroundColor = UIColorRGB(248, 248, 248);
     
     UITableView *tableView = [[[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped] autorelease];
     tableView.backgroundColor = self.view.backgroundColor;
     tableView.dataSource = self;
     tableView.delegate = self;
     [self.view addSubview:tableView];
+    _tableView = tableView;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUserInfo) name:kUserInfoDidUpdateNotification object:nil];
+}
+
+- (void)updateUserInfo {
+    [_tableView reloadData];
 }
 
 #pragma mark - UITableViewDataSource
@@ -65,17 +79,19 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIButton *view = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, tableView.width, 200)];
+    UIButton *view = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, tableView.width, 150)];
     
-//    UIImageView *logoImageView = [[[UIImageView alloc] initWithFrame:CGRectMake(view.width/2-80/2, 40, 80, 80)] autorelease];
-//    logoImageView.image = [UIImage imageNamed:@"setting_icon"];
+    UIImage *logo = [UIImage imageWithContentsOfFile:[[[AccountManager sharedManager] loginUser] userIcon]];
+    UIImageView *logoImageView = [[[UIImageView alloc] initWithFrame:CGRectMake(view.width*Logo_Left_Rate, view.height/2-logo.size.height/2, logo.size.width, logo.size.height)] autorelease];
+    logoImageView.image = logo;
+    [view addSubview:logoImageView];
     
     MUser *loginUser = [[AccountManager sharedManager] loginUser];
-    UILabel *versionLabel = [[[UILabel alloc] initWithFrame:CGRectMake(0, 10, view.width, 20)] autorelease];
+    UILabel *versionLabel = [[[UILabel alloc] initWithFrame:CGRectMake(logoImageView.right, view.height/2-20/2, view.width-logoImageView.right-40, 20)] autorelease];
     versionLabel.backgroundColor = [UIColor clearColor];
     versionLabel.text = [CommonTools isEmptyString:loginUser.userName] ? @"登录/注册" : loginUser.userName;
     versionLabel.textColor = [UIColor blackColor];
-    versionLabel.textAlignment = NSTextAlignmentCenter;
+    versionLabel.textAlignment = NSTextAlignmentRight;
     versionLabel.font = [UIFont systemFontOfSize:16];
     [view addSubview:versionLabel];
     
@@ -85,7 +101,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 200;
+    return 150;
 }
 
 #pragma mark - UITableView delegate
@@ -106,6 +122,9 @@
             break;
         case 2:{
             //关于
+            AboutViewController *controller = [[AboutViewController alloc] init];
+            [self.navigationController pushViewController:controller animated:YES];
+            [controller release];
         }
             break;
         default:

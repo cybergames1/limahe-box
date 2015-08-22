@@ -8,6 +8,7 @@
 
 #import "AccountManager.h"
 #import "UserDefaultConstant.h"
+#import "NotificaionConstant.h"
 
 @interface MUser ()
 
@@ -29,6 +30,45 @@
 
 @end
 
+@implementation MUser (UpdateData)
+
+- (void) updateUserValue:(id) value forKey:(NSString*) key
+{
+    if (nil == value || nil == key) {
+        return;
+    }
+    if ([kUserInfoNameKey isEqualToString:key]) {
+        //userName
+        self.userName = value;
+    }else if ([kUserInfoIconKey isEqualToString:key]) {
+        //userIcon
+        self.userIcon = value;
+    }else if ([kUserInfoPhoneKey isEqualToString:key]) {
+        //userPhoneNumber
+        self.userPhone = value;
+    }else {
+        //
+    }
+    
+    // [[AccountManager sharedManager] saveStorage];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kUserInfoDidUpdateNotification object:nil];
+}
+
+@end
+
+NSString* const  kUserInfoAuthKey = @"_authcookie";
+NSString* const  kUserInfoOPTokenKey = @"_openAPIAccessToken";
+NSString* const  kUserInfoNameKey = @"_userName";
+NSString* const  kUserInfoIntroductionKey = @"_userIntroduction";
+NSString* const  kUserInfoAddressKey = @"_userAddress";
+NSString* const  kUserInfoProvinceKey = @"_userProvince";
+NSString* const  kUserInfoCityKey = @"_userCity";
+NSString* const  kUserInfoAgeKey = @"_userAge";
+NSString* const  kUserInfoBirthdayKey = @"_userBirthday";
+NSString* const  kUserInfoIconKey = @"_userIcon";
+NSString* const  kUserInfoPhoneKey = @"_userPhone";
+NSString* const  kUserInfoGenderKey = @"_userGender";
+
 @implementation AccountManager
 
 + (AccountManager *)sharedManager
@@ -37,8 +77,19 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         instance = [[AccountManager alloc] init];
+        if (instance.loginUser == nil) {
+            instance.loginUser = [[self class] testUser];
+        }
     });
     return instance;
+}
+
++ (MUser *)testUser {
+    MUser *user = [[MUser alloc] init];
+    user.userIcon = [[NSBundle mainBundle] pathForResource:@"pf_logo1@2x" ofType:@"png"];
+    user.userName = @"张三";
+    user.userPhone = @"13802318211";
+    return [user autorelease];
 }
 
 + (BOOL) isLogin
