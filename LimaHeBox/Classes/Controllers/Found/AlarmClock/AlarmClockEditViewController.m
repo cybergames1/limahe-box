@@ -86,7 +86,7 @@ NSInteger UITableViewCellAccessorySwitch = 5;
     // Do any additional setup after loading the view.
     [self setNavigationTitle:@"闹钟"];
     
-    UITableView *tableView = [[[UITableView alloc] initWithFrame:self.view.bounds] autorelease];
+    UITableView *tableView = [[[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped] autorelease];
     tableView.backgroundColor = self.view.backgroundColor;
     tableView.delegate = self;
     tableView.dataSource = self;

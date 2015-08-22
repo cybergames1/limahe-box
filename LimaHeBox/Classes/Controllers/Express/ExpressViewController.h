@@ -6,11 +6,11 @@
 //  Copyright (c) 2015年 jianting. All rights reserved.
 //
 
-#import "BoxSuperViewController.h"
+#import "LRSuperViewController.h"
 
 /**
  * 快递入口页
  */
-@interface ExpressViewController : BoxSuperViewController
+@interface ExpressViewController : LRSuperViewController
 
 @end

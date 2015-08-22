@@ -8,6 +8,7 @@
 
 #import "ExpressViewController.h"
 #import "ExpressQueryViewController.h"
+#import "ExpressListViewController.h"
 
 @interface ExpressViewController ()
 
@@ -18,12 +19,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self setNavigationItemLeftImage:[UIImage imageNamed:@"main_nav_left"]];
+    [self setNavigationItemLeftImage:[UIImage imageNamed:@"common_icon_back"]];
     [self setNavigationTitle:@"快递"];
     
     //把两按钮放到一个模块view里，方便适配
-    UIView *moduleView = [[[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-260/2, self.view.frame.size.height/2-180/2, 260, 180)] autorelease];
-    moduleView.backgroundColor = self.view.backgroundColor;
+    UIView *moduleView = [[[UIView alloc] initWithFrame:CGRectMake(self.view.width/2-260/2, self.view.height/2-180/2-40, 260, 180)] autorelease];
+    moduleView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:moduleView];
     
     //查询按钮
@@ -47,6 +48,19 @@
     [moduleView addSubview:queryButton];
     [moduleView addSubview:deliveryButton];
     
+    [self makeCustom];
+    
+}
+
+/*
+ * 自定义界面则清掉textField和button
+ */
+- (void)makeCustom {
+    for (UIView *v in self.view.subviews) {
+        if ([v isKindOfClass:[RLCell class]] || [v isKindOfClass:[RegisterButton class]]) {
+            [v removeFromSuperview];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,7 +75,10 @@
 }
 
 - (void)expressDelivery {
-    
+    ExpressListViewController *controller = [[ExpressListViewController alloc] init];
+    controller.canCall = YES;
+    [self.navigationController pushViewController:controller animated:YES];
+    [controller release];
 }
 
 - (void)leftBarAction {

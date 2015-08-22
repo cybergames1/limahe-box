@@ -13,7 +13,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavigationTitle:@"温度/湿度监控"];
+    [self setNavigationTitle:@"温湿度监控"];
     self.view.backgroundColor = self.navigationBarTintColor;
     
     UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(0, 64, self.view.width, 44)] autorelease];

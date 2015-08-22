@@ -46,7 +46,7 @@ typedef NSInteger KeyboardWillType;
         _inputView = [[FTInputView alloc] initWithFrame:CGRectMake(0, 0.0f, KDefaultScreenWidth-20, 62.0f) delegate:self];
         _inputView.fontSize = 14.0f;
         _inputView.placeholderStyle = FTPlaceholderStyleTop;
-        _inputView.placeholder = @"点击添加描述(必填)";
+        _inputView.placeholder = @"分享您的新鲜事...";
         _inputView.borderStyle = FTInputBorderStyleNone;
         _inputView.borderColor = UIColorRGB(199, 197, 197);
         _inputView.fitStyle = FTFitStyleNone;
@@ -56,7 +56,7 @@ typedef NSInteger KeyboardWillType;
         [self addSubview:_inputView];
         
         // word limie
-        _wordLimitLabel = [[UILabel alloc] initWithFrame:CGRectMake(KDefaultScreenWidth-104 , 64, 80, 12)];
+        _wordLimitLabel = [[UILabel alloc] initWithFrame:CGRectMake(KDefaultScreenWidth-104 , frame.size.height-22, 80, 12)];
         _wordLimitLabel.text = @"0/140";
         _wordLimitLabel.textAlignment = NSTextAlignmentRight;
         _wordLimitLabel.font = [UIFont systemFontOfSize:10.0f];

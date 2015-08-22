@@ -44,7 +44,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    UITableView *tableView = [[[UITableView alloc] initWithFrame:self.view.bounds] autorelease];
+    UITableView *tableView = [[[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped] autorelease];
     tableView.backgroundColor = self.view.backgroundColor;
     tableView.delegate = self;
     tableView.dataSource = self;

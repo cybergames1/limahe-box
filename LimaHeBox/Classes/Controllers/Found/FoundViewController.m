@@ -12,10 +12,12 @@
 #import "CompanyViewController.h"
 #import "TempViewController.h"
 #import "TeleControlViewController.h"
+#import "WeighViewController.h"
 
 @interface FoundViewController () <UITableViewDataSource,UITableViewDelegate>
 {
     NSArray * _titleList;
+    NSArray * _imageList;
 }
 
 @end
@@ -24,14 +26,20 @@
 
 - (void)dealloc {
     [_titleList release];_titleList = nil;
+    [_imageList release];_imageList = nil;
     [super dealloc];
 }
 
 - (instancetype)init {
     self = [super init];
     if (self) {
-        NSArray *titleList_ = @[@"日历",@"计步器",@"遥控旅行箱",@"箱子GPS定位",@"温度/湿度监控",@"闹钟",@"公司介绍"];
+        NSArray *titleList_ = @[@"日历",@"计步器",@"遥控旅行箱",@"箱子GPS定位",@"温湿度监控",@"称重",@"闹钟",@"公司介绍"];
         _titleList = [titleList_ retain];
+        
+        NSArray *imageList_ = @[[UIImage imageNamed:@"f_1_date"],[UIImage imageNamed:@"f_1_pedo"],[UIImage imageNamed:@"f_1_control"],
+                               [UIImage imageNamed:@"f_1_gps"],[UIImage imageNamed:@"f_1_tem"],[UIImage imageNamed:@"f_1_weigh"],
+                               [UIImage imageNamed:@"f_1_alarm"],[UIImage imageNamed:@"f_1_com"]];
+        _imageList = [imageList_ retain];
     }
     return self;
 }
@@ -42,7 +50,7 @@
     [self setNavigationItemLeftImage:[UIImage imageNamed:@"common_icon_back"]];
     [self setNavigationTitle:@"发现"];
     
-    UITableView *tableView = [[[UITableView alloc] initWithFrame:self.view.bounds] autorelease];
+    UITableView *tableView = [[[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped] autorelease];
     tableView.backgroundColor = self.view.backgroundColor;
     tableView.dataSource = self;
     tableView.delegate = self;
@@ -65,6 +73,7 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
     }
     cell.textLabel.text = _titleList[indexPath.row];
+    cell.imageView.image = _imageList[indexPath.row];
     
     return cell;
 }
@@ -103,6 +112,14 @@
         }
             break;
         case 5:
+            //称重
+        {
+            WeighViewController *controller = [[WeighViewController alloc] init];
+            [self.navigationController pushViewController:controller animated:YES];
+            [controller release];
+        }
+            break;
+        case 6:
             //闹钟
         {
             AlarmClockEditViewController *controller = [[AlarmClockEditViewController alloc] init];
@@ -110,7 +127,7 @@
             [controller release];
         }
             break;
-        case 6:
+        case 7:
             //公司介绍
         {
             CompanyViewController *controller = [[CompanyViewController alloc] init];

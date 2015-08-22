@@ -8,6 +8,9 @@
 
 #import "BoxSuperViewController.h"
 
+/**
+ * 闹钟页
+ **/
 @interface AlarmClockEditViewController : BoxSuperViewController
 
 @end

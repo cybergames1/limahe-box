@@ -13,6 +13,7 @@
 - (void)dealloc {
     [_expressId release];_expressId = nil;
     [_expressName release];_expressName = nil;
+    [_expressPhone release];_expressPhone = nil;
     [super dealloc];
 }
 

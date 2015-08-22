@@ -24,7 +24,14 @@
 - (RLCell *)bottomCell;
 - (RegisterButton *)registerButton;
 
-//RegisterButton的点击事件
+/*
+ * RegisterButton的点击事件
+ */
 - (void)doneAction;
+
+/*
+ * 注销掉所有TextField的第一响应
+ */
+- (void)allTextFieldResignFirstResponder;
 
 @end

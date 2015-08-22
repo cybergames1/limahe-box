@@ -68,4 +68,11 @@
     }
 }
 
+- (void)addTarget:(id)target action:(SEL)action {
+    UIButton *button = [[[UIButton alloc] initWithFrame:self.bounds] autorelease];
+    button.backgroundColor = [UIColor clearColor];
+    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:button];
+}
+
 @end

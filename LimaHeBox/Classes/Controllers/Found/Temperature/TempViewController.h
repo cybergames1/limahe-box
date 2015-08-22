@@ -8,6 +8,9 @@
 
 #import "BoxSuperViewController.h"
 
+/**
+ * 温湿度监控
+ **/
 @interface TempViewController : BoxSuperViewController
 
 @end

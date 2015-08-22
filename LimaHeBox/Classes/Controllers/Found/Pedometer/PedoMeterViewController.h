@@ -8,6 +8,9 @@
 
 #import "BoxSuperViewController.h"
 
+/**
+ * 计步器
+ **/
 @interface PedoMeterViewController : BoxSuperViewController
 
 @end

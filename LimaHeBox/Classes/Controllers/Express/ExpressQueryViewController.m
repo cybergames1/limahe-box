@@ -14,8 +14,8 @@
 
 @interface ExpressQueryViewController ()
 {
-    UITextField * _ticketField;
-    UILabel * _comLabel;
+    RLCell * _ticketCell;
+    RLCell * _comCell;
 }
 
 /* 选择了相应的快递公司后生成临时的expressModel用于查询 */
@@ -33,32 +33,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor redColor];
     [self setNavigationTitle:@"快递查询"];
     
-    _ticketField = [[[UITextField alloc] initWithFrame:CGRectMake(FieldEdge_Rate*self.view.bounds.size.width, 120, (1-2*FieldEdge_Rate)*self.view.bounds.size.width, 30.0)] autorelease];
-    _ticketField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    _ticketField.keyboardType = UIKeyboardTypeEmailAddress;
-    _ticketField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    _ticketField.borderStyle = UITextBorderStyleRoundedRect;
-    _ticketField.placeholder = @"请输入快递单号";
+    _ticketCell = [self topCell];
+    _ticketCell.textField.placeholder = @"请输入快递单号";
     
-    _comLabel = [[[UILabel alloc] initWithFrame:CGRectMake(_ticketField.frame.origin.x, _ticketField.frame.origin.y+_ticketField.bounds.size.height+20, _ticketField.bounds.size.width, _ticketField.bounds.size.height)] autorelease];
-    _comLabel.text = @"请选择快递公司";
+    _comCell = [self bottomCell];
+    _comCell.textField.placeholder = @"请选择快递公司";
+    _comCell.textField.secureTextEntry = NO;
+    [_comCell addTarget:self action:@selector(comTapAction)];
     
-    UIButton *queryButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [queryButton setFrame:CGRectMake(_comLabel.frame.origin.x, _comLabel.frame.origin.y+_comLabel.frame.size.height+50, _comLabel.bounds.size.width, _comLabel.bounds.size.height)];
-    [queryButton addTarget:self action:@selector(queryAction) forControlEvents:UIControlEventTouchUpInside];
-    [queryButton setTitle:@"查询" forState:UIControlStateNormal];
-    [queryButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    
-    [self.view addSubview:_ticketField];
-    [self.view addSubview:_comLabel];
-    [self.view addSubview:queryButton];
-    
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(comTapAction:)];
-    [self.view addGestureRecognizer:tapRecognizer];
-    [tapRecognizer release];
+    RegisterButton *loginButton = [self registerButton];
+    [loginButton setTitle:@"查询" forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,24 +52,22 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)comTapAction:(UIGestureRecognizer *)recognizer {
-    [_ticketField resignFirstResponder];
-    
-    if (CGRectContainsPoint(_comLabel.frame, [recognizer locationInView:self.view])) {
-        ExpressListViewController *controller = [[ExpressListViewController alloc] init];
-        controller.handleBlock = ^(ExpressModel *expressModel) {
-            _comLabel.text = expressModel.expressName;
-            self.expressModel = expressModel;
-        };
-        [self.navigationController pushViewController:controller animated:YES];
-        [controller release];
-    }
+- (void)comTapAction {
+    [self allTextFieldResignFirstResponder];
+
+    ExpressListViewController *controller = [[ExpressListViewController alloc] init];
+    controller.handleBlock = ^(ExpressModel *expressModel) {
+        _comCell.textField.text = expressModel.expressName;
+        self.expressModel = expressModel;
+    };
+    [self.navigationController pushViewController:controller animated:YES];
+    [controller release];
 }
 
-- (void)queryAction {
+- (void)doneAction {
     ExpressResultViewController *controller = [[ExpressResultViewController alloc] init];
     controller.comId = _expressModel.expressId;
-    controller.postId = _ticketField.text;
+    controller.postId = _ticketCell.textField.text;
     [self.navigationController pushViewController:controller animated:YES];
     [controller release];
 }

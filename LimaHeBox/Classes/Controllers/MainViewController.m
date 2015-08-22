@@ -18,6 +18,7 @@
 #import "BlueToothViewController.h"
 #import "AccountManager.h"
 #import "UserViewController.h"
+#import "ShareViewController.h"
 
 @interface MainViewController () <MainMenuViewDelegate>
 
@@ -115,7 +116,11 @@
         case 3:
             //分享
         {
-            
+            ShareViewController *controller = [[ShareViewController alloc] init];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+            [self.navigationController presentViewController:nav animated:YES completion:nil];
+            [controller release];
+            [nav release];
         }
             break;
         case 4:

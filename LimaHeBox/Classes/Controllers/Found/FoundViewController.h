@@ -8,6 +8,9 @@
 
 #import "BoxSuperViewController.h"
 
+/**
+ * 发现页
+ **/
 @interface FoundViewController : BoxSuperViewController
 
 @end

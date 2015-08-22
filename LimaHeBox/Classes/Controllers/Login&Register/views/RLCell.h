@@ -15,5 +15,9 @@
 @property (nonatomic, retain) UITextField * textField;
 @property (nonatomic, retain) UIView * rightView;
 
+/*
+ * 在Cell上添加点击事件，此时textField只做显示，无法输入
+ */
+- (void)addTarget:(id)target action:(SEL)action;
 
 @end

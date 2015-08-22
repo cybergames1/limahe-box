@@ -8,6 +8,9 @@
 
 #import "BoxSuperViewController.h"
 
+/**
+ * 遥控页
+ **/
 @interface TeleControlViewController : BoxSuperViewController
 
 @end

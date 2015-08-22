@@ -7,144 +7,192 @@
 		<string>dhl</string>
 		<key>k_name</key>
 		<string>DHL(中国)</string>
+		<key>k_phone</key>
+		<string>800-810-8000</string>
 	</dict>
 	<dict>
 		<key>k_id</key>
 		<string>ems</string>
 		<key>k_name</key>
 		<string>EMS</string>
+		<key>k_phone</key>
+		<string>11183</string>
 	</dict>
 	<dict>
 		<key>k_id</key>
 		<string>emsguoji</string>
 		<key>k_name</key>
 		<string>EMS(国际)</string>
+		<key>k_phone</key>
+		<string>11183</string>
 	</dict>
 	<dict>
 		<key>k_id</key>
 		<string>huitongkuaidi</string>
 		<key>k_name</key>
 		<string>汇通快递</string>
+		<key>k_phone</key>
+		<string>400-956-5656</string>
 	</dict>
 	<dict>
 		<key>k_id</key>
 		<string>kuaijiesudi</string>
 		<key>k_name</key>
 		<string>快捷速递</string>
+		<key>k_phone</key>
+		<string>400-830-4888</string>
 	</dict>
 	<dict>
 		<key>k_id</key>
 		<string>lianbangkuaidi</string>
 		<key>k_name</key>
 		<string>联邦快递</string>
+		<key>k_phone</key>
+		<string>400-889-1888</string>
 	</dict>
 	<dict>
 		<key>k_id</key>
 		<string>lianhaowuliu</string>
 		<key>k_name</key>
 		<string>联昊通速递</string>
+		<key>k_phone</key>
+		<string>0769-88620000</string>
 	</dict>
 	<dict>
 		<key>k_id</key>
 		<string>longbanwuliu</string>
 		<key>k_name</key>
 		<string>龙邦速递</string>
+		<key>k_phone</key>
+		<string>021-59218889</string>
 	</dict>
 	<dict>
 		<key>k_id</key>
 		<string>onTrac</string>
 		<key>k_name</key>
 		<string>OnTrac</string>
+		<key>k_phone</key>
+		<string>800-334-5000</string>
 	</dict>
 	<dict>
 		<key>k_id</key>
 		<string>quanfengkuaidi</string>
 		<key>k_name</key>
 		<string>全峰快递</string>
+		<key>k_phone</key>
+		<string>400-100-0001</string>
 	</dict>
 	<dict>
 		<key>k_id</key>
 		<string>shentong</string>
 		<key>k_name</key>
 		<string>申通快递</string>
+		<key>k_phone</key>
+		<string>95543</string>
 	</dict>
 	<dict>
 		<key>k_id</key>
 		<string>shunfeng</string>
 		<key>k_name</key>
 		<string>顺丰速运</string>
+		<key>k_phone</key>
+		<string>95338</string>
 	</dict>
 	<dict>
 		<key>k_id</key>
 		<string>suer</string>
 		<key>k_name</key>
 		<string>速尔快递</string>
+		<key>k_phone</key>
+		<string>400-158-9888</string>
 	</dict>
 	<dict>
 		<key>k_id</key>
 		<string>tiantian</string>
 		<key>k_name</key>
 		<string>天天快递</string>
+		<key>k_phone</key>
+		<string>400-188-8888</string>
 	</dict>
 	<dict>
 		<key>k_id</key>
 		<string>tnt</string>
 		<key>k_name</key>
 		<string>TNT(中国)</string>
+		<key>k_phone</key>
+		<string>800-820-9868</string>
 	</dict>
 	<dict>
 		<key>k_id</key>
 		<string>ups</string>
 		<key>k_name</key>
 		<string>UPS(中国)</string>
+		<key>k_phone</key>
+		<string>400-820-8388</string>
 	</dict>
 	<dict>
 		<key>k_id</key>
 		<string>youshuwuliu</string>
 		<key>k_name</key>
 		<string>优速快递</string>
+		<key>k_phone</key>
+		<string>400-1111-119</string>
 	</dict>
 	<dict>
 		<key>k_id</key>
 		<string>youzhengguoji</string>
 		<key>k_name</key>
 		<string>邮政国际邮件</string>
+		<key>k_phone</key>
+		<string>11185</string>
 	</dict>
 	<dict>
 		<key>k_id</key>
 		<string>youzhengguonei</string>
 		<key>k_name</key>
 		<string>邮政国内小包</string>
+		<key>k_phone</key>
+		<string>11185</string>
 	</dict>
 	<dict>
 		<key>k_id</key>
 		<string>yuantong</string>
 		<key>k_name</key>
 		<string>圆通速递</string>
+		<key>k_phone</key>
+		<string>95554</string>
 	</dict>
 	<dict>
 		<key>k_id</key>
 		<string>yunda</string>
 		<key>k_name</key>
 		<string>韵达快递</string>
+		<key>k_phone</key>
+		<string>400-821-6789</string>
 	</dict>
 	<dict>
 		<key>k_id</key>
 		<string>zhaijisong</string>
 		<key>k_name</key>
 		<string>宅急送</string>
+		<key>k_phone</key>
+		<string>400-6789-0000</string>
 	</dict>
 	<dict>
 		<key>k_id</key>
 		<string>zhongtong</string>
 		<key>k_name</key>
 		<string>中通速递</string>
+		<key>k_phone</key>
+		<string>400-827-0270</string>
 	</dict>
 	<dict>
 		<key>k_id</key>
 		<string>zhongyouwuliu</string>
 		<key>k_name</key>
 		<string>中邮物流</string>
+		<key>k_phone</key>
+		<string>11183</string>
 	</dict>
 </array>
 </plist>

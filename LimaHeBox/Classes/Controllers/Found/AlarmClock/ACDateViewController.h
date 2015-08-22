@@ -8,6 +8,9 @@
 
 #import "BoxSuperViewController.h"
 
+/**
+ * 闹钟的日期选择
+ **/
 typedef void(^HandleBlock)(NSArray *dateIndexList);
 
 @interface ACDateViewController : BoxSuperViewController

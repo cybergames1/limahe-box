@@ -12,5 +12,6 @@
 
 @property (nonatomic, copy) NSString * expressId;
 @property (nonatomic, copy) NSString * expressName;
+@property (nonatomic, copy) NSString * expressPhone;
 
 @end

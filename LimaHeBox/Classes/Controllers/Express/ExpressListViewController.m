@@ -24,9 +24,18 @@
     [super dealloc];
 }
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _canCall = NO;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self setNavigationTitle:@"快递列表"];
     
     NSArray *expressList = [NSArray arrayWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"kuaidi.plist"]];
     
@@ -44,8 +53,9 @@
     NSMutableArray *expressList_ = [[NSMutableArray alloc] initWithCapacity:[array count]];
     for (NSDictionary *dic in array) {
         ExpressModel *model = [[ExpressModel alloc] init];
-        model.expressId = [dic valueForKey:@"k_id"];
-        model.expressName = [dic valueForKey:@"k_name"];
+        model.expressId = [dic objectForKey:@"k_id"];
+        model.expressName = [dic objectForKey:@"k_name"];
+        model.expressPhone = [dic objectForKey:@"k_phone"];
         [expressList_ addObject:model];
         [model release];
     }
@@ -110,17 +120,32 @@
     NSString *identifier = @"ExpressCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
+        cell.detailTextLabel.textColor = [UIColor grayColor];
     }
     ExpressModel *model = _expressList[indexPath.section][indexPath.row];
     cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"k_%@",model.expressId]];
     cell.textLabel.text = model.expressName;
+    cell.detailTextLabel.text = model.expressPhone;
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 55.0;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    ExpressModel *model = _expressList[indexPath.section][indexPath.row];
+    if (_canCall) {
+        NSMutableString *str = [[NSMutableString alloc] initWithFormat:@"telprompt://%@",model.expressPhone];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+        [str release];
+        return;
+    }
     if (_handleBlock) {
-        _handleBlock(_expressList[indexPath.section][indexPath.row]);
+        _handleBlock(model);
     }
     [self.navigationController popViewControllerAnimated:YES];
 }
