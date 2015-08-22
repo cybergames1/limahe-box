@@ -13,6 +13,7 @@
 #import "TempViewController.h"
 #import "TeleControlViewController.h"
 #import "WeighViewController.h"
+#import "CalendarViewController.h"
 
 @interface FoundViewController () <UITableViewDataSource,UITableViewDelegate>
 {
@@ -83,6 +84,11 @@
     switch (indexPath.row) {
         case 0:
             //日历
+        {
+            CalendarViewController *controller = [[CalendarViewController alloc] init];
+            [self.navigationController pushViewController:controller animated:YES];
+            [controller release];
+        }
             break;
         case 1:
             //计步器

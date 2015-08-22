@@ -8,6 +8,7 @@
 
 #import "BlueToothViewController.h"
 #import <CoreBluetooth/CoreBluetooth.h>
+#import "RadarView.h"
 
 @interface BlueToothViewController () <CBCentralManagerDelegate,CBPeripheralDelegate>
 
@@ -39,12 +40,22 @@
     [self setNavigationItemLeftImage:[UIImage imageNamed:@"common_icon_back"]];
     [self setNavigationTitle:@"蓝牙安全监控"];
     
+    UIImageView *backgroundImageView = [[[UIImageView alloc] initWithFrame:self.view.bounds] autorelease];
+    backgroundImageView.image = [UIImage imageNamed:@"lr_bg"];
+    [self.view addSubview:backgroundImageView];
+    
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setFrame:CGRectMake(self.view.frame.size.width/2-100/2, self.view.frame.size.height/2-100/2, 100, 100)];
     [button setTitle:@"连接" forState:UIControlStateNormal];
     [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(connect:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
+    
+    RadarView *radarView = [[[RadarView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, 250)] autorelease];
+    [self.view addSubview:radarView];
+    
+    RadarLabel *radarLabel = [[[RadarLabel alloc] initWithFrame:CGRectMake(35, radarView.bottom+50, self.view.width-70, self.view.height-radarView.bottom-10)] autorelease];
+    [self.view addSubview:radarLabel];
     
     _manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
 }

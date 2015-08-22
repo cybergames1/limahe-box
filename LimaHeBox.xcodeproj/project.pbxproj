@@ -158,6 +158,13 @@
 		DCEA6A0B1B8867B0008FF3E2 /* f_1_tem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA6A031B8867B0008FF3E2 /* f_1_tem@2x.png */; };
 		DCEA6A0C1B8867B0008FF3E2 /* f_1_weigh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA6A041B8867B0008FF3E2 /* f_1_weigh@2x.png */; };
 		DCEA6A0F1B887D68008FF3E2 /* ShareTool.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA6A0E1B887D68008FF3E2 /* ShareTool.m */; };
+		DCEA6A121B88A837008FF3E2 /* RadarView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA6A111B88A837008FF3E2 /* RadarView.m */; };
+		DCEA6A271B88D0BE008FF3E2 /* NSDate+convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA6A1E1B88D0BE008FF3E2 /* NSDate+convenience.m */; };
+		DCEA6A281B88D0BE008FF3E2 /* NSMutableArray+convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA6A201B88D0BE008FF3E2 /* NSMutableArray+convenience.m */; };
+		DCEA6A291B88D0BE008FF3E2 /* UIColor+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA6A221B88D0BE008FF3E2 /* UIColor+expanded.m */; };
+		DCEA6A2A1B88D0BE008FF3E2 /* UIView+convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA6A241B88D0BE008FF3E2 /* UIView+convenience.m */; };
+		DCEA6A2B1B88D0BE008FF3E2 /* VRGCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA6A261B88D0BE008FF3E2 /* VRGCalendarView.m */; };
+		DCEA6A2F1B88D107008FF3E2 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA6A2E1B88D107008FF3E2 /* CalendarViewController.m */; };
 		DCFAC4611B38F76C0062D479 /* left.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC42A1B38F76C0062D479 /* left.png */; };
 		DCFAC4621B38F76C0062D479 /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC42B1B38F76C0062D479 /* loading.png */; };
 		DCFAC4631B38F76C0062D479 /* main_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC42C1B38F76C0062D479 /* main_bg@2x.png */; };
@@ -518,6 +525,20 @@
 		DCEA6A041B8867B0008FF3E2 /* f_1_weigh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "f_1_weigh@2x.png"; sourceTree = "<group>"; };
 		DCEA6A0D1B887D68008FF3E2 /* ShareTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareTool.h; sourceTree = "<group>"; };
 		DCEA6A0E1B887D68008FF3E2 /* ShareTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareTool.m; sourceTree = "<group>"; };
+		DCEA6A101B88A837008FF3E2 /* RadarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarView.h; sourceTree = "<group>"; };
+		DCEA6A111B88A837008FF3E2 /* RadarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadarView.m; sourceTree = "<group>"; };
+		DCEA6A1D1B88D0BE008FF3E2 /* NSDate+convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+convenience.h"; sourceTree = "<group>"; };
+		DCEA6A1E1B88D0BE008FF3E2 /* NSDate+convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+convenience.m"; sourceTree = "<group>"; };
+		DCEA6A1F1B88D0BE008FF3E2 /* NSMutableArray+convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+convenience.h"; sourceTree = "<group>"; };
+		DCEA6A201B88D0BE008FF3E2 /* NSMutableArray+convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+convenience.m"; sourceTree = "<group>"; };
+		DCEA6A211B88D0BE008FF3E2 /* UIColor+expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+expanded.h"; sourceTree = "<group>"; };
+		DCEA6A221B88D0BE008FF3E2 /* UIColor+expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+expanded.m"; sourceTree = "<group>"; };
+		DCEA6A231B88D0BE008FF3E2 /* UIView+convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+convenience.h"; sourceTree = "<group>"; };
+		DCEA6A241B88D0BE008FF3E2 /* UIView+convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+convenience.m"; sourceTree = "<group>"; };
+		DCEA6A251B88D0BE008FF3E2 /* VRGCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VRGCalendarView.h; sourceTree = "<group>"; };
+		DCEA6A261B88D0BE008FF3E2 /* VRGCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VRGCalendarView.m; sourceTree = "<group>"; };
+		DCEA6A2D1B88D107008FF3E2 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
+		DCEA6A2E1B88D107008FF3E2 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
 		DCFAC42A1B38F76C0062D479 /* left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left.png; sourceTree = "<group>"; };
 		DCFAC42B1B38F76C0062D479 /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading.png; sourceTree = "<group>"; };
 		DCFAC42C1B38F76C0062D479 /* main_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_bg@2x.png"; sourceTree = "<group>"; };
@@ -910,6 +931,7 @@
 		DC3F17941B2FDF8900F02C10 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				DCEA6A1C1B88D0BE008FF3E2 /* Calendar */,
 				DCEA69C51B8786CC008FF3E2 /* MBProgressHUD */,
 				DCEA697A1B8618D7008FF3E2 /* FTUIKit */,
 				DCFAC4E61B3CFC200062D479 /* AlarmClock */,
@@ -1055,6 +1077,8 @@
 				DCEA69BE1B87358D008FF3E2 /* TeleControlView.m */,
 				DCEA69EA1B880F0A008FF3E2 /* FlagView.h */,
 				DCEA69EB1B880F0A008FF3E2 /* FlagView.m */,
+				DCEA6A101B88A837008FF3E2 /* RadarView.h */,
+				DCEA6A111B88A837008FF3E2 /* RadarView.m */,
 			);
 			name = Views;
 			path = Classes/Views;
@@ -1312,6 +1336,32 @@
 			path = Weigh;
 			sourceTree = "<group>";
 		};
+		DCEA6A1C1B88D0BE008FF3E2 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				DCEA6A1D1B88D0BE008FF3E2 /* NSDate+convenience.h */,
+				DCEA6A1E1B88D0BE008FF3E2 /* NSDate+convenience.m */,
+				DCEA6A1F1B88D0BE008FF3E2 /* NSMutableArray+convenience.h */,
+				DCEA6A201B88D0BE008FF3E2 /* NSMutableArray+convenience.m */,
+				DCEA6A211B88D0BE008FF3E2 /* UIColor+expanded.h */,
+				DCEA6A221B88D0BE008FF3E2 /* UIColor+expanded.m */,
+				DCEA6A231B88D0BE008FF3E2 /* UIView+convenience.h */,
+				DCEA6A241B88D0BE008FF3E2 /* UIView+convenience.m */,
+				DCEA6A251B88D0BE008FF3E2 /* VRGCalendarView.h */,
+				DCEA6A261B88D0BE008FF3E2 /* VRGCalendarView.m */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		DCEA6A2C1B88D0F2008FF3E2 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				DCEA6A2D1B88D107008FF3E2 /* CalendarViewController.h */,
+				DCEA6A2E1B88D107008FF3E2 /* CalendarViewController.m */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		DCFAC4291B38F76C0062D479 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -1443,6 +1493,7 @@
 		DCFAC4E41B3CF9A50062D479 /* Found */ = {
 			isa = PBXGroup;
 			children = (
+				DCEA6A2C1B88D0F2008FF3E2 /* Calendar */,
 				DCEA69F71B885EDC008FF3E2 /* Weigh */,
 				DCEA69B91B873552008FF3E2 /* TeleControl */,
 				DCEA69931B86D634008FF3E2 /* Temperature */,
@@ -1712,6 +1763,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCEA69F01B88289E008FF3E2 /* HeaderView.m in Sources */,
+				DCEA6A281B88D0BE008FF3E2 /* NSMutableArray+convenience.m in Sources */,
+				DCEA6A291B88D0BE008FF3E2 /* UIColor+expanded.m in Sources */,
 				DCCE822B1B7F9A68000EF913 /* LoginViewController.m in Sources */,
 				DC062B011B4A583C001D969A /* UIViewController+BackButtonHandler.m in Sources */,
 				DC3F17921B2FDF3000F02C10 /* SocialTools.m in Sources */,
@@ -1731,15 +1784,18 @@
 				DC3F17B11B2FDF8A00F02C10 /* ASIHTTPRequest.m in Sources */,
 				DCFAC4F21B3D2B080062D479 /* FoundViewController.m in Sources */,
 				DCEA6A0F1B887D68008FF3E2 /* ShareTool.m in Sources */,
+				DCEA6A2F1B88D107008FF3E2 /* CalendarViewController.m in Sources */,
 				DC3F17811B2FDF3000F02C10 /* PrviateTradesDS.m in Sources */,
 				DC0A3C531B57BCA90048774B /* TravelViewController.m in Sources */,
 				DCFAC49D1B395C000062D479 /* ExpressViewController.m in Sources */,
 				DC3F17AD1B2FDF8A00F02C10 /* ASIDataCompressor.m in Sources */,
 				DC0A3C571B58D30B0048774B /* PedoMeterViewController.m in Sources */,
+				DCEA6A271B88D0BE008FF3E2 /* NSDate+convenience.m in Sources */,
 				DC3F17FF1B31505500F02C10 /* LRSuperViewController.m in Sources */,
 				DCCE82351B808071000EF913 /* RLCell.m in Sources */,
 				DC3F17AC1B2FDF8A00F02C10 /* ASIAuthenticationDialog.m in Sources */,
 				DCFAC4E01B3ABDC30062D479 /* ExpressModel.m in Sources */,
+				DCEA6A2A1B88D0BE008FF3E2 /* UIView+convenience.m in Sources */,
 				DCBEF8D71B41140E00FA72D7 /* TimePickerView.m in Sources */,
 				DC3F17AF1B2FDF8A00F02C10 /* ASIDownloadCache.m in Sources */,
 				DCEA69E91B880C05008FF3E2 /* UpdateIconViewController.m in Sources */,
@@ -1759,6 +1815,7 @@
 				DC3F17871B2FDF3000F02C10 /* UIImageLoaderView.m in Sources */,
 				DC1DFE6B1B5CC8C100B86732 /* BlueToothViewController.m in Sources */,
 				DCCE82321B807F54000EF913 /* RegisterViewController.m in Sources */,
+				DCEA6A2B1B88D0BE008FF3E2 /* VRGCalendarView.m in Sources */,
 				DCEA698D1B86C494008FF3E2 /* CompanyNewsViewController.m in Sources */,
 				DC3F17861B2FDF3000F02C10 /* PPQListDataSource.m in Sources */,
 				DC3F177F1B2FDF3000F02C10 /* PrivateOrderStatusDS.m in Sources */,
@@ -1786,6 +1843,7 @@
 				DCEA69991B86D66B008FF3E2 /* TemperatureView.m in Sources */,
 				DCCE82201B7F94D5000EF913 /* LRDataSource.m in Sources */,
 				DC0237E71B32D7AF00245501 /* GTMBase64.m in Sources */,
+				DCEA6A121B88A837008FF3E2 /* RadarView.m in Sources */,
 				DC3F178B1B2FDF3000F02C10 /* SDImageCache.m in Sources */,
 				DC3F17881B2FDF3000F02C10 /* PPQNetWorkURLs.m in Sources */,
 				DCEA69EC1B880F0A008FF3E2 /* FlagView.m in Sources */,
@@ -1883,7 +1941,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1920,7 +1978,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

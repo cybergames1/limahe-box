@@ -29,9 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor redColor];
-    
+    // Do any additional setup after loading the view.    
     UIImageView *backgroundImageView = [[[UIImageView alloc] initWithFrame:self.view.bounds] autorelease];
     backgroundImageView.image = [UIImage imageNamed:@"lr_bg"];
     [self.view addSubview:backgroundImageView];

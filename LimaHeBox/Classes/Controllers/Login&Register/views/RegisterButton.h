@@ -14,29 +14,36 @@
  * 只需要传相对于view所在frame的top即可
  */
 + (RegisterButton *)showGreenInView:(UIView *)view
-                    top:(CGFloat)top
-                  title:(NSString *)title
-                 target:(id)target
-                 action:(SEL)action;
+                                top:(CGFloat)top
+                              title:(NSString *)title
+                             target:(id)target
+                             action:(SEL)action;
 
 /* 自定义frame的绿色条 */
 + (RegisterButton *)showGreenInView:(UIView *)view
-                    frame:(CGRect)frame
-                  title:(NSString *)title
-                 target:(id)target
-                 action:(SEL)action;
+                              frame:(CGRect)frame
+                              title:(NSString *)title
+                             target:(id)target
+                             action:(SEL)action;
 
 //白色同理
 + (RegisterButton *)showWhiteInView:(UIView *)view
-                    top:(CGFloat)top
-                  title:(NSString *)title
-                 target:(id)target
-                 action:(SEL)action;
+                                top:(CGFloat)top
+                              title:(NSString *)title
+                             target:(id)target
+                             action:(SEL)action;
 
 + (RegisterButton *)showWhiteInView:(UIView *)view
-                    frame:(CGRect)frame
-                  title:(NSString *)title
-                 target:(id)target
-                 action:(SEL)action;
+                              frame:(CGRect)frame
+                              title:(NSString *)title
+                             target:(id)target
+                             action:(SEL)action;
+
+//蓝色
++ (RegisterButton *)showBlueInView:(UIView *)view
+                             frame:(CGRect)frame
+                              title:(NSString *)title
+                             target:(id)target
+                             action:(SEL)action;
 
 @end

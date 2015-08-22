@@ -14,6 +14,7 @@
 #define GreenColor [UIColor colorWithRed:(72.0/255.0) green:(217.0/255.0) blue:(192.0/255.0) alpha:1.0]
 #define DarkGreenColor [UIColor colorWithRed:(38.0/255.0) green:(140.0/255.0) blue:(45.0/255.0) alpha:1.0]
 #define GrayColor [UIColor colorWithRed:(198.0/255.0) green:(198.0/255.0) blue:(198.0/255.0) alpha:1.0]
+#define BlueColor [UIColor colorWithRed:(3.0/255.0) green:(104.0/255.0) blue:(181.0/255.0) alpha:1.0]
 
 @interface RegisterButton ()
 
@@ -126,9 +127,9 @@
     return [RegisterButton showInView:view
                                 frame:rect
                                 title:title
-                           titleColor:[UIColor blackColor]
-                      backgroundColor:[UIColor whiteColor]
-                           boardColor:nil
+                           titleColor:[UIColor whiteColor]
+                      backgroundColor:[UIColor clearColor]
+                           boardColor:[UIColor colorWithWhite:1.0 alpha:0.5]
                                target:target
                                action:action];
 }
@@ -144,7 +145,23 @@
                       title:title
                  titleColor:[UIColor whiteColor]
             backgroundColor:[UIColor clearColor]
-                 boardColor:[UIColor whiteColor]
+                 boardColor:[UIColor colorWithWhite:1.0 alpha:0.5]
+                     target:target
+                     action:action];
+}
+
++ (RegisterButton *)showBlueInView:(UIView *)view
+                             frame:(CGRect)frame
+                             title:(NSString *)title
+                            target:(id)target
+                            action:(SEL)action
+{
+    return [self showInView:view
+                      frame:frame
+                      title:title
+                 titleColor:[UIColor whiteColor]
+            backgroundColor:BlueColor
+                 boardColor:nil
                      target:target
                      action:action];
 }
