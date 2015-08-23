@@ -25,13 +25,14 @@
 }
 
 - (void)stopManager {
-    [_manager cancelPeripheralConnection:_peripheral];
+    if (_peripheral) {
+        [_manager cancelPeripheralConnection:_peripheral];
+        [_peripheral setDelegate:nil];
+        [_peripheral release];_peripheral = nil;
+    }
     [_manager setDelegate:nil];
     [_manager stopScan];
     [_manager release];_manager = nil;
-    
-    [_peripheral setDelegate:nil];
-    [_peripheral release];_peripheral = nil;
 }
 
 - (void)viewDidLoad {

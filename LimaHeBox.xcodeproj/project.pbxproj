@@ -165,6 +165,8 @@
 		DCEA6A391B895D6D008FF3E2 /* bl_bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA6A351B895D6D008FF3E2 /* bl_bg@3x.png */; };
 		DCEA6A3A1B895D6D008FF3E2 /* bl_match@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA6A361B895D6D008FF3E2 /* bl_match@2x.png */; };
 		DCEA6A3B1B895D6D008FF3E2 /* fd1.png in Resources */ = {isa = PBXBuildFile; fileRef = DCEA6A371B895D6D008FF3E2 /* fd1.png */; };
+		DCEA6A3F1B89CFA3008FF3E2 /* CDRTranslucentSideBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA6A3E1B89CFA3008FF3E2 /* CDRTranslucentSideBar.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		DCEA6A431B89E57F008FF3E2 /* BoxSideBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA6A421B89E57F008FF3E2 /* BoxSideBarController.m */; };
 		DCFAC4611B38F76C0062D479 /* left.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC42A1B38F76C0062D479 /* left.png */; };
 		DCFAC4621B38F76C0062D479 /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC42B1B38F76C0062D479 /* loading.png */; };
 		DCFAC4631B38F76C0062D479 /* main_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFAC42C1B38F76C0062D479 /* main_bg@2x.png */; };
@@ -535,6 +537,10 @@
 		DCEA6A351B895D6D008FF3E2 /* bl_bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bl_bg@3x.png"; sourceTree = "<group>"; };
 		DCEA6A361B895D6D008FF3E2 /* bl_match@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bl_match@2x.png"; sourceTree = "<group>"; };
 		DCEA6A371B895D6D008FF3E2 /* fd1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fd1.png; sourceTree = "<group>"; };
+		DCEA6A3D1B89CFA3008FF3E2 /* CDRTranslucentSideBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRTranslucentSideBar.h; sourceTree = "<group>"; };
+		DCEA6A3E1B89CFA3008FF3E2 /* CDRTranslucentSideBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRTranslucentSideBar.m; sourceTree = "<group>"; };
+		DCEA6A411B89E57F008FF3E2 /* BoxSideBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxSideBarController.h; sourceTree = "<group>"; };
+		DCEA6A421B89E57F008FF3E2 /* BoxSideBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoxSideBarController.m; sourceTree = "<group>"; };
 		DCFAC42A1B38F76C0062D479 /* left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left.png; sourceTree = "<group>"; };
 		DCFAC42B1B38F76C0062D479 /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading.png; sourceTree = "<group>"; };
 		DCFAC42C1B38F76C0062D479 /* main_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_bg@2x.png"; sourceTree = "<group>"; };
@@ -927,6 +933,7 @@
 		DC3F17941B2FDF8900F02C10 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				DCEA6A3C1B89CFA3008FF3E2 /* CDRTranslucentSideBar */,
 				DCEA6A1C1B88D0BE008FF3E2 /* Calendar */,
 				DCEA69C51B8786CC008FF3E2 /* MBProgressHUD */,
 				DCEA697A1B8618D7008FF3E2 /* FTUIKit */,
@@ -1038,6 +1045,7 @@
 		DC3F17EE1B302D0100F02C10 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DCEA6A401B89E543008FF3E2 /* Super */,
 				DCEA697D1B861FDD008FF3E2 /* Message */,
 				DCEA69721B861858008FF3E2 /* Share */,
 				DCCE82491B85DFFC000EF913 /* Profile */,
@@ -1360,6 +1368,24 @@
 				DCEA6A371B895D6D008FF3E2 /* fd1.png */,
 			);
 			path = Bluetooth;
+			sourceTree = "<group>";
+		};
+		DCEA6A3C1B89CFA3008FF3E2 /* CDRTranslucentSideBar */ = {
+			isa = PBXGroup;
+			children = (
+				DCEA6A3D1B89CFA3008FF3E2 /* CDRTranslucentSideBar.h */,
+				DCEA6A3E1B89CFA3008FF3E2 /* CDRTranslucentSideBar.m */,
+			);
+			path = CDRTranslucentSideBar;
+			sourceTree = "<group>";
+		};
+		DCEA6A401B89E543008FF3E2 /* Super */ = {
+			isa = PBXGroup;
+			children = (
+				DCEA6A411B89E57F008FF3E2 /* BoxSideBarController.h */,
+				DCEA6A421B89E57F008FF3E2 /* BoxSideBarController.m */,
+			);
+			path = Super;
 			sourceTree = "<group>";
 		};
 		DCFAC4291B38F76C0062D479 /* Main */ = {
@@ -1853,6 +1879,8 @@
 				DCEA69E11B8805C7008FF3E2 /* AboutViewController.m in Sources */,
 				DCEA69C81B8786CC008FF3E2 /* MBProgressHUD.m in Sources */,
 				DC3F17161B2FDEEE00F02C10 /* main.m in Sources */,
+				DCEA6A3F1B89CFA3008FF3E2 /* CDRTranslucentSideBar.m in Sources */,
+				DCEA6A431B89E57F008FF3E2 /* BoxSideBarController.m in Sources */,
 				DC0A3C5A1B58D32B0048774B /* PedoMeterView.m in Sources */,
 				DC3F178D1B2FDF3000F02C10 /* SDWebImageDownloader.m in Sources */,
 				DCCE82521B85EA4B000EF913 /* BlueToothSettingViewController.m in Sources */,
