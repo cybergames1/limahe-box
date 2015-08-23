@@ -117,6 +117,14 @@
     //code正常，也可能错误
     else if (statusCode >= KErrorCodeOKMin && statusCode <= KErrorCodeOKMax)
     {
+        NSString *code = [(NSDictionary *)self.data objectForKey:@"code"];
+        if (code && ![code isEqualToString:@"200"]) {
+            NSString *msg = [(NSDictionary *)self.data objectForKey:@"data"];
+            NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithCapacity:0];
+            [userInfo setObject:code ? code : @"CODE" forKey:KErrorCodeKey];
+            [userInfo setObject:msg ? msg : @"NO MSG" forKey:NSLocalizedDescriptionKey];
+            return  [NSError errorWithDomain:KErrorDomain code:[code integerValue] userInfo:userInfo];
+        }
         return nil;
 //        //正常
 //        if ([code isEqualToString:KErrorNormal])

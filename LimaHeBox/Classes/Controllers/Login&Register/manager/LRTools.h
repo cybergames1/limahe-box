@@ -17,6 +17,11 @@ typedef void (^LoginFinish)(void);
 + (LRTools *)sharedTools;
 + (void)startAppIfNeeded;
 
+/*
+ * 统一管理登录成功所做的loginUser的更新等
+ */
++ (void)setLoginWithDictionary:(NSDictionary *)dictionary;
+
 #pragma mark - 验证邮箱、手机号合法性
 /*
  验证邮件

@@ -7,6 +7,7 @@
 //
 
 #import "LRTools.h"
+#import "AccountManager.h"
 
 @implementation LRTools
 
@@ -26,6 +27,12 @@
         finshBlock();
         [[LRTools sharedTools] setFinishBlock:nil];
     }
+}
+
++ (void)setLoginWithDictionary:(NSDictionary *)dictionary {
+    MUser *loginUser = [[MUser alloc] initWithDictionary:dictionary];
+    [[AccountManager sharedManager] setLoginUser:loginUser];
+    [loginUser release];
 }
 
 #pragma mark - 验证邮箱、手机号合法性

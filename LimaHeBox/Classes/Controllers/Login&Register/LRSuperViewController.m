@@ -156,11 +156,6 @@
  */
 - (void)dataSourceFinishLoad:(PPQDataSource *)source {
     [self hideAllHUDView];
-    BOOL msg = [[source.data  objectForKey:@"msg"] boolValue];
-    if (!msg) {
-        [self showHUDFail:[source.data objectForKey:@"data"]];
-        return;
-    }
 }
 
 - (void)dataSource:(PPQDataSource *)source hasError:(NSError *)error {

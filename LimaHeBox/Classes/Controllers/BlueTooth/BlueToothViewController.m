@@ -41,7 +41,7 @@
     [self setNavigationTitle:@"蓝牙安全监控"];
     
     UIImageView *backgroundImageView = [[[UIImageView alloc] initWithFrame:self.view.bounds] autorelease];
-    backgroundImageView.image = [UIImage imageNamed:@"lr_bg"];
+    backgroundImageView.image = [UIImage imageNamed:@"bl_bg"];
     [self.view addSubview:backgroundImageView];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];

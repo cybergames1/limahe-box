@@ -139,11 +139,16 @@
 }
 
 - (void)leftBarAction {
-    UserViewController *controller = [[UserViewController alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
-    [self.navigationController presentViewController:nav animated:YES completion:nil];
-    [controller release];
-    [nav release];
+    [LoginViewController showLogin:self
+                       finishBlock:nil
+                      failureBlock:^
+    {
+           UserViewController *controller = [[UserViewController alloc] init];
+           UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+           [self.navigationController presentViewController:nav animated:YES completion:nil];
+           [controller release];
+           [nav release];
+    }];
 }
 
 - (void)rightBarAction {

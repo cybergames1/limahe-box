@@ -14,5 +14,6 @@
 @interface LoginViewController : LRSuperViewController
 
 + (void) showLogin:(UIViewController*) rootController
-       finishBlock:(LoginFinish) finish;
+       finishBlock:(LoginFinish) finish //登录完成后需要做的事
+      failureBlock:(void(^)(void)) failure; //因为已经登录了，直接做登录了的事;
 @end

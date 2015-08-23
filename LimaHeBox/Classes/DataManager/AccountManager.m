@@ -16,6 +16,10 @@
 @property (nonatomic,copy) NSString *userName;
 @property (nonatomic,copy) NSString *userIcon;
 @property (nonatomic,copy) NSString *userPhone;
+@property (nonatomic,copy) NSString *userAge;
+@property (nonatomic,copy) NSString *userCity;
+@property (nonatomic,copy) NSString *userGender;
+@property (nonatomic,copy) NSString *userAddress;
 
 @end
 
@@ -25,7 +29,27 @@
     self.userName = nil;
     self.userIcon = nil;
     self.userPhone = nil;
+    self.userId = nil;
+    self.userAge = nil;
+    self.userCity = nil;
+    self.userGender = nil;
+    self.userAddress = nil;
     [super dealloc];
+}
+
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
+    self = [super init];
+    if (self) {
+        self.userId = [dictionary objectForKey:@"userid"];
+        self.userName = [dictionary objectForKey:@"username"];
+        self.userGender = [dictionary objectForKey:@"sex"];
+        self.userPhone = [dictionary objectForKey:@"mobile"];
+        self.userCity = [dictionary objectForKey:@"city"];
+        self.userAge = [dictionary objectForKey:@"age"];
+        self.userAddress = [dictionary objectForKey:@"address"];
+        self.userIcon = [[NSBundle mainBundle] pathForResource:@"pf_logo1@2x" ofType:@"png"];
+    }
+    return self;
 }
 
 @end
@@ -77,9 +101,9 @@ NSString* const  kUserInfoGenderKey = @"_userGender";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         instance = [[AccountManager alloc] init];
-        if (instance.loginUser == nil) {
-            instance.loginUser = [[self class] testUser];
-        }
+//        if (instance.loginUser == nil) {
+//            instance.loginUser = [[self class] testUser];
+//        }
     });
     return instance;
 }

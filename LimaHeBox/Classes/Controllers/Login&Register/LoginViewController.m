@@ -21,10 +21,13 @@
 @end
 @implementation LoginViewController
 
-+ (void)showLogin:(UIViewController *)rootController finishBlock:(LoginFinish)finish {
++ (void)showLogin:(UIViewController *)rootController
+      finishBlock:(LoginFinish)finish
+     failureBlock:(void (^)(void))failure
+{
     BOOL isLogin = [AccountManager isLogin];
-    if (isLogin && finish) {
-        finish();
+    if (isLogin && failure) {
+        failure();
         return;
     }
     
@@ -95,7 +98,11 @@
 
 - (void)dataSourceFinishLoad:(PPQDataSource *)source {
     [super dataSourceFinishLoad:source];
+    [LRTools setLoginWithDictionary:[source.data objectForKey:@"data"]];
     [LRTools startAppIfNeeded];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [self leftBarAction];
+    });
 }
 
 - (void)dataSource:(PPQDataSource *)source hasError:(NSError *)error {
