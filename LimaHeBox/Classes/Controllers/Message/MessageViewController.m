@@ -18,12 +18,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setNavigationTitle:@"消息"];
-    
-    UITableView *tableView = [[[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped] autorelease];
-    tableView.backgroundColor = self.view.backgroundColor;
-    tableView.dataSource = self;
-    tableView.delegate = self;
-    [self.view addSubview:tableView];
 }
 
 - (void)didReceiveMemoryWarning {
