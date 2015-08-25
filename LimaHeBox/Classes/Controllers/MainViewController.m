@@ -62,7 +62,7 @@ static int menuIndex[7] = {-1,2,1,3,0,4,5};
     
     //背景图
     UIImageView *imageView = [[[UIImageView alloc] initWithFrame:self.view.bounds] autorelease];
-    imageView.image = [UIImage imageNamed:@"bg"];
+    imageView.image = [UIImage imageNamed:@"main_bg"];
     [self.view addSubview:imageView];
     
     //菜单

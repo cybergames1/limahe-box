@@ -32,7 +32,7 @@
     
     [[self registerButton] setTitle:@"初始化密码" forState:UIControlStateNormal];
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(_useNameCell.left, [self registerButton].bottom+20, self.view.width-2*_useNameCell.left, 120)];
+    UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(_useNameCell.left, [self registerButton].bottom+20, self.view.width-2*_useNameCell.left, 120)] autorelease];
     label.backgroundColor = [UIColor clearColor];
     label.textColor = [UIColor whiteColor];
     label.font = [UIFont systemFontOfSize:13];

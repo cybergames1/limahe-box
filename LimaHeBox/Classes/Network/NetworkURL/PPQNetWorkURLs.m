@@ -24,7 +24,7 @@
 }
 
 + (NSString *)getNewsListWithPage:(NSInteger)page pageSize:(NSInteger)pageSize {
-    return [NSString stringWithFormat:@"%@%@?pagenumber=%ld&pagesize=%ld",APIHOST,NEWSLIST,page,pageSize];
+    return [NSString stringWithFormat:@"%@%@?pagenumber=%ld&pagesize=%ld",APIHOST,NEWSLIST,(long)page,(long)pageSize];
 }
 
 + (NSString *)getNewsInfoWithId:(NSString *)newsId {

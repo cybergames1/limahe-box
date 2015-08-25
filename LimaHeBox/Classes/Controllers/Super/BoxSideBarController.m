@@ -68,6 +68,21 @@
     self.viewControllers = @[mainNav,bluetoothNav,travelNav,shareNav,expressNav,foundNav,userNav];
     [self.tabBar setHidden:YES];
     
+    [main release];
+    [bluetooth release];
+    [travel release];
+    [share release];
+    [express release];
+    [found release];
+    [user release];
+    [mainNav release];
+    [bluetoothNav release];
+    [travelNav release];
+    [shareNav release];
+    [expressNav release];
+    [foundNav release];
+    [userNav release];
+    
     [self setBoxSideBar];
 }
 

@@ -16,7 +16,7 @@
     self.view.backgroundColor = self.navigationBarTintColor;
     
     UIImage *image = [UIImage imageNamed:@"f_weigh"];
-    UIImageView *imageView = [[[UIImageView alloc] initWithFrame:CGRectMake(self.view.width/2-image.size.width/2, 64, image.size.width, image.size.height)] autorelease];
+    UIImageView *imageView = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height)] autorelease];
     imageView.image = image;
     [self.view addSubview:imageView];
 }

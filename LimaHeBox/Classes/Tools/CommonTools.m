@@ -165,7 +165,7 @@ static NSString* rootPath = nil;
 {
     if ([CommonTools isSystemVertionLowIOS7])
     {
-        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     }
     else
     {
