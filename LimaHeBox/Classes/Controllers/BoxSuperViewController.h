@@ -21,14 +21,27 @@
 /* 导航条的颜色 */
 @property (nonatomic, retain) UIColor * navigationBarTintColor;
 
+/**
+ 设置navigationBar的左右itemView
+ */
 - (void)setNavigationItemLeftImage:(UIImage *)image;
 - (void)setNavigationItemRightImage:(UIImage *)image;
 
+/**
+ 设置navigationBar的titleView
+ */
 - (void)setNavigationTitle:(NSString *)title;
 - (void)setNavigationImage:(UIImage *)image;
 
 /* 设置返回按钮的标题 */
 - (void)setNavigationBackTitle:(NSString *)title;
+
+@end
+
+@interface BoxSuperViewController (BadgeNumber)
+
+- (void)setShowBadgeView:(BOOL)isShow;
+- (void)setBadgeNumber:(NSInteger)badgeNumber;
 
 @end
 

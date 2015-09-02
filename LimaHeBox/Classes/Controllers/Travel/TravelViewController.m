@@ -23,7 +23,7 @@
     UIWebView *webView = [[[UIWebView alloc] initWithFrame:self.view.bounds] autorelease];
     [self.view addSubview:webView];
     
-    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://touch.qunar.com"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0]];
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://touch.qunar.com/about.jsp?bd_source=qunar"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0]];
 }
 
 - (void)didReceiveMemoryWarning {

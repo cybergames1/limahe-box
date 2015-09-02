@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>2EE7EFCB-D0BA-45AF-9E34-900B247901DE</string>
 	<key>IDESourceControlProjectName</key>
-	<string>LimaHeBox</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>7DCB48129D5ADBE199A2F50CC13E4303BAF2BE5C</key>
 		<string>https://github.com/cybergames1/limahe-box.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>LimaHeBox.xcodeproj</string>
+	<string>LimaHeBox.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>7DCB48129D5ADBE199A2F50CC13E4303BAF2BE5C</key>

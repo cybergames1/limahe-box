@@ -24,41 +24,60 @@
                                                                    highlightedImage:nil
                                                                        ContentImage:[UIImage imageNamed:@"main_kuaidi"]
                                                             highlightedContentImage:[UIImage imageNamed:@"main_kuaidi"]
-                                                                        ContentText:@"快递"];
+                                                                        ContentText:nil];
         QuadCurveMenuItem *starMenuItem2 = [[QuadCurveMenuItem alloc] initWithImage:nil
                                                                    highlightedImage:nil
                                                                        ContentImage:[UIImage imageNamed:@"main_xingcheng"]
                                                             highlightedContentImage:[UIImage imageNamed:@"main_xingcheng"]
-                                                                        ContentText:@"行程"];
+                                                                        ContentText:nil];
         QuadCurveMenuItem *starMenuItem3 = [[QuadCurveMenuItem alloc] initWithImage:nil
                                                                    highlightedImage:nil
                                                                        ContentImage:[UIImage imageNamed:@"main_lanya"]
                                                             highlightedContentImage:[UIImage imageNamed:@"main_lanya"]
-                                                                        ContentText:@"蓝牙"];
+                                                                        ContentText:nil];
         QuadCurveMenuItem *starMenuItem4 = [[QuadCurveMenuItem alloc] initWithImage:nil
                                                                    highlightedImage:nil
                                                                        ContentImage:[UIImage imageNamed:@"main_fenxiang"]
                                                             highlightedContentImage:[UIImage imageNamed:@"main_fenxiang"]
-                                                                        ContentText:@"分享"];
+                                                                        ContentText:nil];
         QuadCurveMenuItem *starMenuItem5 = [[QuadCurveMenuItem alloc] initWithImage:nil
                                                                    highlightedImage:nil
                                                                        ContentImage:[UIImage imageNamed:@"main_faxian"]
                                                             highlightedContentImage:[UIImage imageNamed:@"main_faxian"]
-                                                                        ContentText:@"发现"];
+                                                                        ContentText:nil];
+        QuadCurveMenuItem *starMenuItem6 = [[QuadCurveMenuItem alloc] initWithImage:nil
+                                                                   highlightedImage:nil
+                                                                       ContentImage:[UIImage imageNamed:@"main_temp"]
+                                                            highlightedContentImage:[UIImage imageNamed:@"main_temp"]
+                                                                        ContentText:nil];
+        QuadCurveMenuItem *starMenuItem7 = [[QuadCurveMenuItem alloc] initWithImage:nil
+                                                                   highlightedImage:nil
+                                                                       ContentImage:[UIImage imageNamed:@"main_weigh"]
+                                                            highlightedContentImage:[UIImage imageNamed:@"main_weigh"]
+                                                                        ContentText:nil];
+        QuadCurveMenuItem *starMenuItem8 = [[QuadCurveMenuItem alloc] initWithImage:nil
+                                                                   highlightedImage:nil
+                                                                       ContentImage:[UIImage imageNamed:@"main_gps"]
+                                                            highlightedContentImage:[UIImage imageNamed:@"main_gps"]
+                                                                        ContentText:nil];
         
-        NSArray *menus = [NSArray arrayWithObjects:starMenuItem1, starMenuItem2, starMenuItem3, starMenuItem4, starMenuItem5, nil];
+        NSArray *menus = [NSArray arrayWithObjects:starMenuItem1, starMenuItem2, starMenuItem3, starMenuItem4, starMenuItem5, starMenuItem6,
+                          starMenuItem7, starMenuItem8, nil];
         [starMenuItem1 release];
         [starMenuItem2 release];
         [starMenuItem3 release];
         [starMenuItem4 release];
         [starMenuItem5 release];
+        [starMenuItem6 release];
+        [starMenuItem7 release];
+        [starMenuItem8 release];
         
         QuadCurveMenu *menu = [[QuadCurveMenu alloc] initWithFrame:self.bounds menus:menus];
         
         // customize menu
         
-        menu.rotateAngle = -2*M_PI/5;
-        menu.menuWholeAngle = M_PI;
+        menu.rotateAngle = -M_PI/2;
+        menu.menuWholeAngle = M_PI*2;
         //menu.timeOffset = 0.2f;
         //menu.farRadius = 180.0f;
         menu.endRadius = 100.0f;

@@ -9,6 +9,8 @@
 #import "QuadCurveMenu.h"
 #import <QuartzCore/QuartzCore.h>
 
+#define Top_Rate (330.0/480.0)
+
 static CGFloat const kQuadCurveMenuDefaultNearRadius = 110.0f;
 static CGFloat const kQuadCurveMenuDefaultEndRadius = 120.0f;
 static CGFloat const kQuadCurveMenuDefaultFarRadius = 140.0f;
@@ -55,7 +57,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 		self.timeOffset = kQuadCurveMenuDefaultTimeOffset;
 		self.rotateAngle = kQuadCurveMenuDefaultRotateAngle;
 		self.menuWholeAngle = kQuadCurveMenuDefaultMenuWholeAngle;
-		self.startPoint = CGPointMake(self.bounds.size.width/2, self.bounds.size.height - 80);
+		self.startPoint = CGPointMake(self.bounds.size.width/2, frame.size.height*Top_Rate);
         
         // layout menus
         self.menusArray = aMenusArray;
@@ -213,6 +215,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     for (int i = 0; i < count; i ++)
     {
         QuadCurveMenuItem *item = [_menusArray objectAtIndex:i];
+        item.alpha = 1.0;
         item.tag = 1000 + i;
         item.startPoint = startPoint;
         CGPoint endPoint = CGPointMake(startPoint.x + endRadius * sinf(i * menuWholeAngle / count), startPoint.y - endRadius * cosf(i * menuWholeAngle / count));
@@ -271,7 +274,6 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     
     int tag = 1000 + _flag;
     QuadCurveMenuItem *item = (QuadCurveMenuItem *)[self viewWithTag:tag];
-    item.hidden = NO;
     
     CAKeyframeAnimation *rotateAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform.rotation.z"];
     rotateAnimation.values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:M_PI],[NSNumber numberWithFloat:0.0f], nil];
@@ -311,7 +313,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         _timer = nil;
         return;
     }
-        
+    
     int tag = 1000 + _flag;
      QuadCurveMenuItem *item = (QuadCurveMenuItem *)[self viewWithTag:tag];
     
@@ -334,10 +336,10 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     
     CAAnimationGroup *animationgroup = [CAAnimationGroup animation];
     animationgroup.animations = [NSArray arrayWithObjects:positionAnimation, rotateAnimation, nil];
-    animationgroup.delegate = self;
     animationgroup.duration = 0.5f;
     animationgroup.fillMode = kCAFillModeForwards;
     animationgroup.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    animationgroup.delegate = self;
     [item.layer addAnimation:animationgroup forKey:@"Close"];
     item.center = item.startPoint;
     _flag --;
@@ -379,23 +381,27 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     animationgroup.animations = [NSArray arrayWithObjects:positionAnimation, scaleAnimation, opacityAnimation, nil];
     animationgroup.duration = 0.3f;
     animationgroup.fillMode = kCAFillModeForwards;
+    animationgroup.delegate = self;
     
     return animationgroup;
 }
 
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
-{
-    [self _setAllMenuHidden:YES];
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+    if (flag) {
+        [self _setAllMenuHidden:YES];
+    }
 }
 
 - (void)_setAllMenuHidden:(BOOL)hidden
 {
     int count = (int)[_menusArray count];
-    for (int i = 0; i < count; i ++)
-    {
-        QuadCurveMenuItem *item = [_menusArray objectAtIndex:i];
-        item.hidden = hidden;
-    }
+    [UIView animateWithDuration:0.2 animations:^{
+        for (int i = 0; i < count; i ++)
+        {
+            QuadCurveMenuItem *item = [_menusArray objectAtIndex:i];
+            item.alpha = 0.0;
+        }
+    }];
 }
 
 @end

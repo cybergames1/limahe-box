@@ -20,15 +20,18 @@
 #import "UserViewController.h"
 #import "ShareViewController.h"
 #import "CDRTranslucentSideBar.h"
+#import "TimePickerView.h"
 
 #define Cell_Label_Tag 13232
 
 static int menuIndex[7] = {-1,2,1,3,0,4,5};
 
-@interface MainViewController () <MainMenuViewDelegate,CDRTranslucentSideBarDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface MainViewController () <MainMenuViewDelegate,CDRTranslucentSideBarDelegate,TimePickerViewDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     NSArray * _tabList;
     UITableView * _tableView;
+    WeatherView * _weatherView;
+    WeatherAPI * _weatherAPI;
 }
 
 @property (nonatomic, retain) CDRTranslucentSideBar *sideBar;
@@ -40,6 +43,7 @@ static int menuIndex[7] = {-1,2,1,3,0,4,5};
 - (void)dealloc {
     [_sideBar release];_sideBar = nil;
     [_tabList release];_tabList = nil;
+    [_weatherAPI release];_weatherAPI = nil;
     [super dealloc];
 }
 
@@ -48,6 +52,7 @@ static int menuIndex[7] = {-1,2,1,3,0,4,5};
     if (self) {
         NSArray *tabList_ = @[@"首页",@"蓝牙",@"行程预定",@"分享",@"快递",@"发现",@"我的"];
         _tabList = [tabList_ retain];
+        _weatherAPI = [[WeatherAPI alloc] init];
     }
     return self;
 }
@@ -55,9 +60,9 @@ static int menuIndex[7] = {-1,2,1,3,0,4,5};
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     [self setNavigationItemLeftImage:[UIImage imageNamed:@"main_nav_left"]];
     [self setNavigationImage:[UIImage imageNamed:@"main_logo"]];
+    [self setShowBadgeView:YES];
     [self setBoxSideBar];
     
     //背景图
@@ -73,17 +78,21 @@ static int menuIndex[7] = {-1,2,1,3,0,4,5};
     //天气
     WeatherView *weatherView = [[[WeatherView alloc] initWithFrame:CGRectMake(0, [CommonTools viewTopWithNav], self.view.frame.size.width, 60)] autorelease];
     [self.view addSubview:weatherView];
+    _weatherView = weatherView;
     
-    WeatherAPI *api = [[WeatherAPI alloc] init];
-    [api getWeatherInfo:^(BOOL finished) {
+    [self setWeatherInfo:@"101010100"];
+}
+
+- (void)setWeatherInfo:(NSString *)areaId {
+    [_weatherAPI getWeatherInfoAreaId:areaId completion:^(BOOL finished) {
         if (finished) {
-            NSDictionary *info = [api weatherInfo];
+            NSDictionary *info = [_weatherAPI weatherInfo];
             NSLog(@"info:%@",info);
             NSLog(@"dayWeather:%d",[[info objectForKey:WeahterPropertyDayWeather] intValue]);
-            [weatherView setWeatherCode:[[info objectForKey:WeahterPropertyDayWeather] integerValue]];
-            [weatherView setMinTemperature:[[info objectForKey:WeatherPropertyNightTemperature] integerValue]];
-            [weatherView setMaxTemperature:[[info objectForKey:WeatherPropertyDayTemperature] integerValue]];
-            [weatherView setNeedsLayout];
+            [_weatherView setWeatherCode:[[info objectForKey:WeahterPropertyDayWeather] integerValue]];
+            [_weatherView setMinTemperature:[[info objectForKey:WeatherPropertyNightTemperature] integerValue]];
+            [_weatherView setMaxTemperature:[[info objectForKey:WeatherPropertyDayTemperature] integerValue]];
+            [_weatherView setNeedsLayout];
         }
         else {
             
@@ -113,6 +122,16 @@ static int menuIndex[7] = {-1,2,1,3,0,4,5};
     // Dispose of any resources that can be recreated.
 }
 
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = [touches anyObject];
+    if (CGRectContainsPoint(_weatherView.frame, [touch locationInView:self.view])) {
+        CityPickerView *picker = [[CityPickerView alloc] init];
+        picker.delegate = self;
+        [picker showInView:self.view];
+        [picker release];
+    }
+}
+
 /*
 #pragma mark - Navigation
 
@@ -122,6 +141,10 @@ static int menuIndex[7] = {-1,2,1,3,0,4,5};
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)pickerView:(CityPickerView *)pickerView cityId:(NSString *)cityId {
+    [self setWeatherInfo:cityId];
+}
 
 #pragma mark - CDRTranslucentSideBarDelegate
 - (void)sideBar:(CDRTranslucentSideBar *)sideBar didAppear:(BOOL)animated

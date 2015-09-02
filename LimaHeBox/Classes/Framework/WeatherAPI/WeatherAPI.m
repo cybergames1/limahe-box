@@ -32,6 +32,7 @@ typedef void(^Complation)(BOOL finished);
     NSString * _type;
     NSString * _dateString;
     NSString * _api;
+    NSString * _key;
     
     WeatherSource * _source;
     Complation _complation;
@@ -46,10 +47,15 @@ typedef void(^Complation)(BOOL finished);
     [_type release];_type = nil;
     [_dateString release];_dateString = nil;
     [_api release];_api = nil;
-    _source.delegate = nil;
-    [_source release];_source = nil;
+    [_key release];_key = nil;
+    if (_source) {
+        _source.delegate = nil;
+        [_source release];_source = nil;
+    }
     [_weatherInfo release];_weatherInfo = nil;
-    [_complation release];_complation = nil;
+    if (_complation) {
+        [_complation release];_complation = nil;
+    }
     
     [super dealloc];
 }
@@ -78,17 +84,16 @@ typedef void(^Complation)(BOOL finished);
         NSString *publickey_ = [self getPublicKey:_areaid type:_type date:_dateString appid:Weather_APPID];
         NSString *key_ = [self hmacSha1:publickey_ privatekey:Weather_PrivateKey];
         key_ = [self stringByEncodingURLFormat:key_];
-        
-        NSString *weatherAPI_ = [self getAPI:_areaid type:_type date:_dateString appid:Weather_APPID key:key_];
-        _api = [weatherAPI_ retain];
-        
-        NSLog(@"api:%@",weatherAPI_);
-        
+        _key = [key_ retain];
     }
     return self;
 }
 
-- (NSString *)apiURLString {
+- (NSString *)apiURLString:(NSString *)areaId {
+    [_api release];
+    NSString *weatherAPI_ = [[self getAPI:areaId type:_type date:_dateString appid:Weather_APPID key:_key] retain];
+    _api = [weatherAPI_ retain];
+    
     return _api;
 }
 
@@ -143,16 +148,19 @@ typedef void(^Complation)(BOOL finished);
 }
 
 //将获得的key进性urlencode操作
-- (NSString *)stringByEncodingURLFormat:(NSString*)_key {
-    NSString *encodedString = (__bridge NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,(CFStringRef)_key,nil, (CFStringRef) @"!$&'()*+,-./:;=?@_~%#[]",kCFStringEncodingUTF8);
+- (NSString *)stringByEncodingURLFormat:(NSString*)__key {
+    NSString *encodedString = (__bridge NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,(CFStringRef)__key,nil, (CFStringRef) @"!$&'()*+,-./:;=?@_~%#[]",kCFStringEncodingUTF8);
     return [encodedString autorelease];
 }
 
-- (void)getWeatherInfo:(void (^)(BOOL))completion {
-    _complation = [completion copy];
+- (void)getWeatherInfoAreaId:(NSString *)areaId completion:(void (^)(BOOL))completion {
+    if (completion) {
+        _complation = [completion copy];
+    }
     
     WeatherSource *source = [[WeatherSource alloc] initWithDelegate:self];
-    [source getWeatherInfo:_api];
+    [source getWeatherInfo:[self apiURLString:areaId]];
+    _source = source;
 }
 
 - (void)dataSourceFinishLoad:(PPQDataSource *)source {
@@ -168,11 +176,23 @@ typedef void(^Complation)(BOOL finished);
     [_weatherInfo setValue:[d1 objectForKey:@"fg"] forKey:WeatherPropertyDayWindForce];
     [_weatherInfo setValue:[d1 objectForKey:@"fh"] forKey:WeatherPropertyNightWindForce];
     
-    if (_complation) _complation(YES);
+    if (_complation) {
+        _complation(YES);
+        [_complation release];
+        _complation = nil;
+    }
+    
+    [source release];source = nil;
 }
 
 - (void)dataSource:(PPQDataSource *)source hasError:(NSError *)error {
-    if (_complation) _complation(NO);
+    if (_complation) {
+        _complation(NO);
+        [_complation release];
+        _complation = nil;
+    }
+    
+    [source release];source = nil;
 }
 
 @end

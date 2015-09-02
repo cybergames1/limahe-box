@@ -47,12 +47,12 @@
     }
 }
 
-- (void)setHighlighted:(BOOL)highlighted {
-    [super setHighlighted:highlighted];
-    if (CGColorEqualToColor(_normalColor.CGColor, GreenColor.CGColor)) {
-        self.backgroundColor = highlighted ? DarkGreenColor : GreenColor;
-    }
-}
+//- (void)setHighlighted:(BOOL)highlighted {
+//    [super setHighlighted:highlighted];
+//    if (CGColorEqualToColor(_normalColor.CGColor, GreenColor.CGColor)) {
+//        self.backgroundColor = highlighted ? DarkGreenColor : GreenColor;
+//    }
+//}
 
 + (RegisterButton *)showInView:(UIView *)view
                frame:(CGRect)frame

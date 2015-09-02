@@ -14,7 +14,7 @@
 @interface TimePickerView () <UIPickerViewDelegate,UIPickerViewDataSource>
 {
     UIView * _bgView;
-    UIPickerView * _pickerView;
+    
     UIToolbar * _toolbar;
     
     NSMutableArray * _hoursArray;
@@ -88,8 +88,12 @@
     _bgView.frame = self.bounds;
     _toolbar.frame = CGRectMake(0, self.height, self.width, 44);
     _pickerView.frame = CGRectMake(0, _toolbar.bottom, self.width, self.width*Picker_Rate);
-    [self setCurrentTime];
+    [self setPickerView];
     [self showAniamtion];
+}
+
+- (void)setPickerView {
+    [self setCurrentTime];
 }
 
 - (void)setCurrentTime {
@@ -206,6 +210,79 @@
     else {
         _returnMinute = [_minArray[row] integerValue];
     }
+}
+
+@end
+
+
+@interface CityPickerView ()
+{
+    NSArray * _provinceList;
+    NSArray * _cityList;
+}
+
+@end
+
+@implementation CityPickerView
+
+- (void)dealloc {
+    [_provinceList release];_provinceList = nil;
+    [_cityList release];_cityList = nil;
+    [super dealloc];
+}
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _provinceList = [[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"City" ofType:@"plist"]];
+        _cityList = [[NSArray alloc] initWithArray:[_provinceList[0] objectForKey:@"cityList"]];
+    }
+    return self;
+}
+
+- (void)setPickerView {
+    [_pickerView selectRow:0 inComponent:0 animated:YES];
+    [_pickerView selectRow:0 inComponent:1 animated:YES];
+}
+
+#pragma mark -
+#pragma mark UIPickerView DataSource & Delegate
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 2;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    if (component == 0) {
+        return [_provinceList count];
+    }else {
+        return [_cityList count];
+    }
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    if (component == 0) {
+        return [_provinceList[row] objectForKey:@"provinceName"];
+    }else {
+        return [_cityList[row] objectForKey:@"cityName"];
+    }
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    if (component == 0) {
+        [_cityList release];
+        _cityList = [[NSArray alloc] initWithArray:[_provinceList[row] objectForKey:@"cityList"]];
+        
+        [pickerView reloadComponent:1];
+        [pickerView selectRow:0 inComponent:1 animated:YES];
+    }
+}
+
+- (void)doneAction {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(pickerView:cityId:)]) {
+        [self.delegate pickerView:self cityId:[_cityList[[_pickerView selectedRowInComponent:1]] objectForKey:@"cityId"]];
+    }
+    [self hideAnimation];
 }
 
 @end

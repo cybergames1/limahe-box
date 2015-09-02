@@ -8,14 +8,25 @@
 
 #import <UIKit/UIKit.h>
 
+@class CityPickerView;
+@protocol CityPickerViewDelegate <NSObject>
+
+- (void)pickerView:(CityPickerView *)pickerView cityId:(NSString *)cityId;
+
+@end
+
+
 @class TimePickerView;
-@protocol TimePickerViewDelegate <NSObject>
+@protocol TimePickerViewDelegate <CityPickerViewDelegate>
 
 - (void)pickerView:(TimePickerView *)pickerView hour:(NSInteger)hour minute:(NSInteger)minute;
 
 @end
 
 @interface TimePickerView : UIView
+{
+    UIPickerView * _pickerView;
+}
 
 @property (nonatomic, assign) id<TimePickerViewDelegate> delegate;
 
@@ -23,5 +34,10 @@
 
 /* 修改时间时，先导入之前的时间 */
 - (void)setHour:(NSInteger)hour minute:(NSInteger)minute;
+
+@end
+
+
+@interface CityPickerView : TimePickerView
 
 @end

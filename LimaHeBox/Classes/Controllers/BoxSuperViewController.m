@@ -8,6 +8,7 @@
 
 #import "BoxSuperViewController.h"
 #import "MBProgressHUD.h"
+#import "BadgeView.h"
 
 @interface BoxSuperViewController ()
 
@@ -107,6 +108,30 @@
 - (BOOL)navigationShouldPopOnBackButton {
     //navigationBar自带返回按钮的点击事件
     return YES;
+}
+
+@end
+
+@implementation BoxSuperViewController (BadgeNumber)
+
+- (void)setShowBadgeView:(BOOL)isShow {
+    UIView *customView = self.navigationItem.rightBarButtonItem.customView;
+    
+    BadgeView *badgeView = [[BadgeView alloc] init];
+    badgeView.right = customView.width;
+    badgeView.top = -10;
+    [customView addSubview:badgeView];
+    [badgeView release];
+    
+    [badgeView setBadgeNumber:3];
+}
+
+- (void)setBadgeNumber:(NSInteger)badgeNumber {
+    for (UIView *view in self.navigationItem.rightBarButtonItem.customView.subviews) {
+        if ([view isKindOfClass:[BadgeView class]]) {
+            
+        }
+    }
 }
 
 @end

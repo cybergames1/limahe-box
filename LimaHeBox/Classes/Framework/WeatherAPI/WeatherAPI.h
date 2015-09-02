@@ -77,7 +77,7 @@ typedef NS_ENUM(NSInteger, WeatherForceLevel) {
 
 @property (nonatomic, retain) NSMutableDictionary * weatherInfo;
 
-- (void)getWeatherInfo:(void (^)(BOOL finished))completion;
+- (void)getWeatherInfoAreaId:(NSString *)areaId completion:(void (^)(BOOL finished))completion;
 
 @end
 
