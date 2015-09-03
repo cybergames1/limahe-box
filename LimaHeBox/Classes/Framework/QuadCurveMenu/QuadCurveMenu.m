@@ -387,9 +387,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 }
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
-    if (flag) {
         [self _setAllMenuHidden:YES];
-    }
 }
 
 - (void)_setAllMenuHidden:(BOOL)hidden

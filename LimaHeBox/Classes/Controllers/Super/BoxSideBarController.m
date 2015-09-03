@@ -17,9 +17,13 @@
 #import "LoginViewController.h"
 #import "AccountManager.h"
 
-@interface BoxSideBarController () <CDRTranslucentSideBarDelegate,UITableViewDataSource,UITableViewDelegate>
+#define Label_Tag 1232
+
+@interface BoxSideBarController () <UITableViewDataSource,UITableViewDelegate>
 {
     NSArray * _tabList;
+    UIView * _maskView;
+    MainViewController * _mainController;
 }
 
 @end
@@ -27,7 +31,6 @@
 @implementation BoxSideBarController
 
 - (void)dealloc {
-    [_sideBar release];_sideBar = nil;
     [_tabList release];_tabList = nil;
     [super dealloc];
 }
@@ -35,7 +38,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        NSArray *tabList_ = @[@"首页",@"蓝牙",@"行程预定",@"分享",@"快递",@"发现",@"我的"];
+        NSArray *tabList_ = @[@"首\t  页",@"蓝\t  牙",@"行程预定",@"分\t  享",@"快\t  递",@"发\t  现",@"我\t  的-"];
         _tabList = [tabList_ retain];
     }
     return self;
@@ -46,77 +49,119 @@
     
     MainViewController *main = [[MainViewController alloc] init];
     UINavigationController *mainNav = [[UINavigationController alloc] initWithRootViewController:main];
-    
-    BlueToothViewController *bluetooth = [[BlueToothViewController alloc] init];
-    UINavigationController *bluetoothNav = [[UINavigationController alloc] initWithRootViewController:bluetooth];
-    
-    TravelViewController *travel = [[TravelViewController alloc] init];
-    UINavigationController *travelNav = [[UINavigationController alloc] initWithRootViewController:travel];
-    
-    ShareViewController *share = [[ShareViewController alloc] init];
-    UINavigationController *shareNav = [[UINavigationController alloc] initWithRootViewController:share];
-    
-    ExpressViewController *express = [[ExpressViewController alloc] init];
-    UINavigationController *expressNav = [[UINavigationController alloc] initWithRootViewController:express];
-    
-    FoundViewController *found = [[FoundViewController alloc] init];
-    UINavigationController *foundNav = [[UINavigationController alloc] initWithRootViewController:found];
-    
-    UserViewController *user = [[UserViewController alloc] init];
-    UINavigationController *userNav = [[UINavigationController alloc] initWithRootViewController:user];
-    
-    self.viewControllers = @[mainNav,bluetoothNav,travelNav,shareNav,expressNav,foundNav,userNav];
+    self.viewControllers = @[mainNav];
     [self.tabBar setHidden:YES];
+    _mainController = main;
     
     [main release];
-    [bluetooth release];
-    [travel release];
-    [share release];
-    [express release];
-    [found release];
-    [user release];
     [mainNav release];
-    [bluetoothNav release];
-    [travelNav release];
-    [shareNav release];
-    [expressNav release];
-    [foundNav release];
-    [userNav release];
     
     [self setBoxSideBar];
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self hideSideBar];
+}
+
+- (void)showSideBar {
+    [UIView animateWithDuration:0.3 animations:^{
+        if (self.view.left <= 0) {
+            self.view.left += 185;
+            _maskView.alpha = 0.5;
+            [_mainController setViewHidden:YES];
+        }
+    }];
+}
+
+- (void)hideSideBar {
+    [UIView animateWithDuration:0.3 animations:^{
+        if (self.view.left > 0) {
+            self.view.left -= 185;
+            _maskView.alpha = 0.0;
+            [_mainController setViewHidden:NO];
+        }
+    }];
+}
+
 - (void)setBoxSideBar {
-    CDRTranslucentSideBar *sideBar = [[[CDRTranslucentSideBar alloc] init] autorelease];
-    sideBar.sideBarWidth = 200;
-    sideBar.delegate = self;
-    sideBar.tag = 0;
-    self.sideBar = sideBar;
-    
     // Create Content of SideBar
-    UITableView *tableView = [[[UITableView alloc] init] autorelease];
+    UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+    
+    UIImageView *imageView = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 185, self.view.height)] autorelease];
+    imageView.image = [UIImage imageNamed:@"main_left"];
+    [window addSubview:imageView];
+    
+    UITableView *tableView = [[[UITableView alloc] initWithFrame:CGRectMake(0, 0, 185, self.view.height)] autorelease];
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableView.backgroundColor = [UIColor clearColor];
     tableView.dataSource = self;
     tableView.delegate = self;
-    [self.sideBar setContentViewInSideBar:tableView];
+    [window addSubview:tableView];
+    
+    UIView *maskView = [[[UIView alloc] initWithFrame:self.view.bounds] autorelease];
+    maskView.backgroundColor = [UIColor blackColor];
+    maskView.alpha = 0.0;
+    [self.view addSubview:maskView];
+    _maskView = maskView;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+    [maskView addGestureRecognizer:tap];
+    [tap release];
 }
 
-#pragma mark - CDRTranslucentSideBarDelegate
-- (void)sideBar:(CDRTranslucentSideBar *)sideBar didAppear:(BOOL)animated
-{
+- (void)tapAction:(UIGestureRecognizer *)recognizer {
+    [self hideSideBar];
 }
 
-- (void)sideBar:(CDRTranslucentSideBar *)sideBar willAppear:(BOOL)animated
-{
+- (void)setSelectedIndex:(NSUInteger)selectedIndex {
+    [self hideSideBar];
+    
+    UIViewController *controller = nil;
+    
+    switch (selectedIndex) {
+        case 1:
+            //蓝牙
+            controller = [[BlueToothViewController alloc] init];
+            break;
+        case 2:
+            //行程
+            controller = [[TravelViewController alloc] init];
+            break;
+        case 3:
+            //分享
+            controller = [[ShareViewController alloc] init];
+            break;
+        case 4:
+            //快递
+            controller = [[ExpressViewController alloc] init];
+            break;
+        case 5:
+            //发现
+            controller = [[FoundViewController alloc] init];
+            break;
+        case 6:
+            //我的
+            [self isShowLoginAction];
+            break;
+        default:
+            break;
+    }
+    
+    if (controller) {
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+        [self presentViewController:nav animated:YES completion:nil];
+        [controller release];
+        [nav release];
+    }
 }
 
-- (void)sideBar:(CDRTranslucentSideBar *)sideBar didDisappear:(BOOL)animated
-{
-}
-
-- (void)sideBar:(CDRTranslucentSideBar *)sideBar willDisappear:(BOOL)animated
-{
+- (void)setLabelInCell:(UITableViewCell *)cell {
+    UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(30, 0, cell.width, cell.height)] autorelease];
+    label.backgroundColor = [UIColor clearColor];
+    label.tag = Label_Tag;
+    label.textColor = [UIColor whiteColor];
+    [cell.contentView addSubview:label];
 }
 
 #pragma mark -
@@ -132,22 +177,27 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
         cell.backgroundColor = [UIColor clearColor];
         cell.contentView.backgroundColor = [UIColor clearColor];
+        [self setLabelInCell:cell];
     }
-    cell.textLabel.text = _tabList[indexPath.row];
+    [(UILabel *)[cell.contentView viewWithTag:Label_Tag] setText: _tabList[indexPath.row]];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self setSelectedIndex:indexPath.row];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.width, 80)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.width, 120)];
     view.backgroundColor = [UIColor clearColor];
     
     MUser *loginUser = [[AccountManager sharedManager] loginUser];
-    UIButton *button = [[[UIButton alloc] initWithFrame:CGRectMake(0, 0, view.width, 80)] autorelease];
+    UIButton *button = [[[UIButton alloc] initWithFrame:CGRectMake(-40, 20, view.width+40, 120)] autorelease];
     [button setTitle:[AccountManager isLogin] ? loginUser.userName : @"登录" forState:UIControlStateNormal];
+    [button setImage:[AccountManager isLogin] ? [UIImage decodedImageWithImage:[UIImage imageWithContentsOfFile:loginUser.userIcon] maximumSize:CGSizeMake(68, 68)] : [UIImage imageNamed:@"main_userheader"] forState:UIControlStateNormal];
+    [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 11, 0, 0)];
+    [button setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 12)];
     [button addTarget:self action:@selector(isShowLoginAction) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:button];
     
@@ -155,7 +205,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 80;
+    return 120;
 }
 
 - (void)isShowLoginAction {
@@ -165,7 +215,7 @@
      {
          UserViewController *controller = [[UserViewController alloc] init];
          UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
-         [self.navigationController presentViewController:nav animated:YES completion:nil];
+         [self presentViewController:nav animated:YES completion:nil];
          [controller release];
          [nav release];
      }];

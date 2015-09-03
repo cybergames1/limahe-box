@@ -13,4 +13,6 @@
  */
 @interface MainViewController : BoxSuperViewController
 
+- (void)setViewHidden:(BOOL)hidden;
+
 @end

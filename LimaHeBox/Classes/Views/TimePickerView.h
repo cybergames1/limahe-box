@@ -19,6 +19,7 @@
 @class TimePickerView;
 @protocol TimePickerViewDelegate <CityPickerViewDelegate>
 
+@optional
 - (void)pickerView:(TimePickerView *)pickerView hour:(NSInteger)hour minute:(NSInteger)minute;
 
 @end

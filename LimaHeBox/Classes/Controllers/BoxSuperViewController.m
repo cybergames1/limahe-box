@@ -9,6 +9,7 @@
 #import "BoxSuperViewController.h"
 #import "MBProgressHUD.h"
 #import "BadgeView.h"
+#import "BoxSideBarController.h"
 
 @interface BoxSuperViewController ()
 
@@ -99,6 +100,7 @@
 
 - (void)leftBarAction {
     //子类实现
+    [(BoxSideBarController *)self.tabBarController showSideBar];
 }
 
 - (void)rightBarAction {

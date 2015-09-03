@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
+#import "BoxSideBarController.h"
 
 @interface AppDelegate ()
 
@@ -22,9 +23,9 @@
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     self.window.backgroundColor = [UIColor blackColor];
     
-    MainViewController *root = [[[MainViewController alloc] init] autorelease];
-    UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:root] autorelease];
-    self.window.rootViewController = nav;
+    BoxSideBarController *root = [[[BoxSideBarController alloc] init] autorelease];
+   // UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:root] autorelease];
+    self.window.rootViewController = root;
     [self.window makeKeyAndVisible];
     
     return YES;

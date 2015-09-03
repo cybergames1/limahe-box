@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CDRTranslucentSideBar.h"
 
 @interface BoxSideBarController : UITabBarController
 
-@property (nonatomic, retain) CDRTranslucentSideBar *sideBar;
+- (void)showSideBar;
 
 @end

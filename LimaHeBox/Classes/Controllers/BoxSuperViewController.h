@@ -36,6 +36,9 @@
 /* 设置返回按钮的标题 */
 - (void)setNavigationBackTitle:(NSString *)title;
 
+- (void)leftBarAction;
+- (void)rightBarAction;
+
 @end
 
 @interface BoxSuperViewController (BadgeNumber)

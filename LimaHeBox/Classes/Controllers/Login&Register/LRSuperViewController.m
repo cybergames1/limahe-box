@@ -140,7 +140,7 @@
 }
 
 - (void)leftBarAction {
-    
+    [super leftBarAction];
 }
 
 - (void)rightBarAction {
