@@ -16,7 +16,7 @@
 
 #define Cell_Label_Tag 13232
 
-static int menuIndex[8] = {4,2,1,3,5,6,7,8};
+static int menuIndex[8] = {4,2,1,3,5,7,8,9};
 
 @interface MainViewController () <MainMenuViewDelegate,TimePickerViewDelegate>
 {

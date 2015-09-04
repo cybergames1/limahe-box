@@ -21,7 +21,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavigationTitle:@"修改密码"];
-    [self setNavigationItemLeftImage:[UIImage imageNamed:@"common_icon_back"]];
     
     _prePwdCell = [self topCell];
     _prePwdCell.textField.placeholder = @"请输入原密码";
@@ -39,10 +38,6 @@
     
     [self registerButton].top += 20+_repeatePwdCell.height;
     [[self registerButton] setTitle:@"确定" forState:UIControlStateNormal];
-}
-
-- (void)leftBarAction {
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)doneAction {

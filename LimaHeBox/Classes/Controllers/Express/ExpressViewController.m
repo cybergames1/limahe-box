@@ -22,6 +22,14 @@
     [self setNavigationItemLeftImage:[UIImage imageNamed:@"common_icon_back"]];
     [self setNavigationTitle:@"快递"];
     
+    UIWebView *webView = [[[UIWebView alloc] initWithFrame:self.view.bounds] autorelease];
+    [self.view addSubview:webView];
+    
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://m.kuaidi100.com"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0]];
+    return;
+    
+    /*
+     
     //把两按钮放到一个模块view里，方便适配
     UIView *moduleView = [[[UIView alloc] initWithFrame:CGRectMake(self.view.width/2-260/2, self.view.height/2-180/2-40, 260, 180)] autorelease];
     moduleView.backgroundColor = [UIColor clearColor];
@@ -49,6 +57,8 @@
     [moduleView addSubview:deliveryButton];
     
     [self makeCustom];
+     
+     */
     
 }
 
@@ -81,9 +91,6 @@
     [controller release];
 }
 
-- (void)leftBarAction {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 - (void)rightBarAction {
 
 }

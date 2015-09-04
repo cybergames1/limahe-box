@@ -23,7 +23,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavigationTitle:@"分享"];
-    [self setNavigationItemLeftImage:[UIImage imageNamed:@"common_icon_back"]];
     
     VideoShareInputView * inputView = [[[VideoShareInputView alloc] initWithFrame:CGRectMake(0, 12+64, self.view.width, 130.0)] autorelease];
     [inputView applyBoardMasks:UIViewBorderMaskRoundrect borderWidth:1.0 borderColor:UIColorRGB(203, 203, 203) lineDashWidth:0 radius:0.0];

@@ -38,6 +38,10 @@
     self.navigationController.navigationBar.barTintColor = _navigationBarTintColor;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
+    if (self.presentingViewController && [self.navigationController.viewControllers count] <= 1) {
+        [self setNavigationItemLeftImage:[UIImage imageNamed:@"common_icon_back"]];
+    }
+    
     [self setNavigationItemRightImage:[UIImage imageNamed:@"main_nav_right"]];
 }
 
@@ -100,7 +104,11 @@
 
 - (void)leftBarAction {
     //子类实现
-    [(BoxSideBarController *)self.tabBarController showSideBar];
+    if (self.presentingViewController) {
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    }else {
+        [(BoxSideBarController *)self.tabBarController showSideBar];
+    }
 }
 
 - (void)rightBarAction {

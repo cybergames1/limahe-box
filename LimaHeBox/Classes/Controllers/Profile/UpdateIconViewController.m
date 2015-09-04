@@ -37,7 +37,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavigationItemLeftImage:[UIImage imageNamed:@"common_icon_back"]];
     [self setNavigationTitle:@"头像选择"];
     self.view.backgroundColor = UIColorRGB(248, 248, 248);
     
@@ -77,10 +76,6 @@
     MUser *loginUser = [[AccountManager sharedManager] loginUser];
     [loginUser updateUserValue:[[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"pf_logo%ld@2x",(long)_selectedIndex+1] ofType:@"png"] forKey:kUserInfoIconKey];
     [self leftBarAction];
-}
-
-- (void)leftBarAction {
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

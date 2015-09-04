@@ -35,22 +35,16 @@
     // Do any additional setup after loading the view.
     [self setNavigationTitle:@"快递查询"];
     
+    _ticketCell = [self topCell];
+    _ticketCell.textField.placeholder = @"请输入快递单号";
     
-    UIWebView *webView = [[[UIWebView alloc] initWithFrame:self.view.bounds] autorelease];
-    [self.view addSubview:webView];
+    _comCell = [self bottomCell];
+    _comCell.textField.placeholder = @"请选择快递公司";
+    _comCell.textField.secureTextEntry = NO;
+    [_comCell addTarget:self action:@selector(comTapAction)];
     
-    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://m.kuaidi100.com"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0]];
-    
-//    _ticketCell = [self topCell];
-//    _ticketCell.textField.placeholder = @"请输入快递单号";
-//    
-//    _comCell = [self bottomCell];
-//    _comCell.textField.placeholder = @"请选择快递公司";
-//    _comCell.textField.secureTextEntry = NO;
-//    [_comCell addTarget:self action:@selector(comTapAction)];
-//    
-//    RegisterButton *loginButton = [self registerButton];
-//    [loginButton setTitle:@"查询" forState:UIControlStateNormal];
+    RegisterButton *loginButton = [self registerButton];
+    [loginButton setTitle:@"查询" forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning {

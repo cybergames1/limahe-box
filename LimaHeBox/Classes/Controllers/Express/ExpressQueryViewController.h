@@ -11,6 +11,6 @@
 /**
  * 快递查询页
  */
-@interface ExpressQueryViewController : BoxSuperViewController
+@interface ExpressQueryViewController : LRSuperViewController
 
 @end

@@ -43,7 +43,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavigationItemLeftImage:[UIImage imageNamed:@"common_icon_back"]];
     [self setNavigationTitle:@"登录帐号"];
     
     _useNameCell = [self topCell];
@@ -107,10 +106,6 @@
 
 - (void)dataSource:(PPQDataSource *)source hasError:(NSError *)error {
     [super dataSource:source hasError:error];
-}
-
-- (void)leftBarAction {
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)rightBarAction {

@@ -15,6 +15,9 @@
 #import "FoundViewController.h"
 #import "UserViewController.h"
 #import "LoginViewController.h"
+#import "WeighViewController.h"
+#import "TempViewController.h"
+#import "GPSViewController.h"
 #import "AccountManager.h"
 
 #define Label_Tag 1232
@@ -143,6 +146,18 @@
         case 6:
             //我的
             [self isShowLoginAction];
+            break;
+        case 7:
+            //温湿度
+            controller = [[TempViewController alloc] init];
+            break;
+        case 8:
+            //称重
+            controller = [[WeighViewController alloc] init];
+            break;
+        case 9:
+            //GPS
+            controller = [[GPSViewController alloc] init];
             break;
         default:
             break;

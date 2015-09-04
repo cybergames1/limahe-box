@@ -70,6 +70,8 @@
 		DC6E61AD1B96EDBB002A97C0 /* City.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC6E61AC1B96EDBB002A97C0 /* City.plist */; };
 		DC6E61AF1B9867B9002A97C0 /* main_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC6E61AE1B9867B9002A97C0 /* main_left@2x.png */; };
 		DC6E61B11B98682A002A97C0 /* main_bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC6E61B01B98682A002A97C0 /* main_bg@3x.png */; };
+		DC6E61B51B997871002A97C0 /* LocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6E61B41B997871002A97C0 /* LocationController.m */; };
+		DC6E61B91B997984002A97C0 /* GPSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6E61B81B997984002A97C0 /* GPSViewController.m */; };
 		DCBEF8D71B41140E00FA72D7 /* TimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCBEF8D61B41140E00FA72D7 /* TimePickerView.m */; };
 		DCBEF8DA1B438B8A00FA72D7 /* ACDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCBEF8D91B438B8A00FA72D7 /* ACDateViewController.m */; };
 		DCCE82201B7F94D5000EF913 /* LRDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCE821F1B7F94D5000EF913 /* LRDataSource.m */; };
@@ -385,6 +387,10 @@
 		DC6E61AC1B96EDBB002A97C0 /* City.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = City.plist; sourceTree = "<group>"; };
 		DC6E61AE1B9867B9002A97C0 /* main_left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_left@2x.png"; sourceTree = "<group>"; };
 		DC6E61B01B98682A002A97C0 /* main_bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_bg@3x.png"; sourceTree = "<group>"; };
+		DC6E61B31B997871002A97C0 /* LocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationController.h; sourceTree = "<group>"; };
+		DC6E61B41B997871002A97C0 /* LocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationController.m; sourceTree = "<group>"; };
+		DC6E61B71B997984002A97C0 /* GPSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSViewController.h; sourceTree = "<group>"; };
+		DC6E61B81B997984002A97C0 /* GPSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSViewController.m; sourceTree = "<group>"; };
 		DCBEF8D51B41140E00FA72D7 /* TimePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimePickerView.h; sourceTree = "<group>"; };
 		DCBEF8D61B41140E00FA72D7 /* TimePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimePickerView.m; sourceTree = "<group>"; };
 		DCBEF8D81B438B8A00FA72D7 /* ACDateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACDateViewController.h; sourceTree = "<group>"; };
@@ -898,6 +904,7 @@
 		DC3F17941B2FDF8900F02C10 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				DC6E61B21B997849002A97C0 /* MapController */,
 				DCEA6A3C1B89CFA3008FF3E2 /* CDRTranslucentSideBar */,
 				DCEA6A1C1B88D0BE008FF3E2 /* Calendar */,
 				DCEA69C51B8786CC008FF3E2 /* MBProgressHUD */,
@@ -1070,6 +1077,24 @@
 				DC3F18011B31523600F02C10 /* Category.framework */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		DC6E61B21B997849002A97C0 /* MapController */ = {
+			isa = PBXGroup;
+			children = (
+				DC6E61B31B997871002A97C0 /* LocationController.h */,
+				DC6E61B41B997871002A97C0 /* LocationController.m */,
+			);
+			path = MapController;
+			sourceTree = "<group>";
+		};
+		DC6E61B61B997967002A97C0 /* GPS */ = {
+			isa = PBXGroup;
+			children = (
+				DC6E61B71B997984002A97C0 /* GPSViewController.h */,
+				DC6E61B81B997984002A97C0 /* GPSViewController.m */,
+			);
+			path = GPS;
 			sourceTree = "<group>";
 		};
 		DCCE821D1B7F928F000EF913 /* Login&RegisterSource */ = {
@@ -1474,6 +1499,7 @@
 		DCFAC4E41B3CF9A50062D479 /* Found */ = {
 			isa = PBXGroup;
 			children = (
+				DC6E61B61B997967002A97C0 /* GPS */,
 				DCEA6A2C1B88D0F2008FF3E2 /* Calendar */,
 				DCEA69F71B885EDC008FF3E2 /* Weigh */,
 				DCEA69B91B873552008FF3E2 /* TeleControl */,
@@ -1742,10 +1768,12 @@
 				DC3F178E1B2FDF3000F02C10 /* SDWebImageManager.m in Sources */,
 				DCFAC4991B392E2E0062D479 /* WeatherView.m in Sources */,
 				DCEA69F61B8856FF008FF3E2 /* BindPhoneViewController.m in Sources */,
+				DC6E61B51B997871002A97C0 /* LocationController.m in Sources */,
 				DC3F17F21B30358200F02C10 /* MainViewController.m in Sources */,
 				DCE0AEEA1B90B80D00F2CFC3 /* AppDelegate.m in Sources */,
 				DCEA69791B8618A0008FF3E2 /* VideoShareInputView.m in Sources */,
 				DCEA69801B862000008FF3E2 /* MessageViewController.m in Sources */,
+				DC6E61B91B997984002A97C0 /* GPSViewController.m in Sources */,
 				DCEA69961B86D64F008FF3E2 /* TempViewController.m in Sources */,
 				DC3F17B01B2FDF8A00F02C10 /* ASIFormDataRequest.m in Sources */,
 				DCEA69C41B877B85008FF3E2 /* TeleBar.m in Sources */,

@@ -29,10 +29,6 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (void)leftBarAction {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 - (void)rightBarAction {
     
 }

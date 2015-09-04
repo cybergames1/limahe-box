@@ -26,7 +26,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavigationTitle:@"我的"];
-    [self setNavigationItemLeftImage:[UIImage imageNamed:@"common_icon_back"]];
     self.view.backgroundColor = UIColorRGB(248, 248, 248);
     
     UITableView *tableView = [[[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped] autorelease];
@@ -136,10 +135,6 @@
     UserInfoViewController *controller = [[UserInfoViewController alloc] init];
     [self.navigationController pushViewController:controller animated:YES];
     [controller release];
-}
-
-- (void)leftBarAction {
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

@@ -17,7 +17,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self setNavigationItemLeftImage:[UIImage imageNamed:@"common_icon_back"]];
     [self setNavigationTitle:@"行程预定"];
     
     UIWebView *webView = [[[UIWebView alloc] initWithFrame:self.view.bounds] autorelease];
@@ -40,9 +39,5 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-- (void)leftBarAction {
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-}
 
 @end

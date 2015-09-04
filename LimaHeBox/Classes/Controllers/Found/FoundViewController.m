@@ -14,6 +14,7 @@
 #import "TeleControlViewController.h"
 #import "WeighViewController.h"
 #import "CalendarViewController.h"
+#import "GPSViewController.h"
 
 @interface FoundViewController () <UITableViewDataSource,UITableViewDelegate>
 {
@@ -48,7 +49,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self setNavigationItemLeftImage:[UIImage imageNamed:@"common_icon_back"]];
     [self setNavigationTitle:@"发现"];
     
     UITableView *tableView = [[[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped] autorelease];
@@ -108,6 +108,11 @@
             break;
         case 3:
             //箱子GPS定位
+        {
+            GPSViewController *controller = [[GPSViewController alloc] init];
+            [self.navigationController pushViewController:controller animated:YES];
+            [controller release];
+        }
             break;
         case 4:
             //温度/湿度监控
@@ -144,10 +149,6 @@
         default:
             break;
     }
-}
-
-- (void)leftBarAction {
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)rightBarAction {
