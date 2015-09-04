@@ -12,6 +12,9 @@
 #import "BoxSideBarController.h"
 
 @interface BoxSuperViewController ()
+{
+    BadgeView * _badgeView;
+}
 
 @end
 
@@ -126,21 +129,31 @@
 
 - (void)setShowBadgeView:(BOOL)isShow {
     UIView *customView = self.navigationItem.rightBarButtonItem.customView;
-    
-    BadgeView *badgeView = [[BadgeView alloc] init];
-    badgeView.right = customView.width;
-    badgeView.top = -10;
-    [customView addSubview:badgeView];
-    [badgeView release];
-    
-    [badgeView setBadgeNumber:3];
+    if (isShow) {
+        [self removeBadgeView];
+        BadgeView *badgeView = [[BadgeView alloc] init];
+        badgeView.right = customView.width;
+        badgeView.top = -10;
+        [customView addSubview:badgeView];
+        [badgeView release];
+        _badgeView = badgeView;
+        
+        [self setBadgeNumber:3];
+    }else {
+        [self removeBadgeView];
+    }
 }
 
 - (void)setBadgeNumber:(NSInteger)badgeNumber {
-    for (UIView *view in self.navigationItem.rightBarButtonItem.customView.subviews) {
-        if ([view isKindOfClass:[BadgeView class]]) {
-            
-        }
+    if (_badgeView && [_badgeView superview]) {
+        [_badgeView setBadgeNumber:badgeNumber];
+    }
+}
+
+- (void)removeBadgeView {
+    if (_badgeView && [_badgeView superview]) {
+        [_badgeView removeFromSuperview];
+        _badgeView = nil;
     }
 }
 

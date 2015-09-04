@@ -26,6 +26,8 @@
 {
     NSArray * _tabList;
     UIView * _maskView;
+    UITableView * _tableView;
+    
     MainViewController * _mainController;
 }
 
@@ -101,6 +103,7 @@
     tableView.dataSource = self;
     tableView.delegate = self;
     [window addSubview:tableView];
+    _tableView = tableView;
     
     UIView *maskView = [[[UIView alloc] initWithFrame:self.view.bounds] autorelease];
     maskView.backgroundColor = [UIColor blackColor];
@@ -225,7 +228,10 @@
 
 - (void)isShowLoginAction {
     [LoginViewController showLogin:self
-                       finishBlock:nil
+                       finishBlock:^
+     {
+         [_tableView reloadData];
+     }
                       failureBlock:^
      {
          UserViewController *controller = [[UserViewController alloc] init];

@@ -132,6 +132,7 @@ static int menuIndex[8] = {4,2,1,3,5,7,8,9};
 }
 
 - (void)rightBarAction {
+    [self setShowBadgeView:NO];
     MessageViewController *controller = [[MessageViewController alloc] init];
     [self.navigationController pushViewController:controller animated:YES];
     [controller release];
