@@ -9,6 +9,10 @@
 #import "AppDelegate.h"
 #import "MainViewController.h"
 #import "BoxSideBarController.h"
+#import "WeiXinManager.h"
+#import "WeiboSDK.h"
+
+#define kSinaAppKey             @"858239903"
 
 @interface AppDelegate ()
 
@@ -19,6 +23,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    //注册微信
+    [WXApi registerApp:kWXSSO];
+    
+    //注册微博SDK
+    [WeiboSDK enableDebugMode:YES];
+    [WeiboSDK registerApp:kSinaAppKey];
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     self.window.backgroundColor = [UIColor blackColor];

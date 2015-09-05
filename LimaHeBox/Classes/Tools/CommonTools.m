@@ -111,6 +111,53 @@ static NSString* rootPath = nil;
     NSString* fullPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@@2x",name] ofType:@"png"];
     return [UIImage imageWithContentsOfFile:fullPath];
 }
+
++(UIImage *)createResizeImage:(UIImage *)img aspectFitSize:(CGSize)fitSize
+{
+    float actualHeight = img.size.height;
+    float actualWidth = img.size.width;
+    
+    if(actualWidth==actualHeight)
+    {
+        actualWidth = fitSize.width;
+        actualHeight = fitSize.height;
+    }
+    
+    float imgRatio = actualWidth/actualHeight;
+    float maxRatio = fitSize.width/fitSize.height;
+    
+    
+    if(imgRatio!=maxRatio)
+    {
+        if(imgRatio < maxRatio)
+        {
+            imgRatio = fitSize.height / actualHeight;
+            actualWidth = imgRatio * actualWidth;
+            actualHeight = fitSize.height;
+        }
+        else
+        {
+            imgRatio = fitSize.width / actualWidth;
+            actualHeight = imgRatio * actualHeight;
+            actualWidth = fitSize.width;
+        }
+    }
+    else
+    {
+        actualWidth = fitSize.width;
+        actualHeight = fitSize.height;
+    }
+    
+    
+    CGRect rect = CGRectMake(0, 0, (int)actualWidth, (int)actualHeight);
+    UIGraphicsBeginImageContext(rect.size);
+    [img drawInRect:rect];
+    UIImage *newImg = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImg;
+}
+
 #pragma mark- 代理方法
 + (AppDelegate *)appDelegate
 {

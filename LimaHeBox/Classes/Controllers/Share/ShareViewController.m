@@ -10,6 +10,7 @@
 #import "VideoShareInputView.h"
 #import "RegisterButton.h"
 #import "ShareTool.h"
+#import "SecondShareManager.h"
 
 @interface ShareViewController ()
 {
@@ -47,7 +48,18 @@
 - (void)shareAction {
     if ([[_inputView content] length] <= 0) {
         [self showHUDWithText:@"分享点内容吧"];
+        return;
     }
+    
+    __block __typeof__(self) weakSelf = self;
+    [SecondShareManager shareVideo:nil platformType:SharePlatformTypeWeibo finishBlock:^(NSString *finishText, NSError *error) {
+        if (finishText) {
+            [weakSelf showHUDWithText:finishText];
+        }
+        else{
+            [weakSelf showHUDWithText:[error localizedDescription]];
+        }
+    }];
 }
 
 /*

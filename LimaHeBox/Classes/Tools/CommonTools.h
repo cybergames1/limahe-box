@@ -101,6 +101,7 @@ typedef NS_ENUM(NSInteger, PPQStatusBarType)
 
 //该方法返回的图片不会系统cache,格式为png
 + (UIImage *)noCacheableImageWithName:(NSString*) name;
++(UIImage *)createResizeImage:(UIImage *)img aspectFitSize:(CGSize)fitSize;
 #pragma mark- 代理方法
 //获取代理对象
 + (AppDelegate *)appDelegate;
