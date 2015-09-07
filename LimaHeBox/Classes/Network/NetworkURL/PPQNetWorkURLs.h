@@ -39,6 +39,10 @@
 #define NEWSINFO @"/news/getnewsinfo"
 + (NSString *)getNewsInfoWithId:(NSString *)newsId;
 
+//获取设备信息
+#define DEVICEINFO @"/tool/getinfo"
++ (NSString *)deviceInfo;
+
 @end
 
 

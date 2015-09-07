@@ -28,7 +28,6 @@ typedef void(^Complation)(BOOL finished);
 
 @interface WeatherAPI () <PPQDataSourceDelegate>
 {
-    NSString * _areaid;
     NSString * _type;
     NSString * _dateString;
     NSString * _api;
@@ -43,7 +42,6 @@ typedef void(^Complation)(BOOL finished);
 @implementation WeatherAPI
 
 - (void)dealloc {
-    [_areaid release];_areaid = nil;
     [_type release];_type = nil;
     [_dateString release];_dateString = nil;
     [_api release];_api = nil;
@@ -65,8 +63,6 @@ typedef void(^Complation)(BOOL finished);
     if (self) {
         _weatherInfo = [[NSMutableDictionary alloc] initWithCapacity:0];
         
-        _areaid = [[NSString alloc] initWithString:@"101010100"];
-        
         /**
          * 官方文档更新的数据类型号
          * 指数:index_f(基础接口),index_v(常规接口)
@@ -81,15 +77,18 @@ typedef void(^Complation)(BOOL finished);
         //精确到分
         _dateString = [[[dateFormatter_ stringFromDate:date_] substringToIndex:12] retain];
         
-        NSString *publickey_ = [self getPublicKey:_areaid type:_type date:_dateString appid:Weather_APPID];
-        NSString *key_ = [self hmacSha1:publickey_ privatekey:Weather_PrivateKey];
-        key_ = [self stringByEncodingURLFormat:key_];
-        _key = [key_ retain];
     }
     return self;
 }
 
 - (NSString *)apiURLString:(NSString *)areaId {
+    NSString *publickey_ = [self getPublicKey:areaId type:_type date:_dateString appid:Weather_APPID];
+    NSString *key_ = [self hmacSha1:publickey_ privatekey:Weather_PrivateKey];
+    key_ = [self stringByEncodingURLFormat:key_];
+    
+    [_key release];
+    _key = [key_ retain];
+    
     [_api release];
     NSString *weatherAPI_ = [[self getAPI:areaId type:_type date:_dateString appid:Weather_APPID key:_key] retain];
     _api = [weatherAPI_ retain];

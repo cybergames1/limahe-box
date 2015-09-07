@@ -9,6 +9,7 @@
 #import "GPSViewController.h"
 #import "LocationController.h"
 #import <MapKit/MapKit.h>
+#import "DeviceManager.h"
 
 @interface GPSViewController () <MKMapViewDelegate,MyCLControllerDelegate>
 {
@@ -76,7 +77,7 @@
     
     //这个方法可以设置地图精度以及显示用户所在位置的地图
     MKCoordinateSpan span=MKCoordinateSpanMake(0.1, 0.1);
-    MKCoordinateRegion region=MKCoordinateRegionMake(userLocation.location.coordinate, span);
+    MKCoordinateRegion region=MKCoordinateRegionMake([[[DeviceManager sharedManager] currentDevice] coordinate], span);
     [mapView setRegion:region animated:YES];
 }
 

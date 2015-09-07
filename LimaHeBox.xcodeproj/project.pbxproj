@@ -72,6 +72,8 @@
 		DC6E61B11B98682A002A97C0 /* main_bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC6E61B01B98682A002A97C0 /* main_bg@3x.png */; };
 		DC6E61B51B997871002A97C0 /* LocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6E61B41B997871002A97C0 /* LocationController.m */; };
 		DC6E61B91B997984002A97C0 /* GPSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6E61B81B997984002A97C0 /* GPSViewController.m */; };
+		DC8008421B9D6B3700F13C37 /* DeviceDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8008411B9D6B3700F13C37 /* DeviceDataSource.m */; };
+		DC8008451B9D77F700F13C37 /* DeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8008441B9D77F700F13C37 /* DeviceManager.m */; };
 		DCBEF8D71B41140E00FA72D7 /* TimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCBEF8D61B41140E00FA72D7 /* TimePickerView.m */; };
 		DCBEF8DA1B438B8A00FA72D7 /* ACDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCBEF8D91B438B8A00FA72D7 /* ACDateViewController.m */; };
 		DCCE82201B7F94D5000EF913 /* LRDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCE821F1B7F94D5000EF913 /* LRDataSource.m */; };
@@ -404,6 +406,10 @@
 		DC6E61B41B997871002A97C0 /* LocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationController.m; sourceTree = "<group>"; };
 		DC6E61B71B997984002A97C0 /* GPSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSViewController.h; sourceTree = "<group>"; };
 		DC6E61B81B997984002A97C0 /* GPSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSViewController.m; sourceTree = "<group>"; };
+		DC8008401B9D6B3700F13C37 /* DeviceDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceDataSource.h; sourceTree = "<group>"; };
+		DC8008411B9D6B3700F13C37 /* DeviceDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceDataSource.m; sourceTree = "<group>"; };
+		DC8008431B9D77F700F13C37 /* DeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceManager.h; sourceTree = "<group>"; };
+		DC8008441B9D77F700F13C37 /* DeviceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceManager.m; sourceTree = "<group>"; };
 		DCBEF8D51B41140E00FA72D7 /* TimePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimePickerView.h; sourceTree = "<group>"; };
 		DCBEF8D61B41140E00FA72D7 /* TimePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimePickerView.m; sourceTree = "<group>"; };
 		DCBEF8D81B438B8A00FA72D7 /* ACDateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACDateViewController.h; sourceTree = "<group>"; };
@@ -831,6 +837,7 @@
 		DC3F173C1B2FDF3000F02C10 /* Datasource */ = {
 			isa = PBXGroup;
 			children = (
+				DC80083F1B9D6B0F00F13C37 /* DeviceDataSource */,
 				DCCE82211B7F95F9000EF913 /* NewsDataSource */,
 				DCCE821D1B7F928F000EF913 /* Login&RegisterSource */,
 				DC3F17C51B2FEACA00F02C10 /* WeatherSource */,
@@ -1154,6 +1161,15 @@
 			path = GPS;
 			sourceTree = "<group>";
 		};
+		DC80083F1B9D6B0F00F13C37 /* DeviceDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				DC8008401B9D6B3700F13C37 /* DeviceDataSource.h */,
+				DC8008411B9D6B3700F13C37 /* DeviceDataSource.m */,
+			);
+			path = DeviceDataSource;
+			sourceTree = "<group>";
+		};
 		DCCE821D1B7F928F000EF913 /* Login&RegisterSource */ = {
 			isa = PBXGroup;
 			children = (
@@ -1192,6 +1208,8 @@
 				DCD057B61B9AE01A003A7740 /* SecondShareManager.m */,
 				DCD057B81B9AE0C2003A7740 /* WeiXinManager.h */,
 				DCD057B91B9AE0C2003A7740 /* WeiXinManager.m */,
+				DC8008431B9D77F700F13C37 /* DeviceManager.h */,
+				DC8008441B9D77F700F13C37 /* DeviceManager.m */,
 			);
 			name = DataManager;
 			path = Classes/DataManager;
@@ -1885,6 +1903,7 @@
 				DC3F17B01B2FDF8A00F02C10 /* ASIFormDataRequest.m in Sources */,
 				DCEA69C41B877B85008FF3E2 /* TeleBar.m in Sources */,
 				DC3F17901B2FDF3000F02C10 /* UIImageView+WebCache.m in Sources */,
+				DC8008421B9D6B3700F13C37 /* DeviceDataSource.m in Sources */,
 				DC3F17B11B2FDF8A00F02C10 /* ASIHTTPRequest.m in Sources */,
 				DCFAC4F21B3D2B080062D479 /* FoundViewController.m in Sources */,
 				DCEA6A0F1B887D68008FF3E2 /* ShareTool.m in Sources */,
@@ -1963,6 +1982,7 @@
 				DC0A3C5A1B58D32B0048774B /* PedoMeterView.m in Sources */,
 				DC3F178D1B2FDF3000F02C10 /* SDWebImageDownloader.m in Sources */,
 				DCD057B31B9ADF91003A7740 /* SinaWeiboRequest.m in Sources */,
+				DC8008451B9D77F700F13C37 /* DeviceManager.m in Sources */,
 				DCCE82521B85EA4B000EF913 /* BlueToothSettingViewController.m in Sources */,
 				DCCE824F1B85E675000EF913 /* UserInfoViewController.m in Sources */,
 				DC3F17851B2FDF3000F02C10 /* PPQDataSource.m in Sources */,

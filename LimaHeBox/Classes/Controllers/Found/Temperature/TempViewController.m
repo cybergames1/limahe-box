@@ -8,6 +8,7 @@
 
 #import "TempViewController.h"
 #import "TemperatureView.h"
+#import "DeviceManager.h"
 
 @implementation TempViewController
 
@@ -29,7 +30,7 @@
     temp1.selectedMaxValue = 40;
     temp1.selectedMinValue = 20;
     temp1.selectedColor = UIColorRGB(241, 209, 64);
-    temp1.currentValue = 18;
+    temp1.currentValue = [[[DeviceManager sharedManager] currentDevice] temperature];
     temp1.tempImage = [UIImage imageNamed:@"f_temp"];
     [self.view addSubview:temp1];
     
@@ -40,7 +41,7 @@
     temp2.selectedMaxValue = 70;
     temp2.selectedMinValue = 30;
     temp2.selectedColor = UIColorRGB(71, 218, 192);
-    temp2.currentValue = 32;
+    temp2.currentValue = [[[DeviceManager sharedManager] currentDevice] wet];
     temp2.tempImage = [UIImage imageNamed:@"f_dity"];
     [self.view addSubview:temp2];
 }

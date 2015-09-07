@@ -13,12 +13,14 @@
 #import "AccountManager.h"
 #import "TimePickerView.h"
 #import "MessageViewController.h"
+#import "DeviceDataSource.h"
+#import "DeviceManager.h"
 
 #define Cell_Label_Tag 13232
 
 static int menuIndex[8] = {4,2,1,3,5,7,8,9};
 
-@interface MainViewController () <MainMenuViewDelegate,TimePickerViewDelegate>
+@interface MainViewController () <MainMenuViewDelegate,TimePickerViewDelegate,PPQDataSourceDelegate>
 {
     WeatherView * _weatherView;
     WeatherAPI * _weatherAPI;
@@ -26,12 +28,18 @@ static int menuIndex[8] = {4,2,1,3,5,7,8,9};
     UIImageView * _backgroundView;
 }
 
+@property (nonatomic, retain) DeviceDataSource * dataSource;
+
 @end
 
 @implementation MainViewController
 
 - (void)dealloc {
     [_weatherAPI release];_weatherAPI = nil;
+    if (_dataSource) {
+        _dataSource.delegate = nil;
+    }
+    [_dataSource release];_dataSource = nil;
     [super dealloc];
 }
 
@@ -66,7 +74,12 @@ static int menuIndex[8] = {4,2,1,3,5,7,8,9};
     [self.view addSubview:weatherView];
     _weatherView = weatherView;
     
-    [self setWeatherInfo:@"10101020"];
+    [self setWeatherInfo:@"101010100"];
+    
+    //设备信息
+    DeviceDataSource *dataSource = [[[DeviceDataSource alloc] initWithDelegate:self] autorelease];
+    [dataSource getDeviceInfo:@"867144029580667"];
+    self.dataSource = dataSource;
 }
 
 - (void)setWeatherInfo:(NSString *)areaId {
@@ -136,6 +149,17 @@ static int menuIndex[8] = {4,2,1,3,5,7,8,9};
     MessageViewController *controller = [[MessageViewController alloc] init];
     [self.navigationController pushViewController:controller animated:YES];
     [controller release];
+}
+
+#pragma mark -
+#pragma mark DataSource Delegate
+
+- (void)dataSourceFinishLoad:(PPQDataSource *)source {
+    [[DeviceManager sharedManager] setCurrentDevice:[[[MDevice alloc] initWithDictionary:[source.data objectForKey:@"data"]] autorelease]];
+}
+
+- (void)dataSource:(PPQDataSource *)source hasError:(NSError *)error {
+    
 }
 
 @end

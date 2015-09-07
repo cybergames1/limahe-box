@@ -31,6 +31,10 @@
     return [NSString stringWithFormat:@"%@%@?id=%@",APIHOST,NEWSINFO,newsId];
 }
 
++ (NSString *)deviceInfo {
+    return [NSString stringWithFormat:@"%@%@",APIHOST,DEVICEINFO];
+}
+
 @end
 
 

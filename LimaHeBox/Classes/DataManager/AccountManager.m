@@ -101,9 +101,6 @@ NSString* const  kUserInfoGenderKey = @"_userGender";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         instance = [[AccountManager alloc] init];
-//        if (instance.loginUser == nil) {
-//            instance.loginUser = [[self class] testUser];
-//        }
     });
     return instance;
 }
