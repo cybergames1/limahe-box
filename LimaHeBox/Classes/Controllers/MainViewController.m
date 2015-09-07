@@ -66,7 +66,7 @@ static int menuIndex[8] = {4,2,1,3,5,7,8,9};
     [self.view addSubview:weatherView];
     _weatherView = weatherView;
     
-    [self setWeatherInfo:@"101010100"];
+    [self setWeatherInfo:@"10101020"];
 }
 
 - (void)setWeatherInfo:(NSString *)areaId {

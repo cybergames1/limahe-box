@@ -70,6 +70,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
                                             ContentText:nil];
         _addButton.delegate = self;
         _addButton.center = self.startPoint;
+        _addButton.transform = CGAffineTransformMakeRotation(M_PI_4);
         [self addSubview:_addButton];
     }
     return self;
@@ -177,7 +178,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     _expanding = NO;
     
     // rotate "add" button
-    float angle = self.isExpanding ? -M_PI_4 : 0.0f;
+    float angle = self.isExpanding ? 0.0f : M_PI_4;
     [UIView animateWithDuration:0.2f animations:^{
         _addButton.transform = CGAffineTransformMakeRotation(angle);
     }];
@@ -244,7 +245,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     _expanding = expanding;    
     
     // rotate add button
-    float angle = self.isExpanding ? -M_PI_4 : 0.0f;
+    float angle = self.isExpanding ? 0.0f : M_PI_4;
     [UIView animateWithDuration:0.2f animations:^{
         _addButton.transform = CGAffineTransformMakeRotation(angle);
     }];
