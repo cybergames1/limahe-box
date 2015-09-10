@@ -41,6 +41,19 @@
     [self setNavigationItemLeftImage:[UIImage imageNamed:@"common_icon_back"]];
     [self setNavigationTitle:@"蓝牙安全监控"];
     
+    UILocalNotification *notification = [[UILocalNotification alloc]init];
+    if (notification != nil) {
+        NSDate *now = [NSDate new];
+        notification.fireDate = [now dateByAddingTimeInterval:10];
+        notification.timeZone = [NSTimeZone defaultTimeZone];
+        notification.alertBody = @"报警";
+        notification.applicationIconBadgeNumber = 1;
+        notification.alertAction = @"关闭";
+        
+        [[UIApplication sharedApplication]scheduleLocalNotification:notification];
+        
+    }
+    
     UIImageView *backgroundImageView = [[[UIImageView alloc] initWithFrame:self.view.bounds] autorelease];
     backgroundImageView.image = [UIImage imageNamed:@"bl_bg"];
     [self.view addSubview:backgroundImageView];
@@ -98,9 +111,20 @@
 
 //查到外设后，停止扫描，连接设备
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI {
-    NSLog(@"查到外设");
-    //NSLog(@"已发现 peripheral: %@ rssi: %@, UUID: %@ advertisementData: %@ ", peripheral, RSSI, peripheral.UUID, advertisementData);
-    self.peripheral = peripheral;
+    //NSLog(@"查到外设");
+    if (!peripheral || [CommonTools isEmptyString:peripheral.name]) return;
+    NSLog(@"已发现 peripheral: %@ rssi: %@,name:%@, UUID: %@ advertisementData: %@ ", peripheral, RSSI,peripheral.name, peripheral.UUID, advertisementData);
+    if ([peripheral.name isEqualToString:@"iPod toutch"]) {
+        NSLog(@"=== iPod ====");
+    }
+    if ([peripheral.name isEqualToString:@"MI"]) {
+        NSLog(@"==== MI ====");
+    }
+    NSLog(@"<<<<< %@ >>>>>>",peripheral.name);
+    if (!self.peripheral || (self.peripheral.state == CBPeripheralStateDisconnected)) {
+        self.peripheral = peripheral;
+        [_manager connectPeripheral:peripheral options:nil];
+    }
     [_manager stopScan];
 }
 
@@ -144,6 +168,8 @@
     for (CBCharacteristic *c in service.characteristics) {
         NSLog(@"特征 UUID: %@ (%@)",c.UUID.data,c.UUID);
     }
+    [peripheral readValueForCharacteristic:[service.characteristics firstObject]];
+    [_peripheral readRSSI];
 }
 
 //获取外设发来的数据，不论是read和notify,获取数据都是从这个方法中读取。

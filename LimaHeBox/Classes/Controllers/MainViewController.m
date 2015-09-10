@@ -78,7 +78,7 @@ static int menuIndex[8] = {4,2,1,3,5,7,8,9};
     
     //设备信息
     DeviceDataSource *dataSource = [[[DeviceDataSource alloc] initWithDelegate:self] autorelease];
-    [dataSource getDeviceInfo:@"867144029580667"];
+    [dataSource getDeviceInfo:@"867144029586110"];
     self.dataSource = dataSource;
 }
 

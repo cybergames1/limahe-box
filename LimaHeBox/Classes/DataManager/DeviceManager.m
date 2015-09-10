@@ -25,16 +25,21 @@
 }
 
 /**
- tinfo = "N=22.574780;S=113.873900;TM:194310;TR30.C;PH42.%,#";
+ tinfo = "GPS:113.881248,22.571365;TR30C,PH36%;";
  **/
 - (NSDictionary *)dictionaryFromString:(NSString *)string {
     NSArray *array = [string componentsSeparatedByString:@";"];
-    NSString *n = [array[0] substringFromIndex:2];
-    NSString *s = [array[1] substringFromIndex:2];
-    NSString *tm = [array[3] substringFromIndex:2];
+    //gps
+    NSArray *gps = [array[0] componentsSeparatedByString:@","];
+    NSString *n = [gps[0] substringFromIndex:4];
+    NSString *s = gps[1];
+    
+    //温湿度
+    NSArray *tp = [array[1] componentsSeparatedByString:@","];
+    NSString *tm = [tp[0] substringFromIndex:2];
     tm = [tm substringToIndex:[tm length]-1];
-    NSString *ph = [array[4] substringFromIndex:2];
-    ph = [ph substringToIndex:[ph length]-3];
+    NSString *ph = [tp[1] substringFromIndex:2];
+    ph = [ph substringToIndex:[ph length]-1];
     
     return  @{@"n":n,
               @"s":s,
