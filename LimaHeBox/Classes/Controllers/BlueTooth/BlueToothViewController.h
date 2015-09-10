@@ -7,7 +7,15 @@
 //
 
 #import "BoxSuperViewController.h"
+#import <CoreBluetooth/CoreBluetooth.h>
 
 @interface BlueToothViewController : BoxSuperViewController
+
+@end
+
+@interface BLEInfo : NSObject
+
+@property (nonatomic, retain) CBPeripheral * discoveredPeripheral;
+@property (nonatomic, retain) NSNumber * rssi;
 
 @end

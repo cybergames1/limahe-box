@@ -7,10 +7,13 @@
 //
 
 #import "BlueToothViewController.h"
-#import <CoreBluetooth/CoreBluetooth.h>
 #import "RadarView.h"
 
-@interface BlueToothViewController () <CBCentralManagerDelegate,CBPeripheralDelegate>
+@interface BlueToothViewController () <CBCentralManagerDelegate,CBPeripheralDelegate,UITableViewDataSource,UITableViewDelegate>
+{
+    UITableView * _tableView;
+    NSMutableArray * _devices;
+}
 
 @property (nonatomic, retain) CBCentralManager * manager;
 @property (nonatomic, retain) CBPeripheral * peripheral;
@@ -20,6 +23,7 @@
 @implementation BlueToothViewController
 
 - (void)dealloc {
+    [_devices release];_devices = nil;
     [self stopManager];
     [super dealloc];
 }
@@ -35,35 +39,23 @@
     [_manager release];_manager = nil;
 }
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _devices = [[NSMutableArray alloc] initWithCapacity:0];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setNavigationItemLeftImage:[UIImage imageNamed:@"common_icon_back"]];
     [self setNavigationTitle:@"蓝牙安全监控"];
     
-    UILocalNotification *notification = [[UILocalNotification alloc]init];
-    if (notification != nil) {
-        NSDate *now = [NSDate new];
-        notification.fireDate = [now dateByAddingTimeInterval:10];
-        notification.timeZone = [NSTimeZone defaultTimeZone];
-        notification.alertBody = @"报警";
-        notification.applicationIconBadgeNumber = 1;
-        notification.alertAction = @"关闭";
-        
-        [[UIApplication sharedApplication]scheduleLocalNotification:notification];
-        
-    }
-    
     UIImageView *backgroundImageView = [[[UIImageView alloc] initWithFrame:self.view.bounds] autorelease];
     backgroundImageView.image = [UIImage imageNamed:@"bl_bg"];
     [self.view addSubview:backgroundImageView];
-    
-//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [button setFrame:CGRectMake(self.view.frame.size.width/2-100/2, self.view.frame.size.height/2-100/2, 100, 100)];
-//    [button setTitle:@"连接" forState:UIControlStateNormal];
-//    [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-//    [button addTarget:self action:@selector(connect:) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:button];
     
     RadarView *radarView = [[[RadarView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, 250)] autorelease];
     [self.view addSubview:radarView];
@@ -71,6 +63,12 @@
     RadarLabel *radarLabel = [[[RadarLabel alloc] initWithFrame:CGRectMake(35, radarView.bottom+50, self.view.width-70, self.view.height-radarView.bottom-10)] autorelease];
     [self.view addSubview:radarLabel];
     
+    _tableView = [[[UITableView alloc] initWithFrame:self.view.bounds] autorelease];
+    _tableView.top = 64;
+    _tableView.dataSource = self;
+    _tableView.delegate = self;
+    [self.view addSubview:_tableView];
+
     _manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
 }
 
@@ -78,10 +76,11 @@
     [super viewDidAppear:animated];
     [_manager scanForPeripheralsWithServices:nil options:@{CBCentralManagerScanOptionAllowDuplicatesKey : @YES }];
     
+    __block __typeof__(self) weakSelf = self;
     double delayInSeconds = 30.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [self.manager stopScan];
+        //[_manager stopScan];
         NSLog(@"扫描超时");
     });
 }
@@ -93,6 +92,36 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark -
+#pragma mark UITableView Delegate&Datasource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [_devices count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString * identifier = @"DeviceCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier] autorelease];
+    }
+    
+    BLEInfo *info = _devices[indexPath.row];
+    cell.textLabel.text = info.discoveredPeripheral.name ? info.discoveredPeripheral.name : @"未知设备";
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%ld",(long)[info.rssi integerValue]];
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    BLEInfo *info = _devices[indexPath.row];
+    self.peripheral = info.discoveredPeripheral;
+    [_manager connectPeripheral:info.discoveredPeripheral options:nil];
+    [_manager stopScan];
+    
+    [tableView setAlpha:0.0];
 }
 
 #pragma mark -
@@ -111,21 +140,30 @@
 
 //查到外设后，停止扫描，连接设备
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI {
-    //NSLog(@"查到外设");
-    if (!peripheral || [CommonTools isEmptyString:peripheral.name]) return;
-    NSLog(@"已发现 peripheral: %@ rssi: %@,name:%@, UUID: %@ advertisementData: %@ ", peripheral, RSSI,peripheral.name, peripheral.UUID, advertisementData);
-    if ([peripheral.name isEqualToString:@"iPod toutch"]) {
-        NSLog(@"=== iPod ====");
-    }
-    if ([peripheral.name isEqualToString:@"MI"]) {
-        NSLog(@"==== MI ====");
-    }
-    NSLog(@"<<<<< %@ >>>>>>",peripheral.name);
-    if (!self.peripheral || (self.peripheral.state == CBPeripheralStateDisconnected)) {
-        self.peripheral = peripheral;
-        [_manager connectPeripheral:peripheral options:nil];
-    }
-    [_manager stopScan];
+    NSLog(@"查到外设");
+   // if ([peripheral.name length] <= 0) return;
+
+        BLEInfo *disinfo = [[BLEInfo alloc] init];
+        disinfo.discoveredPeripheral = peripheral;
+        disinfo.rssi = RSSI;
+        
+        for (BLEInfo * info in _devices) {
+            if ([info.discoveredPeripheral.identifier.UUIDString isEqualToString:disinfo.discoveredPeripheral.identifier.UUIDString]) {
+                return;
+            }
+        }
+        
+        [_devices addObject:disinfo];
+        [_tableView reloadData];
+        
+        
+        [disinfo release];
+    
+//    if (!self.peripheral || (self.peripheral.state == CBPeripheralStateDisconnected)) {
+//        self.peripheral = peripheral;
+//        [_manager connectPeripheral:peripheral options:nil];
+//    }
+//    [_manager stopScan];
 }
 
 //连接外设成功，开始发现服务
@@ -149,6 +187,8 @@
     CGFloat ci = (rssi - 49) / (10 * 4.);
     NSString *length = [NSString stringWithFormat:@"发现BLT4.0热点:%@,距离:%.1fm",_peripheral,pow(10,ci)];
     NSLog(@"距离：%@",length);
+    
+    [self showHUDWithText:length];
 }
 
 //已发现服务
@@ -185,6 +225,17 @@
 //用于检测中心向外设写数据是否成功
 -(void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
     
+}
+
+@end
+
+
+@implementation BLEInfo
+
+- (void)dealloc {
+    [_discoveredPeripheral release];_discoveredPeripheral = nil;
+    [_rssi release];_rssi = nil;
+    [super dealloc];
 }
 
 @end
