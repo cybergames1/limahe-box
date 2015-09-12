@@ -13,6 +13,7 @@
 {
     UITableView * _tableView;
     NSMutableArray * _devices;
+    RadarView * _radarView;
 }
 
 @property (nonatomic, retain) CBCentralManager * manager;
@@ -59,6 +60,7 @@
     
     RadarView *radarView = [[[RadarView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, 250)] autorelease];
     [self.view addSubview:radarView];
+    _radarView = radarView;
     
     RadarLabel *radarLabel = [[[RadarLabel alloc] initWithFrame:CGRectMake(35, radarView.bottom+50, self.view.width-70, self.view.height-radarView.bottom-10)] autorelease];
     [self.view addSubview:radarLabel];
@@ -76,7 +78,6 @@
     [super viewDidAppear:animated];
     [_manager scanForPeripheralsWithServices:nil options:@{CBCentralManagerScanOptionAllowDuplicatesKey : @YES }];
     
-    __block __typeof__(self) weakSelf = self;
     double delayInSeconds = 30.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
@@ -122,6 +123,7 @@
     [_manager stopScan];
     
     [tableView setAlpha:0.0];
+    [self showIndicatorHUDView:@"正在连接..."];
 }
 
 #pragma mark -
@@ -171,6 +173,8 @@
     NSLog(@"连接成功");
     [_peripheral setDelegate:self];
     [_peripheral discoverServices:nil];
+    _radarView.state = RadarStateMatchSuccess;
+    [self hideIndicatorHUDView];
 }
 
 //连接外设失败
@@ -185,7 +189,7 @@
 - (void)peripheralDidUpdateRSSI:(CBPeripheral *)peripheral error:(NSError *)error {
     int rssi = abs([peripheral.RSSI intValue]);
     CGFloat ci = (rssi - 49) / (10 * 4.);
-    NSString *length = [NSString stringWithFormat:@"发现BLT4.0热点:%@,距离:%.1fm",_peripheral,pow(10,ci)];
+    NSString *length = [NSString stringWithFormat:@"发现BLT4.0热点:%@,距离:%.1fm",_peripheral.name,pow(10,ci)];
     NSLog(@"距离：%@",length);
     
     [self showHUDWithText:length];
