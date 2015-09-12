@@ -8,6 +8,8 @@
 
 #import "DeviceManager.h"
 
+NSString* const UserInfoWeightKey = @"userInfo_weightkey";
+
 @implementation MDevice
 
 - (instancetype)initWithDictionary:(NSDictionary *)dic {
@@ -19,9 +21,32 @@
         self.coordinate = CLLocationCoordinate2DMake([[infoDic objectForKey:@"n"] floatValue], [[infoDic objectForKey:@"s"] floatValue]);
         self.temperature = [[infoDic objectForKey:@"tm"] floatValue];
         self.wet = [[infoDic objectForKey:@"ph"] floatValue];
-        
+        self.weight = 0.0;
     }
     return self;
+}
+
+- (void)updateValue:(id)value forKey:(NSString *)key {
+    if (value) {
+        if ([key isEqualToString:UserInfoWeightKey]) {
+            self.weight = [value floatValue];
+        }
+    }
+}
+
+/**
+ data =     {
+ dateline = "2015-09-11 ";
+ id = 1;
+ status = 1;
+ tinfo = 12kg;
+ toolsn = 867144029586110;
+ };
+ **/
+- (void)updateWeightWithDictionary:(NSDictionary *)dic {
+    NSString *tinfo = [dic objectForKeyedSubscript:@"tinfo"];
+    tinfo = [tinfo substringToIndex:[tinfo length]-2];
+    [self updateValue:tinfo forKey:UserInfoWeightKey];
 }
 
 /**

@@ -20,10 +20,21 @@
 @property (nonatomic, assign) CGFloat temperature;
 /** 湿度 **/
 @property (nonatomic, assign) CGFloat wet;
+/** 称重 **/
+@property (nonatomic, assign) CGFloat weight;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dic;
 
+/** 更新个人信息 **/
+- (void)updateValue:(id)value forKey:(NSString *)key;
+
+/** 称重是另外一个接口，所以特别提出一个更新称重的方法 **/
+- (void)updateWeightWithDictionary:(NSDictionary *)dic;
+
 @end
+
+extern NSString* const UserInfoWeightKey;
+
 
 @interface DeviceManager : NSObject
 
