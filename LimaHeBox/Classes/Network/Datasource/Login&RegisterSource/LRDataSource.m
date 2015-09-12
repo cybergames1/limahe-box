@@ -43,4 +43,54 @@
     [self startRequest];
 }
 
+- (void)updatePwdWithUserName:(NSString *)userName oldpwd:(NSString *)oldpwd newpwd:(NSString *)newpwd {
+    [self cancelAllRequest];
+    [self.request clearAndCancel];
+    self.request = nil;
+    
+    PPQPostDataRequest *request = [[PPQPostDataRequest alloc] initWithDelegate:self theURl:[NSURL URLWithString:[PPQNetWorkURLs updatePassword]]];
+    
+    [request addPostValue:userName forKey:@"username"];
+    [request addPostValue:oldpwd forKey:@"oldpassword"];
+    [request addPostValue:newpwd forKey:@"newpassword"];
+    
+    self.request = request;
+    self.request.isRunOnBackground = YES;
+    [request release];
+    [self startRequest];
+}
+
+- (void)updateInfoWithGender:(NSString *)gender
+                         age:(NSString *)age
+                     address:(NSString *)address
+                        city:(NSString *)city
+{
+    [self cancelAllRequest];
+    [self.request clearAndCancel];
+    self.request = nil;
+    
+    PPQPostDataRequest *request = [[PPQPostDataRequest alloc] initWithDelegate:self theURl:[NSURL URLWithString:[PPQNetWorkURLs updateInfo]]];
+    
+    if (gender) {
+        [request addPostValue:gender forKey:@"sex"];
+    }
+    
+    if (age) {
+        [request addPostValue:age forKey:@"age"];
+    }
+    
+    if (address) {
+        [request addPostValue:address forKey:@"address"];
+    }
+    
+    if (city) {
+        [request addPostValue:city forKey:@"city"];
+    }
+    
+    self.request = request;
+    self.request.isRunOnBackground = YES;
+    [request release];
+    [self startRequest];
+}
+
 @end

@@ -71,6 +71,10 @@ typedef NS_ENUM(NSInteger, PPQNetworkTag)
     EPPQNetworkNormalTag,     //正常情况
     EPPQNetworkMoreTag,       //加载更多
     
+    EPPQNetGetDeviceInfo,     //或缺设备信息
+    EPPQNetStartWeight,       //启动称重
+    EPPQNetGetWeight,         //获取称重信息
+    
     EPPQNetGetFileID,         //获取fileid
     EPPQNetUploadNotifyEnd,   //通知传完数据块
     EPPQNetUploadMetadata,    //上传metadata

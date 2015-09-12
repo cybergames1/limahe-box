@@ -80,6 +80,9 @@ static int menuIndex[8] = {4,2,1,3,5,7,8,9};
     DeviceDataSource *dataSource = [[[DeviceDataSource alloc] initWithDelegate:self] autorelease];
     [dataSource getDeviceInfo:@"867144029586110"];
     self.dataSource = dataSource;
+    
+    dataSource = [[DeviceDataSource alloc] initWithDelegate:self];
+    [dataSource startWeight:@"867144029586110"];
 }
 
 - (void)setWeatherInfo:(NSString *)areaId {
@@ -155,7 +158,16 @@ static int menuIndex[8] = {4,2,1,3,5,7,8,9};
 #pragma mark DataSource Delegate
 
 - (void)dataSourceFinishLoad:(PPQDataSource *)source {
-    [[DeviceManager sharedManager] setCurrentDevice:[[[MDevice alloc] initWithDictionary:[source.data objectForKey:@"data"]] autorelease]];
+    if (source.networkType == EPPQNetGetDeviceInfo) {
+        [[DeviceManager sharedManager] setCurrentDevice:[[[MDevice alloc] initWithDictionary:[source.data objectForKey:@"data"]] autorelease]];
+    }else if (source.networkType == EPPQNetStartWeight) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 6 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            DeviceDataSource *dataSource = [[DeviceDataSource alloc] initWithDelegate:self];
+            [dataSource getWeight:@"867144029586110"];
+        });
+    }else if (source.networkType == EPPQNetGetWeight) {
+        NSLog(@"=====getweight=====");
+    }
 }
 
 - (void)dataSource:(PPQDataSource *)source hasError:(NSError *)error {

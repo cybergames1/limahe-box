@@ -31,6 +31,14 @@
 #define REGISTER @"/user/reg"
 + (NSString *)registerBox;
 
+//修改密码
+#define UPDATE_PASSWORD @"/user/updatepassword"
++ (NSString *)updatePassword;
+
+//修改用户信息
+#define UPDATE_INFO @"/user/updatemember"
++ (NSString *)updateInfo;
+
 //获取新闻列表
 #define NEWSLIST @"/news/getlist"
 + (NSString *)getNewsListWithPage:(NSInteger)page pageSize:(NSInteger)pageSize;
@@ -42,6 +50,14 @@
 //获取设备信息
 #define DEVICEINFO @"/tool/getinfo"
 + (NSString *)deviceInfo;
+
+//启动称重
+#define STARTWEIGHT @"/tool/startmeasure"
++ (NSString *)startWeight;
+
+//获取称重信息
+#define GETWEITHG @"/tool/getmeasure"
++ (NSString *)getWeight;
 
 @end
 

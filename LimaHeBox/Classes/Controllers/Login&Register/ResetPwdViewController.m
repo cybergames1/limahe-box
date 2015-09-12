@@ -7,6 +7,8 @@
 //
 
 #import "ResetPwdViewController.h"
+#import "LRDataSource.h"
+#import "AccountManager.h"
 
 @interface ResetPwdViewController ()
 {
@@ -45,6 +47,28 @@
         [self showHUDWithText:@"新密码两次输入不一样"];
         return;
     }
+    
+    if ([_newPwdCell.textField.text length] <= 0 || [_newPwdCell.textField.text length] <= 0) {
+        [self showHUDWithText:@"密码不能为空"];
+        return;
+    }
+    
+    [self showIndicatorHUDView:@"正在更新..."];
+    
+    MUser *loginUser = [[AccountManager sharedManager] loginUser];
+    
+    LRDataSource *dataSource = [[LRDataSource alloc] initWithDelegate:self];
+    [dataSource updatePwdWithUserName:loginUser.userName oldpwd:_prePwdCell.textField.text newpwd:_newPwdCell.textField.text];
+    self.dataSource = dataSource;
+}
+
+- (void)dataSourceFinishLoad:(PPQDataSource *)source {
+    [super dataSourceFinishLoad:source];
+    [self leftBarAction];
+}
+
+- (void)dataSource:(PPQDataSource *)source hasError:(NSError *)error {
+    [super dataSource:source hasError:error];
 }
 
 @end

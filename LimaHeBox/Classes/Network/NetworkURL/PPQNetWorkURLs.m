@@ -23,6 +23,14 @@
     return [NSString stringWithFormat:@"%@%@",APIHOST,REGISTER];
 }
 
++ (NSString *)updatePassword {
+    return [NSString stringWithFormat:@"%@%@",APIHOST,UPDATE_PASSWORD];
+}
+
++ (NSString *)updateInfo {
+    return [NSString stringWithFormat:@"%@%@",APIHOST,UPDATE_INFO];
+}
+
 + (NSString *)getNewsListWithPage:(NSInteger)page pageSize:(NSInteger)pageSize {
     return [NSString stringWithFormat:@"%@%@?pagenumber=%ld&pagesize=%ld",APIHOST,NEWSLIST,(long)page,(long)pageSize];
 }
@@ -33,6 +41,14 @@
 
 + (NSString *)deviceInfo {
     return [NSString stringWithFormat:@"%@%@",APIHOST,DEVICEINFO];
+}
+
++ (NSString *)startWeight {
+    return [NSString stringWithFormat:@"%@%@",APIHOST,STARTWEIGHT];
+}
+
++ (NSString *)getWeight {
+    return [NSString stringWithFormat:@"%@%@",APIHOST,GETWEITHG];
 }
 
 @end

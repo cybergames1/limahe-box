@@ -10,11 +10,24 @@
 
 @interface LRDataSource : PPQDataSource
 
+/** 登录 **/
 - (void)loginWithUserName:(NSString *)userName
                  password:(NSString *)password;
 
+/** 注册 **/
 - (void)registerWithUserName:(NSString *)userName
                     password:(NSString *)password
                        phone:(NSString *)phone;
+
+/** 修改密码 **/
+- (void)updatePwdWithUserName:(NSString *)userName
+                       oldpwd:(NSString *)oldpwd
+                       newpwd:(NSString *)newpwd;
+
+/** 更新个人信息 **/
+- (void)updateInfoWithGender:(NSString *)gender
+                         age:(NSString *)age
+                     address:(NSString *)address
+                        city:(NSString *)city;
 
 @end
