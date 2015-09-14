@@ -21,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavigationTitle:@"公司动态"];
+    [self setNavigationTitle:@"详情"];
     
     UITextView *textView = [[[UITextView alloc] initWithFrame:CGRectMake(0, 100, self.view.width, self.view.height-54-100)] autorelease];
     textView.backgroundColor = [UIColor clearColor];

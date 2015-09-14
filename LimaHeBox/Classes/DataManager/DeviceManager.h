@@ -35,6 +35,8 @@
 
 extern NSString* const UserInfoWeightKey;
 
+extern NSString* const UpdateUserInfoNotification;
+
 
 @interface DeviceManager : NSObject
 

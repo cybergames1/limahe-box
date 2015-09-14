@@ -11,3 +11,13 @@
 @interface WeighViewController : BoxSuperViewController
 
 @end
+
+@interface SegmentLabel : UILabel
+{
+    id _target;
+    SEL _action;
+}
+
+- (void)addTarget:(id)target action:(SEL)action;
+
+@end

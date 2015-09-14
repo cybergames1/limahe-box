@@ -105,6 +105,7 @@
 		DCE0AEFF1B96DE8500F2CFC3 /* main_gps@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCE0AEFC1B96DE8500F2CFC3 /* main_gps@2x.png */; };
 		DCE0AF001B96DE8500F2CFC3 /* main_temp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCE0AEFD1B96DE8500F2CFC3 /* main_temp@2x.png */; };
 		DCE0AF011B96DE8500F2CFC3 /* main_weigh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCE0AEFE1B96DE8500F2CFC3 /* main_weigh@2x.png */; };
+		DCEA32F91BA668B70064B6E6 /* QYSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA32F81BA668B70064B6E6 /* QYSegmentControl.m */; };
 		DCEA69751B86186B008FF3E2 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA69741B86186B008FF3E2 /* ShareViewController.m */; };
 		DCEA69791B8618A0008FF3E2 /* VideoShareInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEA69781B8618A0008FF3E2 /* VideoShareInputView.m */; };
 		DCEA697C1B8618D7008FF3E2 /* FTUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCEA697B1B8618D7008FF3E2 /* FTUIKit.framework */; };
@@ -475,6 +476,8 @@
 		DCE0AEFC1B96DE8500F2CFC3 /* main_gps@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_gps@2x.png"; sourceTree = "<group>"; };
 		DCE0AEFD1B96DE8500F2CFC3 /* main_temp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_temp@2x.png"; sourceTree = "<group>"; };
 		DCE0AEFE1B96DE8500F2CFC3 /* main_weigh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_weigh@2x.png"; sourceTree = "<group>"; };
+		DCEA32F71BA668B70064B6E6 /* QYSegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYSegmentControl.h; sourceTree = "<group>"; };
+		DCEA32F81BA668B70064B6E6 /* QYSegmentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYSegmentControl.m; sourceTree = "<group>"; };
 		DCEA69731B86186B008FF3E2 /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
 		DCEA69741B86186B008FF3E2 /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
 		DCEA69771B8618A0008FF3E2 /* VideoShareInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoShareInputView.h; sourceTree = "<group>"; };
@@ -1109,6 +1112,8 @@
 				DCEA6A111B88A837008FF3E2 /* RadarView.m */,
 				DCE0AEF91B96D6E800F2CFC3 /* BadgeView.h */,
 				DCE0AEFA1B96D6E800F2CFC3 /* BadgeView.m */,
+				DCEA32F71BA668B70064B6E6 /* QYSegmentControl.h */,
+				DCEA32F81BA668B70064B6E6 /* QYSegmentControl.m */,
 			);
 			name = Views;
 			path = Classes/Views;
@@ -1920,6 +1925,7 @@
 				DC3F17AC1B2FDF8A00F02C10 /* ASIAuthenticationDialog.m in Sources */,
 				DCFAC4E01B3ABDC30062D479 /* ExpressModel.m in Sources */,
 				DCBEF8D71B41140E00FA72D7 /* TimePickerView.m in Sources */,
+				DCEA32F91BA668B70064B6E6 /* QYSegmentControl.m in Sources */,
 				DCD057B71B9AE01A003A7740 /* SecondShareManager.m in Sources */,
 				DC3F17AF1B2FDF8A00F02C10 /* ASIDownloadCache.m in Sources */,
 				DCD057B11B9ADF91003A7740 /* SinaWeibo.m in Sources */,

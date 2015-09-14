@@ -9,6 +9,7 @@
 #import "DeviceManager.h"
 
 NSString* const UserInfoWeightKey = @"userInfo_weightkey";
+NSString* const UpdateUserInfoNotification = @"UpdateUserInfoNotification";
 
 @implementation MDevice
 
@@ -32,6 +33,10 @@ NSString* const UserInfoWeightKey = @"userInfo_weightkey";
             self.weight = [value floatValue];
         }
     }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:UpdateUserInfoNotification object:self];
+    });
 }
 
 /**
@@ -44,8 +49,15 @@ NSString* const UserInfoWeightKey = @"userInfo_weightkey";
  };
  **/
 - (void)updateWeightWithDictionary:(NSDictionary *)dic {
-    NSString *tinfo = [dic objectForKeyedSubscript:@"tinfo"];
-    tinfo = [tinfo substringToIndex:[tinfo length]-2];
+    NSString *tinfo = [dic objectForKey:@"tinfo"];
+    NSString *w = [tinfo substringFromIndex:[tinfo length]-2];
+    if ([w isEqualToString:@"kg"]) {
+        tinfo = [tinfo substringToIndex:[tinfo length]-2];
+        tinfo = [NSString stringWithFormat:@"%f",[tinfo floatValue]*1000.0];
+    }else {
+        tinfo = [tinfo substringToIndex:[tinfo length]-1];
+    }
+    
     [self updateValue:tinfo forKey:UserInfoWeightKey];
 }
 
