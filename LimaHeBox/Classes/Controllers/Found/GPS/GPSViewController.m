@@ -11,7 +11,7 @@
 #import <MapKit/MapKit.h>
 #import "DeviceManager.h"
 
-@interface GPSViewController () <MKMapViewDelegate,MyCLControllerDelegate>
+@interface GPSViewController () <MKMapViewDelegate>
 {
     MKMapView * _mapView;
     CLLocationManager * _locMgr;
@@ -52,8 +52,11 @@
     [self.view addSubview:mapView];
     _mapView = mapView;
     
+    CLLocationCoordinate2D coordinate2D = [[[DeviceManager sharedManager] currentDevice] coordinate];
+    NSString *title = [NSString stringWithFormat:@"%f,%f",coordinate2D.latitude,coordinate2D.longitude];
+    
     //加入大头针
-    MyAnnotation *anno = [[MyAnnotation alloc] initWithTitle:@"title" SubTitle:@"subtitle" Coordinate:[[[DeviceManager sharedManager] currentDevice] coordinate]];
+    MyAnnotation *anno = [[MyAnnotation alloc] initWithTitle:title SubTitle:nil Coordinate:[[[DeviceManager sharedManager] currentDevice] coordinate]];
     [mapView addAnnotation:anno];
     [anno release];
     
