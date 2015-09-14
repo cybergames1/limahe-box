@@ -19,7 +19,7 @@ NSString* const UpdateUserInfoNotification = @"UpdateUserInfoNotification";
         self.deviceId = [dic objectForKey:@"toolsn"];
         
         NSDictionary *infoDic = [self dictionaryFromString:[dic objectForKey:@"tinfo"]];
-        self.coordinate = CLLocationCoordinate2DMake([[infoDic objectForKey:@"n"] floatValue], [[infoDic objectForKey:@"s"] floatValue]);
+        self.coordinate = CLLocationCoordinate2DMake([[infoDic objectForKey:@"s"] floatValue],[[infoDic objectForKey:@"n"] floatValue]);
         self.temperature = [[infoDic objectForKey:@"tm"] floatValue];
         self.wet = [[infoDic objectForKey:@"ph"] floatValue];
         self.weight = 0.0;

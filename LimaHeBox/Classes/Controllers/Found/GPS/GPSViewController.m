@@ -23,6 +23,7 @@
 
 - (void)dealloc {
     [_locMgr release];_locMgr = nil;
+    [_mapView setShowsUserLocation:NO];
     _mapView.delegate = nil;
     [_mapView release];_mapView = nil;
     [super dealloc];
@@ -50,6 +51,11 @@
     [mapView setDelegate:self];
     [self.view addSubview:mapView];
     _mapView = mapView;
+    
+    //加入大头针
+    MyAnnotation *anno = [[MyAnnotation alloc] initWithTitle:@"title" SubTitle:@"subtitle" Coordinate:[[[DeviceManager sharedManager] currentDevice] coordinate]];
+    [mapView addAnnotation:anno];
+    [anno release];
     
   //  [[MyCLController sharedInstance] setDelegate:self];
 }
@@ -79,6 +85,60 @@
     MKCoordinateSpan span=MKCoordinateSpanMake(0.1, 0.1);
     MKCoordinateRegion region=MKCoordinateRegionMake([[[DeviceManager sharedManager] currentDevice] coordinate], span);
     [mapView setRegion:region animated:YES];
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    if ([annotation isKindOfClass:[mapView.userLocation class]]) return nil;
+    
+    static NSString *identifier = @"mapID";
+    MKPinAnnotationView *pinView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+    if (pinView == nil) {
+        pinView = [[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier] autorelease];
+    }
+    
+    pinView.canShowCallout = YES;
+    pinView.pinColor = MKPinAnnotationColorPurple;
+    pinView.animatesDrop = YES;
+    
+    return pinView;
+}
+
+@end
+
+
+@implementation MyAnnotation
+@synthesize title2 = _title2;
+@synthesize subtitle2 = _subtitle2;
+@synthesize coordinate = _coordinate;
+
+- (id)initWithTitle:(NSString*)title SubTitle:(NSString*)subtitle Coordinate:(CLLocationCoordinate2D)coordinate
+{
+    if (self = [super init]) {
+        self.title2 = title;
+        self.subtitle2 = subtitle;
+        self.coordinate = coordinate;
+    }
+    return self;
+}
+
+- (NSString *)title
+{
+    return _title2;
+}
+- (NSString *)subtitle
+{
+    return _subtitle2;
+}
+- (CLLocationCoordinate2D)coordinate
+{
+    return _coordinate;
+}
+
+- (void)dealloc
+{
+    self.title2 = nil;
+    self.subtitle2 = nil;
+    [super dealloc];
 }
 
 @end
