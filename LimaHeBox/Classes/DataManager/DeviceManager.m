@@ -7,6 +7,7 @@
 //
 
 #import "DeviceManager.h"
+#import "DeviceDataSource.h"
 
 NSString* const UserInfoWeightKey = @"userInfo_weightkey";
 NSString* const UpdateUserInfoNotification = @"UpdateUserInfoNotification";
@@ -86,6 +87,15 @@ NSString* const UpdateUserInfoNotification = @"UpdateUserInfoNotification";
 
 @end
 
+@interface DeviceManager () <PPQDataSourceDelegate>
+{
+    void(^success_)();
+    void(^failure_)(NSError *);
+}
+
+@property (nonatomic, retain) PPQDataSource * dataSource;
+@end
+
 @implementation DeviceManager
 
 + (DeviceManager *)sharedManager
@@ -96,6 +106,56 @@ NSString* const UpdateUserInfoNotification = @"UpdateUserInfoNotification";
         instance = [[DeviceManager alloc] init];
     });
     return instance;
+}
+
+- (void)startGetDeviceInfo:(void(^)())success failure:(void(^)(NSError*))failure {
+    if (success) success_ = [success copy];
+    if (failure) failure_ = [failure copy];
+    
+    if (self.dataSource) {
+        [_dataSource cancelAllRequest];
+        [_dataSource setDelegate:nil];
+        self.dataSource = nil;
+    }
+    
+    DeviceDataSource *dataSource = [[[DeviceDataSource alloc] initWithDelegate:self] autorelease];
+    [dataSource getDeviceInfo:@"867144029586110"];
+    self.dataSource = dataSource;
+}
+
+#pragma mark -
+#pragma mark DataSource Delegate
+
+- (void)dataSourceFinishLoad:(PPQDataSource *)source {
+    if (source.networkType == EPPQNetGetDeviceInfo) {
+        [[DeviceManager sharedManager] setCurrentDevice:[[[MDevice alloc] initWithDictionary:[source.data objectForKey:@"data"]] autorelease]];
+        
+        DeviceDataSource *dataSource = [[[DeviceDataSource alloc] initWithDelegate:self] autorelease];
+        [dataSource startWeight:@"867144029586110"];
+        self.dataSource = dataSource;
+        
+        if (success_) {
+            success_();
+            [success_ release];
+            success_ = nil;
+        }
+    }else if (source.networkType == EPPQNetStartWeight) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 6 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            DeviceDataSource *dataSource = [[[DeviceDataSource alloc] initWithDelegate:self] autorelease];
+            [dataSource getWeight:@"867144029586110"];
+            self.dataSource = dataSource;
+        });
+    }else if (source.networkType == EPPQNetGetWeight) {
+        [[[DeviceManager sharedManager] currentDevice] updateWeightWithDictionary:[source.data objectForKey:@"data"]];
+    }
+}
+
+- (void)dataSource:(PPQDataSource *)source hasError:(NSError *)error {
+    if (failure_) {
+        failure_(error);
+        [failure_ release];
+        failure_ = nil;
+    }
 }
 
 @end

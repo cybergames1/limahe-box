@@ -52,42 +52,31 @@
     [self.view addSubview:mapView];
     _mapView = mapView;
     
-    CLLocationCoordinate2D coordinate2D = [[[DeviceManager sharedManager] currentDevice] coordinate];
-    NSString *title = [NSString stringWithFormat:@"%f,%f",coordinate2D.latitude,coordinate2D.longitude];
-    
-    //加入大头针
-    MyAnnotation *anno = [[MyAnnotation alloc] initWithTitle:title SubTitle:nil Coordinate:[[[DeviceManager sharedManager] currentDevice] coordinate]];
-    [mapView addAnnotation:anno];
-    [anno release];
-    
-  //  [[MyCLController sharedInstance] setDelegate:self];
+    [self showIndicatorHUDView:@"正在获取设备信息"];
+    [[DeviceManager sharedManager] startGetDeviceInfo:^{
+        [self hideAllHUDView];
+        
+        CLLocationCoordinate2D coordinate2D = [[[DeviceManager sharedManager] currentDevice] coordinate];
+        NSString *title = [NSString stringWithFormat:@"%f,%f",coordinate2D.latitude,coordinate2D.longitude];
+        
+        //加入大头针
+        MyAnnotation *anno = [[MyAnnotation alloc] initWithTitle:title SubTitle:nil Coordinate:[[[DeviceManager sharedManager] currentDevice] coordinate]];
+        [mapView addAnnotation:anno];
+        [anno release];
+        
+        MKCoordinateSpan span=MKCoordinateSpanMake(0.1, 0.1);
+        MKCoordinateRegion region=MKCoordinateRegionMake([[[DeviceManager sharedManager] currentDevice] coordinate], span);
+        [mapView setRegion:region animated:YES];
+        
+    }failure:^(NSError *error) {
+        [self hideAllHUDView];
+        [self showHUDWithText:[error.userInfo objectForKey:NSLocalizedDescriptionKey]];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)gpsUpdate:(CLLocation *)aLoc {
-//    MKCoordinateSpan theSpan = MKCoordinateSpanMake(0.1, 0.1);
-//    MKCoordinateRegion theRegion = MKCoordinateRegionMake(aLoc.coordinate, theSpan);
-//    
-//    [_mapView setRegion:theRegion];
-}
-
--(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation{
-    NSLog(@"%f,%f",userLocation.location.coordinate.longitude,userLocation.location.coordinate.latitude);
-    //点击大头针，会出现以下信息
-    userLocation.title=@"中国";
-    userLocation.subtitle=@"四大文明古国之一";
-    
-    //让地图显示用户的位置（iOS8一打开地图会默认转到用户所在位置的地图），该方法不能设置地图精度
-    //    [mapView setCenterCoordinate:userLocation.location.coordinate animated:YES];
-    
-    //这个方法可以设置地图精度以及显示用户所在位置的地图
-    MKCoordinateSpan span=MKCoordinateSpanMake(0.1, 0.1);
-    MKCoordinateRegion region=MKCoordinateRegionMake([[[DeviceManager sharedManager] currentDevice] coordinate], span);
-    [mapView setRegion:region animated:YES];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {

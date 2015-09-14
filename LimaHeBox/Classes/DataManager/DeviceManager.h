@@ -44,4 +44,9 @@ extern NSString* const UpdateUserInfoNotification;
 
 + (DeviceManager *)sharedManager;
 
+/**
+  获取设备信息:gps，温湿度，称重
+ **/
+- (void)startGetDeviceInfo:(void(^)())success failure:(void(^)(NSError*))failure;
+
 @end

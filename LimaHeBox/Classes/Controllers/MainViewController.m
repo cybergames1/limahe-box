@@ -13,14 +13,13 @@
 #import "AccountManager.h"
 #import "TimePickerView.h"
 #import "MessageViewController.h"
-#import "DeviceDataSource.h"
 #import "DeviceManager.h"
 
 #define Cell_Label_Tag 13232
 
 static int menuIndex[8] = {4,2,1,3,5,7,8,9};
 
-@interface MainViewController () <MainMenuViewDelegate,TimePickerViewDelegate,PPQDataSourceDelegate>
+@interface MainViewController () <MainMenuViewDelegate,TimePickerViewDelegate>
 {
     WeatherView * _weatherView;
     WeatherAPI * _weatherAPI;
@@ -28,18 +27,12 @@ static int menuIndex[8] = {4,2,1,3,5,7,8,9};
     UIImageView * _backgroundView;
 }
 
-@property (nonatomic, retain) DeviceDataSource * dataSource;
-
 @end
 
 @implementation MainViewController
 
 - (void)dealloc {
     [_weatherAPI release];_weatherAPI = nil;
-    if (_dataSource) {
-        _dataSource.delegate = nil;
-    }
-    [_dataSource release];_dataSource = nil;
     [super dealloc];
 }
 
@@ -77,9 +70,12 @@ static int menuIndex[8] = {4,2,1,3,5,7,8,9};
     [self setWeatherInfo:@"101010100"];
     
     //设备信息
-    DeviceDataSource *dataSource = [[[DeviceDataSource alloc] initWithDelegate:self] autorelease];
-    [dataSource getDeviceInfo:@"867144029586110"];
-    self.dataSource = dataSource;
+    [[DeviceManager sharedManager] startGetDeviceInfo:^{
+        [self hideAllHUDView];
+    }failure:^(NSError *error) {
+        [self hideAllHUDView];
+        [self showHUDWithText:[error.userInfo objectForKey:NSLocalizedDescriptionKey]];
+    }];
 }
 
 - (void)setWeatherInfo:(NSString *)areaId {
@@ -149,29 +145,6 @@ static int menuIndex[8] = {4,2,1,3,5,7,8,9};
     MessageViewController *controller = [[MessageViewController alloc] init];
     [self.navigationController pushViewController:controller animated:YES];
     [controller release];
-}
-
-#pragma mark -
-#pragma mark DataSource Delegate
-
-- (void)dataSourceFinishLoad:(PPQDataSource *)source {
-    if (source.networkType == EPPQNetGetDeviceInfo) {
-        [[DeviceManager sharedManager] setCurrentDevice:[[[MDevice alloc] initWithDictionary:[source.data objectForKey:@"data"]] autorelease]];
-        
-        DeviceDataSource *dataSource = [[DeviceDataSource alloc] initWithDelegate:self];
-        [dataSource startWeight:@"867144029586110"];
-    }else if (source.networkType == EPPQNetStartWeight) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 6 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-            DeviceDataSource *dataSource = [[DeviceDataSource alloc] initWithDelegate:self];
-            [dataSource getWeight:@"867144029586110"];
-        });
-    }else if (source.networkType == EPPQNetGetWeight) {
-        [[[DeviceManager sharedManager] currentDevice] updateWeightWithDictionary:[source.data objectForKey:@"data"]];
-    }
-}
-
-- (void)dataSource:(PPQDataSource *)source hasError:(NSError *)error {
-    
 }
 
 @end

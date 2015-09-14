@@ -11,25 +11,15 @@
 #import "DeviceDataSource.h"
 #import "DeviceManager.h"
 
-@interface TempViewController () <PPQDataSourceDelegate>
+@interface TempViewController ()
 {
     TemperatureView * _temp1;
     TemperatureView * _temp2;
 }
 
-@property (nonatomic, retain) DeviceDataSource * dataSource;
-
 @end
 
 @implementation TempViewController
-
-- (void)dealloc {
-    [_dataSource cancelAllRequest];
-    [_dataSource setDelegate:nil];
-    [_dataSource release];_dataSource = nil;
-    
-    [super dealloc];
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -66,26 +56,15 @@
     [self.view addSubview:temp2];
     _temp2 = temp2;
     
-    //设备信息
-    DeviceDataSource *dataSource = [[[DeviceDataSource alloc] initWithDelegate:self] autorelease];
-    [dataSource getDeviceInfo:@"867144029586110"];
-    self.dataSource = dataSource;
-    
     [self showIndicatorHUDView:@"正在获取设备信息"];
-}
-
-- (void)dataSourceFinishLoad:(PPQDataSource *)source {
-    [self hideAllHUDView];
-    if (source.networkType == EPPQNetGetDeviceInfo) {
-        [[DeviceManager sharedManager] setCurrentDevice:[[[MDevice alloc] initWithDictionary:[source.data objectForKey:@"data"]] autorelease]];
+    [[DeviceManager sharedManager] startGetDeviceInfo:^{
+        [self hideAllHUDView];
         _temp1.currentValue = [[[DeviceManager sharedManager] currentDevice] temperature];
         _temp2.currentValue = [[[DeviceManager sharedManager] currentDevice] wet];
-    }
-}
-
-- (void)dataSource:(PPQDataSource *)source hasError:(NSError *)error {
-    [self hideAllHUDView];
-    [self showHUDWithText:[error.userInfo objectForKey:NSLocalizedDescriptionKey]];
+    }failure:^(NSError *error) {
+        [self hideAllHUDView];
+        [self showHUDWithText:[error.userInfo objectForKey:NSLocalizedDescriptionKey]];
+    }];
 }
 
 @end
