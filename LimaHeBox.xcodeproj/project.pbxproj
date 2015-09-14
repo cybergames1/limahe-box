@@ -67,6 +67,7 @@
 		DC3F17FF1B31505500F02C10 /* LRSuperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3F17FE1B31505500F02C10 /* LRSuperViewController.m */; };
 		DC3F18021B31523600F02C10 /* Category.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3F18011B31523600F02C10 /* Category.framework */; };
 		DC3F18041B315B0C00F02C10 /* common_icon_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC3F18031B315B0C00F02C10 /* common_icon_back@2x.png */; };
+		DC52E3C01BA725CA00E3DFE5 /* Qunar.html in Resources */ = {isa = PBXBuildFile; fileRef = DC52E3BF1BA725CA00E3DFE5 /* Qunar.html */; };
 		DC6E61AD1B96EDBB002A97C0 /* City.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC6E61AC1B96EDBB002A97C0 /* City.plist */; };
 		DC6E61AF1B9867B9002A97C0 /* main_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC6E61AE1B9867B9002A97C0 /* main_left@2x.png */; };
 		DC6E61B11B98682A002A97C0 /* main_bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC6E61B01B98682A002A97C0 /* main_bg@3x.png */; };
@@ -400,6 +401,7 @@
 		DC3F17FE1B31505500F02C10 /* LRSuperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSuperViewController.m; sourceTree = "<group>"; };
 		DC3F18011B31523600F02C10 /* Category.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Category.framework; sourceTree = "<group>"; };
 		DC3F18031B315B0C00F02C10 /* common_icon_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "common_icon_back@2x.png"; sourceTree = "<group>"; };
+		DC52E3BF1BA725CA00E3DFE5 /* Qunar.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Qunar.html; sourceTree = "<group>"; };
 		DC6E61AC1B96EDBB002A97C0 /* City.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = City.plist; sourceTree = "<group>"; };
 		DC6E61AE1B9867B9002A97C0 /* main_left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_left@2x.png"; sourceTree = "<group>"; };
 		DC6E61B01B98682A002A97C0 /* main_bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_bg@3x.png"; sourceTree = "<group>"; };
@@ -1039,6 +1041,7 @@
 				DC3F17201B2FDEEE00F02C10 /* Images.xcassets */,
 				DC3F17CA1B302CAC00F02C10 /* Images */,
 				DCFAC4D81B3A9E310062D479 /* kuaidi.plist */,
+				DC52E3BF1BA725CA00E3DFE5 /* Qunar.html */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1778,6 +1781,7 @@
 				DCEA69D81B8801B6008FF3E2 /* pf_logo3@2x.png in Resources */,
 				DCEA69A91B86FBA7008FF3E2 /* f_temp@2x.png in Resources */,
 				DCFAC4C81B3A9D4A0062D479 /* k_onTrac@2x.png in Resources */,
+				DC52E3C01BA725CA00E3DFE5 /* Qunar.html in Resources */,
 				DCFAC4731B38F76C0062D479 /* w_17@2x.png in Resources */,
 				DCFAC47A1B38F76C0062D479 /* w_23@2x.png in Resources */,
 				DCEA6A3A1B895D6D008FF3E2 /* bl_match@2x.png in Resources */,
