@@ -127,6 +127,11 @@ NSString* const UpdateUserInfoNotification = @"UpdateUserInfoNotification";
 #pragma mark DataSource Delegate
 
 - (void)dataSourceFinishLoad:(PPQDataSource *)source {
+    /**
+     1,先获取设备的基本信息，gps、温湿度
+     2,开启称重
+     3,6秒后获取称重信息
+     **/
     if (source.networkType == EPPQNetGetDeviceInfo) {
         [[DeviceManager sharedManager] setCurrentDevice:[[[MDevice alloc] initWithDictionary:[source.data objectForKey:@"data"]] autorelease]];
         
