@@ -14,7 +14,6 @@
 
 @interface WeighViewController ()
 {
-    UIActivityIndicatorView * _indicatorView;
     UILabel * _weightLabel;
 }
 
@@ -50,11 +49,6 @@
     [label3 addTarget:self action:@selector(segmentClicked:)];
     [self.view addSubview:label3];
     
-    _indicatorView = [[UIActivityIndicatorView alloc] init];
-    _indicatorView.center = self.view.center;
-    [_indicatorView startAnimating];
-    [self.view addSubview:_indicatorView];
-    
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(40, 64+100, self.view.width-40, 50)];
     label.backgroundColor = [UIColor clearColor];
     label.textColor = [UIColor colorWithRed:(131.0/255.0) green:(229.0/255.0) blue:(210.0/255.0) alpha:1.0];
@@ -62,11 +56,12 @@
     [self.view addSubview:label];
     _weightLabel = label;
     
+    [self showIndicatorHUDView:@"正在获取设备信息"];
     CGFloat weight = [[[DeviceManager sharedManager] currentDevice] weight];
     if (weight <= 0.0) return;
     
+    [self hideAllHUDView];
     [self segmentClicked:(SegmentLabel *)[self.view viewWithTag:Basic_Tag+1]];
-    [_indicatorView stopAnimating];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -80,8 +75,8 @@
 }
 
 - (void)updateWeight:(NSNotification *)notification {
+    [self hideAllHUDView];
     [self segmentClicked:(SegmentLabel *)[self.view viewWithTag:Basic_Tag+1]];
-    [_indicatorView stopAnimating];
 }
 
 - (void)segmentClicked:(SegmentLabel *)sender {
