@@ -35,6 +35,28 @@
 
 @implementation BoxSideBarController
 
++ (void)registerSystemRemoteNotification
+{
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+    {
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings
+                                                settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge)
+                                                categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    }
+    else
+    {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+         (UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)];
+    }
+}
+
++ (void)unregisterForRemoteNotification
+{
+    [[UIApplication sharedApplication] unregisterForRemoteNotifications];
+}
+
 - (void)dealloc {
     [_tabList release];_tabList = nil;
     [super dealloc];

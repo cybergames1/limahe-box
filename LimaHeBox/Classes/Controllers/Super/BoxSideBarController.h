@@ -12,4 +12,10 @@
 
 - (void)showSideBar;
 
+
+/** 注册系统通知 **/
++ (void)registerSystemRemoteNotification;
+/** 注销系统通知 **/
++ (void)unregisterForRemoteNotification;
+
 @end

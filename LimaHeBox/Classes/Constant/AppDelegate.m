@@ -31,11 +31,12 @@
     [WeiboSDK enableDebugMode:YES];
     [WeiboSDK registerApp:kSinaAppKey];
     
+    //[BoxSideBarController registerSystemRemoteNotification];
+    
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     self.window.backgroundColor = [UIColor blackColor];
     
     BoxSideBarController *root = [[[BoxSideBarController alloc] init] autorelease];
-   // UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:root] autorelease];
     self.window.rootViewController = root;
     [self.window makeKeyAndVisible];
     
@@ -62,6 +63,13 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    NSLog(@"reciveLocalNotification");
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"注意！" message:@"你的箱子离你过远" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"好", nil];
+    [alert show];
+    [alert release];
 }
 
 @end

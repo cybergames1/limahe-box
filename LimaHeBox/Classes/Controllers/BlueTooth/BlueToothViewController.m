@@ -8,16 +8,19 @@
 
 #import "BlueToothViewController.h"
 #import "RadarView.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface BlueToothViewController () <CBCentralManagerDelegate,CBPeripheralDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     UITableView * _tableView;
     NSMutableArray * _devices;
     RadarView * _radarView;
+    BOOL _showAlert;
 }
 
 @property (nonatomic, retain) CBCentralManager * manager;
 @property (nonatomic, retain) CBPeripheral * peripheral;
+@property (nonatomic, retain) NSTimer *timer;
 
 @end
 
@@ -25,6 +28,7 @@
 
 - (void)dealloc {
     [_devices release];_devices = nil;
+    [_timer release];_timer = nil;
     [self stopManager];
     [super dealloc];
 }
@@ -44,6 +48,7 @@
     self = [super init];
     if (self) {
         _devices = [[NSMutableArray alloc] initWithCapacity:0];
+        _showAlert = NO;
     }
     return self;
 }
@@ -90,6 +95,27 @@
     [_manager connectPeripheral:_peripheral options:nil];
 }
 
+- (void)scheduleLocalNotification {
+//    UILocalNotification *notification = [[UILocalNotification alloc] init];
+//    if (notification != nil) {
+//        notification.timeZone = [NSTimeZone defaultTimeZone];
+//        notification.fireDate = [NSDate date];
+//        notification.soundName= UILocalNotificationDefaultSoundName;//声音
+//        notification.repeatInterval = 0; //重复的方式。
+//        notification.alertTitle = @"报警";
+//        notification.alertBody = @"盒子超出范围!";
+//        [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+//    }
+    if (_showAlert) return;
+    
+    _showAlert = YES;
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"注意！" message:@"你的箱子离你过远" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"好", nil];
+    [alert show];
+    [alert release];
+    
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -129,6 +155,10 @@
 #pragma mark -
 #pragma mark CBCentralManagerDelegate
 
+- (void)readRSSI {
+    [_peripheral readRSSI];
+}
+
 //开启查看服务，蓝牙开启
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central {
     switch (central.state) {
@@ -143,56 +173,75 @@
 //查到外设后，停止扫描，连接设备
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI {
     NSLog(@"查到外设");
-   // if ([peripheral.name length] <= 0) return;
-
-        BLEInfo *disinfo = [[BLEInfo alloc] init];
-        disinfo.discoveredPeripheral = peripheral;
-        disinfo.rssi = RSSI;
-        
-        for (BLEInfo * info in _devices) {
-            if ([info.discoveredPeripheral.identifier.UUIDString isEqualToString:disinfo.discoveredPeripheral.identifier.UUIDString]) {
-                return;
-            }
-        }
-        
-        [_devices addObject:disinfo];
-        [_tableView reloadData];
-        
-        
-        [disinfo release];
+    //更新列表
+    BLEInfo *disinfo = [[BLEInfo alloc] init];
+    disinfo.discoveredPeripheral = peripheral;
+    disinfo.rssi = RSSI;
     
-//    if (!self.peripheral || (self.peripheral.state == CBPeripheralStateDisconnected)) {
-//        self.peripheral = peripheral;
-//        [_manager connectPeripheral:peripheral options:nil];
-//    }
-//    [_manager stopScan];
+    for (BLEInfo * info in _devices) {
+        if ([info.discoveredPeripheral.identifier.UUIDString isEqualToString:disinfo.discoveredPeripheral.identifier.UUIDString]) {
+            return;
+        }
+    }
+    
+    [_devices addObject:disinfo];
+    [_tableView reloadData];
+    [disinfo release];
 }
 
 //连接外设成功，开始发现服务
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
     NSLog(@"连接成功");
     [_peripheral setDelegate:self];
-    [_peripheral discoverServices:nil];
+    //[_peripheral discoverServices:nil];
     _radarView.state = RadarStateMatchSuccess;
     [self hideIndicatorHUDView];
+    
+    if (!self.timer) {
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:3.0
+                                                      target:self
+                                                    selector:@selector(readRSSI)
+                                                    userInfo:nil
+                                                     repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
+    }
+}
+
+//连接中断则重新连接
+- (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
+    _radarView.state = RadarStateSearchFailure;
+    _showAlert = NO;
+    [central connectPeripheral:self.peripheral options:nil];
 }
 
 //连接外设失败
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
 {
     NSLog(@"连接失败:%@",error);
+    _radarView.state = RadarStateSearchFailure;
+    _showAlert = NO;
 }
 
 #pragma mark -
 #pragma mark CBPeripheralDelegate
 
 - (void)peripheralDidUpdateRSSI:(CBPeripheral *)peripheral error:(NSError *)error {
+    /**
+     d=10^((ABS(RSSI)-A)/(10*n)) 
+     A:距离一米时的信号强度
+     n:环境对信号的衰减系数
+     **/
     int rssi = abs([peripheral.RSSI intValue]);
-    CGFloat ci = (rssi - 49) / (10 * 4.);
-    NSString *length = [NSString stringWithFormat:@"发现BLT4.0热点:%@,距离:%.1fm",_peripheral.name,pow(10,ci)];
-    NSLog(@"距离：%@",length);
-    
-    [self showHUDWithText:length];
+    CGFloat ci = (rssi - 64) / (10 * 4.);
+    NSString *length = [NSString stringWithFormat:@"发现BLT热点:%@,距离:%.1fm",_peripheral.name,pow(10,ci)];
+    NSLog(@"length:%@",length);
+    if (pow(10, ci) > 0.6) {
+        _radarView.state = RadarStateWarning;
+        [self scheduleLocalNotification];
+    }else {
+        _radarView.state = RadarStateMatchSuccess;
+        _showAlert = NO;
+    }
 }
 
 //已发现服务
@@ -213,7 +262,6 @@
         NSLog(@"特征 UUID: %@ (%@)",c.UUID.data,c.UUID);
     }
     [peripheral readValueForCharacteristic:[service.characteristics firstObject]];
-    [_peripheral readRSSI];
 }
 
 //获取外设发来的数据，不论是read和notify,获取数据都是从这个方法中读取。
