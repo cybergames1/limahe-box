@@ -26,6 +26,18 @@
 
 @implementation BlueToothViewController
 
++ (void)makeSound:(NSString *)soundFile {
+    NSString *path = [NSString stringWithFormat:@"%@/%@",[[NSBundle mainBundle] resourcePath],soundFile];
+    
+    SystemSoundID soundID;
+    
+    NSURL *filePath = [NSURL fileURLWithPath:path isDirectory:NO];
+    
+    AudioServicesCreateSystemSoundID((CFURLRef)filePath, &soundID);
+    
+    AudioServicesPlaySystemSound(soundID);
+}
+
 - (void)dealloc {
     [_devices release];_devices = nil;
     [_timer release];_timer = nil;
@@ -113,7 +125,8 @@
     [alert show];
     [alert release];
     
-    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    [[self class] makeSound:@"puzzle_start.aif"];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -137,7 +150,7 @@
     
     BLEInfo *info = _devices[indexPath.row];
     cell.textLabel.text = info.discoveredPeripheral.name ? info.discoveredPeripheral.name : @"未知设备";
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%ld",(long)[info.rssi integerValue]];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %ld",@"信号",(long)[info.rssi integerValue]];
     
     return cell;
 }
