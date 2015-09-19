@@ -1,186 +1,209 @@
 //
 //  UIImageLoaderView.m
-//  QiYiShare
+//  Papaqi
 //
-//  Created by fangyuxi on 12-12-13.
-//  Copyright (c) 2012年 iQiYi. All rights reserved.
+//  Created by Sean on 15/7/30.
+//  Copyright (c) 2015年 PPQ. All rights reserved.
 //
 
 #import "UIImageLoaderView.h"
+#import "SDWebImageCompat.h"
+#import "SDWebImageManager.h"
+#import "UIImageView+WebCache.h"
 #import "CommonTools.h"
 
+@interface UIImageLoaderView ()
+<SDWebImageManagerDelegate>
+{
+    NSString                       *_urlString;
+    id<UIImageLoaderViewDelegate>   _delegate;
+    id<UIImageActionDelegate>       _actionDelegate;
+    
+    UIControl   *_tapControl;
+}
+@end
+
+
 @implementation UIImageLoaderView
-
-#pragma mark Init & Dealloc
-#pragma mark --- 
-
-- (void) dealloc
+- (void)dealloc
 {
     [self cancelLoad];
-    self.urlString = nil;
-    self.delegate = nil;
-    self.placeHoderImage = nil;
-    self.userInfo = nil;
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    [_urlString release];
+    [_placeHoderImageURLString release];
+    [_placeHoderImage release];
+    _delegate = nil;
     _actionDelegate = nil;
-    [self removeGestureRecognizer:_gestureRecognizer];
-    [_gestureRecognizer removeTarget:self action:@selector(tapViewAction:)];
-    [_gestureRecognizer release],_gestureRecognizer = nil;
+    [_tapControl release];
+    self.userInfo = nil;
     [super dealloc];
 }
 
-- (id)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    if (self)
-    {
-        self.urlString = nil;
-        self.delegate = nil;
-        _actionDelegate = nil;
-        self.options = SDWebImageLowPriority;
+    if (self) {
+        self.options = SDWebImageRetryFailed|SDWebImageContinueInBackground;
     }
     return self;
 }
 
-- (id) initWithImage:(UIImage *)image
+- (void)taped:(id)sender
 {
-    self = [super initWithImage:image];
-    if (self)
-    {
-        self.urlString = nil;
-        self.delegate = nil;
-        _actionDelegate = nil;
-        _options = SDWebImageLowPriority;
-        return self;
-    }
-    return nil;
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    [self performSelector:@selector(_performTapAction) withObject:nil afterDelay:0.2];
 }
 
-- (id) initWithURLString:(NSString *)urlString
+- (void)_performTapAction
 {
-    self = [super initWithFrame:CGRectZero];
-    if (self)
-    {
-        self.delegate = nil;
-        _actionDelegate = nil;
-        self.urlString = urlString;
-        self.options = SDWebImageLowPriority;
-        return self;
+    if (self.actionDelegate && [self.actionDelegate respondsToSelector:@selector(imageActionDidTouch:)]) {
+        [self.actionDelegate imageActionDidTouch:self];
     }
-    return nil;
 }
 
-#pragma mark Init & Dealloc
-#pragma mark ---
-
+#pragma mark - start / cancle
 - (void) startLoad
 {
+    [self _startLoadImageWithURL:self.urlString];
+}
+
+- (void) _startLoadImageWithURL:(NSString*) urlString
+{
     [self cancelLoad];
-    
-    if ([CommonTools isEmptyString:self.urlString])
-    {
+    if (_placeHoderImage) {
+        //如果有 placeHolder，首先把 placeHoldre 显示出来
+        self.image = _placeHoderImage;
+    }
+    if ([CommonTools isEmptyString:urlString]) {
         return;
     }
-    if ([self.urlString hasPrefix:@"http"])
-    {
-        [[SDWebImageManager sharedManager] downloadWithURL:[NSURL URLWithString:self.urlString] delegate:self options:self.options];
+    if ([self.urlString hasPrefix:@"http"]) {
+        [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:urlString]
+                                                        options:self.options
+                                                       progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                                           if (image) {
+                                                               if (image.size.width <= 0 || image.size.height <= 0) {
+                                                                   [self _updateImageWhenFail:self.placeHoderImage url:[imageURL absoluteString] error:nil];
+                                                               }
+                                                               else{
+                                                                   [self _updateImageWhenFinish:image needNoti:YES];
+                                                               }
+                                                           }
+                                                           else {
+                                                               [self _updateImageWhenFail:self.placeHoderImage url:[imageURL absoluteString] error:error];
+                                                           }
+                                                       }];
     }
-    else
-    {
-        UIImage *img = [UIImage imageWithContentsOfFile:self.urlString];
-        if (img == nil)
-        {
-            self.image = self.placeHoderImage;
-        }
-        else
-        {
-            if (self.delegate && [self.delegate respondsToSelector:@selector(imageLoaderDidFinishLoad:)])
-            {
-                [self.delegate imageLoaderDidFinishLoad:self];
+    else {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            UIImage *img = [UIImage imageWithContentsOfFile:self.urlString];
+            if (img == nil) {
+                [self _updateImageWhenFinish:self.placeHoderImage needNoti:NO];
             }
-            
-            self.image = img;
-        }
+            else {
+                [self _updateImageWhenFinish:img needNoti:YES];
+            }
+        });
     }
 }
 
 - (void) cancelLoad
-{
-    [[SDWebImageManager sharedManager] cancelForDelegate:self];
-}
+{ }
 
+#pragma mark - SET
 - (void) setUrlString:(NSString *)urlString
 {
     [_urlString release];
     _urlString = [urlString retain];
-    if ([CommonTools isEmptyString:_urlString])
-    {
-        self.image = _placeHoderImage;
-    }
-}
-
-#pragma mark- set
-- (void) setActionDelegate:(id<UIImageActionDelegate>)actionDelegate
-{
-    if (actionDelegate != nil) {
-        self.userInteractionEnabled = YES;
-        _actionDelegate = actionDelegate;
-        if (_gestureRecognizer == nil) {
-            _gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapViewAction:)];
-            [self addGestureRecognizer:_gestureRecognizer];
-        }
-    }
-    else{
-        self.userInteractionEnabled = NO;
-        [_gestureRecognizer removeTarget:self action:@selector(tapViewAction:)];
-        [self removeGestureRecognizer:_gestureRecognizer];
-        [_gestureRecognizer release],_gestureRecognizer = nil;
-    }
 }
 
 - (void)setPlaceHoderImage:(UIImage *)placeHoderImage
 {
+    if (nil == placeHoderImage && nil == _placeHoderImage) {
+        //从未设置过 placeHolder，后面代码也没有执行的必要了
+        return;
+    }
     [_placeHoderImage release];
     _placeHoderImage = [placeHoderImage retain];
-    self.image = _placeHoderImage;
-}
-#pragma mark- action
-- (void) tapViewAction:(UIGestureRecognizer*) gestureRecognizer
-{
-    if (self.actionDelegate && [self.actionDelegate respondsToSelector:@selector(imageActionDidTouch:)]) {
-        [self.actionDelegate performSelector:@selector(imageActionDidTouch:) withObject:self];
-    }
+    [self _updateImageWhenFinish:_placeHoderImage needNoti:NO];
 }
 
 #pragma mark ---
 #pragma mark WebImageManagerDelegate
-
-- (void)webImageManager:(SDWebImageManager *)imageManager didProgressWithPartialImage:(UIImage *)image forURL:(NSURL *)url
-{
-    self.image = image;
-}
-
 - (void)webImageManager:(SDWebImageManager *)imageManager didFinishWithImage:(UIImage *)image
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(imageLoaderDidFinishLoad:)])
-    {
-        [self.delegate imageLoaderDidFinishLoad:self];
+    if (image.size.width <= 0 || image.size.height <= 0) {
+        [self _updateImageWhenFail:self.placeHoderImage url:self.placeHoderImageURLString error:nil];
     }
-    if (image.size.width == 0 || image.size.height == 0)
-    {
-        self.image = self.placeHoderImage;
-        return;
+    else{
+        [self _updateImageWhenFinish:image needNoti:YES];
     }
-    
-    self.image = image;
 }
 
 - (void)webImageManager:(SDWebImageManager *)imageManager didFailWithError:(NSError *)error forURL:(NSURL *)url userInfo:(NSDictionary *)info
 {
-    self.image = self.placeHoderImage;
-    if (self.delegate && [self.delegate respondsToSelector:@selector(imageLoader:hasError:)])
-    {
-        [self.delegate imageLoader:self hasError:error];
+    [self _updateImageWhenFail:self.placeHoderImage url:[url absoluteString] error:error];
+}
+
+#pragma mark - update image when finish
+- (void) _updateImageWhenFinish:(UIImage*) img needNoti:(BOOL) noti
+{
+    if (img == self.image) {
+        return;
     }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.image = img;
+        if (noti) {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(imageLoaderDidFinishLoad:)]) {
+                [self.delegate imageLoaderDidFinishLoad:self];
+            }
+        }
+    });
+}
+
+- (void) _updateImageWhenFail:(UIImage*) img url:(NSString*) url error:(NSError*) error
+{
+    if (self.placeHoderImageURLString && NO == [self.placeHoderImageURLString isEqualToString:url]) {
+        [self _startLoadImageWithURL:self.placeHoderImageURLString];
+        return;
+    }
+    if (img == self.image) {
+        return;
+    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.image = img;
+        if (self.delegate && [self.delegate respondsToSelector:@selector(imageLoader:hasError:)]) {
+            [self.delegate imageLoader:self hasError:error];
+        }
+    });
 }
 
 @end
+
+@implementation UIImageLoaderView (ImageViewAction)
+- (void)setActionDelegate:(id<UIImageActionDelegate>)actionDelegate
+{
+    _actionDelegate = actionDelegate;
+    if (_actionDelegate) {
+        self.userInteractionEnabled = YES;
+        if (nil == _tapControl) {
+            _tapControl = [[UIControl alloc] initWithFrame:self.bounds];
+            _tapControl.exclusiveTouch = YES;
+            _tapControl.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin  | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleHeight;
+            [_tapControl addTarget:self action:@selector(taped:) forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:_tapControl];
+        }
+    }
+    else{
+        [_tapControl removeFromSuperview];
+        [_tapControl release];
+        _tapControl = nil;
+        self.userInteractionEnabled = NO;
+    }
+}
+
+- (id<UIImageActionDelegate>)actionDelegate {return _actionDelegate;}
+
+@end
+
+

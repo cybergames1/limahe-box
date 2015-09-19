@@ -26,7 +26,7 @@
 // Automatically set on build
 NSString *ASIHTTPRequestVersion = @"v1.8.1-61 2011-09-19";
 
-static NSString *defaultUserAgent = @"PaPaQ_V3.0";
+static NSString *defaultUserAgent = @"PaPaQ_V6.0";
 
 NSString* const NetworkRequestErrorDomain = @"ASIHTTPRequestErrorDomain";
 
@@ -138,7 +138,7 @@ static NSThread *networkThread = nil;
 static NSOperationQueue *sharedQueue = nil;
 
 // Private stuff
-@interface ASIHTTPRequest ()
+@interface ASIHTTPRequest ()<NSFileManagerDelegate>
 
 - (void)cancelLoad;
 
@@ -331,6 +331,8 @@ static NSOperationQueue *sharedQueue = nil;
 
 - (void)dealloc
 {
+    [NSFileManager defaultManager].delegate = nil;
+    
 	[self setAuthenticationNeeded:ASINoAuthenticationNeededYet];
 	if (requestAuthentication) {
 		CFRelease(requestAuthentication);
@@ -520,7 +522,7 @@ static NSOperationQueue *sharedQueue = nil;
 			path = [self postBodyFilePath];
 		}
 		NSError *err = nil;
-		[self setPostLength:[[[[[NSFileManager alloc] init] autorelease] attributesOfItemAtPath:path error:&err] fileSize]];
+		[self setPostLength:[[[NSFileManager defaultManager] attributesOfItemAtPath:path error:&err] fileSize]];
 		if (err) {
 			[self failWithError:[NSError errorWithDomain:NetworkRequestErrorDomain code:ASIFileManagementError userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"Failed to get attributes for file at path '%@'",path],NSLocalizedDescriptionKey,error,NSUnderlyingErrorKey,nil]]];
 			return;
@@ -1119,7 +1121,7 @@ static NSOperationQueue *sharedQueue = nil;
 
 - (void)updatePartialDownloadSize
 {
-	NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
+	NSFileManager *fileManager = [NSFileManager defaultManager];
 
 	if ([self allowResumeForFileDownloads] && [self downloadDestinationPath] && [self temporaryFileDownloadPath] && [fileManager fileExistsAtPath:[self temporaryFileDownloadPath]]) {
 		NSError *err = nil;
@@ -1165,7 +1167,7 @@ static NSOperationQueue *sharedQueue = nil;
 	// Create the stream for the request
 	//
 
-	NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
+	NSFileManager *fileManager = [NSFileManager defaultManager];
 
 	[self setReadStreamIsScheduled:NO];
 	
@@ -1214,8 +1216,6 @@ static NSOperationQueue *sharedQueue = nil;
             // see: http://iphonedevelopment.blogspot.com/2010/05/nsstream-tcp-and-ssl.html
             
             NSDictionary *sslProperties = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                      [NSNumber numberWithBool:YES], kCFStreamSSLAllowsExpiredCertificates,
-                                      [NSNumber numberWithBool:YES], kCFStreamSSLAllowsAnyRoot,
                                       [NSNumber numberWithBool:NO],  kCFStreamSSLValidatesCertificateChain,
                                       kCFNull,kCFStreamSSLPeerName,
                                       nil];
@@ -3449,7 +3449,10 @@ static NSOperationQueue *sharedQueue = nil;
 			// Response should already have been inflated, move the temporary file to the destination path
 			} else {
 				NSError *moveError = nil;
-				[[[[NSFileManager alloc] init] autorelease] moveItemAtPath:[self temporaryUncompressedDataDownloadPath] toPath:[self downloadDestinationPath] error:&moveError];
+                [NSFileManager defaultManager].delegate = self;
+				[[NSFileManager defaultManager] moveItemAtPath:[self temporaryUncompressedDataDownloadPath] toPath:[self downloadDestinationPath] error:&moveError];
+                
+                
 				if (moveError) {
 					fileError = [NSError errorWithDomain:NetworkRequestErrorDomain code:ASIFileManagementError userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"Failed to move file from '%@' to '%@'",[self temporaryFileDownloadPath],[self downloadDestinationPath]],NSLocalizedDescriptionKey,moveError,NSUnderlyingErrorKey,nil]];
 				}
@@ -3468,9 +3471,13 @@ static NSOperationQueue *sharedQueue = nil;
 			}
 
 			//Move the temporary file to the destination path
-			if (!fileError) {
-				[[[[NSFileManager alloc] init] autorelease] moveItemAtPath:[self temporaryFileDownloadPath] toPath:[self downloadDestinationPath] error:&moveError];
-				if (moveError) {
+			if (!fileError)
+            {
+                [NSFileManager defaultManager].delegate = self;
+				[[NSFileManager defaultManager] moveItemAtPath:[self temporaryFileDownloadPath] toPath:[self downloadDestinationPath] error:&moveError];
+                
+				if (moveError)
+                {
 					fileError = [NSError errorWithDomain:NetworkRequestErrorDomain code:ASIFileManagementError userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"Failed to move file from '%@' to '%@'",[self temporaryFileDownloadPath],[self downloadDestinationPath]],NSLocalizedDescriptionKey,moveError,NSUnderlyingErrorKey,nil]];
 				}
 				[self setTemporaryFileDownloadPath:nil];
@@ -3520,6 +3527,11 @@ static NSOperationQueue *sharedQueue = nil;
         // Do nothing.
 	}
 
+}
+
+- (BOOL)fileManager:(NSFileManager *)fileManager shouldMoveItemAtPath:(NSString *)srcPath toPath:(NSString *)dstPath
+{
+    return YES;
 }
 
 - (void)markAsFinished
@@ -3794,7 +3806,7 @@ static NSOperationQueue *sharedQueue = nil;
 
 + (BOOL)removeFileAtPath:(NSString *)path error:(NSError **)err
 {
-	NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
+	NSFileManager *fileManager = [NSFileManager defaultManager];
 
 	if ([fileManager fileExistsAtPath:path]) {
 		NSError *removeError = nil;
@@ -3983,7 +3995,12 @@ static NSOperationQueue *sharedQueue = nil;
 		// Work around <rdar://problem/5530166>.  This dummy call to 
 		// CFNetworkCopyProxiesForURL initialise some state within CFNetwork 
 		// that is required by CFNetworkCopyProxiesForAutoConfigurationScript.
-		CFRelease(CFNetworkCopyProxiesForURL((CFURLRef)[self url], NULL));
+#if TARGET_OS_IPHONE
+        NSDictionary *proxySettings = [NSMakeCollectable(CFNetworkCopySystemProxySettings()) autorelease];
+#else
+        NSDictionary *proxySettings = [NSMakeCollectable(SCDynamicStoreCopyProxies(NULL)) autorelease];
+#endif
+		CFRelease(CFNetworkCopyProxiesForURL((CFURLRef)[self url], (CFDictionaryRef)proxySettings));
 
 		// Obtain the list of proxies by running the autoconfiguration script
 		CFErrorRef err = NULL;
@@ -4394,49 +4411,49 @@ static NSOperationQueue *sharedQueue = nil;
 				return nil;
 			}
 
-			NSString *appVersion = nil;
-			NSString *marketingVersionNumber = [bundle objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
-			NSString *developmentVersionNumber = [bundle objectForInfoDictionaryKey:@"CFBundleVersion"];
-			if (marketingVersionNumber && developmentVersionNumber) {
-				if ([marketingVersionNumber isEqualToString:developmentVersionNumber]) {
-					appVersion = marketingVersionNumber;
-				} else {
-					appVersion = [NSString stringWithFormat:@"%@ rv:%@",marketingVersionNumber,developmentVersionNumber];
-				}
-			} else {
-				appVersion = (marketingVersionNumber ? marketingVersionNumber : developmentVersionNumber);
-			}
-
-			NSString *deviceName;
-			NSString *OSName;
-			NSString *OSVersion;
-			//NSString *locale = [[NSLocale currentLocale] localeIdentifier];
-
-			#if TARGET_OS_IPHONE
-				UIDevice *device = [UIDevice currentDevice];
-				deviceName = [device model];
-				OSName = [device systemName];
-				OSVersion = [device systemVersion];
-
-			#else
-				deviceName = @"Macintosh";
-				OSName = @"Mac OS X";
-
-				// From http://www.cocoadev.com/index.pl?DeterminingOSVersion
-				// We won't bother to check for systems prior to 10.4, since ASIHTTPRequest only works on 10.5+
-				OSErr err;
-				SInt32 versionMajor, versionMinor, versionBugFix;
-				err = Gestalt(gestaltSystemVersionMajor, &versionMajor);
-				if (err != noErr) return nil;
-				err = Gestalt(gestaltSystemVersionMinor, &versionMinor);
-				if (err != noErr) return nil;
-				err = Gestalt(gestaltSystemVersionBugFix, &versionBugFix);
-				if (err != noErr) return nil;
-				OSVersion = [NSString stringWithFormat:@"%u.%u.%u", versionMajor, versionMinor, versionBugFix];
-			#endif
+//			NSString *appVersion = nil;
+//			NSString *marketingVersionNumber = [bundle objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+//			NSString *developmentVersionNumber = [bundle objectForInfoDictionaryKey:@"CFBundleVersion"];
+//			if (marketingVersionNumber && developmentVersionNumber) {
+//				if ([marketingVersionNumber isEqualToString:developmentVersionNumber]) {
+//					appVersion = marketingVersionNumber;
+//				} else {
+//					appVersion = [NSString stringWithFormat:@"%@ rv:%@",marketingVersionNumber,developmentVersionNumber];
+//				}
+//			} else {
+//				appVersion = (marketingVersionNumber ? marketingVersionNumber : developmentVersionNumber);
+//			}
+//
+//			NSString *deviceName;
+//			NSString *OSName;
+//			NSString *OSVersion;
+//			//NSString *locale = [[NSLocale currentLocale] localeIdentifier];
+//
+//			#if TARGET_OS_IPHONE
+//				UIDevice *device = [UIDevice currentDevice];
+//				deviceName = [device model];
+//				OSName = [device systemName];
+//				OSVersion = [device systemVersion];
+//
+//			#else
+//				deviceName = @"Macintosh";
+//				OSName = @"Mac OS X";
+//
+//				// From http://www.cocoadev.com/index.pl?DeterminingOSVersion
+//				// We won't bother to check for systems prior to 10.4, since ASIHTTPRequest only works on 10.5+
+//				OSErr err;
+//				SInt32 versionMajor, versionMinor, versionBugFix;
+//				err = Gestalt(gestaltSystemVersionMajor, &versionMajor);
+//				if (err != noErr) return nil;
+//				err = Gestalt(gestaltSystemVersionMinor, &versionMinor);
+//				if (err != noErr) return nil;
+//				err = Gestalt(gestaltSystemVersionBugFix, &versionBugFix);
+//				if (err != noErr) return nil;
+//				OSVersion = [NSString stringWithFormat:@"%u.%u.%u", versionMajor, versionMinor, versionBugFix];
+//			#endif
 
 			// Takes the form "My Application 1.0 (Macintosh; Mac OS X 10.5.7; en_GB)"
-			[self setDefaultUserAgentString:@"PaPaQ_V3.0"];
+			[self setDefaultUserAgentString:@"PaPaQ_V6.0"];
 		}
 		return [[defaultUserAgent retain] autorelease];
 	}
@@ -4459,7 +4476,7 @@ static NSOperationQueue *sharedQueue = nil;
 
 + (NSString *)mimeTypeForFileAtPath:(NSString *)path
 {
-	if (![[[[NSFileManager alloc] init] autorelease] fileExistsAtPath:path]) {
+	if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
 		return nil;
 	}
 	// Borrowed from http://stackoverflow.com/questions/2439020/wheres-the-iphone-mime-type-database
@@ -4676,7 +4693,7 @@ static NSOperationQueue *sharedQueue = nil;
 
 + (BOOL)isNetworkReachableViaWWAN
 {
-	return ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] == ReachableViaWWAN);	
+	return ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] >= ReachableViaWWAN);
 }
 
 + (void)reachabilityChanged:(NSNotification *)note

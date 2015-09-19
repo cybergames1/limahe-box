@@ -11,6 +11,7 @@
 @class CityPickerView;
 @protocol CityPickerViewDelegate <NSObject>
 
+@optional
 - (void)pickerView:(CityPickerView *)pickerView cityId:(NSString *)cityId;
 
 @end

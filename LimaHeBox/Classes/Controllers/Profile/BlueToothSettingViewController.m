@@ -91,7 +91,7 @@
     }
     
     if (indexPath.section == 0) {
-        cell.textLabel.text = [NSString stringWithFormat:@"铃声%ld",indexPath.row+1];
+        cell.textLabel.text = [NSString stringWithFormat:@"铃声%ld",(long)(indexPath.row+1)];
         [self setFlagViewInCell:cell];
         [(FlagView *)cell.accessoryView setSelected:[_audioSelectArray[indexPath.row] boolValue]];
     }else if (indexPath.section == 1) {

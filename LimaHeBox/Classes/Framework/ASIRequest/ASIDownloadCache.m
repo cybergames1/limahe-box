@@ -10,7 +10,6 @@
 #import "ASIHTTPRequest.h"
 #import <CommonCrypto/CommonHMAC.h>
 #import "CommonTools.h"
-
 static ASIDownloadCache *sharedCache = nil;
 
 static NSString *sessionCacheFolder = @"SessionStore";

@@ -107,7 +107,7 @@ typedef NS_ENUM(NSInteger, PPQStatusBarType)
 + (AppDelegate *)appDelegate;
 
 // rootViewController
-+ (PPQRootTabViewController*) rootViewController;
+//+ (PPQRootTabViewController*) rootViewController;
 
 #pragma mark- window快捷获取
 /**
@@ -248,33 +248,33 @@ typedef NS_ENUM(NSInteger, PPQStatusBarType)
 /** 用户登录历史 **/
 + (NSString *)pathForUserHistoryList;
 /** 用户json缓存 **/
-+ (NSString *)pathForCurrentUserJsonCache;
+//+ (NSString *)pathForCurrentUserJsonCache;
 /** 全局json缓存 **/
 + (NSString *)pathForGlobleJsonCache;
 /** 当前用户setting缓存 **/
-+ (NSString *)pathForCurrentUserSetting;
+//+ (NSString *)pathForCurrentUserSetting;
 /** 后台任务存储路径，需要区分各个用户 **/
-+ (NSString *)pathForOfflineHistory;
+//+ (NSString *)pathForOfflineHistory;
 
 /** 本地视频的缩略图地址（本地视频界面能加载出的所有视频的缩略图） **/
 + (NSString *)pathForAlbumThumb;
 
 /** 匿名用户的视频缩略图地址 **/
-+ (NSString *)pathForUserAlbumThumb;
+//+ (NSString *)pathForUserAlbumThumb;
 
 /**正在审核的task**/
-+ (NSString *)pathForUnpublishedHistory;
+//+ (NSString *)pathForUnpublishedHistory;
 /** 上传的视频的缩略图历史图片 **/
-+ (NSString *)pathForUploadingHistoryThumb;
+//+ (NSString *)pathForUploadingHistoryThumb;
 /** 正在上传历史 **/
-+ (NSString *)pathForUploadingHistory;
+//+ (NSString *)pathForUploadingHistory;
 /** 
  微博、微信(上传)分享后，用户操作完毕后，如果云视频里面没有这条视频，
  那么将这条视频加入到这个列表里面
  **/
-+ (NSString *)pathForUploadedHistory;
+//+ (NSString *)pathForUploadedHistory;
 /** 微信、朋友圈等上传完后，需要用户手动分享的任务 */
-+ (NSString *)pathForWaitingForShareHistory;
+//+ (NSString *)pathForWaitingForShareHistory;
 
 /** 压缩后的视频主路径 */
 + (NSString *)pathForTempMovie;
@@ -342,8 +342,8 @@ typedef NS_ENUM(NSInteger, PPQStatusBarType)
 
 
 #pragma mark Show HUBView / Alert
-+ (void) showHunViewWithTitle:(NSString*) title;
-+ (void) showAlertWithTitle:(NSString*)title;
+//+ (void) showHunViewWithTitle:(NSString*) title;
+//+ (void) showAlertWithTitle:(NSString*)title;
 
 /*
  用于从测试json文件初始化Dictionary对象

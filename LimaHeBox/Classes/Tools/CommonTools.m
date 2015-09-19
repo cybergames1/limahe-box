@@ -190,21 +190,21 @@ static NSString* rootPath = nil;
 
 + (UIViewController*) visibleController
 {
-    PPQRootTabViewController* root = [CommonTools rootViewController];
-    UIViewController* controller = [root presentedViewController];
-    if (nil != controller) {
-        //如果当前present一个controller，返回该controller提示最后一个
-        if ([controller isKindOfClass:[UINavigationController class]]) {
-            return [(UINavigationController*)controller visibleViewController];
-        }
-    }
-    
-    controller = [root selectedViewController];
-    if (nil != controller) {
-        if ([controller isKindOfClass:[UINavigationController class]]) {
-            return [(UINavigationController*)controller visibleViewController];
-        }
-    }
+//    PPQRootTabViewController* root = [CommonTools rootViewController];
+//    UIViewController* controller = [root presentedViewController];
+//    if (nil != controller) {
+//        //如果当前present一个controller，返回该controller提示最后一个
+//        if ([controller isKindOfClass:[UINavigationController class]]) {
+//            return [(UINavigationController*)controller visibleViewController];
+//        }
+//    }
+//    
+//    controller = [root selectedViewController];
+//    if (nil != controller) {
+//        if ([controller isKindOfClass:[UINavigationController class]]) {
+//            return [(UINavigationController*)controller visibleViewController];
+//        }
+//    }
     return nil;
 }
 
@@ -420,7 +420,7 @@ static NSString* rootPath = nil;
     const char *value = [String UTF8String];
     
     unsigned char outputBuffer[CC_MD5_DIGEST_LENGTH];
-    CC_MD5(value, strlen(value), outputBuffer);
+    CC_MD5(value, (CC_LONG)strlen(value), outputBuffer);
     
     NSMutableString *outputString = [[NSMutableString alloc] initWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
     for(NSInteger count = 0; count < CC_MD5_DIGEST_LENGTH; count++){
@@ -785,26 +785,26 @@ static NSString* rootPath = nil;
     return root;
 }
 
-+ (NSString *)pathForUserAlbumThumb
-{
-    NSString *path = [CommonTools pathForUploadingHistory];
-    
-    if (!path)
-    {
-        path = [CommonTools pathForAlbumThumb];
-    }
-    
-    path = [path stringByAppendingPathComponent:@"PPQVideoThumb"];
-    return path;
-}
+//+ (NSString *)pathForUserAlbumThumb
+//{
+//    NSString *path = [CommonTools pathForUploadingHistory];
+//    
+//    if (!path)
+//    {
+//        path = [CommonTools pathForAlbumThumb];
+//    }
+//    
+//    path = [path stringByAppendingPathComponent:@"PPQVideoThumb"];
+//    return path;
+//}
 
 
-+ (NSString *)pathForUploadingHistoryThumb
-{
-    NSString *path = [CommonTools pathForUploadingHistory];
-    path = [path stringByAppendingPathComponent:@"PPQVideoThumb"];
-    return path;
-}
+//+ (NSString *)pathForUploadingHistoryThumb
+//{
+//    NSString *path = [CommonTools pathForUploadingHistory];
+//    path = [path stringByAppendingPathComponent:@"PPQVideoThumb"];
+//    return path;
+//}
 
 
 + (NSString *)pathForTempMovie
@@ -913,29 +913,24 @@ static NSString* rootPath = nil;
  */
 + (NSString*) playCount:(id) countValue
 {
-    NSString* stringValue = nil;
     NSInteger count = [CommonTools integerValue:countValue];
-    
     if (count < kMyriad) {
         // <1万，显示 ***个
         return [NSString stringWithFormat:@"%ld",(long)count];
     }
-    else if (count < kTenMyriad){
+    if (count < kTenMyriad){
         //1万~10万
-        return [NSString stringWithFormat:@"%ld.%ld万",count/kMyriad,(count % kMyriad)/kThousand];
+        return [NSString stringWithFormat:@"%ld.%ld万",(long)(count/kMyriad),(long)((count % kMyriad)/kThousand)];
     }
-    else if (count < kHudMillion){
+    if (count < kHudMillion){
         //10万~1亿
-        return [NSString stringWithFormat:@"%ld万",count/kMyriad];
+        return [NSString stringWithFormat:@"%ld万",(long)(count/kMyriad)];
     }
-    else if (count < kBillion){
+    if (count < kBillion){
         //1亿~10亿
-        return [NSString stringWithFormat:@"%ld.%ld亿",count/kHudMillion,(count % kHudMillion)/kTenMillion];
+        return [NSString stringWithFormat:@"%ld.%ld亿",(long)(count/kHudMillion),(long)((count % kHudMillion)/kTenMillion)];
     }
-    else {
-        return [NSString stringWithFormat:@"%ld亿",count/kHudMillion];
-    }
-    return stringValue;
+    return [NSString stringWithFormat:@"%ld亿",(long)(count/kHudMillion)];;
 }
 
 /*

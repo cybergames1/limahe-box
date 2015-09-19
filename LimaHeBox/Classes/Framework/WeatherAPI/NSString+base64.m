@@ -9,8 +9,6 @@
 #import "NSString+base64.h"
 #import "GTMBase64.h"
 
-static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
-
 @implementation NSString (base64)
 
 + (NSString*)encodeBase64String:(NSString * )input {

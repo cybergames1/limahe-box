@@ -101,9 +101,8 @@
 #import <arpa/inet.h>
 #import <ifaddrs.h>
 #import <netdb.h>
-
+#import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreFoundation/CoreFoundation.h>
-
 #import "Reachability.h"
 
 NSString *const kInternetConnection  = @"InternetConnection";
@@ -153,6 +152,25 @@ static void logReachabilityFlags_(const char *name, int line, SCNetworkReachabil
 	
 } // logReachabilityFlags_()
 
+#define logNetworkStatus(status) (logNetworkStatus_(__PRETTY_FUNCTION__, __LINE__, status))
+
+static void logNetworkStatus_(const char *name, int line, NetworkStatus status) {
+	
+	NSString *statusString = nil;
+	
+	switch (status) {
+		case kNotReachable:
+			statusString = @"Not Reachable";
+			break;
+		case kReachableViaWWAN:
+			statusString = @"Reachable via WWAN";
+			break;
+		case kReachableViaWiFi:
+			statusString = @"Reachable via WiFi";
+			break;
+	}
+} // logNetworkStatus_()
+
 #else
 #define logReachabilityFlags(flags)
 #define logNetworkStatus(status)
@@ -164,9 +182,35 @@ static void logReachabilityFlags_(const char *name, int line, SCNetworkReachabil
 
 @end
 
+static CTTelephonyNetworkInfo *networkInfo = nil;
 @implementation Reachability
-
 @synthesize key = key_;
++ (void) initialize
+{
+    if (nil == networkInfo) {
+        networkInfo = [[CTTelephonyNetworkInfo alloc] init];
+    }
+}
++ (NSString*) networkState_:(NetworkStatus) state
+{
+    switch (state) {
+        case NotReachable:
+            return @"Not Reachable";
+        case ReachableViaWWAN:
+            return @"Reachable = WWAN";
+        case ReachableViaWiFi:
+            return @"Reachable = WiFi";
+        case ReachableViaEDGE:
+            return @"Reachable = EDGE";
+        case ReachableViaGPRS:
+            return @"Reachable = GPRS";
+        case ReachableVia3G:
+            return @"Reachable = 3G";
+        case ReachableVia4G:
+            return @"Reachable = 4G";
+    }
+    return @"Not Reachable";
+}
 
 // Preclude direct access to ivars.
 + (BOOL) accessInstanceVariablesDirectly {
@@ -177,16 +221,11 @@ static void logReachabilityFlags_(const char *name, int line, SCNetworkReachabil
 
 
 - (void) dealloc {
-	
 	[self stopNotifier];
 	if(reachabilityRef) {
-		
 		CFRelease(reachabilityRef); reachabilityRef = NULL;
-		
 	}
-	
 	self.key = nil;
-	
 	[super dealloc];
 	
 } // dealloc
@@ -198,6 +237,9 @@ static void logReachabilityFlags_(const char *name, int line, SCNetworkReachabil
 	if (self != nil) 
     {
 		reachabilityRef = ref;
+        if (nil == networkInfo) {
+            networkInfo = [[CTTelephonyNetworkInfo alloc] init];
+        }
 	}
 	
 	return self;
@@ -455,12 +497,28 @@ const SCNetworkReachabilityFlags kConnectionDown =  kSCNetworkReachabilityFlagsC
 	
 	if (SCNetworkReachabilityGetFlags(reachabilityRef, &flags)) {
 		
-//		logReachabilityFlags(flags);
+		logReachabilityFlags(flags);
 		
 		status = [self networkStatusForFlags: flags];
-		
+        if (ReachableViaWWAN == status && networkInfo.currentRadioAccessTechnology) {
+            if ([CTRadioAccessTechnologyEdge isEqualToString:networkInfo.currentRadioAccessTechnology]) {
+                // EDGE
+                status = ReachableViaEDGE;
+            }
+            else if ([CTRadioAccessTechnologyGPRS isEqualToString:networkInfo.currentRadioAccessTechnology]) {
+                // GPRS
+                status = ReachableViaGPRS;
+            }
+            else if ([CTRadioAccessTechnologyLTE isEqualToString:networkInfo.currentRadioAccessTechnology]) {
+                // 4G
+                status = ReachableVia4G;
+            }
+            else {
+                // 3G
+                status = ReachableVia3G;
+            }
+        }
 		return status;
-		
 	}
 	
 	return kNotReachable;
@@ -477,11 +535,11 @@ const SCNetworkReachabilityFlags kConnectionDown =  kSCNetworkReachabilityFlagsC
 	
 	if (SCNetworkReachabilityGetFlags(reachabilityRef, &flags)) {
 		
-//		logReachabilityFlags(flags);
+		logReachabilityFlags(flags);
 
 		status = [self networkStatusForFlags: flags];
 
-//		logNetworkStatus(status);
+		logNetworkStatus(status);
 		
 		return (kNotReachable != status);
 		
@@ -629,9 +687,7 @@ static const SCNetworkReachabilityFlags kOnDemandConnection = kSCNetworkReachabi
 } // reachabilityFlags
 
 
-#pragma mark -
 #pragma mark Apple's Network Flag Handling Methods
-
 
 #if !USE_DDG_EXTENSIONS
 /*
@@ -659,7 +715,7 @@ static const SCNetworkReachabilityFlags kOnDemandConnection = kSCNetworkReachabi
 
 - (NetworkStatus) networkStatusForFlags: (SCNetworkReachabilityFlags) flags
 {
-	logReachabilityFlags(flags);
+//	logReachabilityFlags(flags);
 	if (!(flags & kSCNetworkReachabilityFlagsReachable))
 	{
 		// if target host is not reachable

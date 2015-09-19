@@ -220,27 +220,32 @@
 	[self addToDebugBody:@"\r\n==== Building a multipart/form-data body ====\r\n"];
 #endif
 	
-	NSString *charset = (NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding([self stringEncoding]));
+    NSString *endItemBoundary = nil;
+    NSString *stringBoundary = nil;
+    if (self.needBoundary) {
+        NSString *charset = (NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding([self stringEncoding]));
+        
+        // We don't bother to check if post data contains the boundary, since it's pretty unlikely that it does.
+        stringBoundary = @"==iqiyiqcboundary";
+        [self addRequestHeader:@"Content-Type" value:[NSString stringWithFormat:@"multipart/form-data; charset=%@; boundary=%@", charset, stringBoundary]];
+        
+        [self appendPostString:[NSString stringWithFormat:@"--%@\r\n",stringBoundary]];
+        
+        // Adds post data
+        endItemBoundary = [NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary];
+    }
 	
-	// We don't bother to check if post data contains the boundary, since it's pretty unlikely that it does.
-	//CFUUIDRef uuid = CFUUIDCreate(nil);
-	//NSString *uuidString = [(NSString*)CFUUIDCreateString(nil, uuid) autorelease];
-	//CFRelease(uuid);
-	//NSString *stringBoundary = [NSString stringWithFormat:@"0xKhTmLbOuNdArY-%@",uuidString];
-	NSString *stringBoundary = @"==iqiyiqcboundary";
-	[self addRequestHeader:@"Content-Type" value:[NSString stringWithFormat:@"multipart/form-data; charset=%@; boundary=%@", charset, stringBoundary]];
-	
-	[self appendPostString:[NSString stringWithFormat:@"--%@\r\n",stringBoundary]];
-	
-	// Adds post data
-	NSString *endItemBoundary = [NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary];
 	NSUInteger i=0;
 	for (NSDictionary *val in [self postData]) {
-		[self appendPostString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n",[val objectForKey:@"key"]]];
-		[self appendPostString:[val objectForKey:@"value"]];
+        if (self.needBoundary) {
+            [self appendPostString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n",[val objectForKey:@"key"]]];
+            [self appendPostString:[val objectForKey:@"value"]];
+        }
 		i++;
 		if (i != [[self postData] count] || [[self fileData] count] > 0) { //Only add the boundary if this is not the last item in the post body
-			[self appendPostString:endItemBoundary];
+            if (endItemBoundary) {
+                [self appendPostString:endItemBoundary];
+            }
 		}
 	}
 	
@@ -248,8 +253,10 @@
 	i=0;
 	for (NSDictionary *val in [self fileData]) {
 
-		[self appendPostString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", [val objectForKey:@"key"], [val objectForKey:@"fileName"]]];
-		[self appendPostString:[NSString stringWithFormat:@"Content-Type: %@\r\n\r\n", [val objectForKey:@"contentType"]]];
+        if (self.needBoundary) {
+            [self appendPostString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", [val objectForKey:@"key"], [val objectForKey:@"fileName"]]];
+            [self appendPostString:[NSString stringWithFormat:@"Content-Type: %@\r\n\r\n", [val objectForKey:@"contentType"]]];
+        }
 		
 		id data = [val objectForKey:@"data"];
 		if ([data isKindOfClass:[NSString class]]) {
@@ -264,7 +271,9 @@
 		}
 	}
 	
-	[self appendPostString:[NSString stringWithFormat:@"\r\n--%@--\r\n",stringBoundary]];
+    if (self.needBoundary && stringBoundary) {
+        [self appendPostString:[NSString stringWithFormat:@"\r\n--%@--\r\n",stringBoundary]];
+    }
 	
 #if DEBUG_FORM_DATA_REQUEST
 	[self addToDebugBody:@"==== End of multipart/form-data body ====\r\n"];

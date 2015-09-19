@@ -145,12 +145,12 @@ static const NSUInteger kDomainSection = 1;
 	CGRect f = [[UIScreen mainScreen] applicationFrame];
 
 	// Swap the frame height and width if necessary
- 	if (UIDeviceOrientationIsLandscape(o)) {
-		CGFloat t;
-		t = f.size.width;
-		f.size.width = f.size.height;
-		f.size.height = t;
-	}
+// 	if (UIDeviceOrientationIsLandscape(o)) {
+//		CGFloat t;
+//		t = f.size.width;
+//		f.size.width = f.size.height;
+//		f.size.height = t;
+//	}
 
 	CGAffineTransform previousTransform = self.view.layer.affineTransform;
 	CGAffineTransform newTransform = CGAffineTransformMakeRotation((CGFloat)(angle * M_PI / 180.0));
@@ -246,23 +246,23 @@ static const NSUInteger kDomainSection = 1;
 
 - (void)showTitle
 {
-	UINavigationBar *navigationBar = [[[self view] subviews] objectAtIndex:0];
-	UINavigationItem *navItem = [[navigationBar items] objectAtIndex:0];
-	if (UIInterfaceOrientationIsPortrait([[UIDevice currentDevice] orientation])) {
-		// Setup the title
-		if ([self type] == ASIProxyAuthenticationType) {
-			[navItem setPrompt:@"Login to this secure proxy server."];
-		} else {
-			[navItem setPrompt:@"Login to this secure server."];
-		}
-	} else {
-		[navItem setPrompt:nil];
-	}
-	[navigationBar sizeToFit];
-	CGRect f = [[self view] bounds];
-	f.origin.y = [navigationBar frame].size.height;
-	f.size.height -= f.origin.y;
-	[[self tableView] setFrame:f];
+//	UINavigationBar *navigationBar = [[[self view] subviews] objectAtIndex:0];
+//	UINavigationItem *navItem = [[navigationBar items] objectAtIndex:0];
+////	if (UIInterfaceOrientationIsPortrait([[UIDevice currentDevice] orientation])) {
+////		// Setup the title
+////		if ([self type] == ASIProxyAuthenticationType) {
+////			[navItem setPrompt:@"Login to this secure proxy server."];
+////		} else {
+////			[navItem setPrompt:@"Login to this secure server."];
+////		}
+////	} else {
+////		[navItem setPrompt:nil];
+////	}
+//	[navigationBar sizeToFit];
+//	CGRect f = [[self view] bounds];
+//	f.origin.y = [navigationBar frame].size.height;
+//	f.size.height -= f.origin.y;
+//	[[self tableView] setFrame:f];
 }
 
 - (void)show
