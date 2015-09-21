@@ -15,6 +15,8 @@
     [self setNavigationTitle:@"公司介绍"];
     
     UIWebView *webView = [[[UIWebView alloc] initWithFrame:self.view.bounds] autorelease];
+    webView.scalesPageToFit = YES;
+    webView.dataDetectorTypes = UIDataDetectorTypeNone;
     [self.view addSubview:webView];
     
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.liemoch.com/mobile/article_cat.php?id=11"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0]];

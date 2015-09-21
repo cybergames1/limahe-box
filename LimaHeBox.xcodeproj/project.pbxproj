@@ -36,6 +36,7 @@
 		DC00D7561BAD023B0088FA71 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DC00D7551BAD023B0088FA71 /* libz.1.2.5.tbd */; };
 		DC00D7581BAD02490088FA71 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DC00D7571BAD02480088FA71 /* libstdc++.tbd */; };
 		DC00D75A1BAD02530088FA71 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DC00D7591BAD02530088FA71 /* libsqlite3.tbd */; };
+		DC00D75C1BAFB7580088FA71 /* liemahe.html in Resources */ = {isa = PBXBuildFile; fileRef = DC00D75B1BAFB7580088FA71 /* liemahe.html */; settings = {ASSET_TAGS = (); }; };
 		DC0237E71B32D7AF00245501 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0237E11B32D7AF00245501 /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		DC0237E81B32D7AF00245501 /* NSString+base64.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0237E41B32D7AF00245501 /* NSString+base64.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		DC0237ED1B33EA6F00245501 /* WeatherAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0237EC1B33EA6F00245501 /* WeatherAPI.m */; };
@@ -349,6 +350,7 @@
 		DC00D7551BAD023B0088FA71 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
 		DC00D7571BAD02480088FA71 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		DC00D7591BAD02530088FA71 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		DC00D75B1BAFB7580088FA71 /* liemahe.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = liemahe.html; sourceTree = "<group>"; };
 		DC0237E01B32D7AF00245501 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
 		DC0237E11B32D7AF00245501 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
 		DC0237E21B32D7AF00245501 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
@@ -1099,6 +1101,7 @@
 				DC3F17CA1B302CAC00F02C10 /* Images */,
 				DCFAC4D81B3A9E310062D479 /* kuaidi.plist */,
 				DC52E3BF1BA725CA00E3DFE5 /* Qunar.html */,
+				DC00D75B1BAFB7580088FA71 /* liemahe.html */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1878,6 +1881,7 @@
 				DCFAC4D21B3A9D4A0062D479 /* k_youzhengguonei@2x.png in Resources */,
 				DCFAC4771B38F76C0062D479 /* w_20@2x.png in Resources */,
 				DCFAC4CD1B3A9D4A0062D479 /* k_tiantian@2x.png in Resources */,
+				DC00D75C1BAFB7580088FA71 /* liemahe.html in Resources */,
 				DCEA6A081B8867B0008FF3E2 /* f_1_date@2x.png in Resources */,
 				DCFAC4CA1B3A9D4A0062D479 /* k_shentong@2x.png in Resources */,
 				DCFAC4641B38F76C0062D479 /* main_faxian@2x.png in Resources */,

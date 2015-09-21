@@ -20,6 +20,8 @@
     [self setNavigationTitle:@"行程预定"];
     
     UIWebView *webView = [[[UIWebView alloc] initWithFrame:self.view.bounds] autorelease];
+    webView.scalesPageToFit = YES;
+    webView.dataDetectorTypes = UIDataDetectorTypeNone;
     [self.view addSubview:webView];
     
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Qunar" ofType:@"html"];
