@@ -12,5 +12,6 @@
 /** 登录过的用户列表 **/
 #define Login_UserList  @"login_userlist"
 #define News_Count @"news_count"
+#define User_Password @"user_password"
 
 #endif

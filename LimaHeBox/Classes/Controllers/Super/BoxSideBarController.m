@@ -233,7 +233,7 @@
     view.backgroundColor = [UIColor clearColor];
     
     MUser *loginUser = [[AccountManager sharedManager] loginUser];
-    UIButton *button = [[[UIButton alloc] initWithFrame:CGRectMake(-40, 20, view.width+40, 120)] autorelease];
+    UIButton *button = [[[UIButton alloc] initWithFrame:CGRectMake(-40, 5, view.width+40, 120)] autorelease];
     [button setTitle:[AccountManager isLogin] ? loginUser.userName : @"登录" forState:UIControlStateNormal];
     [button setImage:[AccountManager isLogin] ? [UIImage decodedImageWithImage:[UIImage imageWithContentsOfFile:loginUser.userIcon] maximumSize:CGSizeMake(68, 68)] : [UIImage imageNamed:@"main_userheader"] forState:UIControlStateNormal];
     [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 11, 0, 0)];

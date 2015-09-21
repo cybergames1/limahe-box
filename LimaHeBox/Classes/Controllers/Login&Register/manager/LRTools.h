@@ -17,6 +17,9 @@ typedef void (^LoginFinish)(void);
 + (LRTools *)sharedTools;
 + (void)startAppIfNeeded;
 
++ (void)setUserPassword:(NSString *)password;
++ (NSString *)userPassword;
+
 /*
  * 统一管理登录成功所做的loginUser的更新等
  */

@@ -8,6 +8,8 @@
 
 #import "LRDataSource.h"
 #import "PPQPostDataRequest.h"
+#import "AccountManager.h"
+#import "LRTools.h"
 
 @implementation LRDataSource
 
@@ -72,8 +74,18 @@
     
     PPQPostDataRequest *request = [[PPQPostDataRequest alloc] initWithDelegate:self theURl:[NSURL URLWithString:[PPQNetWorkURLs updateInfo]]];
     
-    [request addPostValue:@"hua" forKey:@"username"];
-    [request addPostValue:@"123456" forKey:@"password"];
+    MUser *loginUser = [[AccountManager sharedManager] loginUser];
+    NSString *userName = [loginUser userName];
+    
+    if (userName) {
+        [request addPostValue:userName forKey:@"username"];
+    }
+    
+    NSString *password = [LRTools userPassword];
+    
+    if (password) {
+        [request addPostValue:password forKey:@"password"];
+    }
     
     if (gender) {
         [request addPostValue:gender forKey:@"sex"];

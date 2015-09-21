@@ -8,6 +8,7 @@
 
 #import "LRTools.h"
 #import "AccountManager.h"
+#import "UserDefaultConstant.h"
 
 @implementation LRTools
 
@@ -19,6 +20,15 @@
         instance = [[LRTools alloc] init];
     });
     return instance;
+}
+
++ (void)setUserPassword:(NSString *)password {
+    [[NSUserDefaults standardUserDefaults] setObject:password forKey:User_Password];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (NSString *)userPassword {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:User_Password];
 }
 
 + (void)startAppIfNeeded {

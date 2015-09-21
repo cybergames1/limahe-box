@@ -93,6 +93,8 @@
     LRDataSource *dataSource = [[[LRDataSource alloc] initWithDelegate:self] autorelease];
     [dataSource loginWithUserName:_useNameCell.textField.text password:_passwordCell.textField.text];
     self.dataSource = dataSource;
+    
+    [LRTools setUserPassword:_passwordCell.textField.text];
 }
 
 - (void)dataSourceFinishLoad:(PPQDataSource *)source {
