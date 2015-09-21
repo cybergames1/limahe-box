@@ -132,7 +132,7 @@
             break;
         case 6: {
             cell.textLabel.text = @"设备号";
-            cell.detailTextLabel.text = [CommonTools isEmptyString:[loginUser userDeviceId]] ? @"未绑定" : [loginUser userDeviceId];
+            cell.detailTextLabel.text = [loginUser userDeviceId];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
             break;
