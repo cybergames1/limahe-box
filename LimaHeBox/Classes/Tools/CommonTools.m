@@ -820,6 +820,16 @@ static NSString* rootPath = nil;
     return root;
 }
 
++ (NSString *)pathForStorageClass
+{
+    static dispatch_once_t onceToken;
+    static NSString* storageClassPath = nil;
+    dispatch_once(&onceToken, ^{
+        storageClassPath = [[NSString alloc] initWithFormat:@"%@/PPQStorageClass",[CommonTools pathForApplicationRoot]];
+    });
+    return storageClassPath;
+}
+
 + (void)postNotificationName:(NSString *)name
                       object:(id)object
                     userInfo:(NSDictionary *)dic

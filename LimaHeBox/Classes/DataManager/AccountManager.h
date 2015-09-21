@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BoxStorageModel.h"
 
 @interface MUser : NSObject
 
@@ -18,6 +19,7 @@
 @property (nonatomic,copy,readonly) NSString *userCity;
 @property (nonatomic,copy,readonly) NSString *userGender; //现在为字符串，以后改成0/1这种形式
 @property (nonatomic,copy,readonly) NSString *userAddress;
+@property (nonatomic,copy,readonly) NSString *userDeviceId;
 
 /**
  用服务端返回的字典类型初始化loginUser
@@ -48,8 +50,9 @@ extern NSString* const kUserInfoBirthdayKey;     // user Birthday
 extern NSString* const kUserInfoIconKey;         // user Icon
 extern NSString* const kUserInfoPhoneKey;        // user Phone
 extern NSString* const kUserInfoGenderKey;       // user Gender
+extern NSString* const kUserInfoDeviceIdKey;     // user DeviceId
 
-@interface AccountManager : NSObject
+@interface AccountManager : BoxStorageModel
 
 @property (nonatomic, retain) MUser *loginUser;
 

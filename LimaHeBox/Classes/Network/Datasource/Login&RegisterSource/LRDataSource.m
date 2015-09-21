@@ -64,12 +64,16 @@
                          age:(NSString *)age
                      address:(NSString *)address
                         city:(NSString *)city
+                    deviceId:(NSString *)deviceId
 {
     [self cancelAllRequest];
     [self.request clearAndCancel];
     self.request = nil;
     
     PPQPostDataRequest *request = [[PPQPostDataRequest alloc] initWithDelegate:self theURl:[NSURL URLWithString:[PPQNetWorkURLs updateInfo]]];
+    
+    [request addPostValue:@"hua" forKey:@"username"];
+    [request addPostValue:@"123456" forKey:@"password"];
     
     if (gender) {
         [request addPostValue:gender forKey:@"sex"];
@@ -85,6 +89,10 @@
     
     if (city) {
         [request addPostValue:city forKey:@"city"];
+    }
+    
+    if (deviceId) {
+        [request addPostValue:deviceId forKey:@"deviceId"];
     }
     
     self.request = request;

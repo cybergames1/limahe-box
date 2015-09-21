@@ -20,6 +20,7 @@
 @property (nonatomic,copy) NSString *userCity;
 @property (nonatomic,copy) NSString *userGender;
 @property (nonatomic,copy) NSString *userAddress;
+@property (nonatomic,copy) NSString *userDeviceId;
 
 @end
 
@@ -34,6 +35,7 @@
     self.userCity = nil;
     self.userGender = nil;
     self.userAddress = nil;
+    self.userDeviceId = nil;
     [super dealloc];
 }
 
@@ -48,6 +50,7 @@
         self.userAge = [dictionary objectForKey:@"age"];
         self.userAddress = [dictionary objectForKey:@"address"];
         self.userIcon = [[NSBundle mainBundle] pathForResource:@"pf_logo1@2x" ofType:@"png"];
+        self.userDeviceId = [dictionary objectForKey:@"deviceId"];
     }
     return self;
 }
@@ -70,11 +73,26 @@
     }else if ([kUserInfoPhoneKey isEqualToString:key]) {
         //userPhoneNumber
         self.userPhone = value;
+    }else if ([kUserInfoGenderKey isEqualToString:key]) {
+        //userGender
+        self.userGender = value;
+    }else if ([kUserInfoAgeKey isEqualToString:key]) {
+        //userAge
+        self.userAge = value;
+    }else if ([kUserInfoCityKey isEqualToString:key]) {
+        //userCity
+        self.userCity = value;
+    }else if ([kUserInfoAddressKey isEqualToString:key]) {
+        //userAddress
+        self.userAddress = value;
+    }else if ([kUserInfoDeviceIdKey isEqualToString:key]) {
+        //userAddress
+        self.userDeviceId = value;
     }else {
         //
     }
     
-    // [[AccountManager sharedManager] saveStorage];
+    [[AccountManager sharedManager] saveStorage];
     [[NSNotificationCenter defaultCenter] postNotificationName:kUserInfoDidUpdateNotification object:nil];
 }
 
@@ -92,6 +110,7 @@ NSString* const  kUserInfoBirthdayKey = @"_userBirthday";
 NSString* const  kUserInfoIconKey = @"_userIcon";
 NSString* const  kUserInfoPhoneKey = @"_userPhone";
 NSString* const  kUserInfoGenderKey = @"_userGender";
+NSString* const  kUserInfoDeviceIdKey = @"_userDeivceId";
 
 @implementation AccountManager
 

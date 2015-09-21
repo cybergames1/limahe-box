@@ -15,6 +15,10 @@
 #import "AccountManager.h"
 #import "ResetPwdViewController.h"
 #import "BindPhoneViewController.h"
+#import "PFPickerSheet.h"
+#import "EditProfileManager.h"
+#import "AccountManager.h"
+#import "EditUserInfoViewController.h"
 
 @interface UserInfoViewController () <UITableViewDataSource,UITableViewDelegate>
 {
@@ -49,10 +53,39 @@
     [_tableView reloadData];
 }
 
+- (NSDictionary *)addressDictionary:(NSString *)city {
+    NSArray *citys = [city componentsSeparatedByString:@" "];
+    if ([citys count] <= 0) return nil;
+    
+    NSDictionary* provinceCityList = [[NSDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"provinceCity" ofType:@"plist"]];
+    NSDictionary* provinceList = [[NSDictionary alloc] initWithDictionary:[provinceCityList valueForKey:@"province"]];
+    NSDictionary* cityList = [[NSDictionary alloc] initWithDictionary:[provinceCityList valueForKey:@"city"]];
+    NSString *provinceCode = [provinceList allKeysForObject:citys[0]][0];
+    NSDictionary* cityListForProvince = [[NSDictionary alloc] initWithDictionary:[cityList valueForKey:provinceCode]];
+    
+    NSDictionary *dic = nil;
+    if ([citys count] == 1) {
+        dic = @{@"province" : citys[0],
+                 @"provinceCode" : provinceCode};
+    }else {
+        dic = @{@"province" : citys[0],
+                 @"provinceCode" : provinceCode,
+                 @"city" : citys[1],
+                 @"cityCode" : [cityListForProvince allKeysForObject:citys[1]][0]};
+    }
+    
+    [provinceCityList release];
+    [provinceList release];
+    [cityList release];
+    [cityListForProvince release];
+    
+    return dic;
+}
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 7;
+    return 8;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -63,15 +96,17 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier] autorelease];
     }
+    
+    MUser *loginUser = [[AccountManager sharedManager] loginUser];
     switch (indexPath.row) {
         case 0:{
             cell.textLabel.text = @"昵称";
-            cell.detailTextLabel.text = [[[AccountManager sharedManager] loginUser] userName];
+            cell.detailTextLabel.text = [loginUser userName];
         }
             break;
         case 1:{
             cell.textLabel.text = @"性别";
-            cell.detailTextLabel.text = @"男";
+            cell.detailTextLabel.text = [loginUser userGender];
         }
             break;
         case 2:{
@@ -82,20 +117,26 @@
             break;
         case 3: {
             cell.textLabel.text = @"年龄";
-            cell.detailTextLabel.text = @"40";
+            cell.detailTextLabel.text = [loginUser userAge];
         }
             break;
         case 4: {
             cell.textLabel.text = @"常居地";
-            cell.detailTextLabel.text = @"北京";
+            cell.detailTextLabel.text = [loginUser userCity];
         }
             break;
         case 5: {
-            cell.textLabel.text = @"接受礼物地址";
-            cell.detailTextLabel.text = @"北京市西城区西单北大街";
+            cell.textLabel.text = @"常用地址";
+            cell.detailTextLabel.text = [loginUser userAddress];
         }
             break;
         case 6: {
+            cell.textLabel.text = @"设备号";
+            cell.detailTextLabel.text = [CommonTools isEmptyString:[loginUser userDeviceId]] ? @"未绑定" : [loginUser userDeviceId];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
+            break;
+        case 7: {
             cell.textLabel.text = @"修改密码";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
@@ -142,7 +183,57 @@
         [self presentViewController:nav animated:YES completion:^(){}];
         [controller release];
         [nav release];
+    }else if (indexPath.row == 1) {
+        //性别
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        [PFPickerSheet showPickerSheet:PFPickerOptionGender previewData:cell.detailTextLabel.text finishBlock:^(PFPickerOption option, id data) {
+            __block NSString* gender = [data retain];
+            [EditProfileManager uploadUserGender:gender block:^(NSError *error, id info) {
+                if (error) {
+                    [self showHUDWithText:[error localizedDescription]];
+                }
+                else{
+                    MUser* user = [[AccountManager sharedManager] loginUser];
+                    [user updateUserValue:gender forKey:kUserInfoGenderKey];
+                    [self showHUDWithText:@"修改性别成功！"];
+                }
+            }];
+        }];
+    }else if (indexPath.row == 3) {
+        //修改年龄
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        EditUserInfoViewController* controller = [[EditUserInfoViewController alloc] initWithOption:ProfileEditOptionNick profileInfo:cell.detailTextLabel.text];
+        [self.navigationController pushViewController:controller animated:YES];
+        [controller release];
+    }else if (indexPath.row == 4) {
+        //修改居住地
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        [PFPickerSheet showPickerSheet:PFPickerOptionAddress previewData:[self addressDictionary:cell.detailTextLabel.text] finishBlock:^(PFPickerOption option, id data) {
+            __block NSString* city = [data retain];
+            [EditProfileManager uploadUserCity:city block:^(NSError *error, id info) {
+                if (error) {
+                    [self showHUDWithText:[error localizedDescription]];
+                }
+                else{
+                    MUser* user = [[AccountManager sharedManager] loginUser];
+                    [user updateUserValue:city forKey:kUserInfoCityKey];
+                    [self showHUDWithText:@"修改常居地成功"];
+                }
+            }];
+        }];
+    }else if (indexPath.row == 5) {
+        //修改常用地址
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        EditUserInfoViewController* controller = [[EditUserInfoViewController alloc] initWithOption:ProfileEditOptionIntroduction profileInfo:cell.detailTextLabel.text];
+        [self.navigationController pushViewController:controller animated:YES];
+        [controller release];
     }else if (indexPath.row == 6) {
+        //添加设备号
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        EditUserInfoViewController* controller = [[EditUserInfoViewController alloc] initWithOption:ProfileEditOptionNick profileInfo:cell.detailTextLabel.text];
+        [self.navigationController pushViewController:controller animated:YES];
+        [controller release];
+    }else if (indexPath.row == 7) {
         //修改密码
         ResetPwdViewController *controller = [[ResetPwdViewController alloc] init];
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];

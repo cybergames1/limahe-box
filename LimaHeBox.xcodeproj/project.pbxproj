@@ -37,6 +37,22 @@
 		DC00D7581BAD02490088FA71 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DC00D7571BAD02480088FA71 /* libstdc++.tbd */; };
 		DC00D75A1BAD02530088FA71 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DC00D7591BAD02530088FA71 /* libsqlite3.tbd */; };
 		DC00D75C1BAFB7580088FA71 /* liemahe.html in Resources */ = {isa = PBXBuildFile; fileRef = DC00D75B1BAFB7580088FA71 /* liemahe.html */; settings = {ASSET_TAGS = (); }; };
+		DC00D75F1BAFE06B0088FA71 /* PFPickerSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = DC00D75E1BAFE06B0088FA71 /* PFPickerSheet.m */; settings = {ASSET_TAGS = (); }; };
+		DC00D7621BAFE09C0088FA71 /* PPQActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = DC00D7611BAFE09C0088FA71 /* PPQActionSheet.m */; settings = {ASSET_TAGS = (); }; };
+		DC00D7641BAFE1D80088FA71 /* provinceCity.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC00D7631BAFE1D80088FA71 /* provinceCity.plist */; settings = {ASSET_TAGS = (); }; };
+		DC00D7681BAFE42D0088FA71 /* EditProfileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DC00D7671BAFE42D0088FA71 /* EditProfileManager.m */; settings = {ASSET_TAGS = (); }; };
+		DC00D7831BAFEF630088FA71 /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DC00D76C1BAFEF630088FA71 /* JSONModel.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
+		DC00D7841BAFEF630088FA71 /* JSONModelArray.m in Sources */ = {isa = PBXBuildFile; fileRef = DC00D76E1BAFEF630088FA71 /* JSONModelArray.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
+		DC00D7851BAFEF630088FA71 /* JSONModelClassProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = DC00D7701BAFEF630088FA71 /* JSONModelClassProperty.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
+		DC00D7861BAFEF630088FA71 /* JSONModelError.m in Sources */ = {isa = PBXBuildFile; fileRef = DC00D7721BAFEF630088FA71 /* JSONModelError.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
+		DC00D7871BAFEF630088FA71 /* NSArray+JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DC00D7751BAFEF630088FA71 /* NSArray+JSONModel.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
+		DC00D7881BAFEF630088FA71 /* JSONAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = DC00D7791BAFEF630088FA71 /* JSONAPI.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
+		DC00D7891BAFEF630088FA71 /* JSONHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = DC00D77B1BAFEF630088FA71 /* JSONHTTPClient.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
+		DC00D78A1BAFEF630088FA71 /* JSONModel+networking.m in Sources */ = {isa = PBXBuildFile; fileRef = DC00D77D1BAFEF630088FA71 /* JSONModel+networking.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
+		DC00D78B1BAFEF630088FA71 /* JSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = DC00D7801BAFEF630088FA71 /* JSONKeyMapper.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
+		DC00D78C1BAFEF630088FA71 /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = DC00D7821BAFEF630088FA71 /* JSONValueTransformer.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
+		DC00D78F1BAFEFB10088FA71 /* BoxStorageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DC00D78E1BAFEFB10088FA71 /* BoxStorageModel.m */; settings = {ASSET_TAGS = (); }; };
+		DC00D7921BAFFC890088FA71 /* EditUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC00D7911BAFFC890088FA71 /* EditUserInfoViewController.m */; settings = {ASSET_TAGS = (); }; };
 		DC0237E71B32D7AF00245501 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0237E11B32D7AF00245501 /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		DC0237E81B32D7AF00245501 /* NSString+base64.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0237E41B32D7AF00245501 /* NSString+base64.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		DC0237ED1B33EA6F00245501 /* WeatherAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0237EC1B33EA6F00245501 /* WeatherAPI.m */; };
@@ -351,6 +367,38 @@
 		DC00D7571BAD02480088FA71 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		DC00D7591BAD02530088FA71 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		DC00D75B1BAFB7580088FA71 /* liemahe.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = liemahe.html; sourceTree = "<group>"; };
+		DC00D75D1BAFE06B0088FA71 /* PFPickerSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFPickerSheet.h; sourceTree = "<group>"; };
+		DC00D75E1BAFE06B0088FA71 /* PFPickerSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFPickerSheet.m; sourceTree = "<group>"; };
+		DC00D7601BAFE09C0088FA71 /* PPQActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPQActionSheet.h; sourceTree = "<group>"; };
+		DC00D7611BAFE09C0088FA71 /* PPQActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPQActionSheet.m; sourceTree = "<group>"; };
+		DC00D7631BAFE1D80088FA71 /* provinceCity.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = provinceCity.plist; sourceTree = "<group>"; };
+		DC00D7661BAFE42D0088FA71 /* EditProfileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileManager.h; sourceTree = "<group>"; };
+		DC00D7671BAFE42D0088FA71 /* EditProfileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileManager.m; sourceTree = "<group>"; };
+		DC00D76B1BAFEF630088FA71 /* JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModel.h; sourceTree = "<group>"; };
+		DC00D76C1BAFEF630088FA71 /* JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModel.m; sourceTree = "<group>"; };
+		DC00D76D1BAFEF630088FA71 /* JSONModelArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelArray.h; sourceTree = "<group>"; };
+		DC00D76E1BAFEF630088FA71 /* JSONModelArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelArray.m; sourceTree = "<group>"; };
+		DC00D76F1BAFEF630088FA71 /* JSONModelClassProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelClassProperty.h; sourceTree = "<group>"; };
+		DC00D7701BAFEF630088FA71 /* JSONModelClassProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelClassProperty.m; sourceTree = "<group>"; };
+		DC00D7711BAFEF630088FA71 /* JSONModelError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelError.h; sourceTree = "<group>"; };
+		DC00D7721BAFEF630088FA71 /* JSONModelError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelError.m; sourceTree = "<group>"; };
+		DC00D7741BAFEF630088FA71 /* NSArray+JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+JSONModel.h"; sourceTree = "<group>"; };
+		DC00D7751BAFEF630088FA71 /* NSArray+JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+JSONModel.m"; sourceTree = "<group>"; };
+		DC00D7761BAFEF630088FA71 /* JSONModelLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelLib.h; sourceTree = "<group>"; };
+		DC00D7781BAFEF630088FA71 /* JSONAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONAPI.h; sourceTree = "<group>"; };
+		DC00D7791BAFEF630088FA71 /* JSONAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONAPI.m; sourceTree = "<group>"; };
+		DC00D77A1BAFEF630088FA71 /* JSONHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONHTTPClient.h; sourceTree = "<group>"; };
+		DC00D77B1BAFEF630088FA71 /* JSONHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONHTTPClient.m; sourceTree = "<group>"; };
+		DC00D77C1BAFEF630088FA71 /* JSONModel+networking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JSONModel+networking.h"; sourceTree = "<group>"; };
+		DC00D77D1BAFEF630088FA71 /* JSONModel+networking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSONModel+networking.m"; sourceTree = "<group>"; };
+		DC00D77F1BAFEF630088FA71 /* JSONKeyMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKeyMapper.h; sourceTree = "<group>"; };
+		DC00D7801BAFEF630088FA71 /* JSONKeyMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKeyMapper.m; sourceTree = "<group>"; };
+		DC00D7811BAFEF630088FA71 /* JSONValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONValueTransformer.h; sourceTree = "<group>"; };
+		DC00D7821BAFEF630088FA71 /* JSONValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONValueTransformer.m; sourceTree = "<group>"; };
+		DC00D78D1BAFEFB10088FA71 /* BoxStorageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxStorageModel.h; sourceTree = "<group>"; };
+		DC00D78E1BAFEFB10088FA71 /* BoxStorageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoxStorageModel.m; sourceTree = "<group>"; };
+		DC00D7901BAFFC890088FA71 /* EditUserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditUserInfoViewController.h; sourceTree = "<group>"; };
+		DC00D7911BAFFC890088FA71 /* EditUserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditUserInfoViewController.m; sourceTree = "<group>"; };
 		DC0237E01B32D7AF00245501 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
 		DC0237E11B32D7AF00245501 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
 		DC0237E21B32D7AF00245501 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
@@ -822,6 +870,75 @@
 			path = ASIRequest;
 			sourceTree = "<group>";
 		};
+		DC00D7651BAFE4140088FA71 /* manager */ = {
+			isa = PBXGroup;
+			children = (
+				DC00D7661BAFE42D0088FA71 /* EditProfileManager.h */,
+				DC00D7671BAFE42D0088FA71 /* EditProfileManager.m */,
+			);
+			path = manager;
+			sourceTree = "<group>";
+		};
+		DC00D7691BAFEF630088FA71 /* JSONModel */ = {
+			isa = PBXGroup;
+			children = (
+				DC00D76A1BAFEF630088FA71 /* JSONModel */,
+				DC00D7731BAFEF630088FA71 /* JSONModelCategories */,
+				DC00D7761BAFEF630088FA71 /* JSONModelLib.h */,
+				DC00D7771BAFEF630088FA71 /* JSONModelNetworking */,
+				DC00D77E1BAFEF630088FA71 /* JSONModelTransformations */,
+			);
+			path = JSONModel;
+			sourceTree = "<group>";
+		};
+		DC00D76A1BAFEF630088FA71 /* JSONModel */ = {
+			isa = PBXGroup;
+			children = (
+				DC00D76B1BAFEF630088FA71 /* JSONModel.h */,
+				DC00D76C1BAFEF630088FA71 /* JSONModel.m */,
+				DC00D76D1BAFEF630088FA71 /* JSONModelArray.h */,
+				DC00D76E1BAFEF630088FA71 /* JSONModelArray.m */,
+				DC00D76F1BAFEF630088FA71 /* JSONModelClassProperty.h */,
+				DC00D7701BAFEF630088FA71 /* JSONModelClassProperty.m */,
+				DC00D7711BAFEF630088FA71 /* JSONModelError.h */,
+				DC00D7721BAFEF630088FA71 /* JSONModelError.m */,
+			);
+			path = JSONModel;
+			sourceTree = "<group>";
+		};
+		DC00D7731BAFEF630088FA71 /* JSONModelCategories */ = {
+			isa = PBXGroup;
+			children = (
+				DC00D7741BAFEF630088FA71 /* NSArray+JSONModel.h */,
+				DC00D7751BAFEF630088FA71 /* NSArray+JSONModel.m */,
+			);
+			path = JSONModelCategories;
+			sourceTree = "<group>";
+		};
+		DC00D7771BAFEF630088FA71 /* JSONModelNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				DC00D7781BAFEF630088FA71 /* JSONAPI.h */,
+				DC00D7791BAFEF630088FA71 /* JSONAPI.m */,
+				DC00D77A1BAFEF630088FA71 /* JSONHTTPClient.h */,
+				DC00D77B1BAFEF630088FA71 /* JSONHTTPClient.m */,
+				DC00D77C1BAFEF630088FA71 /* JSONModel+networking.h */,
+				DC00D77D1BAFEF630088FA71 /* JSONModel+networking.m */,
+			);
+			path = JSONModelNetworking;
+			sourceTree = "<group>";
+		};
+		DC00D77E1BAFEF630088FA71 /* JSONModelTransformations */ = {
+			isa = PBXGroup;
+			children = (
+				DC00D77F1BAFEF630088FA71 /* JSONKeyMapper.h */,
+				DC00D7801BAFEF630088FA71 /* JSONKeyMapper.m */,
+				DC00D7811BAFEF630088FA71 /* JSONValueTransformer.h */,
+				DC00D7821BAFEF630088FA71 /* JSONValueTransformer.m */,
+			);
+			path = JSONModelTransformations;
+			sourceTree = "<group>";
+		};
 		DC0237DF1B32D7AF00245501 /* WeatherAPI */ = {
 			isa = PBXGroup;
 			children = (
@@ -1057,6 +1174,7 @@
 				DC00D7591BAD02530088FA71 /* libsqlite3.tbd */,
 				DC00D7571BAD02480088FA71 /* libstdc++.tbd */,
 				DC00D7551BAD023B0088FA71 /* libz.1.2.5.tbd */,
+				DC00D7691BAFEF630088FA71 /* JSONModel */,
 				DC00D7351BAD01E10088FA71 /* ASIRequest */,
 				DCD057CA1B9AE1FE003A7740 /* TencentOpenAPI.framework */,
 				DCD057BB1B9AE1A1003A7740 /* libWeiboSDK */,
@@ -1095,6 +1213,7 @@
 		DC3F17C91B302CAC00F02C10 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DC00D7631BAFE1D80088FA71 /* provinceCity.plist */,
 				DC6E61AC1B96EDBB002A97C0 /* City.plist */,
 				DC3F17201B2FDEEE00F02C10 /* Images.xcassets */,
 				DC00D6A61BABE64C0088FA71 /* music */,
@@ -1299,12 +1418,15 @@
 				DCCE824B1B85E0A9000EF913 /* UserViewController.m */,
 				DCCE824D1B85E675000EF913 /* UserInfoViewController.h */,
 				DCCE824E1B85E675000EF913 /* UserInfoViewController.m */,
+				DC00D7901BAFFC890088FA71 /* EditUserInfoViewController.h */,
+				DC00D7911BAFFC890088FA71 /* EditUserInfoViewController.m */,
 				DCCE82501B85EA4B000EF913 /* BlueToothSettingViewController.h */,
 				DCCE82511B85EA4B000EF913 /* BlueToothSettingViewController.m */,
 				DCEA69DF1B8805C7008FF3E2 /* AboutViewController.h */,
 				DCEA69E01B8805C7008FF3E2 /* AboutViewController.m */,
 				DCEA69E71B880C05008FF3E2 /* UpdateIconViewController.h */,
 				DCEA69E81B880C05008FF3E2 /* UpdateIconViewController.m */,
+				DC00D7651BAFE4140088FA71 /* manager */,
 				DCEA69ED1B882883008FF3E2 /* view */,
 			);
 			path = Profile;
@@ -1498,6 +1620,10 @@
 			children = (
 				DCEA69EE1B88289E008FF3E2 /* HeaderView.h */,
 				DCEA69EF1B88289E008FF3E2 /* HeaderView.m */,
+				DC00D75D1BAFE06B0088FA71 /* PFPickerSheet.h */,
+				DC00D75E1BAFE06B0088FA71 /* PFPickerSheet.m */,
+				DC00D7601BAFE09C0088FA71 /* PPQActionSheet.h */,
+				DC00D7611BAFE09C0088FA71 /* PPQActionSheet.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1673,6 +1799,8 @@
 			children = (
 				DCFAC4DE1B3ABDC30062D479 /* ExpressModel.h */,
 				DCFAC4DF1B3ABDC30062D479 /* ExpressModel.m */,
+				DC00D78D1BAFEFB10088FA71 /* BoxStorageModel.h */,
+				DC00D78E1BAFEFB10088FA71 /* BoxStorageModel.m */,
 			);
 			name = Models;
 			path = Classes/Models;
@@ -1924,6 +2052,7 @@
 				DCFAC4D51B3A9D4A0062D479 /* k_zhaijisong@2x.png in Resources */,
 				DCFAC4761B38F76C0062D479 /* w_1@2x.png in Resources */,
 				DC3F17211B2FDEEE00F02C10 /* Images.xcassets in Resources */,
+				DC00D7641BAFE1D80088FA71 /* provinceCity.plist in Resources */,
 				DCEA6A071B8867B0008FF3E2 /* f_1_control@2x.png in Resources */,
 				DCE0AEFF1B96DE8500F2CFC3 /* main_gps@2x.png in Resources */,
 				DCEA6A061B8867B0008FF3E2 /* f_1_com@2x.png in Resources */,
@@ -1951,6 +2080,7 @@
 				DCCE822B1B7F9A68000EF913 /* LoginViewController.m in Sources */,
 				DC00D7131BAD006A0088FA71 /* UIImageView+WebCache.m in Sources */,
 				DC062B011B4A583C001D969A /* UIViewController+BackButtonHandler.m in Sources */,
+				DC00D7831BAFEF630088FA71 /* JSONModel.m in Sources */,
 				DC3F17921B2FDF3000F02C10 /* SocialTools.m in Sources */,
 				DC3F177D1B2FDF3000F02C10 /* PrivateFundsDS.m in Sources */,
 				DCFAC4EF1B3D24470062D479 /* AlarmClockEditViewController.m in Sources */,
@@ -1969,9 +2099,12 @@
 				DC00D7091BAD006A0088FA71 /* SDWebImageDecoder.m in Sources */,
 				DCEA69C41B877B85008FF3E2 /* TeleBar.m in Sources */,
 				DC8008421B9D6B3700F13C37 /* DeviceDataSource.m in Sources */,
+				DC00D7841BAFEF630088FA71 /* JSONModelArray.m in Sources */,
 				DCFAC4F21B3D2B080062D479 /* FoundViewController.m in Sources */,
 				DCEA6A0F1B887D68008FF3E2 /* ShareTool.m in Sources */,
 				DCEA6A2F1B88D107008FF3E2 /* CalendarViewController.m in Sources */,
+				DC00D7621BAFE09C0088FA71 /* PPQActionSheet.m in Sources */,
+				DC00D7891BAFEF630088FA71 /* JSONHTTPClient.m in Sources */,
 				DC3F17811B2FDF3000F02C10 /* PrviateTradesDS.m in Sources */,
 				DC0A3C531B57BCA90048774B /* TravelViewController.m in Sources */,
 				DCD057BA1B9AE0C2003A7740 /* WeiXinManager.m in Sources */,
@@ -1988,8 +2121,11 @@
 				DCFAC4E01B3ABDC30062D479 /* ExpressModel.m in Sources */,
 				DCBEF8D71B41140E00FA72D7 /* TimePickerView.m in Sources */,
 				DCEA32F91BA668B70064B6E6 /* QYSegmentControl.m in Sources */,
+				DC00D78F1BAFEFB10088FA71 /* BoxStorageModel.m in Sources */,
+				DC00D78A1BAFEF630088FA71 /* JSONModel+networking.m in Sources */,
 				DCD057B71B9AE01A003A7740 /* SecondShareManager.m in Sources */,
 				DCD057B11B9ADF91003A7740 /* SinaWeibo.m in Sources */,
+				DC00D7921BAFFC890088FA71 /* EditUserInfoViewController.m in Sources */,
 				DCEA69E91B880C05008FF3E2 /* UpdateIconViewController.m in Sources */,
 				DC3F17891B2FDF3000F02C10 /* PPQHTTPRequest.m in Sources */,
 				DCFAC4E91B3CFC9C0062D479 /* AlarmClockManager.m in Sources */,
@@ -1998,7 +2134,9 @@
 				DC00D7141BAD006A0088FA71 /* UIView+WebCacheOperation.m in Sources */,
 				DC00D7521BAD01E10088FA71 /* ASIInputStream.m in Sources */,
 				DCFAC4E31B3BA9E80062D479 /* ExpressResultViewController.m in Sources */,
+				DC00D7881BAFEF630088FA71 /* JSONAPI.m in Sources */,
 				DCCE82431B85D81D000EF913 /* AccountManager.m in Sources */,
+				DC00D7851BAFEF630088FA71 /* JSONModelClassProperty.m in Sources */,
 				DC3F17821B2FDF3000F02C10 /* SingleTickerDS.m in Sources */,
 				DCCE82481B85DD31000EF913 /* LRTools.m in Sources */,
 				DC3F17801B2FDF3000F02C10 /* PrivatePlaceOrderDS.m in Sources */,
@@ -2021,6 +2159,7 @@
 				DCEA69751B86186B008FF3E2 /* ShareViewController.m in Sources */,
 				DCEA69F31B885453008FF3E2 /* ResetPwdViewController.m in Sources */,
 				DCFAC4DC1B3AA5630062D479 /* ExpressListViewController.m in Sources */,
+				DC00D78C1BAFEF630088FA71 /* JSONValueTransformer.m in Sources */,
 				DC00D7061BAD006A0088FA71 /* NSData+ImageContentType.m in Sources */,
 				DCCE824C1B85E0A9000EF913 /* UserViewController.m in Sources */,
 				DC00D7121BAD006A0088FA71 /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -2037,7 +2176,9 @@
 				DC0237E81B32D7AF00245501 /* NSString+base64.m in Sources */,
 				DC3F178A1B2FDF3000F02C10 /* PPQPostDataRequest.m in Sources */,
 				DCEA69991B86D66B008FF3E2 /* TemperatureView.m in Sources */,
+				DC00D7871BAFEF630088FA71 /* NSArray+JSONModel.m in Sources */,
 				DCCE82201B7F94D5000EF913 /* LRDataSource.m in Sources */,
+				DC00D78B1BAFEF630088FA71 /* JSONKeyMapper.m in Sources */,
 				DC0237E71B32D7AF00245501 /* GTMBase64.m in Sources */,
 				DCEA6A121B88A837008FF3E2 /* RadarView.m in Sources */,
 				DC3F17881B2FDF3000F02C10 /* PPQNetWorkURLs.m in Sources */,
@@ -2061,9 +2202,12 @@
 				DCCE824F1B85E675000EF913 /* UserInfoViewController.m in Sources */,
 				DC3F17851B2FDF3000F02C10 /* PPQDataSource.m in Sources */,
 				DCFAC4A01B395C2E0062D479 /* ExpressQueryViewController.m in Sources */,
+				DC00D7861BAFEF630088FA71 /* JSONModelError.m in Sources */,
+				DC00D7681BAFE42D0088FA71 /* EditProfileManager.m in Sources */,
 				DCFAC4EC1B3D19930062D479 /* AlarmClock.m in Sources */,
 				DC0237ED1B33EA6F00245501 /* WeatherAPI.m in Sources */,
 				DCEA69BC1B873571008FF3E2 /* TeleControlViewController.m in Sources */,
+				DC00D75F1BAFE06B0088FA71 /* PFPickerSheet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

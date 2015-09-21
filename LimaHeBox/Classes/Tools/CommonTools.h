@@ -281,6 +281,8 @@ typedef NS_ENUM(NSInteger, PPQStatusBarType)
 
 //------------------------------------
 + (NSString *)pathForStorageUser;
+/** PPQStorageModel类 存储的路径 **/
++ (NSString *)pathForStorageClass;
 
 #pragma mark 通知
 

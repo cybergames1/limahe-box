@@ -28,6 +28,7 @@
 - (void)updateInfoWithGender:(NSString *)gender
                          age:(NSString *)age
                      address:(NSString *)address
-                        city:(NSString *)city;
+                        city:(NSString *)city
+                    deviceId:(NSString *)deviceId;
 
 @end

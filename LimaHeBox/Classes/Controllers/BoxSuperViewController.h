@@ -26,6 +26,7 @@
  */
 - (void)setNavigationItemLeftImage:(UIImage *)image;
 - (void)setNavigationItemRightImage:(UIImage *)image;
+- (void)setNavigationItemRightTitle:(NSString *)title;
 
 /**
  设置navigationBar的titleView

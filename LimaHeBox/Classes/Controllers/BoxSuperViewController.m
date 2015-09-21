@@ -76,6 +76,16 @@
     [self.navigationItem setRightBarButtonItem:item animated:YES];
 }
 
+- (void)setNavigationItemRightTitle:(NSString *)title {
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setTitle:title forState:UIControlStateNormal];
+    [button setFrame:CGRectMake(0, 0, 40, 44)];
+    [button addTarget:self action:@selector(rightBarAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *item = [[[UIBarButtonItem alloc] initWithCustomView:button] autorelease];
+    [self.navigationItem setRightBarButtonItem:item animated:YES];
+}
+
 - (void)setNavigationTitle:(NSString *)title {
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
     label.backgroundColor = [UIColor clearColor];
