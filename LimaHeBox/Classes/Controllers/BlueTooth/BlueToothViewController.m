@@ -248,7 +248,7 @@
     CGFloat ci = (rssi - 64) / (10 * 4.);
    // NSString *length = [NSString stringWithFormat:@"发现BLT热点:%@,距离:%.1fm",_peripheral.name,pow(10,ci)];
    // NSLog(@"length:%@",length);
-    if (pow(10, ci) > 6) {
+    if (pow(10, ci) > 7) {
         _radarView.state = RadarStateWarning;
         [self scheduleLocalNotification];
     }else {
