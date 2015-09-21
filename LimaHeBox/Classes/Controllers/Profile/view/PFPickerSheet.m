@@ -112,8 +112,8 @@ NSString *const provinceKey = @"provinceKey";
         if (pickerValue && [pickerValue isKindOfClass:[NSDate class]]) {
             [_datePicker setDate:(NSDate*)pickerValue animated:YES];
         }else {
-            NSDate *date = [CommonTools formateStringValue:@"1990-01-01" withStyle:@"YYYY-MM-dd"];
-            [_datePicker setDate:date animated:YES];
+//            NSDate *date = [CommonTools formateStringValue:@"1990-01-01" withStyle:@"YYYY-MM-dd"];
+//            [_datePicker setDate:date animated:YES];
         }
     }
     else if (PFPickerOptionAddress == defaultPickerOption){

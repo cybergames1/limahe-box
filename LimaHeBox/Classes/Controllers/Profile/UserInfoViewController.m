@@ -202,7 +202,7 @@
     }else if (indexPath.row == 3) {
         //修改年龄
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        EditUserInfoViewController* controller = [[EditUserInfoViewController alloc] initWithOption:ProfileEditOptionNick profileInfo:cell.detailTextLabel.text];
+        EditUserInfoViewController* controller = [[EditUserInfoViewController alloc] initWithOption:ProfileEditOptionAge profileInfo:cell.detailTextLabel.text];
         [self.navigationController pushViewController:controller animated:YES];
         [controller release];
     }else if (indexPath.row == 4) {
@@ -224,13 +224,13 @@
     }else if (indexPath.row == 5) {
         //修改常用地址
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        EditUserInfoViewController* controller = [[EditUserInfoViewController alloc] initWithOption:ProfileEditOptionIntroduction profileInfo:cell.detailTextLabel.text];
+        EditUserInfoViewController* controller = [[EditUserInfoViewController alloc] initWithOption:ProfileEditOptionAddress profileInfo:cell.detailTextLabel.text];
         [self.navigationController pushViewController:controller animated:YES];
         [controller release];
     }else if (indexPath.row == 6) {
         //添加设备号
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        EditUserInfoViewController* controller = [[EditUserInfoViewController alloc] initWithOption:ProfileEditOptionNick profileInfo:cell.detailTextLabel.text];
+        EditUserInfoViewController* controller = [[EditUserInfoViewController alloc] initWithOption:ProfileEditOptionDeviceId profileInfo:cell.detailTextLabel.text];
         [self.navigationController pushViewController:controller animated:YES];
         [controller release];
     }else if (indexPath.row == 7) {
