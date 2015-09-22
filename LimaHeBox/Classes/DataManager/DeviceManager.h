@@ -47,6 +47,8 @@ extern NSString* const UpdateUserInfoNotification;
 /**
   获取设备信息:gps，温湿度，称重
  **/
-- (void)startGetDeviceInfo:(void(^)())success failure:(void(^)(NSError*))failure;
+- (void)startGetDeviceInfo:(void(^)(NSError *))start
+                   success:(void(^)())success
+                   failure:(void(^)(NSError*))failure;
 
 @end

@@ -75,16 +75,10 @@
     PPQPostDataRequest *request = [[PPQPostDataRequest alloc] initWithDelegate:self theURl:[NSURL URLWithString:[PPQNetWorkURLs updateInfo]]];
     
     MUser *loginUser = [[AccountManager sharedManager] loginUser];
-    NSString *userName = [loginUser userName];
+    NSString *authToken = [loginUser userAuthToken];
     
-    if (userName) {
-        [request addPostValue:userName forKey:@"username"];
-    }
-    
-    NSString *password = [LRTools userPassword];
-    
-    if (password) {
-        [request addPostValue:password forKey:@"password"];
+    if (authToken) {
+        [request addPostValue:authToken forKey:@"token"];
     }
     
     if (gender) {
@@ -104,7 +98,7 @@
     }
     
     if (deviceId) {
-        [request addPostValue:deviceId forKey:@"deviceId"];
+        [request addPostValue:deviceId forKey:@"toolsn"];
     }
     
     self.request = request;

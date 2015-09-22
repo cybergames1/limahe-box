@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DC00D6A81BABE64C0088FA71 /* puzzle_start.aif in Resources */ = {isa = PBXBuildFile; fileRef = DC00D6A71BABE64C0088FA71 /* puzzle_start.aif */; settings = {ASSET_TAGS = (); }; };
 		DC00D7051BAD006A0088FA71 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DC00D6E11BAD006A0088FA71 /* MKAnnotationView+WebCache.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
 		DC00D7061BAD006A0088FA71 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = DC00D6E31BAD006A0088FA71 /* NSData+ImageContentType.m */; settings = {ASSET_TAGS = (); }; };
 		DC00D7071BAD006A0088FA71 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DC00D6E51BAD006A0088FA71 /* SDImageCache.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -61,6 +60,8 @@
 		DC0A3C571B58D30B0048774B /* PedoMeterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0A3C561B58D30B0048774B /* PedoMeterViewController.m */; };
 		DC0A3C5A1B58D32B0048774B /* PedoMeterView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0A3C591B58D32B0048774B /* PedoMeterView.m */; };
 		DC1DFE6B1B5CC8C100B86732 /* BlueToothViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1DFE6A1B5CC8C100B86732 /* BlueToothViewController.m */; };
+		DC28F3361BB12F6B0042D407 /* SettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DC28F3351BB12F6B0042D407 /* SettingManager.m */; settings = {ASSET_TAGS = (); }; };
+		DC28F3381BB13FE30042D407 /* HOOK1.WAV in Resources */ = {isa = PBXBuildFile; fileRef = DC28F3371BB13FE30042D407 /* HOOK1.WAV */; settings = {ASSET_TAGS = (); }; };
 		DC3F17161B2FDEEE00F02C10 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3F17151B2FDEEE00F02C10 /* main.m */; };
 		DC3F17211B2FDEEE00F02C10 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC3F17201B2FDEEE00F02C10 /* Images.xcassets */; };
 		DC3F17301B2FDEEE00F02C10 /* LimaHeBoxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3F172F1B2FDEEE00F02C10 /* LimaHeBoxTests.m */; };
@@ -303,7 +304,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		DC00D6A71BABE64C0088FA71 /* puzzle_start.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = puzzle_start.aif; sourceTree = "<group>"; };
 		DC00D6E01BAD006A0088FA71 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		DC00D6E11BAD006A0088FA71 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		DC00D6E21BAD006A0088FA71 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -417,6 +417,9 @@
 		DC0A3C591B58D32B0048774B /* PedoMeterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PedoMeterView.m; sourceTree = "<group>"; };
 		DC1DFE691B5CC8C100B86732 /* BlueToothViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueToothViewController.h; sourceTree = "<group>"; };
 		DC1DFE6A1B5CC8C100B86732 /* BlueToothViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueToothViewController.m; sourceTree = "<group>"; };
+		DC28F3341BB12F6B0042D407 /* SettingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingManager.h; sourceTree = "<group>"; };
+		DC28F3351BB12F6B0042D407 /* SettingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingManager.m; sourceTree = "<group>"; };
+		DC28F3371BB13FE30042D407 /* HOOK1.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = HOOK1.WAV; sourceTree = "<group>"; };
 		DC3F17101B2FDEEE00F02C10 /* LimaHeBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LimaHeBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC3F17141B2FDEEE00F02C10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC3F17151B2FDEEE00F02C10 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -792,7 +795,7 @@
 		DC00D6A61BABE64C0088FA71 /* music */ = {
 			isa = PBXGroup;
 			children = (
-				DC00D6A71BABE64C0088FA71 /* puzzle_start.aif */,
+				DC28F3371BB13FE30042D407 /* HOOK1.WAV */,
 			);
 			path = music;
 			sourceTree = "<group>";
@@ -1397,6 +1400,8 @@
 				DCD057B91B9AE0C2003A7740 /* WeiXinManager.m */,
 				DC8008431B9D77F700F13C37 /* DeviceManager.h */,
 				DC8008441B9D77F700F13C37 /* DeviceManager.m */,
+				DC28F3341BB12F6B0042D407 /* SettingManager.h */,
+				DC28F3351BB12F6B0042D407 /* SettingManager.m */,
 			);
 			name = DataManager;
 			path = Classes/DataManager;
@@ -1944,7 +1949,6 @@
 				DCEA69A71B86FBA7008FF3E2 /* f_pause@2x.png in Resources */,
 				DCEA69FC1B885FE8008FF3E2 /* f_weigh@2x.png in Resources */,
 				DCFAC4961B38F76C0062D479 /* main_xingcheng@2x.png in Resources */,
-				DC00D6A81BABE64C0088FA71 /* puzzle_start.aif in Resources */,
 				DCFAC4651B38F76C0062D479 /* main_fenxiang@2x.png in Resources */,
 				DCEA69A31B86FBA7008FF3E2 /* f_back@2x.png in Resources */,
 				DCEA69B61B873505008FF3E2 /* f_left@2x.png in Resources */,
@@ -2004,6 +2008,7 @@
 				DCFAC48B1B38F76C0062D479 /* w_39@2x.png in Resources */,
 				DCEA6A391B895D6D008FF3E2 /* bl_bg@3x.png in Resources */,
 				DCEA6A051B8867B0008FF3E2 /* f_1_alarm@2x.png in Resources */,
+				DC28F3381BB13FE30042D407 /* HOOK1.WAV in Resources */,
 				DCEA69D91B8801B6008FF3E2 /* pf_logo4@2x.png in Resources */,
 				DCFAC48E1B38F76C0062D479 /* w_41@2x.png in Resources */,
 				DCFAC4D21B3A9D4A0062D479 /* k_youzhengguonei@2x.png in Resources */,
@@ -2174,6 +2179,7 @@
 				DC3F17ED1B302CBF00F02C10 /* QuadCurveMenuItem.m in Sources */,
 				DC3F17F51B30376000F02C10 /* MainMenuView.m in Sources */,
 				DC0237E81B32D7AF00245501 /* NSString+base64.m in Sources */,
+				DC28F3361BB12F6B0042D407 /* SettingManager.m in Sources */,
 				DC3F178A1B2FDF3000F02C10 /* PPQPostDataRequest.m in Sources */,
 				DCEA69991B86D66B008FF3E2 /* TemperatureView.m in Sources */,
 				DC00D7871BAFEF630088FA71 /* NSArray+JSONModel.m in Sources */,

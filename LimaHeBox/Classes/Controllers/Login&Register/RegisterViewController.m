@@ -47,9 +47,7 @@
     [self showIndicatorHUDView:@"正在注册..."];
     LRDataSource *dataSource = [[[LRDataSource alloc] initWithDelegate:self] autorelease];
     [dataSource registerWithUserName:_useNameCell.textField.text password:_passwordCell.textField.text phone:@"13682010773"];
-    self.dataSource = dataSource;
-    
-    [LRTools setUserPassword:_passwordCell.textField.text];
+    self.dataSource = dataSource;    
 }
 
 - (void)dataSourceFinishLoad:(PPQDataSource *)source {

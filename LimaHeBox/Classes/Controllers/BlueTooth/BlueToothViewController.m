@@ -125,7 +125,7 @@
     [alert show];
     [alert release];
     
-    [[self class] makeSound:@"puzzle_start.aif"];
+    [[self class] makeSound:@"HOOK1.WAV"];
     
 }
 

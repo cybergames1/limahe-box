@@ -19,6 +19,9 @@
 #import "TempViewController.h"
 #import "GPSViewController.h"
 #import "AccountManager.h"
+#import "DeviceManager.h"
+#import "MBProgressHUD.h"
+#import "UserInfoViewController.h"
 
 #define Label_Tag 1232
 
@@ -59,6 +62,7 @@
 
 - (void)dealloc {
     [_tabList release];_tabList = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super dealloc];
 }
 
@@ -67,6 +71,7 @@
     if (self) {
         NSArray *tabList_ = @[@"首\t  页",@"蓝\t  牙",@"行程预定",@"分\t  享",@"快\t  递",@"发\t  现",@"我\t  的-"];
         _tabList = [tabList_ retain];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLogout:) name:kUserDidLogOutNotification object:nil];
     }
     return self;
 }
@@ -84,11 +89,77 @@
     [mainNav release];
     
     [self setBoxSideBar];
+    
+    //设备信息
+    [[DeviceManager sharedManager] startGetDeviceInfo:^(NSError *error){
+        if (error == nil) {
+            //
+        }else {
+            if (error.code == 101) {
+                [self showAlertView:@"您还没有登录" alertTitle:@"提示" cancleTitle:@"取消" otherButtonTitle:@"登录" dismissBlock:^(NSString *buttonTitle) {
+                    if ([buttonTitle isEqualToString:@"登录"]) {
+                        [self showLogin];
+                    }
+                }];
+            }else if (error.code == 102) {
+                [self showBindDevice];
+            }else {
+                //
+            }
+        }
+    }success:^{
+        [MBProgressHUD hideAllHUDsForView:self.view animated:NO];
+        [MBProgressHUD hideAllHUDsForView:[CommonTools keyWindow] animated:NO];
+        [MBProgressHUD hideAllHUDsForView:[CommonTools visibleWindow] animated:NO];
+    }failure:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:NO];
+        [MBProgressHUD hideAllHUDsForView:[CommonTools keyWindow] animated:NO];
+        [MBProgressHUD hideAllHUDsForView:[CommonTools visibleWindow] animated:NO];
+        [self showHUDWithText:[error.userInfo objectForKey:NSLocalizedDescriptionKey]];
+    }];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [self hideSideBar];
+}
+
+- (void)userLogout:(NSNotification *)notification {
+    [_tableView reloadData];
+}
+
+- (void)showLogin {
+    [LoginViewController showLogin:self
+                       finishBlock:^
+     {
+         [_tableView reloadData];
+         //延迟1秒提示绑定设备
+         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+             if ([CommonTools isEmptyString:[[[AccountManager sharedManager] loginUser] userDeviceId]]) {
+                 [self showBindDevice];
+             }
+         });
+     }
+                      failureBlock:^
+     {
+         
+     }];
+}
+
+- (void)showBindDevice {
+    [self showAlertView:@"您还没有绑定设备" alertTitle:@"提示" cancleTitle:@"取消" otherButtonTitle:@"绑定" dismissBlock:^(NSString *buttonTitle) {
+        if ([buttonTitle isEqualToString:@"绑定"]) {
+            UserViewController *controller = [[UserViewController alloc] init];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+            [self presentViewController:nav animated:YES completion:nil];
+            [controller release];
+            [nav release];
+            
+            UserInfoViewController *infoController = [[UserInfoViewController alloc] init];
+            [controller.navigationController pushViewController:infoController animated:NO];
+            [infoController release];
+        }
+    }];
 }
 
 - (void)showSideBar {

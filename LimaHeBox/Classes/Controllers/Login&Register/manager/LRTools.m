@@ -9,6 +9,7 @@
 #import "LRTools.h"
 #import "AccountManager.h"
 #import "UserDefaultConstant.h"
+#import "NotificaionConstant.h"
 
 @implementation LRTools
 
@@ -20,15 +21,6 @@
         instance = [[LRTools alloc] init];
     });
     return instance;
-}
-
-+ (void)setUserPassword:(NSString *)password {
-    [[NSUserDefaults standardUserDefaults] setObject:password forKey:User_Password];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-+ (NSString *)userPassword {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:User_Password];
 }
 
 + (void)startAppIfNeeded {
@@ -43,6 +35,9 @@
     MUser *loginUser = [[MUser alloc] initWithDictionary:dictionary];
     [[AccountManager sharedManager] setLoginUser:loginUser];
     [loginUser release];
+    
+    [[AccountManager sharedManager] saveStorage];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kUserDidChangedNotification object:nil];
 }
 
 #pragma mark - 验证邮箱、手机号合法性

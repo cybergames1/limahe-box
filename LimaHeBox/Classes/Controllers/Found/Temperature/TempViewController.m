@@ -56,11 +56,18 @@
     [self.view addSubview:temp2];
     _temp2 = temp2;
     
-    [self showIndicatorHUDView:@"正在获取设备信息"];
-    [[DeviceManager sharedManager] startGetDeviceInfo:^{
+    [[DeviceManager sharedManager] startGetDeviceInfo:^(NSError *error){
+        if (error == nil) {
+            [self showIndicatorHUDView:@"正在获取设备信息"];
+        }else {
+            [self showHUDWithText:[error.userInfo objectForKey:NSLocalizedDescriptionKey]];
+        }
+    }success:^{
         [self hideAllHUDView];
         _temp1.currentValue = [[[DeviceManager sharedManager] currentDevice] temperature];
         _temp2.currentValue = [[[DeviceManager sharedManager] currentDevice] wet];
+        [_temp1 setNeedsLayout];
+        [_temp2 setNeedsLayout];
     }failure:^(NSError *error) {
         [self hideAllHUDView];
         [self showHUDWithText:[error.userInfo objectForKey:NSLocalizedDescriptionKey]];

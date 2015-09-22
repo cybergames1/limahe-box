@@ -11,6 +11,8 @@
 #import "BoxSideBarController.h"
 #import "WeiXinManager.h"
 #import "WeiboSDK.h"
+#import "AccountManager.h"
+#import "SettingManager.h"
 
 #define kSinaAppKey             @"858239903"
 
@@ -31,7 +33,14 @@
     [WeiboSDK enableDebugMode:YES];
     [WeiboSDK registerApp:kSinaAppKey];
     
-    //[BoxSideBarController registerSystemRemoteNotification];
+    //初始化基本设置
+    [SettingManager prepareApplication];
+    
+    if ([AccountManager isLogin]) {
+        //注册系统通知
+//        [BoxSideBarController unregisterForRemoteNotification];
+//        [BoxSideBarController registerSystemRemoteNotification];
+    }
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     self.window.backgroundColor = [UIColor blackColor];

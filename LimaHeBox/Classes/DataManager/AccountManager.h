@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "BoxStorageModel.h"
+#import "UserDefaultConstant.h"
+#import "NotificaionConstant.h"
 
-@interface MUser : NSObject
+@interface MUser : JSONModel
 
+@property (nonatomic,copy,readonly) NSString *userAuthToken;
 @property (nonatomic,copy,readonly) NSString *userId;
 @property (nonatomic,copy,readonly) NSString *userName;
 @property (nonatomic,copy,readonly) NSString *userIcon;
@@ -38,7 +41,7 @@
 
 @end
 
-extern NSString* const kUserInfoAuthKey;         // authcookie
+extern NSString* const kUserInfoAuthKey;         // authToken
 extern NSString* const kUserInfoOPTokenKey;      // openAPIAccessToken
 extern NSString* const kUserInfoNameKey;         // user name
 extern NSString* const kUserInfoIntroductionKey; // user Introduction
@@ -54,7 +57,7 @@ extern NSString* const kUserInfoDeviceIdKey;     // user DeviceId
 
 @interface AccountManager : BoxStorageModel
 
-@property (nonatomic, retain) MUser *loginUser;
+@property (nonatomic, strong) MUser *loginUser;
 
 + (AccountManager *)sharedManager;
 

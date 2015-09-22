@@ -254,7 +254,8 @@
 }
 
 - (void)logoutAction {
-    
+    [AccountManager logout];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

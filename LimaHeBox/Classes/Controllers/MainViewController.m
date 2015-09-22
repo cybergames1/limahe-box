@@ -68,14 +68,6 @@ static int menuIndex[8] = {4,2,1,3,5,7,8,9};
     _weatherView = weatherView;
     
     [self setWeatherInfo:@"101010100"];
-    
-    //设备信息
-    [[DeviceManager sharedManager] startGetDeviceInfo:^{
-        [self hideAllHUDView];
-    }failure:^(NSError *error) {
-        [self hideAllHUDView];
-        [self showHUDWithText:[error.userInfo objectForKey:NSLocalizedDescriptionKey]];
-    }];
 }
 
 - (void)setWeatherInfo:(NSString *)areaId {

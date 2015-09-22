@@ -7,11 +7,11 @@
 //
 
 #import "AccountManager.h"
-#import "UserDefaultConstant.h"
-#import "NotificaionConstant.h"
+#import "BoxSideBarController.h"
 
 @interface MUser ()
 
+@property (nonatomic,copy) NSString *userAuthToken;
 @property (nonatomic,copy) NSString *userId;
 @property (nonatomic,copy) NSString *userName;
 @property (nonatomic,copy) NSString *userIcon;
@@ -27,6 +27,7 @@
 @implementation MUser
 
 - (void)dealloc {
+    self.userAuthToken = nil;
     self.userName = nil;
     self.userIcon = nil;
     self.userPhone = nil;
@@ -42,6 +43,7 @@
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
     if (self) {
+        self.userAuthToken = [dictionary objectForKey:@"token"];
         self.userId = [dictionary objectForKey:@"userid"];
         self.userName = [dictionary objectForKey:@"username"];
         self.userGender = [dictionary objectForKey:@"sex"];
@@ -50,7 +52,7 @@
         self.userAge = [dictionary objectForKey:@"age"];
         self.userAddress = [dictionary objectForKey:@"address"];
         self.userIcon = [[NSBundle mainBundle] pathForResource:@"pf_logo1@2x" ofType:@"png"];
-        self.userDeviceId = [dictionary objectForKey:@"deviceId"];
+        self.userDeviceId = [dictionary objectForKey:@"toolsn"];
     }
     return self;
 }
@@ -88,6 +90,9 @@
     }else if ([kUserInfoDeviceIdKey isEqualToString:key]) {
         //userAddress
         self.userDeviceId = value;
+    }else if ([kUserInfoAuthKey isEqualToString:key]) {
+        //userAuthToken
+        self.userAuthToken = value;
     }else {
         //
     }
@@ -119,9 +124,16 @@ NSString* const  kUserInfoDeviceIdKey = @"_userDeivceId";
     static AccountManager *instance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        instance = [[AccountManager alloc] init];
+        instance = [[AccountManager storageModel] retain];
+        [[NSNotificationCenter defaultCenter] addObserver:instance selector:@selector(userDidChange:) name:kUserDidChangedNotification object:nil];
     });
     return instance;
+}
+
+- (void)userDidChange:(NSNotification *)notification {
+    if ([[self class] isLogin]) {
+        [BoxSideBarController registerSystemRemoteNotification];
+    }
 }
 
 + (MUser *)testUser {
@@ -160,7 +172,10 @@ NSString* const  kUserInfoDeviceIdKey = @"_userDeivceId";
 
 + (void) logout
 {
+    [BoxSideBarController unregisterForRemoteNotification];
     [AccountManager sharedManager].loginUser = nil;
+    [[AccountManager sharedManager] deleteStorage];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kUserDidLogOutNotification object:nil];
 }
 
 

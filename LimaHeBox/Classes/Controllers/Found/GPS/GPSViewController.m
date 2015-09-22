@@ -52,8 +52,13 @@
     [self.view addSubview:mapView];
     _mapView = mapView;
     
-    [self showIndicatorHUDView:@"正在获取设备信息"];
-    [[DeviceManager sharedManager] startGetDeviceInfo:^{
+    [[DeviceManager sharedManager] startGetDeviceInfo:^(NSError *error){
+        if (error == nil) {
+            [self showIndicatorHUDView:@"正在获取设备信息"];
+        }else {
+            [self showHUDWithText:[error.userInfo objectForKey:NSLocalizedDescriptionKey]];
+        }
+    }success:^{
         [self hideAllHUDView];
         
         CLLocationCoordinate2D coordinate2D = [[[DeviceManager sharedManager] currentDevice] coordinate];

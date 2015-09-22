@@ -8,6 +8,8 @@
 
 #import "DeviceManager.h"
 #import "DeviceDataSource.h"
+#import "AccountManager.h"
+#import "CommonTools.h"
 
 NSString* const UserInfoWeightKey = @"userInfo_weightkey";
 NSString* const UpdateUserInfoNotification = @"UpdateUserInfoNotification";
@@ -108,7 +110,26 @@ NSString* const UpdateUserInfoNotification = @"UpdateUserInfoNotification";
     return instance;
 }
 
-- (void)startGetDeviceInfo:(void(^)())success failure:(void(^)(NSError*))failure {
+- (void)startGetDeviceInfo:(void(^)(NSError *))start success:(void (^)())success failure:(void(^)(NSError*))failure {
+    if (![AccountManager isLogin]) {
+        if (start) {
+            start ([NSError errorWithDomain:@"ErrorDomain" code:101 userInfo:@{NSLocalizedDescriptionKey:@"您还没有登录"}]);
+        }
+        return;
+    }
+    
+    NSString *deviceId = [[[AccountManager sharedManager] loginUser] userDeviceId];
+    if ([CommonTools isEmptyString:deviceId]) {
+        if (start) {
+            start ([NSError errorWithDomain:@"ErrorDomain" code:102 userInfo:@{NSLocalizedDescriptionKey:@"您还未绑定设备"}]);
+        }
+        return;
+    };
+    
+    if (start) {
+        start (nil);
+    }
+    
     if (success) success_ = [success copy];
     if (failure) failure_ = [failure copy];
     
@@ -119,7 +140,7 @@ NSString* const UpdateUserInfoNotification = @"UpdateUserInfoNotification";
     }
     
     DeviceDataSource *dataSource = [[[DeviceDataSource alloc] initWithDelegate:self] autorelease];
-    [dataSource getDeviceInfo:@"867144029586110"];
+    [dataSource getDeviceInfo:deviceId];
     self.dataSource = dataSource;
 }
 
