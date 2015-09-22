@@ -17,7 +17,7 @@
 #import "CommonTools.h"
 #import <TencentOpenAPI/QQApiInterface.h>
 
-#define KWeixinDefaultDesc @"啪啪奇视频分享"
+#define KWeixinDefaultDesc @"liemoch分享"
 
 @interface SecondShareManager()
 + (SecondShareManager*) sharedShareManager;
@@ -65,10 +65,10 @@ static NSDictionary* defaultVideoInfo = nil;
 //    NSString *videoTitle = [[defaultVideoInfo objectForKey:@"video"] objectForKey:@"tv_title"];
 //    NSString *imgUrl = [CommonTools videoThumbPath:[videoDic objectForKey:@"img"] resolution:[videoDic objectForKey:@"resolution"]];
     
-    NSString *videoTitle = @"测试分享";
+    NSString *videoTitle = @"分享";
     //UIImage *thumb = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:imgUrl];
     UIImage *thumb = [UIImage imageNamed:@"main_bg"];
-    NSString *sharedUrlString = @"http://www.baidu.com";
+    NSString *sharedUrlString = @"http://www.liemoch.com";
     NSURL *sharedUrl = [NSURL URLWithString:sharedUrlString];
     
     switch (type) {
@@ -80,12 +80,13 @@ static NSDictionary* defaultVideoInfo = nil;
             
             WBMessageObject *message = [WBMessageObject message];
             WBWebpageObject *webpage = [WBWebpageObject object];
-            webpage.objectID = @"identifier1";//[NSString stringWithFormat:@"%.0f", [[NSDate date] timeIntervalSince1970]];
+            webpage.objectID = [NSString stringWithFormat:@"%.0f", [[NSDate date] timeIntervalSince1970]];
             webpage.title = videoTitle;
             webpage.description = KWeixinDefaultDesc;
             webpage.thumbnailData = [self _imageDataCompress32KWithImage:thumb];
-            webpage.webpageUrl = @"http://www.baidu.com";
+            webpage.webpageUrl = sharedUrlString;
             message.mediaObject = webpage;
+            message.text = [videoInfo objectForKey:@"title"];
             
             WBSendMessageToWeiboRequest *request = [WBSendMessageToWeiboRequest requestWithMessage:message authInfo:authRequest access_token:nil];
             [WeiboSDK sendRequest:request];
@@ -94,7 +95,7 @@ static NSDictionary* defaultVideoInfo = nil;
         case SharePlatformTypeWeixin:
         {
             //微信好友
-            [[WeiXinManager sharedInstance] shareVideoToWeixinFriendWithTitle:videoTitle
+            [[WeiXinManager sharedInstance] shareVideoToWeixinFriendWithTitle:[videoInfo objectForKey:@"title"]
                                                                  desctription:KWeixinDefaultDesc
                                                                           url:sharedUrlString
                                                                    thumbImage:thumb];

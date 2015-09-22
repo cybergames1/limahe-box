@@ -52,7 +52,7 @@
     }
     
     __block __typeof__(self) weakSelf = self;
-    [SecondShareManager shareVideo:nil platformType:SharePlatformTypeWeibo finishBlock:^(NSString *finishText, NSError *error) {
+    [SecondShareManager shareVideo:@{@"title":[_inputView content]} platformType:SharePlatformTypeWeibo finishBlock:^(NSString *finishText, NSError *error) {
         if (finishText) {
             [weakSelf showHUDWithText:finishText];
         }

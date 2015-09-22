@@ -14,8 +14,6 @@
 #import "AccountManager.h"
 #import "SettingManager.h"
 
-#define kSinaAppKey             @"858239903"
-
 @interface AppDelegate ()
 
 @end
@@ -79,6 +77,32 @@
 //    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"注意！" message:@"你的箱子离你过远" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"好", nil];
 //    [alert show];
 //    [alert release];
+}
+
+#pragma mark 处理URL，适用于第三方分享跳转
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    if ([[url absoluteString] hasPrefix:kSinaWeiboSSO] ||
+        [[url absoluteString] hasPrefix:kWXSSO] ||
+        [[url absoluteString] hasPrefix:kWeiboSDKSSO])
+    {
+        return [SettingManager handleOpenURL:url];
+    }
+    return NO;
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    if ([[url absoluteString] hasPrefix:kSinaWeiboSSO] ||
+        [[url absoluteString] hasPrefix:kWXSSO] ||
+        [[url absoluteString] hasPrefix:kWeiboSDKSSO])
+    {
+        return [SettingManager handleOpenURL:url];
+    }
+    return NO;
 }
 
 @end

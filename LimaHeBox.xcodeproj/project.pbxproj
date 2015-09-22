@@ -62,6 +62,7 @@
 		DC1DFE6B1B5CC8C100B86732 /* BlueToothViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1DFE6A1B5CC8C100B86732 /* BlueToothViewController.m */; };
 		DC28F3361BB12F6B0042D407 /* SettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DC28F3351BB12F6B0042D407 /* SettingManager.m */; settings = {ASSET_TAGS = (); }; };
 		DC28F3381BB13FE30042D407 /* HOOK1.WAV in Resources */ = {isa = PBXBuildFile; fileRef = DC28F3371BB13FE30042D407 /* HOOK1.WAV */; settings = {ASSET_TAGS = (); }; };
+		DC28F33B1BB156390042D407 /* WeiboManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DC28F33A1BB156390042D407 /* WeiboManager.m */; settings = {ASSET_TAGS = (); }; };
 		DC3F17161B2FDEEE00F02C10 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3F17151B2FDEEE00F02C10 /* main.m */; };
 		DC3F17211B2FDEEE00F02C10 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC3F17201B2FDEEE00F02C10 /* Images.xcassets */; };
 		DC3F17301B2FDEEE00F02C10 /* LimaHeBoxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3F172F1B2FDEEE00F02C10 /* LimaHeBoxTests.m */; };
@@ -420,6 +421,8 @@
 		DC28F3341BB12F6B0042D407 /* SettingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingManager.h; sourceTree = "<group>"; };
 		DC28F3351BB12F6B0042D407 /* SettingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingManager.m; sourceTree = "<group>"; };
 		DC28F3371BB13FE30042D407 /* HOOK1.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = HOOK1.WAV; sourceTree = "<group>"; };
+		DC28F3391BB156390042D407 /* WeiboManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboManager.h; sourceTree = "<group>"; };
+		DC28F33A1BB156390042D407 /* WeiboManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboManager.m; sourceTree = "<group>"; };
 		DC3F17101B2FDEEE00F02C10 /* LimaHeBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LimaHeBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC3F17141B2FDEEE00F02C10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC3F17151B2FDEEE00F02C10 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1398,6 +1401,8 @@
 				DCD057B61B9AE01A003A7740 /* SecondShareManager.m */,
 				DCD057B81B9AE0C2003A7740 /* WeiXinManager.h */,
 				DCD057B91B9AE0C2003A7740 /* WeiXinManager.m */,
+				DC28F3391BB156390042D407 /* WeiboManager.h */,
+				DC28F33A1BB156390042D407 /* WeiboManager.m */,
 				DC8008431B9D77F700F13C37 /* DeviceManager.h */,
 				DC8008441B9D77F700F13C37 /* DeviceManager.m */,
 				DC28F3341BB12F6B0042D407 /* SettingManager.h */,
@@ -2121,6 +2126,7 @@
 				DC0A3C571B58D30B0048774B /* PedoMeterViewController.m in Sources */,
 				DC00D74C1BAD01E10088FA71 /* ASIAuthenticationDialog.m in Sources */,
 				DC3F17FF1B31505500F02C10 /* LRSuperViewController.m in Sources */,
+				DC28F33B1BB156390042D407 /* WeiboManager.m in Sources */,
 				DCCE82351B808071000EF913 /* RLCell.m in Sources */,
 				DC00D70F1BAD006A0088FA71 /* UIImage+GIF.m in Sources */,
 				DCFAC4E01B3ABDC30062D479 /* ExpressModel.m in Sources */,

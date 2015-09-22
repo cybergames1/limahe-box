@@ -30,13 +30,39 @@
 				<string>wx060eaaa26413937e</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>sinaweibosso</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>sinaweibosso.848666639</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>weiboSDK</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>wb848666639</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>weixin</string>
+		<string>wechat</string>
 		<string>sinaweibosso</string>
+		<string>sinaweibohd</string>
+		<string>sinaweibo</string>
+		<string>sinweibohdsso</string>
+		<string>weibosdk</string>
+		<string>weibosdk2.5</string>
 		<string>mqq</string>
 		<string>mqqapi</string>
 	</array>
