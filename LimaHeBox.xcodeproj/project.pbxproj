@@ -63,6 +63,8 @@
 		DC28F3361BB12F6B0042D407 /* SettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DC28F3351BB12F6B0042D407 /* SettingManager.m */; settings = {ASSET_TAGS = (); }; };
 		DC28F3381BB13FE30042D407 /* HOOK1.WAV in Resources */ = {isa = PBXBuildFile; fileRef = DC28F3371BB13FE30042D407 /* HOOK1.WAV */; settings = {ASSET_TAGS = (); }; };
 		DC28F33B1BB156390042D407 /* WeiboManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DC28F33A1BB156390042D407 /* WeiboManager.m */; settings = {ASSET_TAGS = (); }; };
+		DC28F33E1BB253810042D407 /* ALARM1.WAV in Resources */ = {isa = PBXBuildFile; fileRef = DC28F33C1BB253810042D407 /* ALARM1.WAV */; settings = {ASSET_TAGS = (); }; };
+		DC28F33F1BB253810042D407 /* BEEP1.WAV in Resources */ = {isa = PBXBuildFile; fileRef = DC28F33D1BB253810042D407 /* BEEP1.WAV */; settings = {ASSET_TAGS = (); }; };
 		DC3F17161B2FDEEE00F02C10 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3F17151B2FDEEE00F02C10 /* main.m */; };
 		DC3F17211B2FDEEE00F02C10 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC3F17201B2FDEEE00F02C10 /* Images.xcassets */; };
 		DC3F17301B2FDEEE00F02C10 /* LimaHeBoxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3F172F1B2FDEEE00F02C10 /* LimaHeBoxTests.m */; };
@@ -423,6 +425,8 @@
 		DC28F3371BB13FE30042D407 /* HOOK1.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = HOOK1.WAV; sourceTree = "<group>"; };
 		DC28F3391BB156390042D407 /* WeiboManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboManager.h; sourceTree = "<group>"; };
 		DC28F33A1BB156390042D407 /* WeiboManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboManager.m; sourceTree = "<group>"; };
+		DC28F33C1BB253810042D407 /* ALARM1.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ALARM1.WAV; sourceTree = "<group>"; };
+		DC28F33D1BB253810042D407 /* BEEP1.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BEEP1.WAV; sourceTree = "<group>"; };
 		DC3F17101B2FDEEE00F02C10 /* LimaHeBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LimaHeBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC3F17141B2FDEEE00F02C10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC3F17151B2FDEEE00F02C10 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -798,6 +802,8 @@
 		DC00D6A61BABE64C0088FA71 /* music */ = {
 			isa = PBXGroup;
 			children = (
+				DC28F33C1BB253810042D407 /* ALARM1.WAV */,
+				DC28F33D1BB253810042D407 /* BEEP1.WAV */,
 				DC28F3371BB13FE30042D407 /* HOOK1.WAV */,
 			);
 			path = music;
@@ -2009,6 +2015,7 @@
 				DCEA69921B86D12A008FF3E2 /* lr_bg@3x.png in Resources */,
 				DCFAC4801B38F76C0062D479 /* w_29@2x.png in Resources */,
 				DCFAC46E1B38F76C0062D479 /* w_12@2x.png in Resources */,
+				DC28F33F1BB253810042D407 /* BEEP1.WAV in Resources */,
 				DCEA6A0C1B8867B0008FF3E2 /* f_1_weigh@2x.png in Resources */,
 				DCFAC48B1B38F76C0062D479 /* w_39@2x.png in Resources */,
 				DCEA6A391B895D6D008FF3E2 /* bl_bg@3x.png in Resources */,
@@ -2052,6 +2059,7 @@
 				DCFAC4671B38F76C0062D479 /* main_lanya@2x.png in Resources */,
 				DCFAC4741B38F76C0062D479 /* w_18@2x.png in Resources */,
 				DCEA69DE1B8801B6008FF3E2 /* pf_logo9@2x.png in Resources */,
+				DC28F33E1BB253810042D407 /* ALARM1.WAV in Resources */,
 				DCFAC4911B38F76C0062D479 /* w_5@2x.png in Resources */,
 				DCFAC4931B38F76C0062D479 /* w_7@2x.png in Resources */,
 				DCFAC4C01B3A9D4A0062D479 /* k_dhl@2x.png in Resources */,

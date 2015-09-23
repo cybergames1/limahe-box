@@ -8,7 +8,8 @@
 
 #import "BlueToothViewController.h"
 #import "RadarView.h"
-#import <AudioToolbox/AudioToolbox.h>
+#import "CommonTools.h"
+#import "SettingManager.h"
 
 @interface BlueToothViewController () <CBCentralManagerDelegate,CBPeripheralDelegate,UITableViewDataSource,UITableViewDelegate>
 {
@@ -25,18 +26,6 @@
 @end
 
 @implementation BlueToothViewController
-
-+ (void)makeSound:(NSString *)soundFile {
-    NSString *path = [NSString stringWithFormat:@"%@/%@",[[NSBundle mainBundle] resourcePath],soundFile];
-    
-    SystemSoundID soundID;
-    
-    NSURL *filePath = [NSURL fileURLWithPath:path isDirectory:NO];
-    
-    AudioServicesCreateSystemSoundID((CFURLRef)filePath, &soundID);
-    
-    AudioServicesPlaySystemSound(soundID);
-}
 
 - (void)dealloc {
     [_devices release];_devices = nil;
@@ -125,7 +114,7 @@
     [alert show];
     [alert release];
     
-    [[self class] makeSound:@"HOOK1.WAV"];
+    [CommonTools makeSound:[[SettingManager sharedManager] bthWarningFileName] openVibration:[[SettingManager sharedManager] openVibration]];
     
 }
 

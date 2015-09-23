@@ -361,6 +361,12 @@ typedef NS_ENUM(NSInteger, PPQStatusBarType)
  */
 + (NSString *)stringValueForFloat:(CGFloat)num;
 
+/**
+ 播放铃声
+ @param openVibration 是否开启震动
+ */
++ (void)makeSound:(NSString *)soundFile openVibration:(BOOL)openVibration;
+
 @end
 
 

@@ -14,4 +14,11 @@
 #define News_Count @"news_count"
 #define User_Password @"user_password"
 
+
+///////////////////////
+// 蓝牙设置
+//////////////////////
+#define Bluetooth_File_Name @"bluetooth_file_name"
+#define Bluetooth_OpenVibration @"bluetooth_open_vibration"
+
 #endif

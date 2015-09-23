@@ -12,6 +12,7 @@
 #import "WeiXinManager.h"
 #import "WeiboManager.h"
 #import "SinaWeibo.h"
+#import "UserDefaultConstant.h"
 
 static Reachability* defaultReachability = nil;
 
@@ -68,6 +69,34 @@ static Reachability* defaultReachability = nil;
     
     //创建目录
     [CommonTools createDirectoryIfNecessaryAtPath:[CommonTools  pathForStorageClass]];
+}
+
+@end
+
+@implementation SettingManager (Bluetooth)
+
+- (void)setBthWarningFileName:(NSString *)bthWarningFileName {
+    if ([CommonTools isEmptyString:bthWarningFileName]) {
+        bthWarningFileName = @"HOOL1.WAV";
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:bthWarningFileName forKey:Bluetooth_File_Name];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (NSString *)bthWarningFileName {
+    NSString *fileName = [[NSUserDefaults standardUserDefaults] objectForKey:Bluetooth_File_Name];
+    if ([CommonTools isEmptyString:fileName]) {
+        fileName = @"HOOL1.WAV";
+    }
+    return fileName;
+}
+
+- (void)setOpenVibration:(BOOL)openVibration {
+    [[NSUserDefaults standardUserDefaults] setObject:@(openVibration) forKey:Bluetooth_OpenVibration];
+}
+
+- (BOOL)openVibration {
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:Bluetooth_OpenVibration] boolValue];
 }
 
 @end

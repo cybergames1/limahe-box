@@ -18,6 +18,7 @@
 //#import "MBProgressHUD.h"
 #import <CommonCrypto/CommonCryptor.h>
 #include <CommonCrypto/CommonHMAC.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 static NSString *macAdress = nil;
 static NSString *uniqueIdentifier = nil;
@@ -1189,6 +1190,23 @@ static NSString* rootPath = nil;
     
     return str;
 }
+
++ (void)makeSound:(NSString *)soundFile openVibration:(BOOL)openVibration {
+    NSString *path = [NSString stringWithFormat:@"%@/%@",[[NSBundle mainBundle] resourcePath],soundFile];
+    
+    SystemSoundID soundID;
+    
+    NSURL *filePath = [NSURL fileURLWithPath:path isDirectory:NO];
+    
+    AudioServicesCreateSystemSoundID((CFURLRef)filePath, &soundID);
+    
+    AudioServicesPlaySystemSound(soundID);
+    
+    if (openVibration) {
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    }
+}
+
 @end
 
 

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 #define kSinaWeiboSSO           @"sinaweibosso"
 #define kSinaAppKey             @"848666639"
@@ -25,5 +26,14 @@
 @interface SettingManager (PrepareAppData)
 
 + (void) prepareApplication;
+
+@end
+
+@interface SettingManager (Bluetooth)
+
+/** 铃声文件名 **/
+@property (nonatomic,copy) NSString * bthWarningFileName;
+/** 是否开启震动 **/
+@property (nonatomic) BOOL openVibration;
 
 @end
