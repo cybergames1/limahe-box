@@ -40,6 +40,15 @@
     [super dealloc];
 }
 
++(BOOL)propertyIsOptional:(NSString*)propertyName
+{
+    return YES;
+}
+
+- (NSString *)userIcon {
+    return [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:[_userIcon lastPathComponent]];
+}
+
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
     if (self) {
@@ -173,6 +182,7 @@ NSString* const  kUserInfoDeviceIdKey = @"_userDeivceId";
 + (void) logout
 {
     [BoxSideBarController unregisterForRemoteNotification];
+    [BoxSideBarController logout];
     [AccountManager sharedManager].loginUser = nil;
     [[AccountManager sharedManager] deleteStorage];
     [[NSNotificationCenter defaultCenter] postNotificationName:kUserDidLogOutNotification object:nil];

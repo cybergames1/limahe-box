@@ -20,7 +20,7 @@
 @property (nonatomic, retain) NSString* info;
 @end
 
-static NSInteger kMaxTextCount = 30;
+static NSInteger kMaxTextCount = 200;
 @implementation EditUserInfoViewController
 
 - (void)dealloc
@@ -107,6 +107,7 @@ static NSInteger kMaxTextCount = 30;
         _inputView.returnKeyType = UIReturnKeyDone;
         _inputView.borderStyle = FTInputBorderStyleNone;
         _inputView.fitStyle = FTFitStyleNone;
+        _inputView.text = self.info;
         [self.view addSubview:_inputView];
     }else {
         //
@@ -216,7 +217,7 @@ static NSInteger kMaxTextCount = 30;
             }
             else{
                 MUser* loginUser = [AccountManager sharedManager].loginUser;
-                [loginUser updateUserValue:_inputView.text forKey:kUserInfoIntroductionKey];
+                [loginUser updateUserValue:_inputView.text forKey:kUserInfoAddressKey];
                 [self showHUDWithText:@"修改常用地址成功！"];
                 [self performSelector:@selector(leftBarButtonAction) withObject:nil afterDelay:2.0];
             }

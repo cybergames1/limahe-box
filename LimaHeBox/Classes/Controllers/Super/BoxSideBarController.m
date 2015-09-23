@@ -60,6 +60,13 @@
     [[UIApplication sharedApplication] unregisterForRemoteNotifications];
 }
 
++ (void)logout {
+    UIViewController *controller = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+    if (controller.presentedViewController) {
+        [controller.presentedViewController dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
 - (void)dealloc {
     [_tabList release];_tabList = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];

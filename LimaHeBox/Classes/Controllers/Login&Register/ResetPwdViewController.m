@@ -65,6 +65,7 @@
 - (void)dataSourceFinishLoad:(PPQDataSource *)source {
     [super dataSourceFinishLoad:source];
     [self leftBarAction];
+    [AccountManager logout];
 }
 
 - (void)dataSource:(PPQDataSource *)source hasError:(NSError *)error {

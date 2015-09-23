@@ -12,6 +12,8 @@
 
 - (void)showSideBar;
 
+//登出都要回到首页
++ (void)logout;
 
 /** 注册系统通知 **/
 + (void)registerSystemRemoteNotification;

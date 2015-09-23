@@ -32,10 +32,7 @@
 }
 
 + (void)setLoginWithDictionary:(NSDictionary *)dictionary {
-    MUser *loginUser = [[MUser alloc] initWithDictionary:dictionary];
-    [[AccountManager sharedManager] setLoginUser:loginUser];
-    [loginUser release];
-    
+    [[AccountManager sharedManager] setLoginUser:[[[MUser alloc] initWithDictionary:dictionary] autorelease]];
     [[AccountManager sharedManager] saveStorage];
     [[NSNotificationCenter defaultCenter] postNotificationName:kUserDidChangedNotification object:nil];
 }

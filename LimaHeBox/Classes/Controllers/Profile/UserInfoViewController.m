@@ -19,6 +19,7 @@
 #import "EditProfileManager.h"
 #import "AccountManager.h"
 #import "EditUserInfoViewController.h"
+#import "BoxSideBarController.h"
 
 @interface UserInfoViewController () <UITableViewDataSource,UITableViewDelegate>
 {
@@ -255,7 +256,6 @@
 
 - (void)logoutAction {
     [AccountManager logout];
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

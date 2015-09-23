@@ -2356,7 +2356,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.liemoch.box;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9f0ea0c6-f2ee-43ac-bdab-84cc860c9010";
+				PROVISIONING_PROFILE = "a536adf8-70ba-4d93-b068-433390af3228";
 			};
 			name = Debug;
 		};
@@ -2389,7 +2389,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.liemoch.box;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9f0ea0c6-f2ee-43ac-bdab-84cc860c9010";
+				PROVISIONING_PROFILE = "a536adf8-70ba-4d93-b068-433390af3228";
 			};
 			name = Release;
 		};
