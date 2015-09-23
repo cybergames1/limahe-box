@@ -65,6 +65,7 @@
 		DC28F33B1BB156390042D407 /* WeiboManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DC28F33A1BB156390042D407 /* WeiboManager.m */; settings = {ASSET_TAGS = (); }; };
 		DC28F33E1BB253810042D407 /* ALARM1.WAV in Resources */ = {isa = PBXBuildFile; fileRef = DC28F33C1BB253810042D407 /* ALARM1.WAV */; settings = {ASSET_TAGS = (); }; };
 		DC28F33F1BB253810042D407 /* BEEP1.WAV in Resources */ = {isa = PBXBuildFile; fileRef = DC28F33D1BB253810042D407 /* BEEP1.WAV */; settings = {ASSET_TAGS = (); }; };
+		DC28F3421BB294A10042D407 /* ActionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DC28F3411BB294A10042D407 /* ActionManager.m */; settings = {ASSET_TAGS = (); }; };
 		DC3F17161B2FDEEE00F02C10 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3F17151B2FDEEE00F02C10 /* main.m */; };
 		DC3F17211B2FDEEE00F02C10 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC3F17201B2FDEEE00F02C10 /* Images.xcassets */; };
 		DC3F17301B2FDEEE00F02C10 /* LimaHeBoxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3F172F1B2FDEEE00F02C10 /* LimaHeBoxTests.m */; };
@@ -427,6 +428,8 @@
 		DC28F33A1BB156390042D407 /* WeiboManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboManager.m; sourceTree = "<group>"; };
 		DC28F33C1BB253810042D407 /* ALARM1.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ALARM1.WAV; sourceTree = "<group>"; };
 		DC28F33D1BB253810042D407 /* BEEP1.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BEEP1.WAV; sourceTree = "<group>"; };
+		DC28F3401BB294A10042D407 /* ActionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionManager.h; sourceTree = "<group>"; };
+		DC28F3411BB294A10042D407 /* ActionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionManager.m; sourceTree = "<group>"; };
 		DC3F17101B2FDEEE00F02C10 /* LimaHeBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LimaHeBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC3F17141B2FDEEE00F02C10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC3F17151B2FDEEE00F02C10 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1500,6 +1503,8 @@
 				DCEA69761B86187B008FF3E2 /* view */,
 				DCEA6A0D1B887D68008FF3E2 /* ShareTool.h */,
 				DCEA6A0E1B887D68008FF3E2 /* ShareTool.m */,
+				DC28F3401BB294A10042D407 /* ActionManager.h */,
+				DC28F3411BB294A10042D407 /* ActionManager.m */,
 			);
 			path = Share;
 			sourceTree = "<group>";
@@ -2212,6 +2217,7 @@
 				DC3F17161B2FDEEE00F02C10 /* main.m in Sources */,
 				DC00D74E1BAD01E10088FA71 /* ASIDataDecompressor.m in Sources */,
 				DC00D7501BAD01E10088FA71 /* ASIFormDataRequest.m in Sources */,
+				DC28F3421BB294A10042D407 /* ActionManager.m in Sources */,
 				DCEA6A431B89E57F008FF3E2 /* BoxSideBarController.m in Sources */,
 				DCE0AEFB1B96D6E800F2CFC3 /* BadgeView.m in Sources */,
 				DC0A3C5A1B58D32B0048774B /* PedoMeterView.m in Sources */,

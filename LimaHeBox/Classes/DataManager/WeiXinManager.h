@@ -16,8 +16,6 @@
  
  **/
 
-#define kWXSSO                  @"wx060eaaa26413937e"
-
 @protocol WeixinManagerResponseDelegate <NSObject>
 
 - (void) weixinShareFinishSuccessWithRsp:(BaseResp *)resp;

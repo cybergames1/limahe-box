@@ -15,6 +15,9 @@
 
 #define kWeiboSDKSSO            @"wb848666639"
 
+#define kWXSSO                  @"wx9f089ae5ee83f0d2"
+#define KWXSecret               @"16cabc9b04980de7be5aecd79d9b647e"
+
 @interface SettingManager : NSObject
 
 + (SettingManager *)sharedManager;

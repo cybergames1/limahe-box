@@ -11,8 +11,9 @@
 #import "RegisterButton.h"
 #import "ShareTool.h"
 #import "SecondShareManager.h"
+#import "ActionManager.h"
 
-@interface ShareViewController ()
+@interface ShareViewController () <ActionManagerDelegate>
 {
     VideoShareInputView * _inputView;
 }
@@ -45,14 +46,21 @@
     [[ShareTool sharedTools] setShareText:nil];
 }
 
-- (void)shareAction {
-    if ([[_inputView content] length] <= 0) {
-        [self showHUDWithText:@"分享点内容吧"];
-        return;
+- (void)actionViewClickWithTitle:(NSString *)title {
+    SharePlatformType type = SharePlatformTypeWeibo;
+    
+    if ([title isEqualToString:@"微博"]) {
+        type = SharePlatformTypeWeibo;
+    }else if ([title isEqualToString:@"微信"]) {
+        type = SharePlatformTypeWeixin;
+    }else if ([title isEqualToString:@"微信朋友圈"]) {
+        type = SharePlatformTypeWeixinZone;
+    }else {
+        //
     }
     
     __block __typeof__(self) weakSelf = self;
-    [SecondShareManager shareVideo:@{@"title":[_inputView content]} platformType:SharePlatformTypeWeibo finishBlock:^(NSString *finishText, NSError *error) {
+    [SecondShareManager shareVideo:@{@"title":[_inputView content]} platformType:type finishBlock:^(NSString *finishText, NSError *error) {
         if (finishText) {
             [weakSelf showHUDWithText:finishText];
         }
@@ -60,6 +68,15 @@
             [weakSelf showHUDWithText:[error localizedDescription]];
         }
     }];
+}
+
+- (void)shareAction {
+    if ([[_inputView content] length] <= 0) {
+        [self showHUDWithText:@"分享点内容吧"];
+        return;
+    }
+    
+    [[ActionManager sharedManager] showActionViewWithItems:nil title:nil delegate:self userInfo:nil];
 }
 
 /*
