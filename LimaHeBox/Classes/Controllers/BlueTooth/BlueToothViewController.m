@@ -205,7 +205,7 @@
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
     NSLog(@"连接成功");
     [_peripheral setDelegate:self];
-    //[_peripheral discoverServices:nil];
+    [_peripheral discoverServices:nil];
     _radarView.state = RadarStateMatchSuccess;
     [self hideIndicatorHUDView];
     
