@@ -63,10 +63,6 @@
         }
             break;
         case 1:{
-            cell.textLabel.text = @"检查更新";
-        }
-            break;
-        case 2:{
             cell.textLabel.text = @"关于我们";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
@@ -115,11 +111,7 @@
             [controller release];
         }
             break;
-        case 1: {
-            //检查更新
-        }
-            break;
-        case 2:{
+        case 1:{
             //关于
             AboutViewController *controller = [[AboutViewController alloc] init];
             [self.navigationController pushViewController:controller animated:YES];
