@@ -79,6 +79,7 @@
         NSArray *tabList_ = @[@"首\t  页",@"蓝\t  牙",@"行程预定",@"分\t  享",@"快\t  递",@"发\t  现",@"我\t  的-"];
         _tabList = [tabList_ retain];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLogout:) name:kUserDidLogOutNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUserInfo:) name:kUserInfoDidUpdateNotification object:nil];
     }
     return self;
 }
@@ -132,6 +133,10 @@
 }
 
 - (void)userLogout:(NSNotification *)notification {
+    [_tableView reloadData];
+}
+
+- (void)updateUserInfo:(NSNotification *)notification {
     [_tableView reloadData];
 }
 

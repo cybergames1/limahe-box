@@ -80,16 +80,16 @@
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    if (_tapCount == RadarStateSearchFailure) {
-        _tapCount = RadarStateMatchSuccess;
-    }else if (_tapCount == RadarStateMatchSuccess) {
-        _tapCount = RadarStateWarning;
-    }else if (_tapCount == RadarStateWarning) {
-        _tapCount = RadarStateSearchFailure;
-    }else {
-        //
-    }
-    self.state = _tapCount;
+//    if (_tapCount == RadarStateSearchFailure) {
+//        _tapCount = RadarStateMatchSuccess;
+//    }else if (_tapCount == RadarStateMatchSuccess) {
+//        _tapCount = RadarStateWarning;
+//    }else if (_tapCount == RadarStateWarning) {
+//        _tapCount = RadarStateSearchFailure;
+//    }else {
+//        //
+//    }
+//    self.state = _tapCount;
 }
 
 @end

@@ -22,6 +22,7 @@
 @property (nonatomic, retain) CBCentralManager * manager;
 @property (nonatomic, retain) CBPeripheral * peripheral;
 @property (nonatomic, retain) NSTimer *timer;
+@property (nonatomic, retain) CBCharacteristic * c;
 
 @end
 
@@ -29,12 +30,14 @@
 
 - (void)dealloc {
     [_devices release];_devices = nil;
+    [_timer invalidate];
     [_timer release];_timer = nil;
     [self stopManager];
     [super dealloc];
 }
 
 - (void)stopManager {
+    [_c release];_c = nil;
     if (_peripheral) {
         [_manager cancelPeripheralConnection:_peripheral];
         [_peripheral setDelegate:nil];
@@ -84,12 +87,17 @@
     [super viewDidAppear:animated];
     [_manager scanForPeripheralsWithServices:nil options:@{CBCentralManagerScanOptionAllowDuplicatesKey : @YES }];
     
-    double delayInSeconds = 30.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        //[_manager stopScan];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 30 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [_manager stopScan];
         NSLog(@"扫描超时");
     });
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    if ([_timer isValid]) {
+        [_timer invalidate];
+    }
 }
 
 - (void)connect:(UIButton *)sender {
@@ -110,11 +118,13 @@
     if (_showAlert) return;
     
     _showAlert = YES;
+    dispatch_async(dispatch_get_main_queue(), ^{
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"注意！" message:@"你的箱子离你过远" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"好", nil];
     [alert show];
     [alert release];
     
     [CommonTools makeSound:[[SettingManager sharedManager] bthWarningFileName] openVibration:[[SettingManager sharedManager] openVibration]];
+    });
     
 }
 
@@ -174,7 +184,7 @@
 
 //查到外设后，停止扫描，连接设备
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI {
-    NSLog(@"查到外设");
+    //NSLog(@"查到外设");
     //更新列表
     BLEInfo *disinfo = [[BLEInfo alloc] init];
     disinfo.discoveredPeripheral = peripheral;
@@ -211,6 +221,7 @@
 
 //连接中断则重新连接
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
+    NSLog(@"连接中断");
     _radarView.state = RadarStateSearchFailure;
     _showAlert = NO;
     [central connectPeripheral:self.peripheral options:nil];
@@ -235,8 +246,8 @@
      **/
     int rssi = abs([peripheral.RSSI intValue]);
     CGFloat ci = (rssi - 64) / (10 * 4.);
-   // NSString *length = [NSString stringWithFormat:@"发现BLT热点:%@,距离:%.1fm",_peripheral.name,pow(10,ci)];
-   // NSLog(@"length:%@",length);
+    NSString *length = [NSString stringWithFormat:@"发现BLT热点:%@,距离:%.1fm",_peripheral.name,pow(10,ci)];
+    NSLog(@"length:%@",length);
     if (pow(10, ci) > 7) {
         _radarView.state = RadarStateWarning;
         [self scheduleLocalNotification];
@@ -261,24 +272,82 @@
 - (void) peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error {
     NSLog(@"发现特征的服务:%@ (%@)",service.UUID.data ,service.UUID);
     for (CBCharacteristic *c in service.characteristics) {
-        NSLog(@"特征 UUID: %@ (%@)",c.UUID.data,c.UUID);
+        NSLog(@"特征 UUID: %@ (%@)--(%lu)",c.UUID.data,c.UUID,(unsigned long)c.properties);
+        if (c.properties == CBCharacteristicPropertyRead) {
+            NSLog(@"---read---");
+        }else if (c.properties == CBCharacteristicPropertyWriteWithoutResponse) {
+            NSLog(@"---writewithResponse---");
+        }else if (c.properties == CBCharacteristicPropertyWrite) {
+            NSLog(@"---write---");
+        }else if (c.properties == CBCharacteristicPropertyNotify) {
+            NSLog(@"---notify---");
+        }else {
+            NSLog(@"---other---");
+        }
     }
     [peripheral readValueForCharacteristic:[service.characteristics firstObject]];
+    [peripheral readValueForCharacteristic:[service.characteristics lastObject]];
+    
+    Byte dataArr[5];
+    
+    dataArr[0]=0x01; dataArr[1]=0x01;
+    dataArr[2]=0x03; dataArr[3]=0x0A;
+    dataArr[4]=0x00;
+    
+    NSData * myData = [NSData dataWithBytes:dataArr length:5];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+    [_peripheral writeValue:myData forCharacteristic:[service.characteristics firstObject] type:CBCharacteristicWriteWithResponse];
+    });
 }
 
 //获取外设发来的数据，不论是read和notify,获取数据都是从这个方法中读取。
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
-    
+    if ([[characteristic UUID] isEqual:[CBUUID UUIDWithString:@"FE21"]]) {
+        NSLog(@"value===:%@",characteristic.value);
+        const unsigned char *hexBytesLight = [characteristic.value bytes];
+        
+        NSMutableString *string = [[NSMutableString alloc] initWithCapacity:0];
+        for (int i=0; i < 4; i++) {
+            NSString *battery = [NSString stringWithFormat:@"%02x",hexBytesLight[i]];
+            [string appendString:battery];
+        }
+        
+        NSLog(@"info===21:%@",string);
+    }else if ([[characteristic UUID] isEqual:[CBUUID UUIDWithString:@"FE25"]]) {
+        const unsigned char *hexBytesLight = [characteristic.value bytes];
+        
+        NSMutableString *string = [[NSMutableString alloc] initWithCapacity:0];
+        for (int i=0; i < 1; i++) {
+            NSString *battery = [NSString stringWithFormat:@"%02x",hexBytesLight[i]];
+            [string appendString:battery];
+        }
+        
+        NSLog(@"info<<<===25:%@",string);
+    }else if ([[characteristic UUID] isEqual:[CBUUID UUIDWithString:@"FE24"]]) {
+        const unsigned char *hexBytesLight = [characteristic.value bytes];
+        
+        NSMutableString *string = [[NSMutableString alloc] initWithCapacity:0];
+        for (int i=0; i < 1; i++) {
+            NSString *battery = [NSString stringWithFormat:@"%02x",hexBytesLight[i]];
+            [string appendString:battery];
+        }
+        
+        NSLog(@"info<<<===24:%@",string);
+    }
 }
 
 //中心读取外设实时数据
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
-    
+    NSLog(@"读取Notify数据");
+    if ([[characteristic UUID] isEqual:[CBUUID UUIDWithString:@"FE24"]]) {
+        NSLog(@"value===:%@",characteristic.value);
+    }
 }
 
 //用于检测中心向外设写数据是否成功
 -(void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
-    
+    NSLog(@"writevalue for character :%@====",error);
 }
 
 @end
