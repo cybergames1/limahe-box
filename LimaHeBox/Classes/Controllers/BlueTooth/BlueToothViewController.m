@@ -117,11 +117,26 @@
 //    }
     if (_showAlert) return;
     
+    NSLog(@"<<<<<<报警>>>>>>>>>");
     _showAlert = YES;
     dispatch_async(dispatch_get_main_queue(), ^{
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"注意！" message:@"你的箱子离你过远" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"好", nil];
     [alert show];
     [alert release];
+        
+    /////////////
+    Byte dataArr[5];
+    
+    dataArr[0]=0x00; dataArr[1]=0x01;
+    dataArr[2]=0x03; dataArr[3]=0x0A;
+    dataArr[4]=0x00;
+    
+    NSData * myData = [NSData dataWithBytes:dataArr length:5];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [_peripheral writeValue:myData forCharacteristic:_c type:CBCharacteristicWriteWithResponse];
+    });
+    ////////////////////
     
     [CommonTools makeSound:[[SettingManager sharedManager] bthWarningFileName] openVibration:[[SettingManager sharedManager] openVibration]];
     });
@@ -210,7 +225,7 @@
     [self hideIndicatorHUDView];
     
     if (!self.timer) {
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:3.0
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
                                                       target:self
                                                     selector:@selector(readRSSI)
                                                     userInfo:nil
@@ -251,9 +266,7 @@
     if (pow(10, ci) > 7) {
         _radarView.state = RadarStateWarning;
         [self scheduleLocalNotification];
-    }else {
-        _radarView.state = RadarStateMatchSuccess;
-        _showAlert = NO;
+        
     }
 }
 
@@ -287,18 +300,7 @@
     }
     [peripheral readValueForCharacteristic:[service.characteristics firstObject]];
     [peripheral readValueForCharacteristic:[service.characteristics lastObject]];
-    
-    Byte dataArr[5];
-    
-    dataArr[0]=0x01; dataArr[1]=0x01;
-    dataArr[2]=0x03; dataArr[3]=0x0A;
-    dataArr[4]=0x00;
-    
-    NSData * myData = [NSData dataWithBytes:dataArr length:5];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-    [_peripheral writeValue:myData forCharacteristic:[service.characteristics firstObject] type:CBCharacteristicWriteWithResponse];
-    });
+    self.c = [service.characteristics firstObject];
 }
 
 //获取外设发来的数据，不论是read和notify,获取数据都是从这个方法中读取。
