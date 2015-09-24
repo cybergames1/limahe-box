@@ -23,6 +23,7 @@
     [self setNavigationTitle:@"快递"];
     
     UIWebView *webView = [[[UIWebView alloc] initWithFrame:self.view.bounds] autorelease];
+    webView.top = 64;
     [self.view addSubview:webView];
     
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://m.kuaidi100.com"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0]];
