@@ -127,7 +127,7 @@
     /////////////
     Byte dataArr[5];
     
-    dataArr[0]=0x00; dataArr[1]=0x01;
+    dataArr[0]=0x01; dataArr[1]=0x01;
     dataArr[2]=0x03; dataArr[3]=0x0A;
     dataArr[4]=0x00;
     
