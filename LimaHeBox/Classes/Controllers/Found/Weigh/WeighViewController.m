@@ -56,12 +56,18 @@
     [self.view addSubview:label];
     _weightLabel = label;
     
-    [self showIndicatorHUDView:@"正在获取设备信息"];
-    CGFloat weight = [[[DeviceManager sharedManager] currentDevice] weight];
-    if (weight <= 0.0) return;
-    
-    [self hideAllHUDView];
-    [self segmentClicked:(SegmentLabel *)[self.view viewWithTag:Basic_Tag+1]];
+    [[DeviceManager sharedManager] startGetDeviceInfo:^(NSError *error){
+        if (error == nil) {
+            [self showIndicatorHUDView:@"正在获取设备信息"];
+        }else {
+            [self showHUDWithText:[error.userInfo objectForKey:NSLocalizedDescriptionKey]];
+        }
+    }success:^{
+        //[self hideAllHUDView];
+    }failure:^(NSError *error) {
+        [self hideAllHUDView];
+        [self showHUDWithText:[error.userInfo objectForKey:NSLocalizedDescriptionKey]];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

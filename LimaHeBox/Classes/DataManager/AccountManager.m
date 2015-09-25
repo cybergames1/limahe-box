@@ -8,6 +8,7 @@
 
 #import "AccountManager.h"
 #import "BoxSideBarController.h"
+#import "DeviceManager.h"
 
 @interface MUser ()
 
@@ -185,6 +186,7 @@ NSString* const  kUserInfoDeviceIdKey = @"_userDeivceId";
     [BoxSideBarController logout];
     [AccountManager sharedManager].loginUser = nil;
     [[AccountManager sharedManager] deleteStorage];
+    [DeviceManager sharedManager].currentDevice = nil;
     [[NSNotificationCenter defaultCenter] postNotificationName:kUserDidLogOutNotification object:nil];
 }
 

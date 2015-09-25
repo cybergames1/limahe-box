@@ -234,7 +234,8 @@
     }
     
     SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
-    req.bText = NO;
+    req.text = title;
+    req.bText = YES;
     req.message = message;
     req.scene = scene;
     

@@ -46,8 +46,16 @@ NSString *const provinceKey = @"provinceKey";
         self.backgroundColor = [UIColor colorWithWhite:0.4 alpha:0.3];
         
         UIView *toolBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 44)];
-        toolBar.backgroundColor = [UIColor whiteColor];
+        toolBar.backgroundColor = [UIColor colorWithRed:(248.0/255.0) green:(248.0/255.0) blue:(248.0/255.0) alpha:1.0];
         [self.contentView addSubview:toolBar];
+        
+        UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(16, 0, 50, 44)];
+        [leftButton setTitle:@"取消" forState:UIControlStateNormal];
+        [leftButton setTitleColor:[UIColor colorWithRed:(41.0/255.0) green:(41.0/255.0) blue:(41.0/255.0) alpha:1.0] forState:UIControlStateNormal];
+        [leftButton addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
+        leftButton.titleLabel.font = [UIFont boldSystemFontOfSize:18];
+        [toolBar addSubview:leftButton];
+        [leftButton release];
         
         UIButton *rightButton = [[UIButton alloc] initWithFrame:CGRectMake(KScreenWidth-60, 0, 50, 44)];
         [rightButton setTitle:@"完成" forState:UIControlStateNormal];
@@ -241,6 +249,17 @@ NSString *const provinceKey = @"provinceKey";
         [defaultPickerSheet release];
         defaultPickerSheet = nil;
     }];    
+}
+
+- (void)cancel {
+    if (defaultPickerBlock) {
+        [defaultPickerBlock release];defaultPickerBlock = nil;
+    }
+    [self dismissWithClickedButtonIndex:0 animated:YES finishBlock:^{
+        [defaultPickerSheet removeFromSuperview];
+        [defaultPickerSheet release];
+        defaultPickerSheet = nil;
+    }];
 }
 
 @end
