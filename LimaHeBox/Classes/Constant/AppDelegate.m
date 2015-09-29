@@ -37,7 +37,7 @@
     if ([AccountManager isLogin]) {
         //注册系统通知
 //        [BoxSideBarController unregisterForRemoteNotification];
-//        [BoxSideBarController registerSystemRemoteNotification];
+        [BoxSideBarController registerSystemRemoteNotification];
     }
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
@@ -72,12 +72,33 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
-//    NSLog(@"reciveLocalNotification");
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"注意！" message:@"你的箱子离你过远" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"好", nil];
-//    [alert show];
-//    [alert release];
+#pragma mark - 通知处理
+
+- (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
+{
+    NSLog(@"deviceTokenStr : %@", [deviceToken description]);
 }
+
+#ifdef __IPHONE_8_0
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
+{
+    [application registerForRemoteNotifications];
+}
+#endif
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    
+}
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+}
+
 
 #pragma mark 处理URL，适用于第三方分享跳转
 - (BOOL)application:(UIApplication *)application

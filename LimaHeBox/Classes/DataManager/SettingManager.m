@@ -77,7 +77,7 @@ static Reachability* defaultReachability = nil;
 
 - (void)setBthWarningFileName:(NSString *)bthWarningFileName {
     if ([CommonTools isEmptyString:bthWarningFileName]) {
-        bthWarningFileName = @"HOOL1.WAV";
+        bthWarningFileName = @"HOOK1.WAV";
     }
     [[NSUserDefaults standardUserDefaults] setObject:bthWarningFileName forKey:Bluetooth_File_Name];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -86,7 +86,7 @@ static Reachability* defaultReachability = nil;
 - (NSString *)bthWarningFileName {
     NSString *fileName = [[NSUserDefaults standardUserDefaults] objectForKey:Bluetooth_File_Name];
     if ([CommonTools isEmptyString:fileName]) {
-        fileName = @"HOOL1.WAV";
+        fileName = @"HOOK1.WAV";
     }
     return fileName;
 }

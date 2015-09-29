@@ -141,6 +141,24 @@
     [CommonTools makeSound:[[SettingManager sharedManager] bthWarningFileName] openVibration:[[SettingManager sharedManager] openVibration]];
     });
     
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 8 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+//        [self stopAlarm];
+//    });
+    
+}
+
+- (void)stopAlarm {
+    Byte dataArr[5];
+    
+    dataArr[0]=0x01; dataArr[1]=0x01;
+    dataArr[2]=0x00; dataArr[3]=0x0A;
+    dataArr[4]=0x00;
+    
+    NSData * myData = [NSData dataWithBytes:dataArr length:5];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [_peripheral writeValue:myData forCharacteristic:_c type:CBCharacteristicWriteWithResponse];
+    });
 }
 
 - (void)didReceiveMemoryWarning {
@@ -306,21 +324,22 @@
 //获取外设发来的数据，不论是read和notify,获取数据都是从这个方法中读取。
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
     if ([[characteristic UUID] isEqual:[CBUUID UUIDWithString:@"FE21"]]) {
-        NSLog(@"value===:%@",characteristic.value);
+        NSLog(@"value===:%@[21:%lu]",characteristic.value,characteristic.value.length);
         const unsigned char *hexBytesLight = [characteristic.value bytes];
         
         NSMutableString *string = [[NSMutableString alloc] initWithCapacity:0];
-        for (int i=0; i < 4; i++) {
+        for (int i=0; i < characteristic.value.length; i++) {
             NSString *battery = [NSString stringWithFormat:@"%02x",hexBytesLight[i]];
             [string appendString:battery];
         }
         
         NSLog(@"info===21:%@",string);
     }else if ([[characteristic UUID] isEqual:[CBUUID UUIDWithString:@"FE25"]]) {
+        NSLog(@"value===[25:%lu]",characteristic.value.length);
         const unsigned char *hexBytesLight = [characteristic.value bytes];
         
         NSMutableString *string = [[NSMutableString alloc] initWithCapacity:0];
-        for (int i=0; i < 1; i++) {
+        for (int i=0; i < characteristic.value.length; i++) {
             NSString *battery = [NSString stringWithFormat:@"%02x",hexBytesLight[i]];
             [string appendString:battery];
         }
@@ -330,7 +349,7 @@
         const unsigned char *hexBytesLight = [characteristic.value bytes];
         
         NSMutableString *string = [[NSMutableString alloc] initWithCapacity:0];
-        for (int i=0; i < 1; i++) {
+        for (int i=0; i < characteristic.value.length; i++) {
             NSString *battery = [NSString stringWithFormat:@"%02x",hexBytesLight[i]];
             [string appendString:battery];
         }

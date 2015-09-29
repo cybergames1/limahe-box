@@ -2397,6 +2397,7 @@
 					"$(PROJECT_DIR)/LimaHeBox/Classes/Framework/weixin",
 					"$(PROJECT_DIR)/LimaHeBox/Classes/Framework/libWeiboSDK",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-fobjc-arc",
 					"-ObjC",
