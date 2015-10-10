@@ -21,6 +21,11 @@
 
 @implementation WeighViewController
 
+- (void)dealloc {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    [super dealloc];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavigationTitle:@"称重"];
@@ -56,18 +61,7 @@
     [self.view addSubview:label];
     _weightLabel = label;
     
-    [[DeviceManager sharedManager] startGetDeviceInfo:^(NSError *error){
-        if (error == nil) {
-            [self showIndicatorHUDView:@"正在获取设备信息"];
-        }else {
-            [self showHUDWithText:[error.userInfo objectForKey:NSLocalizedDescriptionKey]];
-        }
-    }success:^{
-        //[self hideAllHUDView];
-    }failure:^(NSError *error) {
-        [self hideAllHUDView];
-        [self showHUDWithText:[error.userInfo objectForKey:NSLocalizedDescriptionKey]];
-    }];
+    [self getWeightInfo];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -78,6 +72,35 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+}
+
+- (void)getWeightInfo {
+    [self performSelector:@selector(getWeightInfoTimeOut) withObject:nil afterDelay:60.0];
+    
+    [[DeviceManager sharedManager] startGetDeviceInfo:^(NSError *error){
+        if (error == nil) {
+            [self showIndicatorHUDView:@"正在获取设备信息"];
+        }else {
+            [self showHUDWithText:[error.userInfo objectForKey:NSLocalizedDescriptionKey]];
+        }
+    }success:^{
+        //[self hideAllHUDView];
+        [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    }failure:^(NSError *error) {
+        [NSObject cancelPreviousPerformRequestsWithTarget:self];
+        [self hideAllHUDView];
+        [self showHUDWithText:[error.userInfo objectForKey:NSLocalizedDescriptionKey]];
+    }];
+}
+
+- (void)getWeightInfoTimeOut {
+    [self hideAllHUDView];
+    [self showHUDWithText:@"获取设备信息超时，请点击屏幕再次获取"];
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self getWeightInfo];
 }
 
 - (void)updateWeight:(NSNotification *)notification {

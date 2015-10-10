@@ -31,4 +31,7 @@
                         city:(NSString *)city
                     deviceId:(NSString *)deviceId;
 
+/** 发送验证码 **/
+- (void)sendAuthCode:(NSString *)phone;
+
 @end

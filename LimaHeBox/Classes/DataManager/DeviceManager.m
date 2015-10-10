@@ -144,6 +144,12 @@ NSString* const UpdateUserInfoNotification = @"UpdateUserInfoNotification";
     self.dataSource = dataSource;
 }
 
+- (void)uploadDeviceToken:(NSString *)deviceToken {
+    DeviceDataSource *dataSource = [[[DeviceDataSource alloc] initWithDelegate:self] autorelease];
+    [dataSource uploadDeviceToken:deviceToken];
+    self.dataSource = dataSource;
+}
+
 #pragma mark -
 #pragma mark DataSource Delegate
 
@@ -156,8 +162,9 @@ NSString* const UpdateUserInfoNotification = @"UpdateUserInfoNotification";
     if (source.networkType == EPPQNetGetDeviceInfo) {
         [[DeviceManager sharedManager] setCurrentDevice:[[[MDevice alloc] initWithDictionary:[source.data objectForKey:@"data"]] autorelease]];
         
+        NSString *deviceId = [[[AccountManager sharedManager] loginUser] userDeviceId];
         DeviceDataSource *dataSource = [[[DeviceDataSource alloc] initWithDelegate:self] autorelease];
-        [dataSource startWeight:@"867144029586110"];
+        [dataSource startWeight:deviceId];
         self.dataSource = dataSource;
         
         if (success_) {
@@ -167,12 +174,15 @@ NSString* const UpdateUserInfoNotification = @"UpdateUserInfoNotification";
         }
     }else if (source.networkType == EPPQNetStartWeight) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 6 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            NSString *deviceId = [[[AccountManager sharedManager] loginUser] userDeviceId];
             DeviceDataSource *dataSource = [[[DeviceDataSource alloc] initWithDelegate:self] autorelease];
-            [dataSource getWeight:@"867144029586110"];
+            [dataSource getWeight:deviceId];
             self.dataSource = dataSource;
         });
     }else if (source.networkType == EPPQNetGetWeight) {
         [[[DeviceManager sharedManager] currentDevice] updateWeightWithDictionary:[source.data objectForKey:@"data"]];
+    }else if (source.networkType == EPPQNetUploadDeviceToken) {
+        
     }
 }
 

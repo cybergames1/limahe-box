@@ -31,6 +31,10 @@
     return [NSString stringWithFormat:@"%@%@",APIHOST,UPDATE_INFO];
 }
 
++ (NSString *)sendAuthCode {
+    return [NSString stringWithFormat:@"%@%@",APIHOST,SEND_AUTHCODE];
+}
+
 + (NSString *)getNewsListWithPage:(NSInteger)page pageSize:(NSInteger)pageSize {
     return [NSString stringWithFormat:@"%@%@?pagenumber=%ld&pagesize=%ld",APIHOST,NEWSLIST,(long)page,(long)pageSize];
 }

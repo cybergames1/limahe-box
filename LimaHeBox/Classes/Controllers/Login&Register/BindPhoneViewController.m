@@ -7,20 +7,29 @@
 //
 
 #import "BindPhoneViewController.h"
+#import "LRDataSource.h"
 
 @interface BindPhoneViewController ()
 {
     RLCell * _phoneCell;
     RLCell * _codeCell;
+    int _count;
 }
+
+@property (nonatomic, retain) NSTimer * getCodeTimer;
 
 @end
 
 @implementation BindPhoneViewController
 
+- (void)dealloc {
+    [_getCodeTimer release];_getCodeTimer = nil;
+    [super dealloc];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavigationTitle:@"修改密码"];
+    [self setNavigationTitle:@"绑定手机号"];
     [self setNavigationItemLeftImage:[UIImage imageNamed:@"common_icon_back"]];
     
     _phoneCell = [self topCell];
@@ -39,8 +48,51 @@
     [[self registerButton] setTitle:@"绑定" forState:UIControlStateNormal];
 }
 
-- (void)getCodeAction:(UIButton *)sender {
+- (void)startGetTimer {
+    [self stopGetTimer];
     
+    _count = 60;
+    [self updateCount];
+    
+    self.getCodeTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateCount) userInfo:nil repeats:YES];
+}
+
+- (void)stopGetTimer {
+    if (_getCodeTimer) {
+        [_getCodeTimer invalidate];
+        self.getCodeTimer = nil;
+    }
+}
+
+- (void)updateCount {
+    UIButton *button = (UIButton *)[_codeCell rightView];
+    
+    if (_count <= 1) {
+        [self stopGetTimer];
+        [button setEnabled:YES];
+        [button setTitle:@"获取验证码" forState:UIControlStateNormal];
+        return;
+    }
+    
+    _count --;
+    [button setEnabled:NO];
+    [button setTitle:[NSString stringWithFormat:@"获取验证码(%d)",_count] forState:UIControlStateNormal];
+}
+
+- (void)getCodeAction:(UIButton *)sender {
+    [self startGetTimer];
+    
+    LRDataSource *dataSource_ = [[[LRDataSource alloc] initWithDelegate:self] autorelease];
+    [dataSource_ sendAuthCode:_phoneCell.textField.text];
+    self.dataSource = dataSource_;
+}
+
+- (void)dataSourceFinishLoad:(PPQDataSource *)source {
+    [super dataSourceFinishLoad:source];
+}
+
+- (void)dataSource:(PPQDataSource *)source hasError:(NSError *)error {
+    [super dataSource:source hasError:error];
 }
 
 @end

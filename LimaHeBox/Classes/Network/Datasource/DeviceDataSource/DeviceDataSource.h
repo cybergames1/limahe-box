@@ -19,4 +19,7 @@
 /** 获取称重信息 **/
 - (void)getWeight:(NSString *)deviceId;
 
+/** 上传deviceToken **/
+- (void)uploadDeviceToken:(NSString *)deviceToken;
+
 @end

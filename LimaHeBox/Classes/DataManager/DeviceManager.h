@@ -51,4 +51,6 @@ extern NSString* const UpdateUserInfoNotification;
                    success:(void(^)())success
                    failure:(void(^)(NSError*))failure;
 
+- (void)uploadDeviceToken:(NSString *)deviceToken;
+
 @end

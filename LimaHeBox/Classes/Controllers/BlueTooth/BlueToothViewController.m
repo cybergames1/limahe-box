@@ -11,6 +11,8 @@
 #import "CommonTools.h"
 #import "SettingManager.h"
 
+#define CRCPASSWORD   { 'A','n','t','i','l','o','s','t' }
+
 @interface BlueToothViewController () <CBCentralManagerDelegate,CBPeripheralDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     UITableView * _tableView;
@@ -25,6 +27,83 @@
 @property (nonatomic, retain) CBCharacteristic * c;
 
 @end
+
+static int8_t CRC_Check(int8_t *Buf, int8_t CRC_CNT)
+{
+    int8_t i,j;
+    
+    for(int8_t idx=0; idx<CRC_CNT; idx++)
+    {
+        NSLog(@"check===%02x",Buf[idx]);
+    }
+    
+    int8_t crcPassword[8] = CRCPASSWORD;
+    int8_t CRC_Checkout = 0x0;
+    
+    for (i=0;i<CRC_CNT; i++)
+    {
+        int8_t CRC_Temp = Buf[i];
+        for (j=0;j<8;j++)
+        {
+            if (CRC_Temp & 0x01)
+            {
+                CRC_Checkout = CRC_Checkout ^ crcPassword[j];
+            }
+            CRC_Temp = CRC_Temp >> 1;
+        }
+    }
+    return(CRC_Checkout);
+}
+
+static void arrayCrcEncode( int8_t arrayLengh, int8_t *encodeArray, int8_t *decodeArray )
+{
+    // 计算crcChecksum
+    int8_t crcChecksum = CRC_Check( decodeArray, arrayLengh );
+    // 生成新数组
+    int8_t encodeArray_temp[arrayLengh];
+    
+    encodeArray_temp[0] = crcChecksum;
+    for(int8_t idx=0; idx<arrayLengh; idx++)
+    {
+        encodeArray_temp[idx+1] = crcChecksum ^ decodeArray[idx];
+    }
+    
+    encodeArray = encodeArray_temp;
+}
+
+static bool arrayCrcDecode( int8_t arrayLengh, int8_t *encodeArray, int8_t *decodeArray )
+{
+    NSMutableString *lstring = [[NSMutableString alloc] initWithCapacity:0];
+    for (int8_t i=0; i < arrayLengh; i++) {
+        NSString *battery = [NSString stringWithFormat:@"%02x",encodeArray[i]];
+        [lstring appendString:battery];
+    }
+    NSLog(@"<<<<<decode>>>>>21:%@",lstring);
+    
+    int8_t decodeArray_temp[arrayLengh];
+    bool checkout = NO;
+    // 生成新数组
+    for(int8_t idx=0; idx<arrayLengh; idx++)
+    {
+        decodeArray_temp[idx] = encodeArray[0] ^ encodeArray[idx+1];
+    }
+    
+    decodeArray = decodeArray_temp;
+    
+    // 计算crcChecksum
+    int8_t crcChecksum = CRC_Check( decodeArray, arrayLengh );
+    NSLog(@"checksum:%02x",crcChecksum);
+    
+    if (crcChecksum == encodeArray[0])
+    {
+        checkout = YES;
+    }
+    
+    NSLog(@"checkout:%d",checkout);
+    
+    return checkout;
+}
+
 
 @implementation BlueToothViewController
 
@@ -81,6 +160,19 @@
     [self.view addSubview:_tableView];
 
     _manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
+    
+    Byte dataArr[5];
+    
+    dataArr[0]=0x00; dataArr[1]=0x00;
+    dataArr[2]=0x00; dataArr[3]=0x0A;
+    dataArr[4]=0x00;
+    
+    NSData * myData = [NSData dataWithBytes:dataArr length:5];
+    int length = (int)[myData length];
+    
+    int8_t *bytes;
+    
+    arrayCrcDecode(length, (int8_t *)[myData bytes], bytes);
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -324,7 +416,15 @@
 //获取外设发来的数据，不论是read和notify,获取数据都是从这个方法中读取。
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
     if ([[characteristic UUID] isEqual:[CBUUID UUIDWithString:@"FE21"]]) {
-        NSLog(@"value===:%@[21:%lu]",characteristic.value,characteristic.value.length);
+        int8_t *bytes;
+        arrayCrcDecode([characteristic.value length], (int8_t *)[characteristic.value bytes], bytes);
+        NSMutableString *lstring = [[NSMutableString alloc] initWithCapacity:0];
+        for (int i=0; i < characteristic.value.length; i++) {
+            NSString *battery = [NSString stringWithFormat:@"%02x",bytes[i]];
+            [lstring appendString:battery];
+        }
+         NSLog(@"<<<<<decode>>>>>21:%@",lstring);
+        
         const unsigned char *hexBytesLight = [characteristic.value bytes];
         
         NSMutableString *string = [[NSMutableString alloc] initWithCapacity:0];

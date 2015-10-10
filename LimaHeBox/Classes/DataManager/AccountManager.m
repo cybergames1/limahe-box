@@ -142,7 +142,7 @@ NSString* const  kUserInfoDeviceIdKey = @"_userDeivceId";
 
 - (void)userDidChange:(NSNotification *)notification {
     if ([[self class] isLogin]) {
-        //[BoxSideBarController registerSystemRemoteNotification];
+        [BoxSideBarController registerSystemRemoteNotification];
     }
 }
 

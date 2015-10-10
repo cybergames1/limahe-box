@@ -39,6 +39,10 @@
 #define UPDATE_INFO @"/user/updatemember"
 + (NSString *)updateInfo;
 
+//发送验证码
+#define SEND_AUTHCODE @"/ajax/sendsms"
++ (NSString *)sendAuthCode;
+
 //获取新闻列表
 #define NEWSLIST @"/news/getlist"
 + (NSString *)getNewsListWithPage:(NSInteger)page pageSize:(NSInteger)pageSize;

@@ -107,4 +107,18 @@
     [self startRequest];
 }
 
+- (void)sendAuthCode:(NSString *)phone {
+    [self cancelAllRequest];
+    [self.request clearAndCancel];
+    self.request = nil;
+    
+    PPQPostDataRequest *request = [[PPQPostDataRequest alloc] initWithDelegate:self theURl:[NSURL URLWithString:[PPQNetWorkURLs sendAuthCode]]];
+    [request addPostValue:phone forKey:@"phone"];
+    
+    self.request = request;
+    self.request.isRunOnBackground = YES;
+    [request release];
+    [self startRequest];
+}
+
 @end

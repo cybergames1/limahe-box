@@ -12,6 +12,7 @@
 #import "WeiXinManager.h"
 #import "WeiboSDK.h"
 #import "AccountManager.h"
+#import "DeviceManager.h"
 #import "SettingManager.h"
 
 @interface AppDelegate ()
@@ -77,6 +78,7 @@
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
 {
     NSLog(@"deviceTokenStr : %@", [deviceToken description]);
+    [[DeviceManager sharedManager] uploadDeviceToken:[deviceToken description]];
 }
 
 #ifdef __IPHONE_8_0

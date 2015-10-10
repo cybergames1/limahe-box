@@ -8,6 +8,7 @@
 
 #import "DeviceDataSource.h"
 #import "PPQPostDataRequest.h"
+#import "AccountManager.h"
 
 @implementation DeviceDataSource
 
@@ -52,6 +53,30 @@
     PPQPostDataRequest *request = [[PPQPostDataRequest alloc] initWithDelegate:self theURl:[NSURL URLWithString:[PPQNetWorkURLs getWeight]]];
     
     [request addPostValue:deviceId forKey:@"toolsn"];
+    
+    self.request = request;
+    self.request.isRunOnBackground = YES;
+    [request release];
+    [self startRequest];
+}
+
+- (void)uploadDeviceToken:(NSString *)deviceToken {
+    self.networkType = EPPQNetUploadDeviceToken;
+    [self cancelAllRequest];
+    [self.request clearAndCancel];
+    self.request = nil;
+    
+    deviceToken = [deviceToken stringByReplacingOccurrencesOfString:@"<" withString:@""];
+    deviceToken = [deviceToken stringByReplacingOccurrencesOfString:@">" withString:@""];
+    deviceToken = [deviceToken stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    PPQPostDataRequest *request = [[PPQPostDataRequest alloc] initWithDelegate:self theURl:[NSURL URLWithString:[PPQNetWorkURLs getWeight]]];
+    
+    MUser *loginUser = [[AccountManager sharedManager] loginUser];
+    
+    [request addPostValue:deviceToken forKey:@"iosid"];
+    [request addPostValue:loginUser.userAuthToken forKey:@"token"];
+    [request addPostValue:loginUser.userId forKey:@"userid"];
     
     self.request = request;
     self.request.isRunOnBackground = YES;
