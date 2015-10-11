@@ -231,6 +231,9 @@ NSString *const provinceKey = @"provinceKey";
         [mtDic setValue:provinceCode forKey:@"provinceCode"];
         [mtDic setValue:[provinceList valueForKey:provinceCode] forKey:@"province"];
         
+        
+        [cityListForProvince release];
+        cityListForProvince = [[NSDictionary alloc] initWithDictionary:[cityList valueForKey:allKeys[[_pickerView selectedRowInComponent:0]]]];
         allKeys = [cityListForProvince allKeys];
         NSString* cityCode = [allKeys objectAtIndex:[_pickerView selectedRowInComponent:1]];
         [mtDic setValue:cityCode forKey:@"cityCode"];

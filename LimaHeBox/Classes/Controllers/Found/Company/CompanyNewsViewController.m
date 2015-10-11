@@ -11,7 +11,7 @@
 
 @interface CompanyNewsViewController ()
 {
-    UITextView * _textView;
+    UIWebView * _webView;
 }
 
 @end
@@ -23,10 +23,12 @@
     [super viewDidLoad];
     [self setNavigationTitle:@"详情"];
     
-    UITextView *textView = [[[UITextView alloc] initWithFrame:CGRectMake(0, 100, self.view.width, self.view.height-54-100)] autorelease];
-    textView.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:textView];
-    _textView = textView;
+    UIWebView *webView = [[[UIWebView alloc] initWithFrame:self.view.bounds] autorelease];
+    webView.height += 54;
+    webView.scalesPageToFit = YES;
+    webView.dataDetectorTypes = UIDataDetectorTypeNone;
+    [self.view addSubview:webView];
+    _webView = webView;
     
     NewsDataSource *dataSource_ = [[NewsDataSource alloc] initWithDelegate:self];
     [dataSource_ getNewsInfoWithId:_newsId];
@@ -35,7 +37,7 @@
 
 - (void)dataSourceFinishLoad:(PPQDataSource *)source {
     NSString *content = [[source.data objectForKey:@"data"] objectForKey:@"content"];
-    _textView.text = content;
+    [_webView loadHTMLString:content baseURL:nil];
     
 }
 
