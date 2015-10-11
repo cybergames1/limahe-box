@@ -372,8 +372,8 @@ static bool arrayCrcDecode( int8_t arrayLengh, int8_t *encodeArray, int8_t *deco
      **/
     int rssi = abs([peripheral.RSSI intValue]);
     CGFloat ci = (rssi - 64) / (10 * 4.);
-    NSString *length = [NSString stringWithFormat:@"发现BLT热点:%@,距离:%.1fm",_peripheral.name,pow(10,ci)];
-    NSLog(@"length:%@",length);
+//    NSString *length = [NSString stringWithFormat:@"发现BLT热点:%@,距离:%.1fm",_peripheral.name,pow(10,ci)];
+//    NSLog(@"length:%@",length);
     if (pow(10, ci) > 7) {
         _radarView.state = RadarStateWarning;
         [self scheduleLocalNotification];
