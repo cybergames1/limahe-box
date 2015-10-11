@@ -49,7 +49,7 @@ static int menuIndex[8] = {4,2,1,3,5,7,8,9};
     // Do any additional setup after loading the view.
     [self setNavigationItemLeftImage:[UIImage imageNamed:@"main_nav_left"]];
     [self setNavigationImage:[UIImage imageNamed:@"main_logo"]];
-    [self setShowBadgeView:YES];
+    [self setShowBadgeView:NO];
     
     //背景图
     UIImageView *imageView = [[[UIImageView alloc] initWithFrame:self.view.bounds] autorelease];
