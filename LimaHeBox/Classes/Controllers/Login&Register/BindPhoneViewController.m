@@ -8,6 +8,8 @@
 
 #import "BindPhoneViewController.h"
 #import "LRDataSource.h"
+#import "EditProfileManager.h"
+#import "AccountManager.h"
 
 @interface BindPhoneViewController ()
 {
@@ -37,6 +39,7 @@
     
     _codeCell = [self bottomCell];
     _codeCell.textField.placeholder = @"请输入验证码";
+    _codeCell.textField.secureTextEntry = NO;
     
     UIButton *button = [[[UIButton alloc] initWithFrame:CGRectMake(0, 0, 130, _codeCell.height)] autorelease];
     [button setBackgroundColor:UIColorRGB(72, 217, 192)];
@@ -85,6 +88,20 @@
     LRDataSource *dataSource_ = [[[LRDataSource alloc] initWithDelegate:self] autorelease];
     [dataSource_ sendAuthCode:_phoneCell.textField.text];
     self.dataSource = dataSource_;
+}
+
+- (void)doneAction {
+    [EditProfileManager uploadUserPhone:_phoneCell.textField.text authcode:_codeCell.textField.text block:^(NSError *error, id info) {
+        if (error) {
+            [self showHUDWithText:[error localizedDescription]];
+        }
+        else{
+            MUser* user = [[AccountManager sharedManager] loginUser];
+            [user updateUserValue:_phoneCell.textField.text forKey:kUserInfoPhoneKey];
+            [self showHUDWithText:@"绑定手机号成功"];
+            [self leftBarAction];
+        }
+    }];
 }
 
 - (void)dataSourceFinishLoad:(PPQDataSource *)source {

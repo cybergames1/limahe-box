@@ -112,7 +112,7 @@
             break;
         case 2:{
             cell.textLabel.text = @"手机号";
-            cell.detailTextLabel.text = @"未绑定";
+            cell.detailTextLabel.text = [CommonTools isEmptyString:[loginUser userPhone]] ? @"未绑定" : [loginUser userPhone];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
             break;

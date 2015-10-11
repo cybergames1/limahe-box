@@ -67,6 +67,8 @@
                      address:(NSString *)address
                         city:(NSString *)city
                     deviceId:(NSString *)deviceId
+                       phone:(NSString *)phone
+                    authCode:(NSString *)authCode
 {
     [self cancelAllRequest];
     [self.request clearAndCancel];
@@ -99,6 +101,14 @@
     
     if (deviceId) {
         [request addPostValue:deviceId forKey:@"toolsn"];
+    }
+    
+    if (phone) {
+        [request addPostValue:phone forKey:@"mobile"];
+    }
+    
+    if (authCode) {
+        [request addPostValue:authCode forKey:@"checkcode"];
     }
     
     self.request = request;

@@ -161,18 +161,18 @@ static bool arrayCrcDecode( int8_t arrayLengh, int8_t *encodeArray, int8_t *deco
 
     _manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
     
-    Byte dataArr[5];
-    
-    dataArr[0]=0x00; dataArr[1]=0x00;
-    dataArr[2]=0x00; dataArr[3]=0x0A;
-    dataArr[4]=0x00;
-    
-    NSData * myData = [NSData dataWithBytes:dataArr length:5];
-    int length = (int)[myData length];
-    
-    int8_t *bytes;
-    
-    arrayCrcDecode(length, (int8_t *)[myData bytes], bytes);
+//    Byte dataArr[5];
+//    
+//    dataArr[0]=0x00; dataArr[1]=0x00;
+//    dataArr[2]=0x00; dataArr[3]=0x0A;
+//    dataArr[4]=0x00;
+//    
+//    NSData * myData = [NSData dataWithBytes:dataArr length:5];
+//    int length = (int)[myData length];
+//    
+//    int8_t *bytes;
+//    
+//    arrayCrcDecode(length, (int8_t *)[myData bytes], bytes);
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -349,6 +349,7 @@ static bool arrayCrcDecode( int8_t arrayLengh, int8_t *encodeArray, int8_t *deco
     NSLog(@"连接中断");
     _radarView.state = RadarStateSearchFailure;
     _showAlert = NO;
+    [self scheduleLocalNotification];
     [central connectPeripheral:self.peripheral options:nil];
 }
 
@@ -393,21 +394,21 @@ static bool arrayCrcDecode( int8_t arrayLengh, int8_t *encodeArray, int8_t *deco
 
 //已搜索到Characteristics
 - (void) peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error {
-    NSLog(@"发现特征的服务:%@ (%@)",service.UUID.data ,service.UUID);
-    for (CBCharacteristic *c in service.characteristics) {
-        NSLog(@"特征 UUID: %@ (%@)--(%lu)",c.UUID.data,c.UUID,(unsigned long)c.properties);
-        if (c.properties == CBCharacteristicPropertyRead) {
-            NSLog(@"---read---");
-        }else if (c.properties == CBCharacteristicPropertyWriteWithoutResponse) {
-            NSLog(@"---writewithResponse---");
-        }else if (c.properties == CBCharacteristicPropertyWrite) {
-            NSLog(@"---write---");
-        }else if (c.properties == CBCharacteristicPropertyNotify) {
-            NSLog(@"---notify---");
-        }else {
-            NSLog(@"---other---");
-        }
-    }
+//    NSLog(@"发现特征的服务:%@ (%@)",service.UUID.data ,service.UUID);
+//    for (CBCharacteristic *c in service.characteristics) {
+//        NSLog(@"特征 UUID: %@ (%@)--(%lu)",c.UUID.data,c.UUID,(unsigned long)c.properties);
+//        if (c.properties == CBCharacteristicPropertyRead) {
+//            NSLog(@"---read---");
+//        }else if (c.properties == CBCharacteristicPropertyWriteWithoutResponse) {
+//            NSLog(@"---writewithResponse---");
+//        }else if (c.properties == CBCharacteristicPropertyWrite) {
+//            NSLog(@"---write---");
+//        }else if (c.properties == CBCharacteristicPropertyNotify) {
+//            NSLog(@"---notify---");
+//        }else {
+//            NSLog(@"---other---");
+//        }
+//    }
     [peripheral readValueForCharacteristic:[service.characteristics firstObject]];
     [peripheral readValueForCharacteristic:[service.characteristics lastObject]];
     self.c = [service.characteristics firstObject];
@@ -423,7 +424,6 @@ static bool arrayCrcDecode( int8_t arrayLengh, int8_t *encodeArray, int8_t *deco
             NSString *battery = [NSString stringWithFormat:@"%02x",bytes[i]];
             [lstring appendString:battery];
         }
-         NSLog(@"<<<<<decode>>>>>21:%@",lstring);
         
         const unsigned char *hexBytesLight = [characteristic.value bytes];
         
@@ -433,9 +433,7 @@ static bool arrayCrcDecode( int8_t arrayLengh, int8_t *encodeArray, int8_t *deco
             [string appendString:battery];
         }
         
-        NSLog(@"info===21:%@",string);
     }else if ([[characteristic UUID] isEqual:[CBUUID UUIDWithString:@"FE25"]]) {
-        NSLog(@"value===[25:%lu]",characteristic.value.length);
         const unsigned char *hexBytesLight = [characteristic.value bytes];
         
         NSMutableString *string = [[NSMutableString alloc] initWithCapacity:0];
@@ -444,7 +442,6 @@ static bool arrayCrcDecode( int8_t arrayLengh, int8_t *encodeArray, int8_t *deco
             [string appendString:battery];
         }
         
-        NSLog(@"info<<<===25:%@",string);
     }else if ([[characteristic UUID] isEqual:[CBUUID UUIDWithString:@"FE24"]]) {
         const unsigned char *hexBytesLight = [characteristic.value bytes];
         
@@ -453,8 +450,6 @@ static bool arrayCrcDecode( int8_t arrayLengh, int8_t *encodeArray, int8_t *deco
             NSString *battery = [NSString stringWithFormat:@"%02x",hexBytesLight[i]];
             [string appendString:battery];
         }
-        
-        NSLog(@"info<<<===24:%@",string);
     }
 }
 

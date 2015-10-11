@@ -29,7 +29,9 @@
                          age:(NSString *)age
                      address:(NSString *)address
                         city:(NSString *)city
-                    deviceId:(NSString *)deviceId;
+                    deviceId:(NSString *)deviceId
+                       phone:(NSString *)phone
+                    authCode:(NSString *)authCode;
 
 /** 发送验证码 **/
 - (void)sendAuthCode:(NSString *)phone;

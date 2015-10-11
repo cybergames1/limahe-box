@@ -30,4 +30,9 @@ typedef void (^UploadProfileBlock) (NSError* error, id info);
 + (void) uploadUserDevice:(NSString *) device
                     block:(UploadProfileBlock) block;
 
+//上传手机号
++ (void) uploadUserPhone:(NSString *) phone
+                authcode:(NSString *) authCode
+                   block:(UploadProfileBlock) block;
+
 @end

@@ -45,8 +45,19 @@ static LRDataSource * _dataSource = nil;
               address:(NSString*) address
              deviceId:(NSString *) deviceId
 {
+    [self uploadgender:gender age:age city:city address:address deviceId:deviceId phone:nil authCode:nil];
+}
+
+- (void) uploadgender:(NSString*) gender
+                  age:(NSString*) age
+                 city:(NSString*) city
+              address:(NSString*) address
+             deviceId:(NSString *) deviceId
+                phone:(NSString *) phone
+             authCode:(NSString *) authCode
+{
     _dataSource.delegate = self;
-    [_dataSource updateInfoWithGender:gender age:age address:address city:city deviceId:deviceId];
+    [_dataSource updateInfoWithGender:gender age:age address:address city:city deviceId:deviceId phone:phone authCode:authCode];
 }
 
 #pragma mark - class
@@ -101,6 +112,16 @@ static LRDataSource * _dataSource = nil;
     }
     EditProfileManager* manager = [EditProfileManager sharedManager];
     [manager uploadgender:nil age:nil city:nil address:nil deviceId:device];
+}
+
++ (void) uploadUserPhone:(NSString *)phone authcode:(NSString *)authCode block:(UploadProfileBlock)block
+{
+    if (block) {
+        [uploadFinishBlock release];
+        uploadFinishBlock = [block copy];
+    }
+    EditProfileManager* manager = [EditProfileManager sharedManager];
+    [manager uploadgender:nil age:nil city:nil address:nil deviceId:nil phone:phone authCode:authCode];
 }
 
 #pragma mark - dataSource delegate
