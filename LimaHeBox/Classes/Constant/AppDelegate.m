@@ -35,6 +35,9 @@
     //初始化基本设置
     [SettingManager prepareApplication];
     
+    //清掉本地通知
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    
     if ([AccountManager isLogin]) {
         //注册系统通知
 //        [BoxSideBarController unregisterForRemoteNotification];
