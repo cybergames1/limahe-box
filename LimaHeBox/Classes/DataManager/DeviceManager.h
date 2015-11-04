@@ -51,6 +51,30 @@ extern NSString* const UpdateUserInfoNotification;
                    success:(void(^)())success
                    failure:(void(^)(NSError*))failure;
 
+/**
+  上传deviceToken，用于收取push通知
+ **/
 - (void)uploadDeviceToken:(NSString *)deviceToken;
+
+@end
+
+enum {
+    WeightStepStartModle,
+    WeightStepSendInstruction,
+    WeightStepGETWeight,
+    WeightStepStopModle,
+};
+typedef NSInteger WeightStep;
+
+@interface DeviceManager (Weight)
+
+/**
+ 由于称重比较特殊，专门处理
+ 称重流程，开启称重模式->点击"start"发送称重指令->获取称重信息->关闭称重模式
+ **/
+- (void)setWeightStep:(WeightStep)step
+                start:(void(^)(NSError *))start
+              success:(void(^)())success
+              failure:(void(^)(NSError*))failure;
 
 @end

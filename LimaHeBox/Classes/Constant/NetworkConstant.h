@@ -73,6 +73,8 @@ typedef NS_ENUM(NSInteger, PPQNetworkTag)
     
     EPPQNetGetDeviceInfo,     //或缺设备信息
     EPPQNetStartWeight,       //启动称重
+    EPPQNetStopWeight,        //关闭称重
+    EPPQNetSendInstruction,   //发送称重指令
     EPPQNetGetWeight,         //获取称重信息
     EPPQNetUploadDeviceToken, //上传deviceToken
     

@@ -59,6 +59,14 @@
 #define STARTWEIGHT @"/tool/startmeasure"
 + (NSString *)startWeight;
 
+//关闭称重
+#define STOPWEIGHT @"/tool/stopmeasure"
++ (NSString *)stopWeight;
+
+//发送称重指令
+#define SENDINSTRUCTION @"/tool/sendmeasure"
++ (NSString *)sendInstruction;
+
 //获取称重信息
 #define GETWEITHG @"/tool/getmeasure"
 + (NSString *)getWeight;

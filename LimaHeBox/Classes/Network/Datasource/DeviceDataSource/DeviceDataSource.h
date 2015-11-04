@@ -13,11 +13,17 @@
 /** 获取设备信息，如gps，温湿度等 **/
 - (void)getDeviceInfo:(NSString *)deviceId;
 
-/** 启动称重 **/
+/** 启动称重模式 **/
 - (void)startWeight:(NSString *)deviceId;
+
+/** 发送称重指令 **/
+- (void)sendInstruction:(NSString *)deviceId;
 
 /** 获取称重信息 **/
 - (void)getWeight:(NSString *)deviceId;
+
+/** 关闭称重模式 **/
+- (void)stopWeight:(NSString *)deviceId;
 
 /** 上传deviceToken **/
 - (void)uploadDeviceToken:(NSString *)deviceToken;

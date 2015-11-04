@@ -9,12 +9,15 @@
 #import "WeighViewController.h"
 #import "DeviceManager.h"
 #import "QYSegmentControl.h"
+#import "RegisterButton.h"
 
 #define Basic_Tag 12331
+#define Button_Width_Rate (150.0/360.0)
 
 @interface WeighViewController ()
 {
     UILabel * _weightLabel;
+    RegisterButton * _startButton;
 }
 
 @end
@@ -31,12 +34,23 @@
     [self setNavigationTitle:@"称重"];
     self.view.backgroundColor = self.navigationBarTintColor;
     
-    UIImage *image = [UIImage imageNamed:@"f_weigh"];
-    UIImageView *imageView = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height)] autorelease];
+    RegisterButton *startButton = [RegisterButton showGreenInView:self.view frame:CGRectMake(self.view.width/2-self.view.width*Button_Width_Rate/2, self.view.height-50-44, self.view.width*Button_Width_Rate, 44) title:@"START" target:self action:@selector(startAction)];
+    [startButton.titleLabel setFont:[UIFont boldSystemFontOfSize:18]];
+    _startButton = startButton;
+    
+    UILabel *startLabel = [[[UILabel alloc] initWithFrame:CGRectMake(0, startButton.top - 40, self.view.width, 20)] autorelease];
+    startLabel.backgroundColor = [UIColor clearColor];
+    startLabel.text = @"请提起箱子后点击开始按钮";
+    startLabel.textAlignment = NSTextAlignmentCenter;
+    startLabel.textColor = [UIColor whiteColor];
+    [self.view addSubview:startLabel];
+    
+    UIImage *image = [UIImage imageNamed:@"f_w"];
+    UIImageView *imageView = [[[UIImageView alloc] initWithFrame:CGRectMake(self.view.width/2-image.size.width/2, startLabel.top - image.size.height-30, image.size.width, image.size.height)] autorelease];
     imageView.image = image;
     [self.view addSubview:imageView];
     
-    SegmentLabel *label1 = [[SegmentLabel alloc] initWithFrame:CGRectMake(280, 64+140, 44, 44)];
+    SegmentLabel *label1 = [[SegmentLabel alloc] initWithFrame:CGRectMake(self.view.width-44-50, 64+90, 44, 44)];
     label1.text = @"oz";
     label1.tag = Basic_Tag;
     [label1 addTarget:self action:@selector(segmentClicked:)];
@@ -54,7 +68,7 @@
     [label3 addTarget:self action:@selector(segmentClicked:)];
     [self.view addSubview:label3];
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(40, 64+100, self.view.width-40, 50)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(60, 64+130, self.view.width-40, 50)];
     label.backgroundColor = [UIColor clearColor];
     label.textColor = [UIColor colorWithRed:(131.0/255.0) green:(229.0/255.0) blue:(210.0/255.0) alpha:1.0];
     label.font = [UIFont systemFontOfSize:60];
@@ -66,41 +80,40 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [[DeviceManager sharedManager] setWeightStep:WeightStepStartModle start:^(NSError *error) {
+        if (error == nil) {
+            [self showIndicatorHUDView:@"等待进入称重模式"];
+        }else {
+            [self showHUDWithText:[error.userInfo objectForKey:NSLocalizedDescriptionKey]];
+        }
+    } success:^{
+        [self hideAllHUDView];
+        [_startButton setEnabled:YES];
+    } failure:^(NSError *error) {
+        [self hideAllHUDView];
+        [self showHUDWithText:[error.userInfo objectForKey:NSLocalizedDescriptionKey]];
+    }];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateWeight:) name:UpdateUserInfoNotification object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [NSObject cancelPreviousPerformRequestsWithTarget:self];
 }
 
 - (void)getWeightInfo {
-    [self performSelector:@selector(getWeightInfoTimeOut) withObject:nil afterDelay:60.0];
-    
-    [[DeviceManager sharedManager] startGetDeviceInfo:^(NSError *error){
+    [[DeviceManager sharedManager] setWeightStep:WeightStepSendInstruction start:^(NSError *error) {
         if (error == nil) {
-            [self showIndicatorHUDView:@"正在获取设备信息"];
+            [self showIndicatorHUDView:@"正在获取称重信息"];
         }else {
             [self showHUDWithText:[error.userInfo objectForKey:NSLocalizedDescriptionKey]];
         }
-    }success:^{
-        //[self hideAllHUDView];
-        [NSObject cancelPreviousPerformRequestsWithTarget:self];
-    }failure:^(NSError *error) {
-        [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    } success:^{
+        [self hideAllHUDView];
+    } failure:^(NSError *error) {
         [self hideAllHUDView];
         [self showHUDWithText:[error.userInfo objectForKey:NSLocalizedDescriptionKey]];
     }];
-}
-
-- (void)getWeightInfoTimeOut {
-    [self hideAllHUDView];
-    [self showHUDWithText:@"获取设备信息超时，请点击屏幕再次获取"];
-}
-
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self getWeightInfo];
 }
 
 - (void)updateWeight:(NSNotification *)notification {
@@ -129,6 +142,27 @@
         //g
         _weightLabel.text = [NSString stringWithFormat:@"%.1f",weight];
     }
+}
+
+- (void)startAction {
+    [self getWeightInfo];
+}
+
+- (void)leftBarAction {
+    [[DeviceManager sharedManager] setWeightStep:WeightStepStopModle start:^(NSError *error) {
+        if (error == nil) {
+            [self showIndicatorHUDView:@"等待退出称重模式"];
+        }else {
+            //[self showHUDWithText:[error.userInfo objectForKey:NSLocalizedDescriptionKey]];
+        }
+    } success:^{
+        [self hideAllHUDView];
+        [super leftBarAction];
+    } failure:^(NSError *error) {
+        [self hideAllHUDView];
+        [self showHUDWithText:[error.userInfo objectForKey:NSLocalizedDescriptionKey]];
+        [super leftBarAction];
+    }];
 }
 
 @end

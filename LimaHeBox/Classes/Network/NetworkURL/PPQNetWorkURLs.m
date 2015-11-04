@@ -51,6 +51,14 @@
     return [NSString stringWithFormat:@"%@%@",APIHOST,STARTWEIGHT];
 }
 
++ (NSString *)stopWeight {
+    return [NSString stringWithFormat:@"%@%@",APIHOST,STOPWEIGHT];
+}
+
++ (NSString *)sendInstruction {
+    return [NSString stringWithFormat:@"%@%@",APIHOST,SENDINSTRUCTION];
+}
+
 + (NSString *)getWeight {
     return [NSString stringWithFormat:@"%@%@",APIHOST,GETWEITHG];
 }

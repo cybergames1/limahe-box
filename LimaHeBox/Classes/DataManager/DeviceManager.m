@@ -156,33 +156,118 @@ NSString* const UpdateUserInfoNotification = @"UpdateUserInfoNotification";
 - (void)dataSourceFinishLoad:(PPQDataSource *)source {
     /**
      1,先获取设备的基本信息，gps、温湿度
-     2,开启称重
-     3,6秒后获取称重信息
      **/
     if (source.networkType == EPPQNetGetDeviceInfo) {
         [[DeviceManager sharedManager] setCurrentDevice:[[[MDevice alloc] initWithDictionary:[source.data objectForKey:@"data"]] autorelease]];
-        
-        NSString *deviceId = [[[AccountManager sharedManager] loginUser] userDeviceId];
-        DeviceDataSource *dataSource = [[[DeviceDataSource alloc] initWithDelegate:self] autorelease];
-        [dataSource startWeight:deviceId];
-        self.dataSource = dataSource;
         
         if (success_) {
             success_();
             [success_ release];
             success_ = nil;
         }
-    }else if (source.networkType == EPPQNetStartWeight) {
+    }
+}
+
+- (void)dataSource:(PPQDataSource *)source hasError:(NSError *)error {
+    if (failure_) {
+        failure_(error);
+        [failure_ release];
+        failure_ = nil;
+    }
+}
+
+@end
+
+
+@implementation DeviceManager (Weight)
+
+- (void)setWeightStep:(WeightStep)step
+                start:(void(^)(NSError *))start
+              success:(void (^)())success
+              failure:(void (^)(NSError *))failure
+{
+    if (![AccountManager isLogin]) {
+        if (start) {
+            start ([NSError errorWithDomain:@"ErrorDomain" code:101 userInfo:@{NSLocalizedDescriptionKey:@"您还没有登录"}]);
+        }
+        return;
+    }
+    
+    NSString *deviceId = [[[AccountManager sharedManager] loginUser] userDeviceId];
+    if ([CommonTools isEmptyString:deviceId]) {
+        if (start) {
+            start ([NSError errorWithDomain:@"ErrorDomain" code:102 userInfo:@{NSLocalizedDescriptionKey:@"您还未绑定设备"}]);
+        }
+        return;
+    };
+    
+    if (start) {
+        start (nil);
+    }
+    
+    if (success) success_ = [success copy];
+    if (failure) failure_ = [failure copy];
+    
+    if (self.dataSource) {
+        [_dataSource cancelAllRequest];
+        [_dataSource setDelegate:nil];
+        self.dataSource = nil;
+    }
+    
+    DeviceDataSource *dataSource = [[[DeviceDataSource alloc] initWithDelegate:self] autorelease];
+    self.dataSource = dataSource;
+    
+    switch (step) {
+        case WeightStepStartModle:
+            [dataSource getDeviceInfo:deviceId];
+            break;
+        case WeightStepSendInstruction:
+            [dataSource sendInstruction:deviceId];
+            break;
+        case WeightStepGETWeight:
+            [dataSource getDeviceInfo:deviceId];
+            break;
+        case WeightStepStopModle:
+            [dataSource stopWeight:deviceId];
+            break;
+        default:
+            break;
+    }
+}
+
+#pragma mark -
+#pragma mark DataSource Delegate
+
+- (void)dataSourceFinishLoad:(PPQDataSource *)source {
+    /**
+     2,开启称重
+     3,6秒后获取称重信息
+     **/
+    if (source.networkType == EPPQNetSendInstruction) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 6 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             NSString *deviceId = [[[AccountManager sharedManager] loginUser] userDeviceId];
             DeviceDataSource *dataSource = [[[DeviceDataSource alloc] initWithDelegate:self] autorelease];
             [dataSource getWeight:deviceId];
             self.dataSource = dataSource;
         });
-    }else if (source.networkType == EPPQNetGetWeight) {
-        [[[DeviceManager sharedManager] currentDevice] updateWeightWithDictionary:[source.data objectForKey:@"data"]];
-    }else if (source.networkType == EPPQNetUploadDeviceToken) {
+    }else if (source.networkType == EPPQNetGetDeviceInfo) {
+        [[DeviceManager sharedManager] setCurrentDevice:[[[MDevice alloc] initWithDictionary:[source.data objectForKey:@"data"]] autorelease]];
         
+        NSString *deviceId = [[[AccountManager sharedManager] loginUser] userDeviceId];
+        DeviceDataSource *dataSource = [[[DeviceDataSource alloc] initWithDelegate:self] autorelease];
+        [dataSource startWeight:deviceId];
+        self.dataSource = dataSource;
+    }else {
+        if (source.networkType == EPPQNetGetWeight) {
+            NSLog(@"currentD:%@",[[DeviceManager sharedManager] currentDevice]);
+            [[[DeviceManager sharedManager] currentDevice] updateWeightWithDictionary:[source.data objectForKey:@"data"]];
+        }
+        
+        if (success_) {
+            success_();
+            [success_ release];
+            success_ = nil;
+        }
     }
 }
 

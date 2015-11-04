@@ -44,6 +44,38 @@
     [self startRequest];
 }
 
+- (void)sendInstruction:(NSString *)deviceId {
+    self.networkType = EPPQNetSendInstruction;
+    [self cancelAllRequest];
+    [self.request clearAndCancel];
+    self.request = nil;
+    
+    PPQPostDataRequest *request = [[PPQPostDataRequest alloc] initWithDelegate:self theURl:[NSURL URLWithString:[PPQNetWorkURLs sendInstruction]]];
+    
+    [request addPostValue:deviceId forKey:@"toolsn"];
+    
+    self.request = request;
+    self.request.isRunOnBackground = YES;
+    [request release];
+    [self startRequest];
+}
+
+- (void)stopWeight:(NSString *)deviceId {
+    self.networkType = EPPQNetStopWeight;
+    [self cancelAllRequest];
+    [self.request clearAndCancel];
+    self.request = nil;
+    
+    PPQPostDataRequest *request = [[PPQPostDataRequest alloc] initWithDelegate:self theURl:[NSURL URLWithString:[PPQNetWorkURLs stopWeight]]];
+    
+    [request addPostValue:deviceId forKey:@"toolsn"];
+    
+    self.request = request;
+    self.request.isRunOnBackground = YES;
+    [request release];
+    [self startRequest];
+}
+
 - (void)getWeight:(NSString *)deviceId {
     self.networkType = EPPQNetGetWeight;
     [self cancelAllRequest];
