@@ -273,8 +273,8 @@ static bool arrayCrcDecode( int8_t arrayLengh, int8_t *encodeArray, int8_t *deco
     }
     
     BLEInfo *info = _devices[indexPath.row];
-    cell.textLabel.text = info.discoveredPeripheral.name ? info.discoveredPeripheral.name : @"未知设备";
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %ld",@"信号",(long)[info.rssi integerValue]];
+    cell.textLabel.text = info.discoveredPeripheral.name ? info.discoveredPeripheral.name : @"找到一个设备";
+   // cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %ld",@"信号",(long)[info.rssi integerValue]];
     
     return cell;
 }
