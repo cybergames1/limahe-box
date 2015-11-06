@@ -38,7 +38,7 @@
     label.font = [UIFont systemFontOfSize:13];
     label.numberOfLines = 6;
     label.lineBreakMode = NSLineBreakByCharWrapping;
-    label.text = @"如果您已经购买了利马赫的产品，请查看箱子的使用说明书，请按说明书提供的用户名和密码登录。您将得到更完善的服务，并且享受利马赫产品的全部售后服务。\n\n登录成功成功后可自行修改密码。";
+    label.text = @"感谢您使用利马赫产品，请输入用户名及密码注册后登录，您将得到更完善的服务，并且享受利马赫产品的全部售后服务。\n\n登录成功后可自行修改密码。";
     [self.view addSubview:label];
 }
 
