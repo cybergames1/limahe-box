@@ -9,6 +9,7 @@
 #import "BoxSuperViewController.h"
 #import "MBProgressHUD.h"
 #import "BadgeView.h"
+#import "DeviceManager.h"
 #import "BoxSideBarController.h"
 
 @interface BoxSuperViewController ()
@@ -208,6 +209,23 @@
     [MBProgressHUD hideAllHUDsForView:self.view animated:NO];
     [MBProgressHUD hideAllHUDsForView:[CommonTools keyWindow] animated:NO];
     [MBProgressHUD hideAllHUDsForView:[CommonTools visibleWindow] animated:NO];
+}
+
+@end
+
+
+@implementation BoxSuperViewController (Device)
+
+- (BOOL)checkDeviceIsOnline {
+    MDevice * device = [[DeviceManager sharedManager] currentDevice];
+    if (!device.isOnline) {
+        [self showAlertView:@"您的设备已离线" alertTitle:nil cancleTitle:nil otherButtonTitle:@"知道了" dismissBlock:^(NSString *buttonTitle) {
+            if ([buttonTitle isEqualToString:@"知道了"]) {
+                [self leftBarAction];
+            }
+        }];
+    }
+    return device.isOnline;
 }
 
 @end

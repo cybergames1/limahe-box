@@ -60,6 +60,7 @@
         }
     }success:^{
         [self hideAllHUDView];
+        if (![self checkDeviceIsOnline]) return;
         
         CLLocationCoordinate2D coordinate2D = [[[DeviceManager sharedManager] currentDevice] coordinate];
         NSString *title = [NSString stringWithFormat:@"%f,%f",coordinate2D.latitude,coordinate2D.longitude];

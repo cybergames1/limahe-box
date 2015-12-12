@@ -14,6 +14,8 @@
 
 /** 设备号 **/
 @property (nonatomic, copy) NSString * deviceId;
+/** 是否在线 **/
+@property (nonatomic, assign) BOOL isOnline;
 /** GPS经纬度 **/
 @property (nonatomic, assign) CLLocationCoordinate2D coordinate;
 /** 温度 **/
@@ -33,9 +35,10 @@
 
 @end
 
-extern NSString* const UserInfoWeightKey;
+extern NSString* const DeviceInfoIsOnlineKey;
+extern NSString* const DeviceInfoWeightKey;
 
-extern NSString* const UpdateUserInfoNotification;
+extern NSString* const UpdateDeviceInfoNotification;
 
 
 @interface DeviceManager : NSObject
@@ -59,10 +62,11 @@ extern NSString* const UpdateUserInfoNotification;
 @end
 
 enum {
-    WeightStepStartModle,
-    WeightStepSendInstruction,
-    WeightStepGETWeight,
-    WeightStepStopModle,
+    WeightStepStartModle, //开启模式，先要查看设备状态
+    WeightStepStartWeight, //开启称重
+    WeightStepSendInstruction, //发送指令
+    WeightStepGETWeight, //获取称重数据
+    WeightStepStopModle, //停止模式
 };
 typedef NSInteger WeightStep;
 

@@ -156,5 +156,8 @@
     _selectMinLabel.left = _maxLabel.left;
     _selectMinLabel.top = _VSelectView.bottom-10;
     _selectMinLabel.text = [NSString stringWithFormat:@"%ld",(long)_selectedMinValue];
+    
+    _selectMaxLabel.hidden = (_selectedMaxValue == _maxValue || _selectedMaxValue == _minValue) ? YES : NO;
+    _selectMinLabel.hidden = (_selectedMinValue == _maxValue || _selectedMinValue == _minValue) ? YES : NO;
 }
 @end

@@ -88,12 +88,13 @@
         }
     } success:^{
         [self hideAllHUDView];
+        [self checkDeviceIsOnline];
         [_startButton setEnabled:YES];
     } failure:^(NSError *error) {
         [self hideAllHUDView];
         [self showHUDWithText:[error.userInfo objectForKey:NSLocalizedDescriptionKey]];
     }];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateWeight:) name:UpdateUserInfoNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateWeight:) name:UpdateDeviceInfoNotification object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -118,6 +119,7 @@
 
 - (void)updateWeight:(NSNotification *)notification {
     [self hideAllHUDView];
+    if (![self checkDeviceIsOnline]) return;
     [self segmentClicked:(SegmentLabel *)[self.view viewWithTag:Basic_Tag+1]];
 }
 

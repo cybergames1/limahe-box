@@ -63,7 +63,7 @@ static int menuIndex[8] = {4,2,1,3,5,7,8,9};
     [self.view addSubview:menuView];
     
     //天气
-    WeatherView *weatherView = [[[WeatherView alloc] initWithFrame:CGRectMake(0, [CommonTools viewTopWithNav], self.view.frame.size.width, 60)] autorelease];
+    WeatherView *weatherView = [[[WeatherView alloc] initWithFrame:CGRectMake(self.view.width/2-40, [CommonTools viewTopWithNav], self.view.frame.size.width/2, 60)] autorelease];
     [self.view addSubview:weatherView];
     _weatherView = weatherView;
     
@@ -74,8 +74,6 @@ static int menuIndex[8] = {4,2,1,3,5,7,8,9};
     [_weatherAPI getWeatherInfoAreaId:areaId completion:^(BOOL finished) {
         if (finished) {
             NSDictionary *info = [_weatherAPI weatherInfo];
-            NSLog(@"info:%@",info);
-            NSLog(@"dayWeather:%d",[[info objectForKey:WeahterPropertyDayWeather] intValue]);
             [_weatherView setWeatherCode:[[info objectForKey:WeahterPropertyDayWeather] integerValue]];
             [_weatherView setMinTemperature:[[info objectForKey:WeatherPropertyNightTemperature] integerValue]];
             [_weatherView setMaxTemperature:[[info objectForKey:WeatherPropertyDayTemperature] integerValue]];
@@ -103,6 +101,8 @@ static int menuIndex[8] = {4,2,1,3,5,7,8,9};
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    if ([self cityPickerViewIsShwon]) return;
+    
     UITouch *touch = [touches anyObject];
     if (CGRectContainsPoint(_weatherView.frame, [touch locationInView:self.view])) {
         CityPickerView *picker = [[CityPickerView alloc] init];
@@ -110,6 +110,17 @@ static int menuIndex[8] = {4,2,1,3,5,7,8,9};
         [picker showInView:self.view];
         [picker release];
     }
+}
+
+- (BOOL)cityPickerViewIsShwon {
+    BOOL isShwon = NO;
+    for (UIView *v in self.view.subviews) {
+        if ([v isKindOfClass:[CityPickerView class]]) {
+            isShwon = YES;
+            break;
+        }
+    }
+    return isShwon;
 }
 
 /*

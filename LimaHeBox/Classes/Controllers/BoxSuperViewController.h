@@ -66,3 +66,9 @@
 - (void) hideAllHUDView;
 
 @end
+
+@interface BoxSuperViewController (Device)
+
+- (BOOL)checkDeviceIsOnline;
+
+@end

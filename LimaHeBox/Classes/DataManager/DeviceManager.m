@@ -11,8 +11,9 @@
 #import "AccountManager.h"
 #import "CommonTools.h"
 
-NSString* const UserInfoWeightKey = @"userInfo_weightkey";
-NSString* const UpdateUserInfoNotification = @"UpdateUserInfoNotification";
+NSString* const DeviceInfoIsOnlineKey = @"deviceInfo_IsOnlineKey";
+NSString* const DeviceInfoWeightKey = @"deviceInfo_weightkey";
+NSString* const UpdateDeviceInfoNotification = @"UpdateDeviceInfoNotification";
 
 @implementation MDevice
 
@@ -22,23 +23,30 @@ NSString* const UpdateUserInfoNotification = @"UpdateUserInfoNotification";
         self.deviceId = [dic objectForKey:@"toolsn"];
         
         NSDictionary *infoDic = [self dictionaryFromString:[dic objectForKey:@"tinfo"]];
-        self.coordinate = CLLocationCoordinate2DMake([[infoDic objectForKey:@"s"] floatValue],[[infoDic objectForKey:@"n"] floatValue]);
-        self.temperature = [[infoDic objectForKey:@"tm"] floatValue];
-        self.wet = [[infoDic objectForKey:@"ph"] floatValue];
-        self.weight = 0.0;
+        if (infoDic) {
+            self.isOnline = [[infoDic objectForKey:@"isonline"] boolValue];
+            self.coordinate = CLLocationCoordinate2DMake([[infoDic objectForKey:@"s"] floatValue],[[infoDic objectForKey:@"n"] floatValue]);
+            self.temperature = [[infoDic objectForKey:@"tm"] floatValue];
+            self.wet = [[infoDic objectForKey:@"ph"] floatValue];
+            self.weight = 0.0;
+        }
     }
     return self;
 }
 
 - (void)updateValue:(id)value forKey:(NSString *)key {
     if (value) {
-        if ([key isEqualToString:UserInfoWeightKey]) {
+        if ([key isEqualToString:DeviceInfoWeightKey]) {
             self.weight = [value floatValue];
+        }else if ([key isEqualToString:DeviceInfoIsOnlineKey]) {
+            self.isOnline = [value boolValue];
+        }else {
+            //
         }
     }
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:UpdateUserInfoNotification object:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName:UpdateDeviceInfoNotification object:self];
     });
 }
 
@@ -61,13 +69,16 @@ NSString* const UpdateUserInfoNotification = @"UpdateUserInfoNotification";
         tinfo = [tinfo substringToIndex:[tinfo length]-1];
     }
     
-    [self updateValue:tinfo forKey:UserInfoWeightKey];
+    [self updateValue:tinfo forKey:DeviceInfoWeightKey];
+    [self updateValue:[dic objectForKey:@"isonline"] forKey:DeviceInfoIsOnlineKey];
 }
 
 /**
  tinfo = "GPS:113.881248,22.571365;TR30C,PH36%;";
  **/
 - (NSDictionary *)dictionaryFromString:(NSString *)string {
+    if ([CommonTools isEmptyString:string]) return nil;
+    
     NSArray *array = [string componentsSeparatedByString:@";"];
     //gps
     NSArray *gps = [array[0] componentsSeparatedByString:@","];
@@ -93,6 +104,8 @@ NSString* const UpdateUserInfoNotification = @"UpdateUserInfoNotification";
 {
     void(^success_)();
     void(^failure_)(NSError *);
+    
+    BOOL _isStartWeight;
 }
 
 @property (nonatomic, retain) PPQDataSource * dataSource;
@@ -131,6 +144,8 @@ NSString* const UpdateUserInfoNotification = @"UpdateUserInfoNotification";
     }
     
     if (success) success_ = [success copy];
+    else return;
+    
     if (failure) failure_ = [failure copy];
     
     if (self.dataSource) {
@@ -139,41 +154,19 @@ NSString* const UpdateUserInfoNotification = @"UpdateUserInfoNotification";
         self.dataSource = nil;
     }
     
+    _isStartWeight = NO;
+    
     DeviceDataSource *dataSource = [[[DeviceDataSource alloc] initWithDelegate:self] autorelease];
     [dataSource getDeviceInfo:deviceId];
     self.dataSource = dataSource;
 }
 
 - (void)uploadDeviceToken:(NSString *)deviceToken {
+    _isStartWeight = NO;
+    
     DeviceDataSource *dataSource = [[[DeviceDataSource alloc] initWithDelegate:self] autorelease];
     [dataSource uploadDeviceToken:deviceToken];
     self.dataSource = dataSource;
-}
-
-#pragma mark -
-#pragma mark DataSource Delegate
-
-- (void)dataSourceFinishLoad:(PPQDataSource *)source {
-    /**
-     1,先获取设备的基本信息，gps、温湿度
-     **/
-    if (source.networkType == EPPQNetGetDeviceInfo) {
-        [[DeviceManager sharedManager] setCurrentDevice:[[[MDevice alloc] initWithDictionary:[source.data objectForKey:@"data"]] autorelease]];
-        
-        if (success_) {
-            success_();
-            [success_ release];
-            success_ = nil;
-        }
-    }
-}
-
-- (void)dataSource:(PPQDataSource *)source hasError:(NSError *)error {
-    if (failure_) {
-        failure_(error);
-        [failure_ release];
-        failure_ = nil;
-    }
 }
 
 @end
@@ -214,6 +207,14 @@ NSString* const UpdateUserInfoNotification = @"UpdateUserInfoNotification";
         self.dataSource = nil;
     }
     
+    _isStartWeight = YES;
+    
+    [self getDataSourceForStep:step];
+}
+
+- (void)getDataSourceForStep:(WeightStep)step {
+    NSString *deviceId = [[[AccountManager sharedManager] loginUser] userDeviceId];
+    
     DeviceDataSource *dataSource = [[[DeviceDataSource alloc] initWithDelegate:self] autorelease];
     self.dataSource = dataSource;
     
@@ -221,11 +222,14 @@ NSString* const UpdateUserInfoNotification = @"UpdateUserInfoNotification";
         case WeightStepStartModle:
             [dataSource getDeviceInfo:deviceId];
             break;
+        case WeightStepStartWeight:
+            [dataSource startWeight:deviceId];
+            break;
         case WeightStepSendInstruction:
             [dataSource sendInstruction:deviceId];
             break;
         case WeightStepGETWeight:
-            [dataSource getDeviceInfo:deviceId];
+            [dataSource getWeight:deviceId];
             break;
         case WeightStepStopModle:
             [dataSource stopWeight:deviceId];
@@ -240,38 +244,47 @@ NSString* const UpdateUserInfoNotification = @"UpdateUserInfoNotification";
 
 - (void)dataSourceFinishLoad:(PPQDataSource *)source {
     /**
-     2,开启称重
-     3,6秒后获取称重信息
+     1,获取设备信息
+     2,开启称重模式
+     3,发送称重指令
+     4,获取称重数据
+     5,停止称重模式
      **/
-    if (source.networkType == EPPQNetSendInstruction) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 6 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-            NSString *deviceId = [[[AccountManager sharedManager] loginUser] userDeviceId];
-            DeviceDataSource *dataSource = [[[DeviceDataSource alloc] initWithDelegate:self] autorelease];
-            [dataSource getWeight:deviceId];
-            self.dataSource = dataSource;
-        });
-    }else if (source.networkType == EPPQNetGetDeviceInfo) {
+    if (source.networkType == EPPQNetGetDeviceInfo) {
         [[DeviceManager sharedManager] setCurrentDevice:[[[MDevice alloc] initWithDictionary:[source.data objectForKey:@"data"]] autorelease]];
         
-        NSString *deviceId = [[[AccountManager sharedManager] loginUser] userDeviceId];
-        DeviceDataSource *dataSource = [[[DeviceDataSource alloc] initWithDelegate:self] autorelease];
-        [dataSource startWeight:deviceId];
-        self.dataSource = dataSource;
+        //如果只是单纯获取设备信息，则直接结束
+        if (!_isStartWeight) {
+            [self doSuccess];
+        }else {
+            [self getDataSourceForStep:WeightStepStartWeight];
+        }
+    }else if (source.networkType == EPPQNetSendInstruction) {
+        //发送称重指令后6秒获取称重数据
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 6 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            [self getDataSourceForStep:WeightStepGETWeight];
+        });
+    }else if (source.networkType == EPPQNetGetWeight) {
+        [[[DeviceManager sharedManager] currentDevice] updateWeightWithDictionary:[source.data objectForKey:@"data"]];
+        [self doSuccess];
     }else {
-        if (source.networkType == EPPQNetGetWeight) {
-            NSLog(@"currentD:%@",[[DeviceManager sharedManager] currentDevice]);
-            [[[DeviceManager sharedManager] currentDevice] updateWeightWithDictionary:[source.data objectForKey:@"data"]];
-        }
-        
-        if (success_) {
-            success_();
-            [success_ release];
-            success_ = nil;
-        }
+        [self doSuccess];
     }
 }
 
 - (void)dataSource:(PPQDataSource *)source hasError:(NSError *)error {
+    [self doFailure:error];
+}
+
+- (void)doSuccess {
+    if (success_) {
+        success_();
+        [success_ release];
+        success_ = nil;
+    }
+}
+
+- (void)doFailure:(NSError *)error {
     if (failure_) {
         failure_(error);
         [failure_ release];
