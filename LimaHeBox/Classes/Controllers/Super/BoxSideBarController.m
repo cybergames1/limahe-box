@@ -30,6 +30,7 @@
     NSArray * _tabList;
     UIView * _maskView;
     UITableView * _tableView;
+    UIImageView * _imageView;
     
     MainViewController * _mainController;
 }
@@ -171,8 +172,10 @@
 
 - (void)showSideBar {
     [UIView animateWithDuration:0.3 animations:^{
-        if (self.view.left <= 0) {
-            self.view.left += 185;
+        if (_tableView.left < 0) {
+            _tableView.left += 185;
+            _imageView.left += 185;
+            _maskView.left += 185;
             _maskView.alpha = 0.5;
             [_mainController setViewHidden:YES];
         }
@@ -181,8 +184,10 @@
 
 - (void)hideSideBar {
     [UIView animateWithDuration:0.3 animations:^{
-        if (self.view.left > 0) {
-            self.view.left -= 185;
+        if (_tableView.left >= 0) {
+            _tableView.left -= 185;
+            _imageView.left -= 185;
+            _maskView.left -= 185;
             _maskView.alpha = 0.0;
             [_mainController setViewHidden:NO];
         }
@@ -193,16 +198,17 @@
     // Create Content of SideBar
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
     
-    UIImageView *imageView = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 185, self.view.height)] autorelease];
+    UIImageView *imageView = [[[UIImageView alloc] initWithFrame:CGRectMake(-185, 0, 185, self.view.height)] autorelease];
     imageView.image = [UIImage imageNamed:@"main_left"];
-    [window addSubview:imageView];
+    [self.view addSubview:imageView];
+    _imageView = imageView;
     
-    UITableView *tableView = [[[UITableView alloc] initWithFrame:CGRectMake(0, 0, 185, self.view.height)] autorelease];
+    UITableView *tableView = [[[UITableView alloc] initWithFrame:CGRectMake(-185, 0, 185, self.view.height)] autorelease];
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableView.backgroundColor = [UIColor clearColor];
     tableView.dataSource = self;
     tableView.delegate = self;
-    [window addSubview:tableView];
+    [self.view addSubview:tableView];
     _tableView = tableView;
     
     UIView *maskView = [[[UIView alloc] initWithFrame:self.view.bounds] autorelease];
