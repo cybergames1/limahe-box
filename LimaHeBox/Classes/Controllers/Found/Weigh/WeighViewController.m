@@ -85,6 +85,9 @@
             [self showIndicatorHUDView:@"等待进入称重模式"];
         }else {
             [self showHUDWithText:[error.userInfo objectForKey:NSLocalizedDescriptionKey]];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                [self leftBarAction];
+            });
         }
     } success:^{
         [self hideAllHUDView];
@@ -155,7 +158,7 @@
         if (error == nil) {
             [self showIndicatorHUDView:@"等待退出称重模式"];
         }else {
-            //[self showHUDWithText:[error.userInfo objectForKey:NSLocalizedDescriptionKey]];
+            [super leftBarAction];
         }
     } success:^{
         [self hideAllHUDView];
