@@ -21,10 +21,10 @@ NSString* const UpdateDeviceInfoNotification = @"UpdateDeviceInfoNotification";
     self = [super init];
     if (self) {
         self.deviceId = [dic objectForKey:@"toolsn"];
+        self.isOnline = [[dic objectForKey:@"isonline"] boolValue];
         
         NSDictionary *infoDic = [self dictionaryFromString:[dic objectForKey:@"tinfo"]];
         if (infoDic) {
-            self.isOnline = [[infoDic objectForKey:@"isonline"] boolValue];
             self.coordinate = CLLocationCoordinate2DMake([[infoDic objectForKey:@"s"] floatValue],[[infoDic objectForKey:@"n"] floatValue]);
             self.temperature = [[infoDic objectForKey:@"tm"] floatValue];
             self.wet = [[infoDic objectForKey:@"ph"] floatValue];
