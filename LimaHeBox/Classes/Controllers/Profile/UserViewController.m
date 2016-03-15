@@ -12,6 +12,7 @@
 #import "BlueToothSettingViewController.h"
 #import "AboutViewController.h"
 #import "NotificaionConstant.h"
+#import "EditUserInfoViewController.h"
 
 #define Logo_Left_Rate (40.0/360.0)
 
@@ -25,7 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavigationTitle:@"我的"];
+    [self setNavigationTitle:@"功能设置"];
     self.view.backgroundColor = UIColorRGB(248, 248, 248);
     
     UITableView *tableView = [[[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped] autorelease];
@@ -57,13 +58,18 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier] autorelease];
     }
     switch (indexPath.row) {
-        case 0:{
-            cell.textLabel.text = @"蓝牙报警设置";
+        case 0: {
+            cell.textLabel.text = @"设备绑定";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
             break;
         case 1:{
-            cell.textLabel.text = @"关于我们";
+            cell.textLabel.text = @"蓝牙设置";
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
+            break;
+        case 2:{
+            cell.textLabel.text = @"版本信息";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
             break;
@@ -105,13 +111,20 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     switch (indexPath.row) {
         case 0:{
+            //添加设备号
+            UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+            EditUserInfoViewController* controller = [[EditUserInfoViewController alloc] initWithOption:ProfileEditOptionDeviceId profileInfo:cell.detailTextLabel.text];
+            [self.navigationController pushViewController:controller animated:YES];
+            [controller release];
+        }
+        case 1:{
             // 蓝牙报警设置
             BlueToothSettingViewController *controller = [[BlueToothSettingViewController alloc] init];
             [self.navigationController pushViewController:controller animated:YES];
             [controller release];
         }
             break;
-        case 1:{
+        case 2:{
             //关于
             AboutViewController *controller = [[AboutViewController alloc] init];
             [self.navigationController pushViewController:controller animated:YES];

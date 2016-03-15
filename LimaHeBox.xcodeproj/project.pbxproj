@@ -104,6 +104,15 @@
 		DC3F18021B31523600F02C10 /* Category.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3F18011B31523600F02C10 /* Category.framework */; };
 		DC3F18041B315B0C00F02C10 /* common_icon_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC3F18031B315B0C00F02C10 /* common_icon_back@2x.png */; };
 		DC52E3C01BA725CA00E3DFE5 /* Qunar.html in Resources */ = {isa = PBXBuildFile; fileRef = DC52E3BF1BA725CA00E3DFE5 /* Qunar.html */; };
+		DC66939A1C9468CC00EB6267 /* common_guide_0@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DC6693961C9468CC00EB6267 /* common_guide_0@2x.jpg */; };
+		DC66939B1C9468CC00EB6267 /* common_guide_1@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DC6693971C9468CC00EB6267 /* common_guide_1@2x.jpg */; };
+		DC66939C1C9468CC00EB6267 /* common_guide_2@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DC6693981C9468CC00EB6267 /* common_guide_2@2x.jpg */; };
+		DC66939D1C9468CC00EB6267 /* common_guide_3@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DC6693991C9468CC00EB6267 /* common_guide_3@2x.jpg */; };
+		DC6693A11C946A3400EB6267 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6693A01C946A3400EB6267 /* GuideViewController.m */; };
+		DC6693A51C95C41800EB6267 /* f_1_game@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC6693A21C95C41800EB6267 /* f_1_game@2x.png */; };
+		DC6693A61C95C41800EB6267 /* f_1_store@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC6693A31C95C41800EB6267 /* f_1_store@2x.png */; };
+		DC6693A71C95C41800EB6267 /* f_1_view@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC6693A41C95C41800EB6267 /* f_1_view@2x.png */; };
+		DC6693A91C95C52B00EB6267 /* main_nav_message@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC6693A81C95C52B00EB6267 /* main_nav_message@2x.png */; };
 		DC6E61AD1B96EDBB002A97C0 /* City.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC6E61AC1B96EDBB002A97C0 /* City.plist */; };
 		DC6E61AF1B9867B9002A97C0 /* main_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC6E61AE1B9867B9002A97C0 /* main_left@2x.png */; };
 		DC6E61B11B98682A002A97C0 /* main_bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC6E61B01B98682A002A97C0 /* main_bg@3x.png */; };
@@ -499,6 +508,16 @@
 		DC3F18011B31523600F02C10 /* Category.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Category.framework; sourceTree = "<group>"; };
 		DC3F18031B315B0C00F02C10 /* common_icon_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "common_icon_back@2x.png"; sourceTree = "<group>"; };
 		DC52E3BF1BA725CA00E3DFE5 /* Qunar.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Qunar.html; sourceTree = "<group>"; };
+		DC6693961C9468CC00EB6267 /* common_guide_0@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "common_guide_0@2x.jpg"; sourceTree = "<group>"; };
+		DC6693971C9468CC00EB6267 /* common_guide_1@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "common_guide_1@2x.jpg"; sourceTree = "<group>"; };
+		DC6693981C9468CC00EB6267 /* common_guide_2@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "common_guide_2@2x.jpg"; sourceTree = "<group>"; };
+		DC6693991C9468CC00EB6267 /* common_guide_3@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "common_guide_3@2x.jpg"; sourceTree = "<group>"; };
+		DC66939F1C946A3400EB6267 /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
+		DC6693A01C946A3400EB6267 /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
+		DC6693A21C95C41800EB6267 /* f_1_game@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "f_1_game@2x.png"; sourceTree = "<group>"; };
+		DC6693A31C95C41800EB6267 /* f_1_store@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "f_1_store@2x.png"; sourceTree = "<group>"; };
+		DC6693A41C95C41800EB6267 /* f_1_view@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "f_1_view@2x.png"; sourceTree = "<group>"; };
+		DC6693A81C95C52B00EB6267 /* main_nav_message@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_nav_message@2x.png"; sourceTree = "<group>"; };
 		DC6E61AC1B96EDBB002A97C0 /* City.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = City.plist; sourceTree = "<group>"; };
 		DC6E61AE1B9867B9002A97C0 /* main_left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_left@2x.png"; sourceTree = "<group>"; };
 		DC6E61B01B98682A002A97C0 /* main_bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_bg@3x.png"; sourceTree = "<group>"; };
@@ -1243,6 +1262,7 @@
 		DC3F17CA1B302CAC00F02C10 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DC6693951C9468CC00EB6267 /* Common */,
 				DCEA6A331B895D6D008FF3E2 /* Bluetooth */,
 				DCEA69CC1B880147008FF3E2 /* Profile */,
 				DCEA699A1B86FAD6008FF3E2 /* Found */,
@@ -1269,6 +1289,7 @@
 			isa = PBXGroup;
 			children = (
 				DCEA6A401B89E543008FF3E2 /* Super */,
+				DC66939E1C946A1800EB6267 /* Guide */,
 				DCEA697D1B861FDD008FF3E2 /* Message */,
 				DCEA69721B861858008FF3E2 /* Share */,
 				DCCE82491B85DFFC000EF913 /* Profile */,
@@ -1343,6 +1364,27 @@
 				DC3F18011B31523600F02C10 /* Category.framework */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		DC6693951C9468CC00EB6267 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				DC6693961C9468CC00EB6267 /* common_guide_0@2x.jpg */,
+				DC6693971C9468CC00EB6267 /* common_guide_1@2x.jpg */,
+				DC6693981C9468CC00EB6267 /* common_guide_2@2x.jpg */,
+				DC6693991C9468CC00EB6267 /* common_guide_3@2x.jpg */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		DC66939E1C946A1800EB6267 /* Guide */ = {
+			isa = PBXGroup;
+			children = (
+				DC66939F1C946A3400EB6267 /* GuideViewController.h */,
+				DC6693A01C946A3400EB6267 /* GuideViewController.m */,
+			);
+			name = Guide;
+			path = Super/Guide;
 			sourceTree = "<group>";
 		};
 		DC6E61B21B997849002A97C0 /* MapController */ = {
@@ -1572,6 +1614,9 @@
 		DCEA699A1B86FAD6008FF3E2 /* Found */ = {
 			isa = PBXGroup;
 			children = (
+				DC6693A21C95C41800EB6267 /* f_1_game@2x.png */,
+				DC6693A31C95C41800EB6267 /* f_1_store@2x.png */,
+				DC6693A41C95C41800EB6267 /* f_1_view@2x.png */,
 				DC03AB071BE8885800C243C3 /* f_w@2x.png */,
 				DCEA69FD1B8867B0008FF3E2 /* f_1_alarm@2x.png */,
 				DCEA69FE1B8867B0008FF3E2 /* f_1_com@2x.png */,
@@ -1699,6 +1744,7 @@
 		DCFAC4291B38F76C0062D479 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				DC6693A81C95C52B00EB6267 /* main_nav_message@2x.png */,
 				DC6E61AE1B9867B9002A97C0 /* main_left@2x.png */,
 				DCE0AEFC1B96DE8500F2CFC3 /* main_gps@2x.png */,
 				DCE0AEFD1B96DE8500F2CFC3 /* main_temp@2x.png */,
@@ -1965,6 +2011,7 @@
 				DCEA69A71B86FBA7008FF3E2 /* f_pause@2x.png in Resources */,
 				DCFAC4961B38F76C0062D479 /* main_xingcheng@2x.png in Resources */,
 				DCFAC4651B38F76C0062D479 /* main_fenxiang@2x.png in Resources */,
+				DC66939A1C9468CC00EB6267 /* common_guide_0@2x.jpg in Resources */,
 				DCEA69A31B86FBA7008FF3E2 /* f_back@2x.png in Resources */,
 				DCEA69B61B873505008FF3E2 /* f_left@2x.png in Resources */,
 				DCEA69B81B873505008FF3E2 /* f_top@2x.png in Resources */,
@@ -2009,6 +2056,7 @@
 				DCFAC4751B38F76C0062D479 /* w_19@2x.png in Resources */,
 				DCFAC4D31B3A9D4A0062D479 /* k_yuantong@2x.png in Resources */,
 				DCFAC4901B38F76C0062D479 /* w_4@2x.png in Resources */,
+				DC66939D1C9468CC00EB6267 /* common_guide_3@2x.jpg in Resources */,
 				DCFAC4D41B3A9D4A0062D479 /* k_yunda@2x.png in Resources */,
 				DCFAC4D71B3A9D4A0062D479 /* k_zhongyouwuliu@2x.png in Resources */,
 				DCFAC4811B38F76C0062D479 /* w_2@2x.png in Resources */,
@@ -2019,12 +2067,15 @@
 				DCFAC47B1B38F76C0062D479 /* w_24@2x.png in Resources */,
 				DCEA69921B86D12A008FF3E2 /* lr_bg@3x.png in Resources */,
 				DCFAC4801B38F76C0062D479 /* w_29@2x.png in Resources */,
+				DC6693A61C95C41800EB6267 /* f_1_store@2x.png in Resources */,
 				DCFAC46E1B38F76C0062D479 /* w_12@2x.png in Resources */,
 				DC28F33F1BB253810042D407 /* BEEP1.WAV in Resources */,
 				DCEA6A0C1B8867B0008FF3E2 /* f_1_weigh@2x.png in Resources */,
 				DCFAC48B1B38F76C0062D479 /* w_39@2x.png in Resources */,
 				DCEA6A391B895D6D008FF3E2 /* bl_bg@3x.png in Resources */,
+				DC6693A71C95C41800EB6267 /* f_1_view@2x.png in Resources */,
 				DCEA6A051B8867B0008FF3E2 /* f_1_alarm@2x.png in Resources */,
+				DC6693A91C95C52B00EB6267 /* main_nav_message@2x.png in Resources */,
 				DC28F3381BB13FE30042D407 /* HOOK1.WAV in Resources */,
 				DCEA69D91B8801B6008FF3E2 /* pf_logo4@2x.png in Resources */,
 				DCFAC48E1B38F76C0062D479 /* w_41@2x.png in Resources */,
@@ -2057,6 +2108,7 @@
 				DCEA6A091B8867B0008FF3E2 /* f_1_gps@2x.png in Resources */,
 				DC6E61AF1B9867B9002A97C0 /* main_left@2x.png in Resources */,
 				DCFAC4C61B3A9D4A0062D479 /* k_lianhaowuliu@2x.png in Resources */,
+				DC66939C1C9468CC00EB6267 /* common_guide_2@2x.jpg in Resources */,
 				DCFAC47C1B38F76C0062D479 /* w_25@2x.png in Resources */,
 				DCEA69DD1B8801B6008FF3E2 /* pf_logo8@2x.png in Resources */,
 				DC6E61AD1B96EDBB002A97C0 /* City.plist in Resources */,
@@ -2072,11 +2124,13 @@
 				DCEA69B51B873505008FF3E2 /* f_bottom@2x.png in Resources */,
 				DCFAC4D91B3A9E310062D479 /* kuaidi.plist in Resources */,
 				DCEA69A61B86FBA7008FF3E2 /* f_ok@2x.png in Resources */,
+				DC6693A51C95C41800EB6267 /* f_1_game@2x.png in Resources */,
 				DCFAC4D51B3A9D4A0062D479 /* k_zhaijisong@2x.png in Resources */,
 				DCFAC4761B38F76C0062D479 /* w_1@2x.png in Resources */,
 				DC3F17211B2FDEEE00F02C10 /* Images.xcassets in Resources */,
 				DC00D7641BAFE1D80088FA71 /* provinceCity.plist in Resources */,
 				DCEA6A071B8867B0008FF3E2 /* f_1_control@2x.png in Resources */,
+				DC66939B1C9468CC00EB6267 /* common_guide_1@2x.jpg in Resources */,
 				DCE0AEFF1B96DE8500F2CFC3 /* main_gps@2x.png in Resources */,
 				DCEA6A061B8867B0008FF3E2 /* f_1_com@2x.png in Resources */,
 				DCFAC46C1B38F76C0062D479 /* w_10@2x.png in Resources */,
@@ -2156,6 +2210,7 @@
 				DC3F177E1B2FDF3000F02C10 /* PrivateOrderListDS.m in Sources */,
 				DC3F17841B2FDF3000F02C10 /* TickerTradeDS.m in Sources */,
 				DC00D7141BAD006A0088FA71 /* UIView+WebCacheOperation.m in Sources */,
+				DC6693A11C946A3400EB6267 /* GuideViewController.m in Sources */,
 				DC00D7521BAD01E10088FA71 /* ASIInputStream.m in Sources */,
 				DCFAC4E31B3BA9E80062D479 /* ExpressResultViewController.m in Sources */,
 				DC00D7881BAFEF630088FA71 /* JSONAPI.m in Sources */,

@@ -29,8 +29,8 @@
 {
     NSArray * _tabList;
     UIView * _maskView;
+    UIToolbar * _tableToolbar;
     UITableView * _tableView;
-    UIImageView * _imageView;
     
     MainViewController * _mainController;
 }
@@ -77,7 +77,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        NSArray *tabList_ = @[@"首\t  页",@"蓝\t  牙",@"行程预定",@"分\t  享",@"快\t  递",@"发\t  现",@"我\t  的"];
+        NSArray *tabList_ = @[@"安全监控",@"出行帮助",@"动态分享",@"快递服务",@"智能生活",@"功能设置"];
         _tabList = [tabList_ retain];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLogout:) name:kUserDidLogOutNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUserInfo:) name:kUserInfoDidUpdateNotification object:nil];
@@ -174,7 +174,7 @@
     [UIView animateWithDuration:0.3 animations:^{
         if (_tableView.left < 0) {
             _tableView.left += 185;
-            _imageView.left += 185;
+            _tableToolbar.left += 185;
             _maskView.left += 185;
             _maskView.alpha = 0.5;
             [_mainController setViewHidden:YES];
@@ -186,7 +186,7 @@
     [UIView animateWithDuration:0.3 animations:^{
         if (_tableView.left >= 0) {
             _tableView.left -= 185;
-            _imageView.left -= 185;
+            _tableToolbar.left -= 185;
             _maskView.left -= 185;
             _maskView.alpha = 0.0;
             [_mainController setViewHidden:NO];
@@ -196,12 +196,13 @@
 
 - (void)setBoxSideBar {
     // Create Content of SideBar
-    UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+    //UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
     
-    UIImageView *imageView = [[[UIImageView alloc] initWithFrame:CGRectMake(-185, 0, 185, self.view.height)] autorelease];
-    imageView.image = [UIImage imageNamed:@"main_left"];
-    [self.view addSubview:imageView];
-    _imageView = imageView;
+    UIToolbar *toolbar = [[[UIToolbar alloc] initWithFrame:CGRectMake(-185, 0, 185, self.view.height)] autorelease];
+    toolbar.barStyle = UIBarStyleBlack;
+    toolbar.translucent = YES;
+    [self.view addSubview:toolbar];
+    _tableToolbar = toolbar;
     
     UITableView *tableView = [[[UITableView alloc] initWithFrame:CGRectMake(-185, 0, 185, self.view.height)] autorelease];
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -309,7 +310,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self setSelectedIndex:indexPath.row];
+    [self setSelectedIndex:indexPath.row+1];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {

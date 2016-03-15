@@ -35,12 +35,16 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        NSArray *titleList_ = @[@"日历",@"箱子GPS定位",@"温湿度监控",@"称重",@"闹钟",@"公司介绍"];
+        NSArray *titleList_ = @[@[@"GPS定位",@"称重",@"遥控旅行箱",@"温湿度监控"],
+                                @[@"日历",@"闹钟"],
+                                @[@"商城",@"游戏",@"摩景"],
+                                @[@"品牌概述"]];
         _titleList = [titleList_ retain];
         
-        NSArray *imageList_ = @[[UIImage imageNamed:@"f_1_date"],
-                               [UIImage imageNamed:@"f_1_gps"],[UIImage imageNamed:@"f_1_tem"],[UIImage imageNamed:@"f_1_weigh"],
-                               [UIImage imageNamed:@"f_1_alarm"],[UIImage imageNamed:@"f_1_com"]];
+        NSArray *imageList_ = @[@[[UIImage imageNamed:@"f_1_gps"],[UIImage imageNamed:@"f_1_weigh"],[UIImage imageNamed:@"f_1_control"],[UIImage imageNamed:@"f_1_tem"]],
+                                @[[UIImage imageNamed:@"f_1_date"],[UIImage imageNamed:@"f_1_alarm"]],
+                                @[[UIImage imageNamed:@"f_1_store"],[UIImage imageNamed:@"f_1_game"],[UIImage imageNamed:@"f_1_view"]],
+                                @[[UIImage imageNamed:@"f_1_com"]]];
         _imageList = [imageList_ retain];
     }
     return self;
@@ -63,8 +67,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [_titleList count];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [_titleList[section] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -73,77 +81,112 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
     }
-    cell.textLabel.text = _titleList[indexPath.row];
-    cell.imageView.image = _imageList[indexPath.row];
+    cell.textLabel.text = _titleList[indexPath.section][indexPath.row];
+    cell.imageView.image = _imageList[indexPath.section][indexPath.row];
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    switch (indexPath.row) {
+    switch (indexPath.section) {
         case 0:
-            //日历
         {
-            CalendarViewController *controller = [[CalendarViewController alloc] init];
-            [self.navigationController pushViewController:controller animated:YES];
-            [controller release];
+            switch (indexPath.row) {
+                case 0:
+                    //箱子GPS定位
+                {
+                    GPSViewController *controller = [[GPSViewController alloc] init];
+                    [self.navigationController pushViewController:controller animated:YES];
+                    [controller release];
+                }
+                    break;
+                case 1:
+                    //称重
+                {
+                    WeighViewController *controller = [[WeighViewController alloc] init];
+                    [self.navigationController pushViewController:controller animated:YES];
+                    [controller release];
+                }
+                    break;
+                case 2:
+                    //遥控旅行箱
+                {
+                    TeleControlViewController *controller = [[TeleControlViewController alloc] init];
+                    [self.navigationController pushViewController:controller animated:YES];
+                    [controller release];
+                }
+
+                    break;
+                case 3:
+                    //温度/湿度监控
+                {
+                    TempViewController *controller = [[TempViewController alloc] init];
+                    [self.navigationController pushViewController:controller animated:YES];
+                    [controller release];
+                }
+                    break;
+                default:
+                    break;
+            }
         }
             break;
-//        case 1:
-//            //计步器
-//        {
-//            PedoMeterViewController *controller = [[PedoMeterViewController alloc] init];
-//            [self.navigationController pushViewController:controller animated:YES];
-//            [controller release];
-//        }
-//            break;
-//        case 2:
-//            //遥控旅行箱
-//        {
-//            TeleControlViewController *controller = [[TeleControlViewController alloc] init];
-//            [self.navigationController pushViewController:controller animated:YES];
-//            [controller release];
-//        }
-//            break;
         case 1:
-            //箱子GPS定位
         {
-            GPSViewController *controller = [[GPSViewController alloc] init];
-            [self.navigationController pushViewController:controller animated:YES];
-            [controller release];
+            switch (indexPath.row) {
+                case 0:
+                    //日历
+                {
+                    CalendarViewController *controller = [[CalendarViewController alloc] init];
+                    [self.navigationController pushViewController:controller animated:YES];
+                    [controller release];
+                }
+                    break;
+                case 1:
+                    //闹钟
+                {
+                    AlarmClockEditViewController *controller = [[AlarmClockEditViewController alloc] init];
+                    [self.navigationController pushViewController:controller animated:YES];
+                    [controller release];
+                }
+                    break;
+                default:
+                    break;
+            }
         }
             break;
         case 2:
-            //温度/湿度监控
         {
-            TempViewController *controller = [[TempViewController alloc] init];
-            [self.navigationController pushViewController:controller animated:YES];
-            [controller release];
+            switch (indexPath.row) {
+                case 0:
+                    //商城
+                    break;
+                case 1:
+                    //游戏
+                    break;
+                case 2:
+                    //摩景
+                    break;
+                default:
+                    break;
+            }
         }
             break;
         case 3:
-            //称重
         {
-            WeighViewController *controller = [[WeighViewController alloc] init];
-            [self.navigationController pushViewController:controller animated:YES];
-            [controller release];
-        }
-            break;
-        case 4:
-            //闹钟
-        {
-            AlarmClockEditViewController *controller = [[AlarmClockEditViewController alloc] init];
-            [self.navigationController pushViewController:controller animated:YES];
-            [controller release];
-        }
-            break;
-        case 5:
-            //公司介绍
-        {
-            CompanyViewController *controller = [[CompanyViewController alloc] init];
-            [self.navigationController pushViewController:controller animated:YES];
-            [controller release];
+            switch (indexPath.row) {
+                case 0:
+                    //品牌概述
+                {
+                    CompanyViewController *controller = [[CompanyViewController alloc] init];
+                    [self.navigationController pushViewController:controller animated:YES];
+                    [controller release];
+                }
+                    break;
+                    
+                default:
+                    break;
+            }
         }
             break;
         default:
