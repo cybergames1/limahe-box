@@ -33,7 +33,7 @@
     label.textAlignment = NSTextAlignmentCenter;
     label.lineBreakMode = NSLineBreakByCharWrapping;
     label.numberOfLines = 2;
-    label.text = @"利马赫智能旅行箱\nV1.1";
+    label.text = @"利马赫智能旅行箱\nV1.2";
     [self.view addSubview:label];
     
     //产品宣言

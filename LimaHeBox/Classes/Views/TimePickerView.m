@@ -100,21 +100,18 @@
     NSDate *date = [NSDate date];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     
-    [formatter setDateFormat:@"hh"];
+    [formatter setDateFormat:@"HH"];
     NSString *currentHourString = [NSString stringWithFormat:@"%@",[formatter stringFromDate:date]];
+    _returnHour = [currentHourString integerValue];
     
     [formatter setDateFormat:@"mm"];
     NSString *currentMinuteString = [NSString stringWithFormat:@"%@",[formatter stringFromDate:date]];
     _returnMinute = [currentMinuteString integerValue];
     
-    [formatter setDateFormat:@"a"];
-    NSString *currentAMPMString = [NSString stringWithFormat:@"%@",[formatter stringFromDate:date]];
-    _returnHour = ([_ampmArray indexOfObject:currentAMPMString] == 0) ? [currentHourString integerValue] : [currentHourString integerValue]+12;
-    
     [formatter release];
     
-    [_pickerView selectRow:[_ampmArray indexOfObject:currentAMPMString] inComponent:0 animated:YES];
-    [_pickerView selectRow:[_hoursArray indexOfObject:currentHourString] inComponent:1 animated:YES];
+    [_pickerView selectRow:(_returnHour<12)?0:1 inComponent:0 animated:YES];
+    [_pickerView selectRow:_returnHour%12 inComponent:1 animated:YES];
     [_pickerView selectRow:[_minArray indexOfObject:currentMinuteString] inComponent:2 animated:YES];
 }
 

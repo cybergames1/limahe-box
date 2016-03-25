@@ -15,6 +15,8 @@
 #import "WeighViewController.h"
 #import "CalendarViewController.h"
 #import "GPSViewController.h"
+#import "StroreViewController.h"
+#import "InComingViewController.h"
 
 @interface FoundViewController () <UITableViewDataSource,UITableViewDelegate>
 {
@@ -53,7 +55,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self setNavigationTitle:@"发现"];
+    [self setNavigationTitle:@"智能生活"];
     
     UITableView *tableView = [[[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped] autorelease];
     tableView.backgroundColor = self.view.backgroundColor;
@@ -160,12 +162,29 @@
             switch (indexPath.row) {
                 case 0:
                     //商城
+                {
+                    StroreViewController *controller = [[StroreViewController alloc] init];
+                    [self.navigationController pushViewController:controller animated:YES];
+                    [controller release];
+                }
                     break;
                 case 1:
                     //游戏
+                {
+                    InComingViewController *controller = [[InComingViewController alloc] init];
+                    controller.title = @"游戏";
+                    [self.navigationController pushViewController:controller animated:YES];
+                    [controller release];
+                }
                     break;
                 case 2:
                     //摩景
+                {
+                    InComingViewController *controller = [[InComingViewController alloc] init];
+                    controller.title = @"摩景";
+                    [self.navigationController pushViewController:controller animated:YES];
+                    [controller release];
+                }
                     break;
                 default:
                     break;

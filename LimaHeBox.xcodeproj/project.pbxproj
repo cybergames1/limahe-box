@@ -60,6 +60,8 @@
 		DC0A3C531B57BCA90048774B /* TravelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0A3C521B57BCA90048774B /* TravelViewController.m */; };
 		DC0A3C571B58D30B0048774B /* PedoMeterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0A3C561B58D30B0048774B /* PedoMeterViewController.m */; };
 		DC0A3C5A1B58D32B0048774B /* PedoMeterView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0A3C591B58D32B0048774B /* PedoMeterView.m */; };
+		DC18A1B31CA5566F00ED7019 /* StroreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC18A1B21CA5566F00ED7019 /* StroreViewController.m */; };
+		DC18A1B61CA5585F00ED7019 /* InComingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC18A1B51CA5585F00ED7019 /* InComingViewController.m */; };
 		DC1DFE6B1B5CC8C100B86732 /* BlueToothViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1DFE6A1B5CC8C100B86732 /* BlueToothViewController.m */; };
 		DC28F3361BB12F6B0042D407 /* SettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DC28F3351BB12F6B0042D407 /* SettingManager.m */; };
 		DC28F3381BB13FE30042D407 /* HOOK1.WAV in Resources */ = {isa = PBXBuildFile; fileRef = DC28F3371BB13FE30042D407 /* HOOK1.WAV */; };
@@ -429,6 +431,10 @@
 		DC0A3C561B58D30B0048774B /* PedoMeterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PedoMeterViewController.m; sourceTree = "<group>"; };
 		DC0A3C581B58D32B0048774B /* PedoMeterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PedoMeterView.h; sourceTree = "<group>"; };
 		DC0A3C591B58D32B0048774B /* PedoMeterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PedoMeterView.m; sourceTree = "<group>"; };
+		DC18A1B11CA5566F00ED7019 /* StroreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StroreViewController.h; sourceTree = "<group>"; };
+		DC18A1B21CA5566F00ED7019 /* StroreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StroreViewController.m; sourceTree = "<group>"; };
+		DC18A1B41CA5585F00ED7019 /* InComingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InComingViewController.h; sourceTree = "<group>"; };
+		DC18A1B51CA5585F00ED7019 /* InComingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InComingViewController.m; sourceTree = "<group>"; };
 		DC1DFE691B5CC8C100B86732 /* BlueToothViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueToothViewController.h; sourceTree = "<group>"; };
 		DC1DFE6A1B5CC8C100B86732 /* BlueToothViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueToothViewController.m; sourceTree = "<group>"; };
 		DC28F3341BB12F6B0042D407 /* SettingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingManager.h; sourceTree = "<group>"; };
@@ -1004,6 +1010,15 @@
 				DC0A3C561B58D30B0048774B /* PedoMeterViewController.m */,
 			);
 			path = Pedometer;
+			sourceTree = "<group>";
+		};
+		DC18A1B01CA5566200ED7019 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				DC18A1B11CA5566F00ED7019 /* StroreViewController.h */,
+				DC18A1B21CA5566F00ED7019 /* StroreViewController.m */,
+			);
+			path = Store;
 			sourceTree = "<group>";
 		};
 		DC1DFE681B5CC8AA00B86732 /* BlueTooth */ = {
@@ -1876,6 +1891,7 @@
 		DCFAC4E41B3CF9A50062D479 /* Found */ = {
 			isa = PBXGroup;
 			children = (
+				DC18A1B01CA5566200ED7019 /* Store */,
 				DC6E61B61B997967002A97C0 /* GPS */,
 				DCEA6A2C1B88D0F2008FF3E2 /* Calendar */,
 				DCEA69F71B885EDC008FF3E2 /* Weigh */,
@@ -1886,6 +1902,8 @@
 				DCFAC4E51B3CF9A50062D479 /* AlarmClock */,
 				DCFAC4F01B3D2B080062D479 /* FoundViewController.h */,
 				DCFAC4F11B3D2B080062D479 /* FoundViewController.m */,
+				DC18A1B41CA5585F00ED7019 /* InComingViewController.h */,
+				DC18A1B51CA5585F00ED7019 /* InComingViewController.m */,
 			);
 			path = Found;
 			sourceTree = "<group>";
@@ -2177,6 +2195,7 @@
 				DCEA69C41B877B85008FF3E2 /* TeleBar.m in Sources */,
 				DC8008421B9D6B3700F13C37 /* DeviceDataSource.m in Sources */,
 				DC00D7841BAFEF630088FA71 /* JSONModelArray.m in Sources */,
+				DC18A1B61CA5585F00ED7019 /* InComingViewController.m in Sources */,
 				DCFAC4F21B3D2B080062D479 /* FoundViewController.m in Sources */,
 				DCEA6A0F1B887D68008FF3E2 /* ShareTool.m in Sources */,
 				DCEA6A2F1B88D107008FF3E2 /* CalendarViewController.m in Sources */,
@@ -2266,6 +2285,7 @@
 				DCEA69EC1B880F0A008FF3E2 /* FlagView.m in Sources */,
 				DCCE82281B7F9842000EF913 /* RegisterButton.m in Sources */,
 				DC3F17831B2FDF3000F02C10 /* TickerDepthDS.m in Sources */,
+				DC18A1B31CA5566F00ED7019 /* StroreViewController.m in Sources */,
 				DCCE82241B7F960A000EF913 /* NewsDataSource.m in Sources */,
 				DCEA69E11B8805C7008FF3E2 /* AboutViewController.m in Sources */,
 				DCEA69C81B8786CC008FF3E2 /* MBProgressHUD.m in Sources */,

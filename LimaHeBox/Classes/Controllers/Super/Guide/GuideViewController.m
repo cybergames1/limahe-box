@@ -9,7 +9,7 @@
 #import "GuideViewController.h"
 #import "AppDelegate.h"
 
-@interface GuideViewController () <UIScrollViewDelegate>
+@interface GuideViewController ()
 {
     UIScrollView * _scrollView;
     void(^_completionHanle)(void);
@@ -26,8 +26,8 @@
     }else {
         AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         GuideViewController *controller = [[GuideViewController alloc] initWithCompletionHandle:completionHandle];
-        delegate.window.rootViewController = controller;
-        [delegate.window makeKeyAndVisible];
+        [delegate.window addSubview:controller.view];
+        [delegate.window.rootViewController addChildViewController:controller];
         [controller release];
         
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"Not_Need_ShowGuide"];
@@ -54,7 +54,6 @@
     _scrollView.showsHorizontalScrollIndicator = NO;
     _scrollView.pagingEnabled = YES;
     _scrollView.contentSize = CGSizeMake(4*self.view.frame.size.width,_scrollView.frame.size.height);
-    _scrollView.delegate = self;
     [self.view addSubview:_scrollView];
     
     UIImageView *imageView = [[[UIImageView alloc] initWithFrame:self.view.bounds] autorelease];
@@ -71,29 +70,19 @@
         [_scrollView addSubview:imageView];
         [imageView release];
     }
+    
+    UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [nextButton setTitle:@"立即进入" forState:UIControlStateNormal];
+    [nextButton setFrame:CGRectMake(self.view.width/2-100/2+3*self.view.width, self.view.bottom-150, 100, 44)];
+    [nextButton.layer setBorderWidth:1];
+    [nextButton.layer setBorderColor:[UIColor whiteColor].CGColor];
+    [nextButton addTarget:self action:@selector(goMainView) forControlEvents:UIControlEventTouchUpInside];
+    [_scrollView addSubview:nextButton];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (int)getPageInFilterScrollView:(UIScrollView *)scrollView {
-    CGFloat pageWidth = scrollView.bounds.size.width;
-    int page = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
-    return page;
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    if (scrollView.contentOffset.x > scrollView.contentSize.width-scrollView.width) {
-        [self goMainView];
-    }
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    if (scrollView.contentOffset.x > scrollView.contentSize.width-scrollView.width) {
-        [self goMainView];
-    }
 }
 
 - (void)goMainView {
@@ -102,6 +91,8 @@
     }
     [_completionHanle release];
     _completionHanle = nil;
+    [self.view removeFromSuperview];
+    [self removeFromParentViewController];
 }
 
 @end

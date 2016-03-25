@@ -48,10 +48,11 @@
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     self.window.backgroundColor = [UIColor blackColor];
     
+    BoxSideBarController *root = [[[BoxSideBarController alloc] init] autorelease];
+    self.window.rootViewController = root;
+    [self.window makeKeyAndVisible];
+    
     [GuideViewController showGudieViewControllerWithCompletionHandle:^{
-        BoxSideBarController *root = [[[BoxSideBarController alloc] init] autorelease];
-        self.window.rootViewController = root;
-        [self.window makeKeyAndVisible];
     }];
     
     return YES;
