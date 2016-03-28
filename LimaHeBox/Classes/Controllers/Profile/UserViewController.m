@@ -46,7 +46,7 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -117,6 +117,7 @@
             [self.navigationController pushViewController:controller animated:YES];
             [controller release];
         }
+            break;
         case 1:{
             // 蓝牙报警设置
             BlueToothSettingViewController *controller = [[BlueToothSettingViewController alloc] init];
