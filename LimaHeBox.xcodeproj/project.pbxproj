@@ -61,7 +61,6 @@
 		DC0A3C571B58D30B0048774B /* PedoMeterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0A3C561B58D30B0048774B /* PedoMeterViewController.m */; };
 		DC0A3C5A1B58D32B0048774B /* PedoMeterView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0A3C591B58D32B0048774B /* PedoMeterView.m */; };
 		DC18A1B31CA5566F00ED7019 /* StroreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC18A1B21CA5566F00ED7019 /* StroreViewController.m */; };
-		DC18A1B61CA5585F00ED7019 /* InComingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC18A1B51CA5585F00ED7019 /* InComingViewController.m */; };
 		DC1DFE6B1B5CC8C100B86732 /* BlueToothViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1DFE6A1B5CC8C100B86732 /* BlueToothViewController.m */; };
 		DC28F3361BB12F6B0042D407 /* SettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DC28F3351BB12F6B0042D407 /* SettingManager.m */; };
 		DC28F3381BB13FE30042D407 /* HOOK1.WAV in Resources */ = {isa = PBXBuildFile; fileRef = DC28F3371BB13FE30042D407 /* HOOK1.WAV */; };
@@ -105,6 +104,11 @@
 		DC3F17FF1B31505500F02C10 /* LRSuperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3F17FE1B31505500F02C10 /* LRSuperViewController.m */; };
 		DC3F18021B31523600F02C10 /* Category.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3F18011B31523600F02C10 /* Category.framework */; };
 		DC3F18041B315B0C00F02C10 /* common_icon_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC3F18031B315B0C00F02C10 /* common_icon_back@2x.png */; };
+		DC48E7591CAD201F000EB4BB /* main_mall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC48E7561CAD201F000EB4BB /* main_mall@2x.png */; };
+		DC48E75A1CAD2020000EB4BB /* main_mojing@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC48E7571CAD201F000EB4BB /* main_mojing@2x.png */; };
+		DC48E75B1CAD2020000EB4BB /* main_more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC48E7581CAD201F000EB4BB /* main_more@2x.png */; };
+		DC48E7601CAD2327000EB4BB /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC48E75F1CAD2327000EB4BB /* GameViewController.m */; };
+		DC48E7631CAD2335000EB4BB /* MojingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC48E7621CAD2335000EB4BB /* MojingViewController.m */; };
 		DC5185661CA92E0B00AD0352 /* pf_about_log@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC5185651CA92E0B00AD0352 /* pf_about_log@2x.png */; };
 		DC52E3C01BA725CA00E3DFE5 /* Qunar.html in Resources */ = {isa = PBXBuildFile; fileRef = DC52E3BF1BA725CA00E3DFE5 /* Qunar.html */; };
 		DC66939A1C9468CC00EB6267 /* common_guide_0@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DC6693961C9468CC00EB6267 /* common_guide_0@2x.jpg */; };
@@ -433,8 +437,6 @@
 		DC0A3C591B58D32B0048774B /* PedoMeterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PedoMeterView.m; sourceTree = "<group>"; };
 		DC18A1B11CA5566F00ED7019 /* StroreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StroreViewController.h; sourceTree = "<group>"; };
 		DC18A1B21CA5566F00ED7019 /* StroreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StroreViewController.m; sourceTree = "<group>"; };
-		DC18A1B41CA5585F00ED7019 /* InComingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InComingViewController.h; sourceTree = "<group>"; };
-		DC18A1B51CA5585F00ED7019 /* InComingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InComingViewController.m; sourceTree = "<group>"; };
 		DC1DFE691B5CC8C100B86732 /* BlueToothViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueToothViewController.h; sourceTree = "<group>"; };
 		DC1DFE6A1B5CC8C100B86732 /* BlueToothViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueToothViewController.m; sourceTree = "<group>"; };
 		DC28F3341BB12F6B0042D407 /* SettingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingManager.h; sourceTree = "<group>"; };
@@ -513,6 +515,13 @@
 		DC3F17FE1B31505500F02C10 /* LRSuperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSuperViewController.m; sourceTree = "<group>"; };
 		DC3F18011B31523600F02C10 /* Category.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Category.framework; sourceTree = "<group>"; };
 		DC3F18031B315B0C00F02C10 /* common_icon_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "common_icon_back@2x.png"; sourceTree = "<group>"; };
+		DC48E7561CAD201F000EB4BB /* main_mall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_mall@2x.png"; sourceTree = "<group>"; };
+		DC48E7571CAD201F000EB4BB /* main_mojing@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_mojing@2x.png"; sourceTree = "<group>"; };
+		DC48E7581CAD201F000EB4BB /* main_more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_more@2x.png"; sourceTree = "<group>"; };
+		DC48E75E1CAD2327000EB4BB /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		DC48E75F1CAD2327000EB4BB /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		DC48E7611CAD2335000EB4BB /* MojingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MojingViewController.h; sourceTree = "<group>"; };
+		DC48E7621CAD2335000EB4BB /* MojingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MojingViewController.m; sourceTree = "<group>"; };
 		DC5185651CA92E0B00AD0352 /* pf_about_log@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pf_about_log@2x.png"; sourceTree = "<group>"; };
 		DC52E3BF1BA725CA00E3DFE5 /* Qunar.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Qunar.html; sourceTree = "<group>"; };
 		DC6693961C9468CC00EB6267 /* common_guide_0@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "common_guide_0@2x.jpg"; sourceTree = "<group>"; };
@@ -1381,6 +1390,24 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		DC48E75C1CAD2311000EB4BB /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				DC48E75E1CAD2327000EB4BB /* GameViewController.h */,
+				DC48E75F1CAD2327000EB4BB /* GameViewController.m */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		DC48E75D1CAD2311000EB4BB /* Mojing */ = {
+			isa = PBXGroup;
+			children = (
+				DC48E7611CAD2335000EB4BB /* MojingViewController.h */,
+				DC48E7621CAD2335000EB4BB /* MojingViewController.m */,
+			);
+			path = Mojing;
+			sourceTree = "<group>";
+		};
 		DC6693951C9468CC00EB6267 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -1759,6 +1786,9 @@
 		DCFAC4291B38F76C0062D479 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				DC48E7561CAD201F000EB4BB /* main_mall@2x.png */,
+				DC48E7571CAD201F000EB4BB /* main_mojing@2x.png */,
+				DC48E7581CAD201F000EB4BB /* main_more@2x.png */,
 				DC6693A81C95C52B00EB6267 /* main_nav_message@2x.png */,
 				DC6E61AE1B9867B9002A97C0 /* main_left@2x.png */,
 				DCE0AEFC1B96DE8500F2CFC3 /* main_gps@2x.png */,
@@ -1891,6 +1921,8 @@
 		DCFAC4E41B3CF9A50062D479 /* Found */ = {
 			isa = PBXGroup;
 			children = (
+				DC48E75C1CAD2311000EB4BB /* Game */,
+				DC48E75D1CAD2311000EB4BB /* Mojing */,
 				DC18A1B01CA5566200ED7019 /* Store */,
 				DC6E61B61B997967002A97C0 /* GPS */,
 				DCEA6A2C1B88D0F2008FF3E2 /* Calendar */,
@@ -1902,8 +1934,6 @@
 				DCFAC4E51B3CF9A50062D479 /* AlarmClock */,
 				DCFAC4F01B3D2B080062D479 /* FoundViewController.h */,
 				DCFAC4F11B3D2B080062D479 /* FoundViewController.m */,
-				DC18A1B41CA5585F00ED7019 /* InComingViewController.h */,
-				DC18A1B51CA5585F00ED7019 /* InComingViewController.m */,
 			);
 			path = Found;
 			sourceTree = "<group>";
@@ -2049,6 +2079,7 @@
 				DC52E3C01BA725CA00E3DFE5 /* Qunar.html in Resources */,
 				DCFAC4731B38F76C0062D479 /* w_17@2x.png in Resources */,
 				DCFAC47A1B38F76C0062D479 /* w_23@2x.png in Resources */,
+				DC48E75A1CAD2020000EB4BB /* main_mojing@2x.png in Resources */,
 				DCEA6A3A1B895D6D008FF3E2 /* bl_match@2x.png in Resources */,
 				DCE0AF001B96DE8500F2CFC3 /* main_temp@2x.png in Resources */,
 				DCEA69D71B8801B6008FF3E2 /* pf_logo2@2x.png in Resources */,
@@ -2068,6 +2099,7 @@
 				DCFAC4891B38F76C0062D479 /* w_37@2x.png in Resources */,
 				DCFAC4661B38F76C0062D479 /* main_kuaidi@2x.png in Resources */,
 				DCEA69D61B8801B6008FF3E2 /* pf_logo1@2x.png in Resources */,
+				DC48E75B1CAD2020000EB4BB /* main_more@2x.png in Resources */,
 				DCFAC4C31B3A9D4A0062D479 /* k_huitongkuaidi@2x.png in Resources */,
 				DCFAC4711B38F76C0062D479 /* w_15@2x.png in Resources */,
 				DCFAC4751B38F76C0062D479 /* w_19@2x.png in Resources */,
@@ -2116,6 +2148,7 @@
 				DCFAC4881B38F76C0062D479 /* w_36@2x.png in Resources */,
 				DCFAC4831B38F76C0062D479 /* w_31@2x.png in Resources */,
 				DCFAC48C1B38F76C0062D479 /* w_3@2x.png in Resources */,
+				DC48E7591CAD201F000EB4BB /* main_mall@2x.png in Resources */,
 				DCFAC4851B38F76C0062D479 /* w_33@2x.png in Resources */,
 				DCFAC4A61B3A8B350062D479 /* main_nav_right@2x.png in Resources */,
 				DCFAC4861B38F76C0062D479 /* w_34@2x.png in Resources */,
@@ -2195,7 +2228,6 @@
 				DCEA69C41B877B85008FF3E2 /* TeleBar.m in Sources */,
 				DC8008421B9D6B3700F13C37 /* DeviceDataSource.m in Sources */,
 				DC00D7841BAFEF630088FA71 /* JSONModelArray.m in Sources */,
-				DC18A1B61CA5585F00ED7019 /* InComingViewController.m in Sources */,
 				DCFAC4F21B3D2B080062D479 /* FoundViewController.m in Sources */,
 				DCEA6A0F1B887D68008FF3E2 /* ShareTool.m in Sources */,
 				DCEA6A2F1B88D107008FF3E2 /* CalendarViewController.m in Sources */,
@@ -2206,6 +2238,7 @@
 				DCD057BA1B9AE0C2003A7740 /* WeiXinManager.m in Sources */,
 				DC00D70D1BAD006A0088FA71 /* SDWebImagePrefetcher.m in Sources */,
 				DCD057B21B9ADF91003A7740 /* SinaWeiboAuthorizeView.m in Sources */,
+				DC48E7601CAD2327000EB4BB /* GameViewController.m in Sources */,
 				DC00D70E1BAD006A0088FA71 /* UIButton+WebCache.m in Sources */,
 				DCFAC49D1B395C000062D479 /* ExpressViewController.m in Sources */,
 				DC00D7541BAD01E10088FA71 /* Reachability.m in Sources */,
@@ -2242,6 +2275,7 @@
 				DCEA6A321B8950C6008FF3E2 /* CalendarView.m in Sources */,
 				DC3F177C1B2FDF3000F02C10 /* ExchangeListDS.m in Sources */,
 				DCEA698A1B863E79008FF3E2 /* CompanyNewsListViewController.m in Sources */,
+				DC48E7631CAD2335000EB4BB /* MojingViewController.m in Sources */,
 				DC00D7051BAD006A0088FA71 /* MKAnnotationView+WebCache.m in Sources */,
 				DC3F17871B2FDF3000F02C10 /* UIImageLoaderView.m in Sources */,
 				DC1DFE6B1B5CC8C100B86732 /* BlueToothViewController.m in Sources */,
@@ -2372,7 +2406,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "9f0ea0c6-f2ee-43ac-bdab-84cc860c9010";
+				PROVISIONING_PROFILE = "a536adf8-70ba-4d93-b068-433390af3228";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2394,8 +2428,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: yan liu (A6D2T79HCQ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yan liu (A6D2T79HCQ)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -2410,7 +2444,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "9f0ea0c6-f2ee-43ac-bdab-84cc860c9010";
+				PROVISIONING_PROFILE = "a536adf8-70ba-4d93-b068-433390af3228";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2423,6 +2457,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: yan liu (A6D2T79HCQ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yan liu (A6D2T79HCQ)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
@@ -2446,7 +2481,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.liemoch.box;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f6650714-a5c2-4acd-8ad7-18cfcbb65911";
+				PROVISIONING_PROFILE = "a536adf8-70ba-4d93-b068-433390af3228";
 			};
 			name = Debug;
 		};
@@ -2456,7 +2491,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: LIEMOCH LUXURIES SHARE CO.,LTD (26WCBK3EG5)";
+				CODE_SIGN_IDENTITY = "";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2480,7 +2515,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.liemoch.box;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f6650714-a5c2-4acd-8ad7-18cfcbb65911";
+				PROVISIONING_PROFILE = "a536adf8-70ba-4d93-b068-433390af3228";
 			};
 			name = Release;
 		};

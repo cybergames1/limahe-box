@@ -36,14 +36,8 @@
     //初始化基本设置
     [SettingManager prepareApplication];
     
-    //清掉本地通知
-    [[UIApplication sharedApplication] cancelAllLocalNotifications];
-    
-    if ([AccountManager isLogin]) {
-        //注册系统通知
-//        [BoxSideBarController unregisterForRemoteNotification];
-        [BoxSideBarController registerSystemRemoteNotification];
-    }
+    //注册系统通知
+    [BoxSideBarController registerSystemRemoteNotification];
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     self.window.backgroundColor = [UIColor blackColor];
@@ -106,6 +100,10 @@
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 {
+    NSLog(@"location notification");
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"闹钟" message:nil delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil, nil];
+    [alert show];
+    [alert release];
 }
 
 

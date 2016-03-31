@@ -22,6 +22,8 @@
 #import "DeviceManager.h"
 #import "MBProgressHUD.h"
 #import "UserInfoViewController.h"
+#import "StroreViewController.h"
+#import "MojingViewController.h"
 
 #define Label_Tag 1232
 
@@ -268,6 +270,14 @@
         case 9:
             //GPS
             controller = [[GPSViewController alloc] init];
+            break;
+        case 10:
+            //摩景
+            controller = [[MojingViewController alloc] init];
+            break;
+        case 11:
+            //商城
+            controller = [[StroreViewController alloc] init];
             break;
         default:
             break;

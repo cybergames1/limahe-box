@@ -26,9 +26,39 @@
     [super dealloc];
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        
+        NSInteger h = [defaults integerForKey:kAlarmClock_Hour];
+        NSInteger m = [defaults integerForKey:kAlarmClock_Minute];
+        NSArray *daysList = [defaults objectForKey:kAlarmClock_DaysList];
+        BOOL shake = [defaults boolForKey:kAlarmClock_Shake];
+        
+        [self setHour:h min:m];
+        [self setDaysList:daysList];
+        [self setShake:shake];
+    }
+    return self;
+}
+
+- (void)setShake:(BOOL)shake {
+    _shake = shake;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:_shake forKey:kAlarmClock_Shake];
+    [defaults synchronize];
+}
+
 - (void)setHour:(NSInteger)hour min:(NSInteger)min {
     _h = hour;
     _m = min;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:_h forKey:kAlarmClock_Hour];
+    [defaults setInteger:_m forKey:kAlarmClock_Minute];
+    [defaults synchronize];
 }
 
 - (NSString *)timeString {
@@ -42,6 +72,10 @@
     _daysList = nil;
     _daysList = [[NSArray alloc] initWithArray:daysList];
     [_daysList sortedArrayUsingSelector:@selector(compare:)];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:_daysList forKey:kAlarmClock_DaysList];
+    [defaults synchronize];
 }
 
 - (NSString *)daysString {

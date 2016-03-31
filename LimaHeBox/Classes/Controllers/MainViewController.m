@@ -17,7 +17,8 @@
 
 #define Cell_Label_Tag 13232
 
-static int menuIndex[8] = {4,2,1,3,5,7,8,9};
+//对应tabbarController的相应顺序
+static int menuIndex[10] = {7,8,1,9,10,5,11,3,2,4};
 
 @interface MainViewController () <MainMenuViewDelegate,TimePickerViewDelegate>
 {
@@ -64,7 +65,7 @@ static int menuIndex[8] = {4,2,1,3,5,7,8,9};
     [self.view addSubview:menuView];
     
     //天气
-    WeatherView *weatherView = [[[WeatherView alloc] initWithFrame:CGRectMake(self.view.width/2-40, [CommonTools viewTopWithNav], self.view.frame.size.width/2, 60)] autorelease];
+    WeatherView *weatherView = [[[WeatherView alloc] initWithFrame:CGRectMake(0, [CommonTools viewTopWithNav], self.view.frame.size.width/2, 60)] autorelease];
     [self.view addSubview:weatherView];
     _weatherView = weatherView;
     

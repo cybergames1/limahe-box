@@ -16,7 +16,8 @@
 #import "CalendarViewController.h"
 #import "GPSViewController.h"
 #import "StroreViewController.h"
-#import "InComingViewController.h"
+#import "MojingViewController.h"
+#import "GameViewController.h"
 
 @interface FoundViewController () <UITableViewDataSource,UITableViewDelegate>
 {
@@ -171,8 +172,7 @@
                 case 1:
                     //游戏
                 {
-                    InComingViewController *controller = [[InComingViewController alloc] init];
-                    controller.title = @"游戏";
+                    GameViewController *controller = [[GameViewController alloc] init];
                     [self.navigationController pushViewController:controller animated:YES];
                     [controller release];
                 }
@@ -180,8 +180,7 @@
                 case 2:
                     //摩景
                 {
-                    InComingViewController *controller = [[InComingViewController alloc] init];
-                    controller.title = @"摩景";
+                    MojingViewController *controller = [[MojingViewController alloc] init];
                     [self.navigationController pushViewController:controller animated:YES];
                     [controller release];
                 }

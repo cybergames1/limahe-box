@@ -1,28 +1,23 @@
 //
-//  InComingViewController.m
+//  MojingViewController.m
 //  LimaHeBox
 //
-//  Created by jianting on 16/3/25.
+//  Created by jianting on 16/3/31.
 //  Copyright © 2016年 jianting. All rights reserved.
 //
 
-#import "InComingViewController.h"
+#import "MojingViewController.h"
 
-@interface InComingViewController ()
+@interface MojingViewController ()
 
 @end
 
-@implementation InComingViewController
-
-- (void)dealloc {
-    self.title = nil;
-    [super dealloc];
-}
+@implementation MojingViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self setNavigationTitle:self.title];
+    [self setNavigationTitle:@"摩景"];
     //背景图
     UIImageView *imageView = [[[UIImageView alloc] initWithFrame:self.view.bounds] autorelease];
     imageView.image = [UIImage imageNamed:@"main_bg"];

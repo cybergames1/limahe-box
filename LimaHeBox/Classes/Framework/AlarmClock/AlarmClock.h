@@ -27,3 +27,11 @@
 - (NSString *)daysString;
 
 @end
+
+
+#define kAlarmClock_Hour @"alarmClock_Hour"
+#define kAlarmClock_Minute @"alarmClock_Minute"
+#define kAlarmClock_DaysList @"alarmClock_DaysList"
+#define kAlarmClock_Shake @"alarmClock_Shake"
+
+

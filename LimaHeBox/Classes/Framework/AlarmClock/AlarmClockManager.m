@@ -21,15 +21,46 @@
     return manager;
 }
 
++ (NSDate *)updateDate {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSInteger h = [defaults integerForKey:kAlarmClock_Hour];
+    NSInteger m = [defaults integerForKey:kAlarmClock_Minute];
+    
+    NSDate *date = [NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    
+    [formatter setDateFormat:@"yyyy"];
+    NSString *year = [NSString stringWithFormat:@"%@",[formatter stringFromDate:date]];
+    [formatter setDateFormat:@"MM"];
+    NSString *month = [NSString stringWithFormat:@"%@",[formatter stringFromDate:date]];
+    [formatter setDateFormat:@"dd"];
+    NSString *day = [NSString stringWithFormat:@"%@",[formatter stringFromDate:date]];
+    
+    NSCalendar *chinese = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setYear:[year integerValue]];
+    [comps setMonth:[month integerValue]];
+    [comps setDay:[day integerValue]];
+    [comps setHour:h];
+    [comps setMinute:m];
+    
+    date = [chinese dateFromComponents:comps];
+    [comps release];
+    [chinese release];
+    
+    return date;
+}
+
 + (void)createLocalNotificationWithAlarmClock:(AlarmClock *)alarmClock {
+    
     UILocalNotification *notification=[[UILocalNotification alloc] init];
     if (notification != nil) {
-        notification.fireDate = [NSDate dateWithTimeIntervalSinceNow:10];//10秒后通知
-        notification.repeatInterval = 0;//循环次数，kCFCalendarUnitWeekday一周一次
         notification.timeZone = [NSTimeZone defaultTimeZone];
-        notification.applicationIconBadgeNumber = 1; //应用的红色数字
-        notification.soundName = UILocalNotificationDefaultSoundName;
-        notification.userInfo = [NSDictionary dictionaryWithObjectsAndKeys:@"name",@"key", nil];
+        notification.fireDate = [self updateDate];
+        notification.soundName= UILocalNotificationDefaultSoundName;//声音
+        notification.repeatInterval = NSCalendarUnitDay; //重复的方式。
+        notification.alertTitle = @"闹钟";
+        notification.alertBody = @"闹钟响了!";
         [[UIApplication sharedApplication] scheduleLocalNotification:notification];
     }
     [notification release];

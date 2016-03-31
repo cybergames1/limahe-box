@@ -35,9 +35,6 @@ NSInteger UITableViewCellAccessorySwitch = 5;
     self = [super init];
     if (self) {
         AlarmClock *clock = [[AlarmClock alloc] init];
-        [clock setHour:7 min:10];
-        [clock setDaysList:@[@"1",@"2",@"5",@"7"]];
-        [clock setShake:YES];
         _clock = clock;
         
         _dataList = [[NSMutableArray alloc] initWithCapacity:5];
@@ -172,6 +169,8 @@ NSInteger UITableViewCellAccessorySwitch = 5;
     
     [self updateClockTime];
     [_tableView reloadData];
+    
+    [AlarmClockManager createLocalNotificationWithAlarmClock:_clock];
 }
 
 @end
