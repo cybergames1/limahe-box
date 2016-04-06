@@ -73,8 +73,6 @@
     
     UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [nextButton setFrame:CGRectMake(self.view.width/2-150/2+3*self.view.width, self.view.bottom-140, 150, 44)];
-    [nextButton.layer setBorderWidth:1];
-    [nextButton.layer setBorderColor:[UIColor whiteColor].CGColor];
     [nextButton addTarget:self action:@selector(goMainView) forControlEvents:UIControlEventTouchUpInside];
     [_scrollView addSubview:nextButton];
 }
