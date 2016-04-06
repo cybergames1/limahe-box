@@ -64,9 +64,11 @@ static Reachability* defaultReachability = nil;
 + (void) prepareApplication
 {
     //启动网络状态监听
-    defaultReachability = [[Reachability reachabilityWithHostName:@"www.baidu.com"] retain];
-    [defaultReachability startNotifier];
+//    defaultReachability = [[Reachability reachabilityWithHostName:@"www.baidu.com"] retain];
+//    [defaultReachability startNotifier];
     
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:1];
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     //创建目录
     [CommonTools createDirectoryIfNecessaryAtPath:[CommonTools  pathForStorageClass]];
 }
