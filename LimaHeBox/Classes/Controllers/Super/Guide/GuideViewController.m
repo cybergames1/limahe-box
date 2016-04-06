@@ -57,7 +57,7 @@
     [self.view addSubview:_scrollView];
     
     UIImageView *imageView = [[[UIImageView alloc] initWithFrame:self.view.bounds] autorelease];
-    imageView.image = [UIImage imageNamed:@"common_guide_0.jpg"];
+    imageView.image = [UIImage imageNamed:@"common_guide_0"];
     [_scrollView addSubview:imageView];
 }
 
@@ -66,14 +66,13 @@
     for (int i = 1; i < 4; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
         imageView.left = i*self.view.width;
-        imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"common_guide_%d.jpg",i]];
+        imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"common_guide_%d",i]];
         [_scrollView addSubview:imageView];
         [imageView release];
     }
     
     UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [nextButton setTitle:@"立即进入" forState:UIControlStateNormal];
-    [nextButton setFrame:CGRectMake(self.view.width/2-100/2+3*self.view.width, self.view.bottom-150, 100, 44)];
+    [nextButton setFrame:CGRectMake(self.view.width/2-150/2+3*self.view.width, self.view.bottom-140, 150, 44)];
     [nextButton.layer setBorderWidth:1];
     [nextButton.layer setBorderColor:[UIColor whiteColor].CGColor];
     [nextButton addTarget:self action:@selector(goMainView) forControlEvents:UIControlEventTouchUpInside];

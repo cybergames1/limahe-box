@@ -26,7 +26,7 @@
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, self.view.height-180, self.view.width, 100)];
     label.lineBreakMode = NSLineBreakByCharWrapping;
     label.numberOfLines = 2;
-    label.text = @"功能测试中\n即将上线 敬请期待";
+    label.text = @"LIEMOCH “利马赫” 世界旅游资讯平台\n即将上线 敬请期待";
     label.font = [UIFont boldSystemFontOfSize:17];
     label.textAlignment = NSTextAlignmentCenter;
     label.textColor = [UIColor whiteColor];

@@ -52,7 +52,7 @@
 }
 
 + (void)createLocalNotificationWithAlarmClock:(AlarmClock *)alarmClock {
-    
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
     UILocalNotification *notification=[[UILocalNotification alloc] init];
     if (notification != nil) {
         notification.timeZone = [NSTimeZone defaultTimeZone];
