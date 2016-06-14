@@ -10,6 +10,7 @@
 #import "LocationController.h"
 #import <MapKit/MapKit.h>
 #import "DeviceManager.h"
+#import "WGS84TOGCJ02Tool.h"
 
 @interface GPSViewController () <MKMapViewDelegate>
 {
@@ -66,15 +67,19 @@
         if (![self checkDeviceIsOnline]) return;
         
         CLLocationCoordinate2D coordinate2D = [[[DeviceManager sharedManager] currentDevice] coordinate];
+        if (![WGS84TOGCJ02Tool isLocationOutOfChina:coordinate2D]) {
+            coordinate2D = [WGS84TOGCJ02Tool transformFromWGSToGCJ:coordinate2D];
+        }
+        
         NSString *title = [NSString stringWithFormat:@"%f,%f",coordinate2D.latitude,coordinate2D.longitude];
         
         //加入大头针
-        MyAnnotation *anno = [[MyAnnotation alloc] initWithTitle:title SubTitle:nil Coordinate:[[[DeviceManager sharedManager] currentDevice] coordinate]];
+        MyAnnotation *anno = [[MyAnnotation alloc] initWithTitle:title SubTitle:nil Coordinate:coordinate2D];
         [mapView addAnnotation:anno];
         [anno release];
         
         MKCoordinateSpan span=MKCoordinateSpanMake(0.1, 0.1);
-        MKCoordinateRegion region=MKCoordinateRegionMake([[[DeviceManager sharedManager] currentDevice] coordinate], span);
+        MKCoordinateRegion region=MKCoordinateRegionMake(coordinate2D, span);
         [mapView setRegion:region animated:YES];
         
     }failure:^(NSError *error) {

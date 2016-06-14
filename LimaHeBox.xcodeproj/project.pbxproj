@@ -111,6 +111,7 @@
 		DC48E7631CAD2335000EB4BB /* MojingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC48E7621CAD2335000EB4BB /* MojingViewController.m */; };
 		DC5185661CA92E0B00AD0352 /* pf_about_log@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC5185651CA92E0B00AD0352 /* pf_about_log@2x.png */; };
 		DC52E3C01BA725CA00E3DFE5 /* Qunar.html in Resources */ = {isa = PBXBuildFile; fileRef = DC52E3BF1BA725CA00E3DFE5 /* Qunar.html */; };
+		DC622F721D0FE1590031D7B7 /* WGS84TOGCJ02Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = DC622F711D0FE1590031D7B7 /* WGS84TOGCJ02Tool.m */; };
 		DC6693A11C946A3400EB6267 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6693A01C946A3400EB6267 /* GuideViewController.m */; };
 		DC6693A51C95C41800EB6267 /* f_1_game@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC6693A21C95C41800EB6267 /* f_1_game@2x.png */; };
 		DC6693A61C95C41800EB6267 /* f_1_store@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC6693A31C95C41800EB6267 /* f_1_store@2x.png */; };
@@ -525,6 +526,8 @@
 		DC48E7621CAD2335000EB4BB /* MojingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MojingViewController.m; sourceTree = "<group>"; };
 		DC5185651CA92E0B00AD0352 /* pf_about_log@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pf_about_log@2x.png"; sourceTree = "<group>"; };
 		DC52E3BF1BA725CA00E3DFE5 /* Qunar.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Qunar.html; sourceTree = "<group>"; };
+		DC622F701D0FE1590031D7B7 /* WGS84TOGCJ02Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WGS84TOGCJ02Tool.h; sourceTree = "<group>"; };
+		DC622F711D0FE1590031D7B7 /* WGS84TOGCJ02Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WGS84TOGCJ02Tool.m; sourceTree = "<group>"; };
 		DC66939F1C946A3400EB6267 /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
 		DC6693A01C946A3400EB6267 /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
 		DC6693A21C95C41800EB6267 /* f_1_game@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "f_1_game@2x.png"; sourceTree = "<group>"; };
@@ -1223,6 +1226,8 @@
 				DC3F17771B2FDF3000F02C10 /* CommonTools.m */,
 				DC3F17781B2FDF3000F02C10 /* SocialTools.h */,
 				DC3F17791B2FDF3000F02C10 /* SocialTools.m */,
+				DC622F701D0FE1590031D7B7 /* WGS84TOGCJ02Tool.h */,
+				DC622F711D0FE1590031D7B7 /* WGS84TOGCJ02Tool.m */,
 			);
 			name = Tools;
 			path = Classes/Tools;
@@ -2224,6 +2229,7 @@
 				DCE0AEEA1B90B80D00F2CFC3 /* AppDelegate.m in Sources */,
 				DCEA69791B8618A0008FF3E2 /* VideoShareInputView.m in Sources */,
 				DCEA69801B862000008FF3E2 /* MessageViewController.m in Sources */,
+				DC622F721D0FE1590031D7B7 /* WGS84TOGCJ02Tool.m in Sources */,
 				DC00D74F1BAD01E10088FA71 /* ASIDownloadCache.m in Sources */,
 				DC00D70A1BAD006A0088FA71 /* SDWebImageDownloader.m in Sources */,
 				DC6E61B91B997984002A97C0 /* GPSViewController.m in Sources */,
